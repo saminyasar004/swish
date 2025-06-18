@@ -14,13 +14,22 @@ export default {
 			center: true,
 			padding: "2rem",
 			screens: {
-				"2xl": "1400px",
+				"2xl": "700px",
+				"3xl": "1000px",
+				"4xl": "1200px",
+				"5xl": "1400px",
 			},
 		},
 		extend: {
+			fontFamily: {
+				poppins: ["Poppins", "sans-serif"],
+			},
+
 			colors: {
-				primary: "#1dd881",
-				secondary: "#033333",
+				primary: "#57B576",
+				liquidGreen: "#EEF8F1",
+				secondary: "#1a482a",
+				primaryDark: "#101F41",
 				warning: "#ff523b",
 			},
 			keyframes: {
