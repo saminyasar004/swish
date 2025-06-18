@@ -29,6 +29,8 @@ export default {
 				primary: "#57B576",
 				liquidGreen: "#EEF8F1",
 				secondary: "#1a482a",
+				accent: "#0c381b",
+				accentDark: "#082c14",
 				primaryDark: "#101F41",
 				warning: "#ff523b",
 			},
