@@ -1,23 +1,11 @@
-import GardenCoconutTreeImg from "@/assets/images/garden-coconut-tree.svg";
-import GuardImg from "@/assets/images/guard.svg";
-import HomeImg from "@/assets/images/home.svg";
-import IndoorRenovationImg from "@/assets/images/indoor-renovation.svg";
 import Logo from "@/assets/images/logo-black.svg";
 import SquaresImg from "@/assets/images/squares.svg";
-import TradesToolsImg from "@/assets/images/trades-tools.svg";
+import { categories } from "@/components/common/Header";
 import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
-	const categories = [
-		{ name: "Trades & Specialized Crafts", img: TradesToolsImg },
-		{ name: "Exterior & Garden", img: GardenCoconutTreeImg },
-		{ name: "New Construction & Permits", img: HomeImg },
-		{ name: "Home Services & Installations", img: GuardImg },
-		{ name: "Indoor Renovation", img: IndoorRenovationImg },
-		{ name: "All categories", img: SquaresImg },
-	];
-
 	return (
 		<section className="py-28 bg-liquidGreen">
 			<div className="container grid grid-cols-2 gap-4 item-center justify-center">
@@ -45,21 +33,36 @@ export default function Hero() {
 
 					<div className="w-full grid grid-cols-3 gap-6 py-6 items-start">
 						{categories.map((category, index) => (
-							<div
-								key={index}
-								className="w-full flex flex-col gap-4 items-center justify-center py-4"
-							>
+							<Link to={category.url}>
+								<div
+									key={index}
+									className="w-full flex flex-col gap-4 items-center justify-center py-4 hover:text-primary hover:underline"
+								>
+									<img
+										src={category.img}
+										alt={category.name}
+										className="max-w-full"
+									/>
+
+									<p className="font-medium text-sm text-center">
+										{category.name}
+									</p>
+								</div>
+							</Link>
+						))}
+						<Link to="/categories">
+							<div className="w-full flex flex-col gap-4 items-center justify-center py-4 hover:text-primary hover:underline">
 								<img
-									src={category.img}
-									alt={category.name}
+									src={SquaresImg}
+									alt={"All categories"}
 									className="max-w-full"
 								/>
 
 								<p className="font-medium text-sm text-center">
-									{category.name}
+									All categories
 								</p>
 							</div>
-						))}
+						</Link>
 					</div>
 				</div>
 				<div className="w-full flex items-center justify-start">
