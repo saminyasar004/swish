@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function BusinessSignup() {
 	return (
-		<section className="py-24 bg-secondary text-white">
+		<section className="py-32 bg-secondary text-white">
 			<div className="container grid grid-cols-2 gap-4">
 				<div className="flex items-center justify-start">
 					<img src={Logo} alt="Swish.ma" className="w-[60%]" />
