@@ -1,5 +1,5 @@
-import Hero from "@/pages/Home/Hero";
-import Process from "@/pages/Home/Process";
+import Hero from "@/pages/home/Hero";
+import Process from "@/pages/home/Process";
 import Services from "./Services";
 import Feature from "./Feature";
 import SearchBusiness from "./SearchBusiness";

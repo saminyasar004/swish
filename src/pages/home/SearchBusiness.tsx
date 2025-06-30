@@ -31,25 +31,25 @@ export default function SearchBusiness() {
 						className="max-w-full absolute top-[30%] right-10 -translate-y-[30%]"
 					/>
 
-					<div className="w-full grid grid-cols-5 gap-1 bg-white h-14 rounded-md my-4">
-						<div className="col-span-2 w-full relative flex items-center gap-2">
+					<div className="w-full grid grid-cols-5 gap-4 bg-white h-auto rounded-lg my-4 p-3">
+						<div className="col-span-2 w-full relative flex items-center justify-center gap-2">
 							<Hammer
 								className="text-primaryDark absolute left-5 top-1/2 -translate-y-1/2"
 								size={20}
 							/>
 							<Input
-								className="bg-transparent w-full h-full pl-14 focus-visible:ring-offset-0 focus-visible:ring-0 border-0 ring-0"
+								className="bg-transparent w-full pl-14"
 								placeholder="What do you need help with?"
 							/>
 						</div>
 
-						<div className="col-span-2 w-full relative flex items-center gap-2">
+						<div className="col-span-2 w-full relative flex items-center justify-center gap-2">
 							<MapPin
 								className="text-primaryDark absolute left-5 top-1/2 -translate-y-1/2"
 								size={20}
 							/>
 							<Input
-								className="bg-transparent w-full h-full pl-14 focus-visible:ring-offset-0 focus-visible:ring-0 border-0 ring-0"
+								className="bg-transparent w-full pl-14"
 								placeholder="Where will the job be done?"
 							/>
 						</div>

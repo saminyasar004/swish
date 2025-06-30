@@ -326,12 +326,18 @@ function NavigationMenuSheetContent() {
 				)}
 			>
 				<SheetHeader>
-					<div className="flex gap-3 items-center transition-all duration-300 cursor-pointer hover:bg-slate-100 mb-2 py-4 px-2 rounded-md">
-						<img src={UserIcon} alt="User" className="max-w-full" />
-						<SheetTitle className="font-medium text-base">
-							Log in
-						</SheetTitle>
-					</div>
+					<Link to="/login">
+						<div className="flex gap-3 items-center transition-all duration-300 cursor-pointer hover:bg-slate-100 mb-2 py-4 px-2 rounded-md">
+							<img
+								src={UserIcon}
+								alt="User"
+								className="max-w-full"
+							/>
+							<SheetTitle className="font-medium text-base">
+								Log in
+							</SheetTitle>
+						</div>
+					</Link>
 				</SheetHeader>
 
 				<Separator className="bg-slate-200" />
@@ -386,7 +392,7 @@ function NavigationMenuSheetContent() {
 
 				<div className="py-5 flex flex-col gap-1">
 					<Link
-						to="/"
+						to="/my-post"
 						className="w-full flex items-center justify-between font-medium text-sm transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md"
 					>
 						My Post
