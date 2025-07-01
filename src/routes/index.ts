@@ -5,6 +5,7 @@ import Register from "@/pages/auth/Register";
 import ResetPassword from "@/pages/auth/ResetPassword";
 import VerifyOtp from "@/pages/auth/VerifyOtp";
 import Categories from "@/pages/categories/Categories";
+import Contact from "@/pages/contact";
 import Home from "@/pages/home/Home";
 import MyPost from "@/pages/post/MyPost";
 import PostJob from "@/pages/post/PostJob";
@@ -54,6 +55,11 @@ export const routes = [
 	{
 		path: "/my-post",
 		element: MyPost,
+		layout: Layout,
+	},
+	{
+		path: "/contact",
+		element: Contact,
 		layout: Layout,
 	},
 ];
