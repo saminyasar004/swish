@@ -308,7 +308,7 @@ function NavigationMenuSheetContent() {
 					<ScrollArea className="h-[75vh] w-full">
 						<div className="w-full flex flex-col gap-1">
 							{currentCategory &&
-								currentCategory.subcategories.map(
+								currentCategory?.subcategories?.map(
 									(subCategoryItem, index) => (
 										<Link
 											key={index}
