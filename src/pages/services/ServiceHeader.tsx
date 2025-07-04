@@ -8,8 +8,9 @@ import { Button } from "@/components/ui/button";
 export default function ServiceHeader({  headerContent,bannerImg}) {
   return (
         <div className="w-full grid grid-cols-3 rounded-lg bg-liquidGreen relative">
-          <div className="col-span-2 py-32 px-12 flex flex-col gap-2 relative">
-            <h2 className="text-3xl font-semibold text-primaryDark">
+
+          <div className="col-span-2 py-32 px-12 flex flex-col gap-2 relative pr-20">
+            <h2 className="text-3xl font-semibold text-primaryDark mb-6">
               {headerContent.title}
             </h2>
             <p className="w-[65%] leading-normal text-sm font-medium">
