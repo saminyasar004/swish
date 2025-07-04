@@ -316,7 +316,7 @@ function PostCard({ post, onSelect }: { post: Post; onSelect: () => void }) {
 
 									<Textarea
 										rows={5}
-										className="bg-[#D9D9D9] rounded-sm"
+										className="bg-[#D9D9D9] rounded-sm hover:ring-0"
 										placeholder="Write here..."
 									/>
 
