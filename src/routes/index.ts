@@ -10,6 +10,10 @@ import Home from "@/pages/home/Home";
 import MyPost from "@/pages/post/MyPost";
 import PostJob from "@/pages/post/PostJob";
 import Trades from "@/pages/services/trades";
+import Electrician from "@/pages/services/trades/Electrician";
+import Handyman from "@/pages/services/trades/Handyman";
+import Locksmith from "@/pages/services/trades/Locksmith";
+import Painter from "@/pages/services/trades/Painter";
 import Plumber from "@/pages/services/trades/Plumber";
 
 export interface Route {
@@ -72,6 +76,26 @@ export const routes = [
 	{
 		path: "/trades/plumber",
 		element: Plumber,
+		layout: Layout,
+	},
+	{
+		path: "/trades/electrician",
+		element: Electrician,
+		layout: Layout,
+	},
+	{
+		path: "/trades/painter",
+		element: Painter,
+		layout: Layout,
+	},
+	{
+		path: "/trades/locksmith",
+		element: Locksmith,
+		layout: Layout,
+	},
+	{
+		path: "/trades/handyman",
+		element: Handyman,
 		layout: Layout,
 	},
 ];
