@@ -33,9 +33,8 @@ export default function Hero() {
 
 					<div className="w-full grid grid-cols-3 gap-6 py-6 items-start">
 						{categories.map((category, index) => (
-							<Link to={category.url}>
+							<Link to={category.url} key={index}>
 								<div
-									key={index}
 									className="w-full flex flex-col gap-4 items-center justify-center py-4 hover:text-primary hover:underline"
 								>
 									<img
