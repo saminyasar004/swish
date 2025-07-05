@@ -21,6 +21,7 @@ import Locksmith from "@/pages/services/trades/Locksmith";
 import Painter from "@/pages/services/trades/Painter";
 import Plumber from "@/pages/services/trades/Plumber";
 import Bathrooms from "@/pages/services/renovation/Bathrooms";
+import FloorLaying from "@/pages/services/renovation/FloorLaying";
 
 export interface Route {
 	path: string;
@@ -137,6 +138,11 @@ export const routes = [
 	{
 		path: "/indoor-renovation/renovating-bathrooms",
 		element: Bathrooms,
+		layout: Layout,
+	},
+	{
+		path: "/indoor-renovation/floor-laying",
+		element: FloorLaying,
 		layout: Layout,
 	},
 ];
