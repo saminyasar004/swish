@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 
 export default function Hero() {
 	return (
-		<section className="py-28 bg-liquidGreen">
-			<div className="container grid grid-cols-2 gap-4 item-center justify-center">
-				<div className="max-w-md flex flex-col gap-3">
+		<section className=" py-16 md:py-24 lg:py-32 bg-liquidGreen">
+			<div className="container grid lg:grid-cols-2 gap-4 item-center justify-center">
+
+				<div className="max-w-md flex flex-col gap-3 justify-center items-center text-center md:justify-start md:items-start md:text-left">
 					<h1 className="text-5xl text-primaryDark font-semibold">
 						Get the job done!
 					</h1>
@@ -31,7 +32,7 @@ export default function Hero() {
 						</div>
 					</div>
 
-					<div className="w-full grid grid-cols-3 gap-6 py-6 items-start">
+					<div className="w-full grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 py-6 items-start">
 						{categories.map((category, index) => (
 							<Link to={category.url} key={index}>
 								<div
@@ -50,7 +51,7 @@ export default function Hero() {
 							</Link>
 						))}
 						<Link to="/categories">
-							<div className="w-full flex flex-col gap-4 items-center justify-center py-4 hover:text-primary hover:underline">
+							<div className="w-full flex flex-col  gap-4 items-center justify-center py-4 hover:text-primary hover:underline">
 								<img
 									src={SquaresImg}
 									alt={"All categories"}
@@ -64,7 +65,7 @@ export default function Hero() {
 						</Link>
 					</div>
 				</div>
-				<div className="w-full flex items-center justify-start">
+				<div className="lg:w-full flex items-center justify-start mt-8 lg:mt-0">
 					<img src={Logo} alt="Swish.ma" className="w-[500px]" />
 				</div>
 			</div>

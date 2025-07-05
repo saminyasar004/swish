@@ -106,12 +106,13 @@ export default function Header() {
 			<div className="container flex items-center justify-between">
 				<div className="logo">
 					<Link to="/">
-						<img src={Logo} alt="Swish.ma" className="max-w-full" />
+						<img src={Logo} alt="Swish.ma" className="max-w-[90%] md:max-w-full" />
 					</Link>
 				</div>
 
 				<div className="nav-items flex items-center justify-around gap-4">
-					<Select
+					<div className="hidden lg:flex items-center gap-4"> 
+						<Select
 						value={currentLanguage}
 						onValueChange={(e) => setCurrentLanguage(e)}
 					>
@@ -139,6 +140,7 @@ export default function Header() {
 					<Link to="/post-job">
 						<Button>Post a job</Button>
 					</Link>
+					</div>
 
 					<Sheet>
 						<SheetTrigger asChild>

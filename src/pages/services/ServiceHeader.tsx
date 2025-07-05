@@ -13,7 +13,7 @@ export default function ServiceHeader({  headerContent,bannerImg}) {
             <h2 className="text-3xl font-semibold text-primaryDark mb-6">
               {headerContent.title}
             </h2>
-            <p className="w-[65%] leading-normal text-sm font-medium">
+            <p className="xl:w-[65%] lg:w-[75%] leading-normal text-sm font-medium">
               {headerContent.description}
             </p>
 
@@ -29,13 +29,14 @@ export default function ServiceHeader({  headerContent,bannerImg}) {
             <img
               src={ArrowUpImg}
               alt="Arrow up"
-              className="w-max absolute top-[70%] right-24 -translate-y-[70%]"
+              className="w-max absolute lg:top-[60%] lg:w-[30%]  xl:top-[70%] right-24 -translate-y-[70%] hidden lg:block"
             />
           </div>
 
           {/* Question form */}
-          <div className="rounded-br-lg rounded-tr-lg overflow-hidden">
-            <div className="flex flex-col gap-4 w-[25rem] bg-white rounded-lg p-5 py-8 absolute right-12 top-1/2 -translate-y-1/2 z-10">
+          <div className="rounded-br-lg rounded-tr-lg overflow-hidden ">
+
+            <div className="flex flex-col gap-4  bg-white rounded-lg p-5 py-8 absolute    lg:w-[20rem] lg:right-0 lg:top-1/2 lg:-translate-y-1/2     xl:w-[25rem] xl:right-12 xl:top-1/2 xl:-translate-y-1/2 z-10">
               <h3 className="font-semibold text-xl text-primaryDark">
                 What do you need help with?
               </h3>
@@ -48,7 +49,7 @@ export default function ServiceHeader({  headerContent,bannerImg}) {
               <Textarea
                 placeholder="Describe what needs to be done"
                 className="ring-1 ring-neutral-200"
-                rows={7}
+                rows={5}
               />
 
               <div className="w-full flex items-center">

@@ -3,14 +3,15 @@ import MessageImg from "@/assets/images/message-2.svg";
 import BadgeImg from "@/assets/images/badge-3.svg";
 import SectionHeading from "@/components/common/SectionHeading";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export default function Process() {
 	return (
-		<section className="py-24">
+		<section className=" py-12 lg:py-24">
 			<div className="container flex flex-col gap-14 items-center">
 				<SectionHeading title="How Swish.ma works" />
 
-				<div className="w-full grid grid-cols-3 gap-5 items-center">
+				<div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-5 items-center">
 					<div className="w-full flex flex-col gap-4">
 						<div className="w-full flex gap-2 items-center">
 							<img
@@ -70,7 +71,7 @@ export default function Process() {
 					</div>
 				</div>
 
-				<Button>Post job</Button>
+				<Link to="/post-job"><Button>Post job</Button></Link>
 			</div>
 		</section>
 	);

@@ -33,7 +33,7 @@ export default function Feature() {
 	];
 
 	return (
-		<section className="py-32 max-w-full mx-auto bg-liquidGreen relative">
+		<section className="py-12 md:py-20 lg:py-28 max-w-full mx-auto bg-liquidGreen relative">
 			<img
 				src={GreenStrokeImg}
 				alt="stroke"
@@ -45,7 +45,7 @@ export default function Feature() {
 					description="At Swish.ma, we review the companies on the service regularly. We have also made it easier for you to ensure that you have chosen the best company for your project:"
 				/>
 
-				<div className="w-full grid grid-cols-3 gap-5 items-center">
+				<div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-center">
 					{features.map((feature, index) => (
 						<div
 							key={index}

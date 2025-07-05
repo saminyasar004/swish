@@ -14,45 +14,45 @@ import WindowsAndDoorsImg from "@/assets/images/windows-and-doors.svg";
 import SectionHeading from "@/components/common/SectionHeading";
 
 export default function Services() {
-	const services = [
-		{ name: "Plumber", image: PlumberImg },
-		{ name: "Electrician", image: ElectricianImg },
-		{ name: "Masonry & Concrete Work", image: ConcreteImg },
-		{ name: "Floor Laying", image: FloorImg },
-		{ name: "Painting", image: PaintingImg },
-		{ name: "Garden & Landscaping", image: GardenSprayImg },
-		{ name: "Handyman", image: HandymanImg },
-		{ name: "Locksmith", image: LocksmithImg },
-		{ name: "Renovating bathrooms", image: RenovatingBathroomsImg },
-		{ name: "Windows & Doors", image: WindowsAndDoorsImg },
-		{ name: "Solar Heater & AC Installation", image: SolarHeaterImg },
-		{ name: "Full Rem & Buildout", image: HouseRenovationImg },
-	];
+  const services = [
+    { name: "Plumber", image: PlumberImg },
+    { name: "Electrician", image: ElectricianImg },
+    { name: "Masonry & Concrete Work", image: ConcreteImg },
+    { name: "Floor Laying", image: FloorImg },
+    { name: "Painting", image: PaintingImg },
+    { name: "Garden & Landscaping", image: GardenSprayImg },
+    { name: "Handyman", image: HandymanImg },
+    { name: "Locksmith", image: LocksmithImg },
+    { name: "Renovating bathrooms", image: RenovatingBathroomsImg },
+    { name: "Windows & Doors", image: WindowsAndDoorsImg },
+    { name: "Solar Heater & AC Installation", image: SolarHeaterImg },
+    { name: "Full Rem & Buildout", image: HouseRenovationImg },
+  ];
 
-	return (
-		<section className="py-24">
-			<div className="container flex flex-col gap-14 items-center">
-				<SectionHeading title="Popular Services" />
+  return (
+    <section className="py-12 md:py-20 lg:py-24">
+      <div className="container flex flex-col gap-14 items-center">
+        <SectionHeading title="Popular Services" />
 
-				<div className="w-full grid grid-cols-3 gap-3 items-center">
-					{services.map((service, index) => (
-						<div
-							key={index}
-							className="w-full h-full flex flex-col items-center gap-4 rounded-lg p-8 bg-liquidGreen hover:bg-accent transition-all duration-300 cursor-pointer"
-						>
-							<img
-								src={service.image}
-								alt={service.name}
-								className="max-w-full"
-							/>
+        <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-3 items-center">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="w-full h-full flex flex-col items-center justify-center text-center  gap-4 rounded-lg p-2 md:p-8 bg-liquidGreen hover:bg-accent transition-all duration-300 cursor-pointer"
+            >
+              <img
+                src={service.image}
+                alt={service.name}
+                className="max-w-full"
+              />
 
-							<h4 className="text-base text-primary font-semibold">
-								{service.name}
-							</h4>
-						</div>
-					))}
-				</div>
-			</div>
-		</section>
-	);
+              <h4 className="text-base text-primary font-semibold">
+                {service.name}
+              </h4>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -83,7 +83,7 @@ export default function PostJob() {
 		useState<CategoryProps | null>(null);
 
 	return (
-		<section className="py-20 bg-liquidGreen">
+		<section className="md:py-16 lg:py-20 bg-liquidGreen">
 			{selectedCategory ? (
 				<div className="container py-6">
 					<PostJobStepper />
@@ -109,7 +109,7 @@ export default function PostJob() {
 						</div>
 					</div>
 
-					<div className="max-w-4xl mx-auto grid grid-cols-3 gap-6 py-6 items-start justify-start">
+					<div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-6 items-start justify-start">
 						{categories.map((category, index) => (
 							<div
 								key={index}
@@ -160,7 +160,7 @@ function PostJobStepper() {
 
 	return (
 		<Card className="sm:max-w-4xl mx-auto shadow-sm">
-			<CardContent className="p-16">
+			<CardContent className="md:p-16">
 				<Stepper
 					active={active}
 					color="#57B576"
@@ -197,7 +197,7 @@ function PostJobStepper() {
 function AboutTheJob({ goNext }: { goNext: () => void }) {
 	return (
 		<div className="w-full flex flex-col gap-8 items-center justify-center py-8">
-			<h3 className="text-primaryDark font-semibold text-2xl">
+			<h3 className="text-primaryDark font-semibold md:text-2xl">
 				What do you need to help?
 			</h3>
 
@@ -209,7 +209,7 @@ function AboutTheJob({ goNext }: { goNext: () => void }) {
 			<Textarea
 				rows={5}
 				placeholder="Description"
-				className="w-full ring-2 ring-gray-100"
+				className=" md:w-full ring-2 ring-gray-100"
 			/>
 
 			<Button
@@ -226,12 +226,12 @@ function AboutTheJob({ goNext }: { goNext: () => void }) {
 function Value({ goNext }: { goNext: () => void }) {
 	return (
 		<div className="w-full flex flex-col gap-8 items-center justify-center py-8">
-			<h3 className="text-primaryDark font-semibold text-2xl">
+			<h3 className="text-primaryDark font-semibold md:text-2xl">
 				What do you need to help?
 			</h3>
 
 			<Input
-				className="w-full ring-2 ring-gray-100"
+				className="  w-full ring-2 ring-gray-100"
 				placeholder="Estimate Time"
 			/>
 
@@ -333,19 +333,19 @@ function ContactInfo({ goNext }: { goNext: () => void }) {
 				<div className="w-full border border-slate-300 rounded-md grid grid-cols-2">
 					<div
 						className={cn(
-							"w-full h-full py-5 flex items-center justify-center rounded-md cursor-pointer font-medium",
+							"w-full h-full py-2 md:py-5 flex items-center justify-center rounded-md cursor-pointer  md:font-medium",
 							selectedContactWay === "swish"
 								? "bg-liquidGreen"
 								: "bg-white text-slate-300"
 						)}
 						onClick={() => setSelectedContactWay("swish")}
 					>
-						<h5>Through Swish or Telephone</h5>
+						<h5 className=" text-base md:text-md">Through Swish or Telephone</h5>
 					</div>
 
 					<div
 						className={cn(
-							"w-full h-full py-5 flex items-center justify-center rounded-md cursor-pointer font-medium",
+							"w-full h-full py-2 md:py-5 flex items-center justify-center rounded-md cursor-pointer font-medium",
 							selectedContactWay === "email"
 								? "bg-liquidGreen"
 								: "bg-white text-slate-300"
@@ -371,11 +371,11 @@ function ContactInfo({ goNext }: { goNext: () => void }) {
 function Completed() {
 	return (
 		<div className="w-full flex flex-col gap-5 items-center justify-center py-12">
-			<div className="w-32 h-32 rounded-full flex items-center justify-center bg-primary text-white">
+			<div className="md:w-32 md:h-32 rounded-full flex items-center justify-center bg-primary text-white">
 				<Check size={72} />
 			</div>
 
-			<h5 className="font-medium text-2xl">Your job has been posted</h5>
+			<h5 className="font-medium md:text-2xl">Your job has been posted</h5>
 		</div>
 	);
 }
