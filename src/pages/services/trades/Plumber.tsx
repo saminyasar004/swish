@@ -51,8 +51,8 @@ export default function Plumber() {
 
         {/* // Content Section */}
 
-        <div className="w-full grid grid-cols-3 py-5">
-          <div className="col-span-2 w-full py-8 px-12 flex flex-col gap-5">
+        <div className="w-full grid grid-cols-4 py-5">
+          <div className="col-span-3 w-full py-8 px-12 flex flex-col gap-5">
             <h4 className="text-xl font-semibold text-primaryDark">
               What can a plumber do for you?
             </h4>
@@ -218,6 +218,9 @@ export default function Plumber() {
                 </Link>
               </div>
             </div>
+          </div>
+          <div>
+            Advertise section
           </div>
         </div>
       </div>
