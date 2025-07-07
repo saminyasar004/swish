@@ -15,16 +15,16 @@ export default function Register() {
 		useState<boolean>(false);
 
 	return (
-		<section className="w-full min-h-screen overflow-hidden grid grid-cols-2">
-			<div className="bg-secondary flex items-center justify-center">
+		<section className="w-full min-h-screen overflow-hidden grid md:grid-cols-3 lg:grid-cols-2">
+			<div className="bg-secondary py-4 flex items-center justify-center">
 				<Link
 					to="/"
 					className="w-full flex items-center justify-center"
 				>
-					<img src={LogoWhite} alt="Swish.ma" className="w-[40%]" />
+					<img src={LogoWhite} alt="Swish.ma" className="w-[70%] lg:w-[40%]" />
 				</Link>
 			</div>
-			<div className="flex flex-col gap-5 bg-liquidGreen p-10">
+			<div className="flex flex-col gap-5 md:col-span-2 lg:col-span-1 bg-liquidGreen p-10">
 				<div className="flex flex-col items-center gap-3">
 					<Link to="/">
 						<img
@@ -162,7 +162,7 @@ export default function Register() {
 				</div>
 
 				<div className="form-group flex items-center justify-center">
-					<p>
+					<p className="text-center">
 						Already have an account?{" "}
 						<Link
 							to="/login"
