@@ -22,6 +22,8 @@ import Painter from "@/pages/services/trades/Painter";
 import Plumber from "@/pages/services/trades/Plumber";
 import Bathrooms from "@/pages/services/renovation/Bathrooms";
 import FloorLaying from "@/pages/services/renovation/FloorLaying";
+import Profile from "@/pages/auth/Profile";
+import RegisterCompany from "@/pages/company/RegisterCompany";
 
 export interface Route {
 	path: string;
@@ -54,6 +56,11 @@ export const routes = [
 		element: Login,
 	},
 	{
+		path: "/register-company",
+		element: RegisterCompany,
+		layout: Layout,
+	},
+	{
 		path: "/forgot-password",
 		element: ForgotPassword,
 	},
@@ -73,6 +80,11 @@ export const routes = [
 	{
 		path: "/contact",
 		element: Contact,
+		layout: Layout,
+	},
+	{
+		path: "/profile",
+		element: Profile,
 		layout: Layout,
 	},
 	// trades
