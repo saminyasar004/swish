@@ -96,10 +96,14 @@ export default function Header() {
 	const location = useLocation();
 	const languages = ["English", "Français", "العربية"];
 	const [currentLanguage, setCurrentLanguage] = useState(languages[0]);
+	const [isSheetOpen, setIsSheetOpen] = useState(false); // Add state for Sheet
 
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, [location]);
+  // Close Sheet and scroll to top on route change
+  useEffect(() => {
+    setIsSheetOpen(false); // Close Sheet when route changes
+    window.scrollTo(0, 0);
+  }, [location]);
+
 
 	return (
 		<header className="w-full h-auto bg-white/50 py-3 sticky top-0 z-50 backdrop-blur-lg shadow-sm transition-all duration-300 ease-in-out">
@@ -142,7 +146,7 @@ export default function Header() {
 					</Link>
 					</div>
 
-					<Sheet>
+					<Sheet onOpenChange={setIsSheetOpen} open={isSheetOpen}>
 						<SheetTrigger asChild>
 							<Button
 								variant="outline"
@@ -157,7 +161,7 @@ export default function Header() {
 							</Button>
 						</SheetTrigger>
 						<SheetContent className="py-10 min-w-max sm:max-w-lg px-5">
-							<NavigationMenuSheetContent />
+							<NavigationMenuSheetContent setIsSheetOpen={setIsSheetOpen} />
 						</SheetContent>
 					</Sheet>
 				</div>
@@ -166,7 +170,7 @@ export default function Header() {
 	);
 }
 
-function NavigationMenuSheetContent() {
+function NavigationMenuSheetContent({ setIsSheetOpen }: { setIsSheetOpen: (open: boolean) => void }) {
 	const [currentCategory, setCurrentCategory] =
 		useState<CategoryProps | null>(null);
 
@@ -178,7 +182,7 @@ function NavigationMenuSheetContent() {
 					currentCategory ? "translate-x-[-110%]" : "translate-x-0"
 				)}
 			>
-				<SheetHeader>
+				<SheetHeader onClick={() => setIsSheetOpen(false)}>
 					<Link to="/login">
 						<div className="flex gap-3 items-center transition-all duration-300 cursor-pointer hover:bg-slate-100 mb-2 py-4 px-2 rounded-md">
 							<img
@@ -197,8 +201,10 @@ function NavigationMenuSheetContent() {
 
 				<div className="flex gap-1 flex-col items-center mt-2">
 					<Link
+					
 						to="/post-job"
 						className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md"
+						onClick={() => setIsSheetOpen(false)}
 					>
 						Post a job
 					</Link>
@@ -206,6 +212,7 @@ function NavigationMenuSheetContent() {
 					<Link
 						to="/"
 						className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md"
+						onClick={() => setIsSheetOpen(false)}
 					>
 						Register your business
 					</Link>
@@ -215,7 +222,7 @@ function NavigationMenuSheetContent() {
 
 				<div className="py-5 space-y-2">
 					<div className="flex flex-col gap-1">
-						<Link to="/categories">
+						<Link to="/categories" onClick={() => setIsSheetOpen(false)}>
 							<h3 className="font-semibold text-xl text-primaryDark px-2">
 								Categories
 							</h3>
@@ -229,6 +236,7 @@ function NavigationMenuSheetContent() {
 								variant="link"
 								className="w-full flex items-center justify-between font-medium text-sm whitespace-normal break-words transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md hover:no-underline"
 								onClick={() => setCurrentCategory(category)}
+								
 							>
 								{category.name}
 
@@ -247,6 +255,7 @@ function NavigationMenuSheetContent() {
 					<Link
 						to="/my-post"
 						className="w-full flex items-center justify-between font-medium text-sm transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md"
+						onClick={() => setIsSheetOpen(false)}
 					>
 						My Post
 						<ChevronRight
@@ -257,6 +266,7 @@ function NavigationMenuSheetContent() {
 					<Link
 						to="/"
 						className="w-full flex items-center justify-between font-medium text-sm transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md"
+						onClick={() => setIsSheetOpen(false)}
 					>
 						Message
 						<ChevronRight
@@ -297,6 +307,7 @@ function NavigationMenuSheetContent() {
 							<Link
 								to={currentCategory.url}
 								className="w-full flex items-center justify-between font-semibold text-xl transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md min-w-max"
+							onClick={() => setIsSheetOpen(false)}
 							>
 								{currentCategory.name}
 								<ChevronRight
@@ -316,11 +327,10 @@ function NavigationMenuSheetContent() {
 											key={index}
 											to={subCategoryItem.url}
 											className="w-full font-medium text-sm whitespace-normal break-words transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md"
-											onClick={() =>
-												setCurrentCategory(
-													subCategoryItem
-												)
-											}
+											onClick={() => {
+												setCurrentCategory(subCategoryItem);
+												setIsSheetOpen(false);
+											}}
 										>
 											{subCategoryItem.name}
 										</Link>
