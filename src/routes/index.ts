@@ -24,6 +24,9 @@ import Bathrooms from "@/pages/services/renovation/Bathrooms";
 import FloorLaying from "@/pages/services/renovation/FloorLaying";
 import Profile from "@/pages/auth/Profile";
 import RegisterCompany from "@/pages/company/RegisterCompany";
+import ServiceLayout from "@/components/common/ServiceLayout";
+import Working from "@/pages/ServiceProvider/serviceHome/Working";
+import ServiceHome from "@/pages/ServiceProvider/serviceHome/ServiceHome";
 
 export interface Route {
 	path: string;
@@ -157,4 +160,12 @@ export const routes = [
 		element: FloorLaying,
 		layout: Layout,
 	},
+
+
+	// services provider
+	{
+  path: "/provider",
+  element: ServiceLayout ,
+   // JSX instead of component reference
+}
 ];
