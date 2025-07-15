@@ -34,6 +34,7 @@ export default {
 				warning: "#ff523b",
 				greyWhite: "#CFD2D9",
 				white: "#FFFFFF",
+				greenSplash: "#CBECD6",
 			},
 			keyframes: {
 				"accordion-down": {
