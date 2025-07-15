@@ -32,6 +32,8 @@ export default {
 				accentDark: "#082c14",
 				primaryDark: "#101F41",
 				warning: "#ff523b",
+				greyWhite: "#CFD2D9",
+				white: "#FFFFFF",
 			},
 			keyframes: {
 				"accordion-down": {
