@@ -46,6 +46,7 @@ import ServiceHome from "@/pages/ServiceProvider/serviceHome/ServiceHome";
 
 export interface CategoryProps {
   name: string;
+
   url: string;
   img?: string;
   subcategories?: CategoryProps[];
@@ -167,8 +168,8 @@ export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
               onValueChange={onTabChange}
               className="bg-none"
             >
-              <TabsList className="w-full gap-6">
-                <TabsTrigger value="working" className="gap-2 rounded-full">
+              <TabsList className="w-full gap-16">
+                <TabsTrigger value="working" className="gap-4 rounded-full">
                   <p className="flex gap-2 px-2 py-1">
                     Working <img src={jobIcon} className="max-w-[20px]" />
                   </p>
