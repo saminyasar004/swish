@@ -27,14 +27,16 @@ export default {
 			colors: {
 				primary: "#57B576",
 				liquidGreen: "#EEF8F1",
+				darkGreen: "#57B576",
 				secondary: "#1a482a",
 				accent: "#0c381b",
 				accentDark: "#082c14",
 				primaryDark: "#101F41",
 				warning: "#ff523b",
 				greyWhite: "#CFD2D9",
-				white: "#FFFFFF",
+				solidWhite: "#FFFFFF",
 				greenSplash: "#CBECD6",
+				blackPrimary: "#000000",
 			},
 			keyframes: {
 				"accordion-down": {
