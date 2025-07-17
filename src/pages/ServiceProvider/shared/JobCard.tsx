@@ -1,17 +1,8 @@
-// components/JobCard.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaLocationArrow } from "react-icons/fa";
-import {
-  Heart,
-  HeartOff,
-  CalendarDays,
-  User2,
-  HeartHandshake,
-  HeartIcon,
-} from "lucide-react";
+import { CalendarDays, Heart, HeartOff, User2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import avatarFallback from "@/assets/images/avatar.png";
-import { JobDetailsModal } from "../serviceHome/JobDetailsModal";
 import { AllJob } from "../serviceTypes/ServiceProvider.types";
 
 type JobCardProps = {
@@ -27,22 +18,32 @@ export const JobCard: React.FC<JobCardProps> = ({
 }) => {
   const [isFavorite, setIsFavorite] = useState(job?.isFavorite || false);
 
-  const toggleFavorite = () => {
-    const updated = !isFavorite;
-    setIsFavorite(updated);
+  // Sync favorite status to localStorage whenever it's changed
+  useEffect(() => {
+    const favoriteJobIds = JSON.parse(
+      localStorage.getItem("favoriteJobs") || "[]"
+    ) as string[];
 
-    const stored = localStorage.getItem("favoriteJobs");
-    let favIds: string[] = stored ? JSON.parse(stored) : [];
-
-    if (updated) {
-      // add
-      favIds.push(job.id);
+    if (isFavorite) {
+      // Add to favorites
+      if (!favoriteJobIds.includes(job.id)) {
+        favoriteJobIds.push(job.id);
+      }
     } else {
-      // remove
-      favIds = favIds.filter((id) => id !== job.id);
+      // Remove from favorites
+      const updatedFavorites = favoriteJobIds.filter(
+        (id: string) => id !== job.id
+      );
+      localStorage.setItem("favoriteJobs", JSON.stringify(updatedFavorites));
+      return;
     }
 
-    localStorage.setItem("favoriteJobs", JSON.stringify(favIds));
+    // Save updated favorites list back to localStorage
+    localStorage.setItem("favoriteJobs", JSON.stringify(favoriteJobIds));
+  }, [isFavorite, job.id]); // Dependency array ensures this is called when isFavorite changes
+
+  const toggleFavorite = () => {
+    setIsFavorite((prev) => !prev); // Toggle favorite status
   };
 
   return (

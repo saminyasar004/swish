@@ -6,6 +6,8 @@ import { JobDetailsModal } from "./JobDetailsModal";
 import { ApplyBidModal } from "./ApplyBidModal";
 import { JobFilterSidebar } from "./JobFilterSidebar";
 import Pagination from "../shared/Pagination";
+import MyBusinessPage from "../myBusiness/MyBusinessPage";
+import MessagePage from "../Message/MessagePage";
 
 export default function ServiceHome({ selectedTab }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -144,14 +146,24 @@ export default function ServiceHome({ selectedTab }) {
         </div>
       )}
 
-      {selectedTab === "message" && <div>💬 Message Content</div>}
-      {selectedTab === "myBusiness" && <div>🏢 My Business Content</div>}
+      {selectedTab === "message" && (
+        <div className="container mx-auto">
+          <div>
+            <MessagePage />
+          </div>
+        </div>
+      )}
+      {selectedTab === "myBusiness" && (
+        <div>
+          <MyBusinessPage />
+        </div>
+      )}
 
       <JobDetailsModal
         open={showModal}
         onClose={() => setShowModal(false)}
         job={selectedJob}
-        onApplyBid={handleApplyBid(selectedJob)}
+        onApplyBid={() => handleApplyBid(selectedJob)}
       />
 
       <ApplyBidModal
