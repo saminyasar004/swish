@@ -28,8 +28,21 @@ export const JobCard: React.FC<JobCardProps> = ({
   const [isFavorite, setIsFavorite] = useState(job?.isFavorite || false);
 
   const toggleFavorite = () => {
-    setIsFavorite((prev) => !prev);
-    // Optionally trigger API or toast
+    const updated = !isFavorite;
+    setIsFavorite(updated);
+
+    const stored = localStorage.getItem("favoriteJobs");
+    let favIds: string[] = stored ? JSON.parse(stored) : [];
+
+    if (updated) {
+      // add
+      favIds.push(job.id);
+    } else {
+      // remove
+      favIds = favIds.filter((id) => id !== job.id);
+    }
+
+    localStorage.setItem("favoriteJobs", JSON.stringify(favIds));
   };
 
   return (

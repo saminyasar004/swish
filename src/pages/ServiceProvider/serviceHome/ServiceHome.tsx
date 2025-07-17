@@ -1,11 +1,14 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { JobCard } from "../shared/JobCard";
 import { AllJob } from "../serviceTypes/ServiceProvider.types";
 import { JobDetailsModal } from "./JobDetailsModal";
 import { ApplyBidModal } from "./ApplyBidModal";
+import { JobFilterSidebar } from "./JobFilterSidebar";
+import Pagination from "../shared/Pagination";
 
 export default function ServiceHome({ selectedTab }) {
+  const [currentPage, setCurrentPage] = useState(1);
   const [workingSubTab, setWorkingSubTab] = useState("allJobs");
   const [selectedJob, setSelectedJob] = useState<AllJob | null>(null);
   const [showModal, setShowModal] = useState(false);
@@ -20,12 +23,35 @@ export default function ServiceHome({ selectedTab }) {
     setApplyBidOpen(true);
   };
 
+  // For Pagination
+  const jobsPerPage = 2;
+  const totalPages = Math.ceil(dummyJobs.length / jobsPerPage);
+  const currentJobs = dummyJobs.slice(
+    (currentPage - 1) * jobsPerPage,
+    currentPage * jobsPerPage
+  );
+
+  // For Favorite Jobs
+  const favoriteJobIds = JSON.parse(
+    localStorage.getItem("favoriteJobs") || "[]"
+  ) as string[];
+
+  const favoriteJobs = dummyJobs.filter((job) =>
+    favoriteJobIds.includes(job.id)
+  );
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
+
   return (
     <main className="container mx-auto py-8">
       {selectedTab === "working" && (
-        <div className="grid grid-cols-9 gap-6 ">
+        <div className="grid grid-cols-9 gap-2 container">
           {/* Left Sidebar */}
-          <div className="col-span-2">🔍 Search For Jobs | Filters</div>
+          <div className="col-span-2">
+            <JobFilterSidebar />
+          </div>
 
           {/* Main Content */}
           <div className="col-span-6 bg-solidWhite">
@@ -34,7 +60,7 @@ export default function ServiceHome({ selectedTab }) {
               onValueChange={setWorkingSubTab}
               className="mb-6 shadow-lg"
             >
-              <h3 className="text-blackPrimary font-semibold text-2xl pt-2 mb-6 mx-6">
+              <h3 className="text-blackPrimary font-semibold text-xl pt-2 mb-6 mx-6">
                 Total 2935 jobs
               </h3>
 
@@ -62,9 +88,8 @@ export default function ServiceHome({ selectedTab }) {
 
             {/* Sub-tab content */}
             {workingSubTab === "allJobs" && (
-              <div className="space-y-4 px-6 shadow-sm">
-                {dummyJobs.map((job) => (
-                  // <JobCard key={job.id} job={job} />
+              <div className="space-y-4 px-6 shadow-sm min-h-screen">
+                {currentJobs.map((job) => (
                   <JobCard
                     key={job.id}
                     job={job}
@@ -72,10 +97,46 @@ export default function ServiceHome({ selectedTab }) {
                     onApplyBid={handleApplyBid(job)}
                   />
                 ))}
+                <div className="mt-auto mb-6">
+                  <Pagination
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                    totalPages={totalPages}
+                    jobsPerPage={jobsPerPage}
+                  />
+                </div>
               </div>
             )}
+
             {workingSubTab === "newJobs" && <div>🆕 New Jobs Content</div>}
-            {workingSubTab === "favorites" && <div>❤️ Favorites Content</div>}
+
+            {/* Favorites */}
+            {workingSubTab === "favorites" && (
+              <div className="space-y-4 px-6 shadow-sm min-h-screen">
+                {favoriteJobs.length > 0 ? (
+                  favoriteJobs.map((job) => (
+                    <JobCard
+                      key={job.id}
+                      job={job}
+                      onViewDetails={() => handleViewDetails(job)}
+                      onApplyBid={handleApplyBid(job)}
+                    />
+                  ))
+                ) : (
+                  <p className="text-center text-muted-foreground py-12">
+                    You haven’t added any favorite jobs yet.
+                  </p>
+                )}
+                <div className="mt-auto mb-6">
+                  <Pagination
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                    totalPages={totalPages}
+                    jobsPerPage={jobsPerPage}
+                  />
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Right Sidebar (optional) */}
@@ -135,7 +196,7 @@ export const dummyJobs: AllJob[] = [
     price: "$3,200",
     postedDate: "16/01/2024",
     bids: 6,
-    isFavorite: true,
+    isFavorite: false,
     user: {
       name: "Marcus",
       avatarUrl: "/images/avatars/marcus.png",
@@ -203,7 +264,7 @@ export const dummyJobs: AllJob[] = [
     price: "$5,000",
     postedDate: "13/01/2024",
     bids: 7,
-    isFavorite: true,
+    isFavorite: false,
     user: {
       name: "Nina",
       avatarUrl: "/images/avatars/nina.png",
