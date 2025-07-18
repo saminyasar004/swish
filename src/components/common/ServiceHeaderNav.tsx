@@ -1,14 +1,7 @@
 import Logo from "@/assets/images/logo-black.svg";
 import UserIcon from "@/assets/images/user-icon.svg";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 import {
   Sheet,
   SheetContent,
@@ -17,32 +10,30 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ChevronLeft, ChevronRight, Menu } from "lucide-react";
+import {
+  Briefcase,
+  ChevronLeft,
+  ChevronRight,
+  Home,
+  HomeIcon,
+  Menu,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Separator } from "../ui/separator";
 import { cn } from "@/lib/utils";
 import GardenCoconutTreeImg from "@/assets/images/garden-coconut-tree.svg";
-import GuardImg from "@/assets/images/guard.svg";
-import HomeImg from "@/assets/images/home.svg";
 import IndoorRenovationImg from "@/assets/images/indoor-renovation.svg";
 import TradesToolsImg from "@/assets/images/trades-tools.svg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import jobIcon from "@/assets/images/JobIcon.svg";
 import messageIcon from "@/assets/images/MessageIcon.svg";
+import jobIconActive from "@/assets/images/JobIcon.svg";
+import jobIcon from "@/assets/images/JobIconActive.svg";
+import messageIconActive from "@/assets/images/MessageIconActive.svg";
 import businessIcon from "@/assets/images/HomeIcon.svg";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import TabController from "@/pages/ServiceProvider/serviceHome/TabController";
-import ServiceHome from "@/pages/ServiceProvider/serviceHome/ServiceHome";
+import businessIconActive from "@/assets/images/businessIconActive.svg";
+import { useNavigate } from "react-router-dom";
+import clsx from "clsx";
 
 export interface CategoryProps {
   name: string;
@@ -111,6 +102,7 @@ export const categories = [
 
 export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [isSheetOpen, setIsSheetOpen] = useState(false); // Add state for Sheet
 
@@ -120,12 +112,20 @@ export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
     window.scrollTo(0, 0);
   }, [location]);
 
+  const handleTabClick = (tab: string) => {
+    if (tab === "working") navigate("/provider");
+    else if (tab === "message") navigate("/provider/message");
+    else if (tab === "myBusiness") navigate("/provider/my-business");
+
+    onTabChange(tab); // Update parent state
+  };
+
   return (
     <>
       <header className="w-full h-auto bg-liquidGreen py-3 sticky top-0 z-50 backdrop-blur-lg shadow-sm transition-all duration-300 ease-in-out">
         <div className="container flex items-center justify-between">
           <div className="logo">
-            <Link to="/">
+            <Link to="/provider">
               <img
                 src={Logo}
                 alt="Swish.ma"
@@ -134,35 +134,70 @@ export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
             </Link>
           </div>
 
-          {/* <div className="flex w-full max-w-max items-center flex-col gap-6">
-            <Tabs value={selectedTab} onValueChange={onTabChange}>
-              <TabsList className="w-full gap-6 bg-transparent shadow-none border-none">
-                <TabsTrigger
-                  value="working"
-                  className="gap-2 px-4 py-2 text-sm font-medium text-gray-700 data-[state=active]:text-green-600 data-[state=active]:border-b-2 data-[state=active]:border-green-500 hover:text-green-500 transition-colors duration-200 bg-transparent"
-                >
-                  Working <img src={jobIcon} className="max-w-[20px]" />
-                </TabsTrigger>
-
-                <TabsTrigger
-                  value="message"
-                  className="gap-2 px-4 py-2 text-sm font-medium text-gray-700 data-[state=active]:text-green-600 data-[state=active]:border-b-2 data-[state=active]:border-green-500 hover:text-green-500 transition-colors duration-200 bg-transparent"
-                >
-                  Message <img src={messageIcon} className="max-w-[20px]" />
-                </TabsTrigger>
-
-                <TabsTrigger
-                  value="myBusiness"
-                  className="gap-2 px-4 py-2 text-sm font-medium text-gray-700 data-[state=active]:text-green-600 data-[state=active]:border-b-2 data-[state=active]:border-green-500 hover:text-green-500 transition-colors duration-200 bg-transparent"
-                >
-                  My Business{" "}
-                  <img src={businessIcon} className="max-w-[20px]" />
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </div> */}
-
+          {/* NEW NAVIGATION INSTEAD OF TAB */}
           <div className="flex w-full max-w-max items-center flex-col gap-6">
+            <div className="flex gap-6">
+              {/* Working Button */}
+              <Button
+                onClick={() => handleTabClick("working")}
+                variant={selectedTab === "working" ? "default" : "outline"}
+                className={clsx(
+                  "rounded-full gap-2 font-semibold px-4 py-2 hover:bg-greenSplash hover:text-primary",
+                  selectedTab === "working" && "bg-greenSplash text-primary"
+                )}
+              >
+                <img
+                  src={selectedTab === "working" ? jobIconActive : jobIcon}
+                  alt="job icon"
+                  className="w-5 h-5"
+                />
+                <span>Working</span>
+              </Button>
+
+              {/* Message Button */}
+              <Button
+                onClick={() => handleTabClick("message")}
+                variant={selectedTab === "message" ? "default" : "outline"}
+                className={clsx(
+                  "rounded-full gap-2 font-semibold px-4 py-2 hover:bg-greenSplash hover:text-primary",
+                  selectedTab === "message" && "bg-greenSplash text-primary"
+                )}
+              >
+                <img
+                  src={
+                    selectedTab === "message" ? messageIconActive : messageIcon
+                  }
+                  alt="message icon"
+                  className="w-5 h-5"
+                />
+                <span>Message</span>
+              </Button>
+
+              {/* My Business Button */}
+              <Button
+                onClick={() => handleTabClick("myBusiness")}
+                variant={selectedTab === "myBusiness" ? "default" : "outline"}
+                className={clsx(
+                  "rounded-full gap-2 font-semibold px-4 py-2 hover:bg-greenSplash hover:text-primary",
+                  selectedTab === "myBusiness" && "bg-greenSplash text-primary"
+                )}
+              >
+                <img
+                  src={
+                    selectedTab === "myBusiness"
+                      ? businessIconActive
+                      : businessIcon
+                  }
+                  alt="business icon"
+                  className="w-5 h-5"
+                />
+                <span>My Business</span>
+              </Button>
+            </div>
+          </div>
+
+          {/* WAS TAB SECTION */}
+          {/* <div className="flex w-full max-w-max items-center flex-col gap-6">
             <Tabs
               value={selectedTab}
               onValueChange={onTabChange}
@@ -188,9 +223,9 @@ export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
                 </TabsTrigger>
               </TabsList>
             </Tabs>
-          </div>
+          </div> */}
 
-          <div className="nav-items flex items-center justify-around gap-4">
+          {/* <div className="nav-items flex items-center justify-around gap-4">
             <Sheet onOpenChange={setIsSheetOpen} open={isSheetOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" className="rounded-full space-x-1">
@@ -202,7 +237,15 @@ export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
                 <NavigationMenuSheetContent setIsSheetOpen={setIsSheetOpen} />
               </SheetContent>
             </Sheet>
-          </div>
+          </div> */}
+          <Link to="/provider/my-business/profile">
+            <div className="flex items-center gap-4">
+              <div className="bg-primary text-white rounded-md px-4 py-2 text-xl font-semibold">
+                A
+              </div>
+              <h1 className="text-lg md:text-2xl font-semibold">Ali Mounji</h1>
+            </div>
+          </Link>
         </div>
       </header>
     </>
