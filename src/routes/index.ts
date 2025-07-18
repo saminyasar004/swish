@@ -27,145 +27,210 @@ import RegisterCompany from "@/pages/company/RegisterCompany";
 import ServiceLayout from "@/components/common/ServiceLayout";
 import Working from "@/pages/ServiceProvider/serviceHome/Working";
 import ServiceHome from "@/pages/ServiceProvider/serviceHome/ServiceHome";
+import BusinessProfile from "@/pages/ServiceProvider/myBusiness/BusinessProfile";
+import ServiceLayoutMain from "@/components/common/ServiceLayoutMain";
+import MessagePage from "@/pages/ServiceProvider/Message/MessagePage";
+import MyBusinessPage from "@/pages/ServiceProvider/myBusiness/MyBusinessPage";
+import CompanyPage from "@/pages/ServiceProvider/myBusiness/CompanyPage";
+import GraphicsPage from "@/pages/ServiceProvider/myBusiness/GraphicsPage";
+import NotificationsPage from "@/pages/ServiceProvider/myBusiness/NotificationsPage";
+import EmployeesPage from "@/pages/ServiceProvider/myBusiness/EmployeesPage";
+import ManageEmployeesPage from "@/pages/ServiceProvider/myBusiness/ManageEmployeesPage";
 
 export interface Route {
-	path: string;
-	element: JSX.Element;
-	layout?: JSX.Element;
+  path: string;
+  element: JSX.Element;
+  layout?: JSX.Element;
 }
 
 export const routes = [
-	{
-		path: "/",
-		element: Home,
-		layout: Layout,
-	},
-	{
-		path: "/categories",
-		element: Categories,
-		layout: Layout,
-	},
-	{
-		path: "/post-job",
-		element: PostJob,
-		layout: Layout,
-	},
-	{
-		path: "/register",
-		element: Register,
-	},
-	{
-		path: "/login",
-		element: Login,
-	},
-	{
-		path: "/register-company",
-		element: RegisterCompany,
-		layout: Layout,
-	},
-	{
-		path: "/forgot-password",
-		element: ForgotPassword,
-	},
-	{
-		path: "/verify-otp",
-		element: VerifyOtp,
-	},
-	{
-		path: "/reset-password",
-		element: ResetPassword,
-	},
-	{
-		path: "/my-post",
-		element: MyPost,
-		layout: Layout,
-	},
-	{
-		path: "/contact",
-		element: Contact,
-		layout: Layout,
-	},
-	{
-		path: "/profile",
-		element: Profile,
-		layout: Layout,
-	},
-	// trades
-	{
-		path: "/trades",
-		element: Trades,
-		layout: Layout,
-	},
-	{
-		path: "/trades/plumber",
-		element: Plumber,
-		layout: Layout,
-	},
-	{
-		path: "/trades/electrician",
-		element: Electrician,
-		layout: Layout,
-	},
-	{
-		path: "/trades/painter",
-		element: Painter,
-		layout: Layout,
-	},
-	{
-		path: "/trades/locksmith",
-		element: Locksmith,
-		layout: Layout,
-	},
-	{
-		path: "/trades/handyman",
-		element: Handyman,
-		layout: Layout,
-	},
+  {
+    path: "/",
+    element: Home,
+    layout: Layout,
+  },
+  {
+    path: "/categories",
+    element: Categories,
+    layout: Layout,
+  },
+  {
+    path: "/post-job",
+    element: PostJob,
+    layout: Layout,
+  },
+  {
+    path: "/register",
+    element: Register,
+  },
+  {
+    path: "/login",
+    element: Login,
+  },
+  {
+    path: "/register-company",
+    element: RegisterCompany,
+    layout: Layout,
+  },
+  {
+    path: "/forgot-password",
+    element: ForgotPassword,
+  },
+  {
+    path: "/verify-otp",
+    element: VerifyOtp,
+  },
+  {
+    path: "/reset-password",
+    element: ResetPassword,
+  },
+  {
+    path: "/my-post",
+    element: MyPost,
+    layout: Layout,
+  },
+  {
+    path: "/contact",
+    element: Contact,
+    layout: Layout,
+  },
+  {
+    path: "/profile",
+    element: Profile,
+    layout: Layout,
+  },
+  // trades
+  {
+    path: "/trades",
+    element: Trades,
+    layout: Layout,
+  },
+  {
+    path: "/trades/plumber",
+    element: Plumber,
+    layout: Layout,
+  },
+  {
+    path: "/trades/electrician",
+    element: Electrician,
+    layout: Layout,
+  },
+  {
+    path: "/trades/painter",
+    element: Painter,
+    layout: Layout,
+  },
+  {
+    path: "/trades/locksmith",
+    element: Locksmith,
+    layout: Layout,
+  },
+  {
+    path: "/trades/handyman",
+    element: Handyman,
+    layout: Layout,
+  },
 
-	// exterior-garden
-	{
-		path: "/exterior-garden/solar-heater-ac-installation",
-		element: SolarHeater,
-		layout: Layout,
-	},
-	{
-		path: "/exterior-garden/masonry-concrete-work",
-		element: MasonryConcrete,
-		layout: Layout,
-	},
-	{
-		path: "/exterior-garden/window-doors",
-		element: WindowDoors,
-		layout: Layout,
-	},
-	{
-		path: "/exterior-garden/garden-landscaping",
-		element: GardenLandscaping,
-		layout: Layout,
-	},
+  // exterior-garden
+  {
+    path: "/exterior-garden/solar-heater-ac-installation",
+    element: SolarHeater,
+    layout: Layout,
+  },
+  {
+    path: "/exterior-garden/masonry-concrete-work",
+    element: MasonryConcrete,
+    layout: Layout,
+  },
+  {
+    path: "/exterior-garden/window-doors",
+    element: WindowDoors,
+    layout: Layout,
+  },
+  {
+    path: "/exterior-garden/garden-landscaping",
+    element: GardenLandscaping,
+    layout: Layout,
+  },
 
-	// indoor-renovation
-	{
-		path: "/indoor-renovation/full-renovation-buildout",
-		element: Renovation,
-		layout: Layout,
-	},
-	{
-		path: "/indoor-renovation/renovating-bathrooms",
-		element: Bathrooms,
-		layout: Layout,
-	},
-	{
-		path: "/indoor-renovation/floor-laying",
-		element: FloorLaying,
-		layout: Layout,
-	},
+  // indoor-renovation
+  {
+    path: "/indoor-renovation/full-renovation-buildout",
+    element: Renovation,
+    layout: Layout,
+  },
+  {
+    path: "/indoor-renovation/renovating-bathrooms",
+    element: Bathrooms,
+    layout: Layout,
+  },
+  {
+    path: "/indoor-renovation/floor-laying",
+    element: FloorLaying,
+    layout: Layout,
+  },
 
+  // services provider
+  // {
+  //   path: "/provider",
+  //   element: ServiceLayout,
+  //   // JSX instead of component reference
+  // },
+  // {
+  //   path: "/provider/profile",
+  //   element: BusinessProfile,
+  //   layout: ServiceLayout,
+  // },
 
-	// services provider
-	{
-  path: "/provider",
-  element: ServiceLayout ,
-   // JSX instead of component reference
-}
+  // services provider
+  // {
+  //   path: "/provider",
+  //   element: ServiceLayout,
+  //   // JSX instead of component reference
+  // },
+  {
+    path: "/provider",
+    element: ServiceHome,
+    layout: ServiceLayout,
+  },
+  {
+    path: "/provider/message",
+    element: MessagePage,
+    layout: ServiceLayout,
+  },
+  {
+    path: "/provider/my-business",
+    element: MyBusinessPage,
+    layout: ServiceLayout,
+  },
+  {
+    path: "/provider/my-business/profile",
+    element: BusinessProfile,
+    layout: ServiceLayout,
+  },
+  {
+    path: "/provider/my-business/profile/company",
+    element: CompanyPage,
+    layout: ServiceLayout, // if using common layout
+  },
+  {
+    path: "/provider/my-business/profile/graphics",
+    element: GraphicsPage,
+    layout: ServiceLayout, // if using common layout
+  },
+  {
+    path: "/provider/my-business/profile/notifications",
+    element: NotificationsPage,
+    layout: ServiceLayout, // if using common layout
+  },
+  {
+    path: "/provider/my-business/profile/employees",
+    element: EmployeesPage,
+    layout: ServiceLayout,
+  },
+  {
+    path: "/provider/my-business/employees/manage",
+    element: ManageEmployeesPage,
+    layout: ServiceLayout,
+  },
 ];

@@ -6,10 +6,8 @@ import { JobDetailsModal } from "./JobDetailsModal";
 import { ApplyBidModal } from "./ApplyBidModal";
 import { JobFilterSidebar } from "./JobFilterSidebar";
 import Pagination from "../shared/Pagination";
-import MyBusinessPage from "../myBusiness/MyBusinessPage";
-import MessagePage from "../Message/MessagePage";
 
-export default function ServiceHome({ selectedTab }) {
+export default function ServiceHome() {
   const [currentPage, setCurrentPage] = useState(1);
   const [workingSubTab, setWorkingSubTab] = useState("allJobs");
   const [selectedJob, setSelectedJob] = useState<AllJob | null>(null);
@@ -25,19 +23,16 @@ export default function ServiceHome({ selectedTab }) {
     setApplyBidOpen(true);
   };
 
-  // For Pagination
-  const jobsPerPage = 2;
+  const jobsPerPage = 4;
   const totalPages = Math.ceil(dummyJobs.length / jobsPerPage);
   const currentJobs = dummyJobs.slice(
     (currentPage - 1) * jobsPerPage,
     currentPage * jobsPerPage
   );
 
-  // For Favorite Jobs
   const favoriteJobIds = JSON.parse(
     localStorage.getItem("favoriteJobs") || "[]"
   ) as string[];
-
   const favoriteJobs = dummyJobs.filter((job) =>
     favoriteJobIds.includes(job.id)
   );
@@ -48,122 +43,105 @@ export default function ServiceHome({ selectedTab }) {
 
   return (
     <main className="container mx-auto py-8">
-      {selectedTab === "working" && (
-        <div className="grid grid-cols-9 gap-2 container">
-          {/* Left Sidebar */}
-          <div className="col-span-2">
-            <JobFilterSidebar />
-          </div>
+      <div className="grid grid-cols-9 gap-2 container">
+        {/* Sidebar */}
+        <div className="col-span-2">
+          <JobFilterSidebar />
+        </div>
 
-          {/* Main Content */}
-          <div className="col-span-6 bg-solidWhite">
-            <Tabs
-              value={workingSubTab}
-              onValueChange={setWorkingSubTab}
-              className="mb-6 shadow-lg"
-            >
-              <h3 className="text-blackPrimary font-semibold text-xl pt-2 mb-6 mx-6">
-                Total 2935 jobs
-              </h3>
+        {/* Main Content */}
+        <div className="col-span-6 bg-solidWhite">
+          <Tabs
+            value={workingSubTab}
+            onValueChange={setWorkingSubTab}
+            className="mb-6 shadow-lg"
+          >
+            <h3 className="text-blackPrimary font-semibold text-xl pt-2 mb-6 mx-6">
+              Total 2935 jobs
+            </h3>
 
-              <TabsList className="w-full max-w-max gap-16 mb-4 bg-transparent mx-6">
-                <TabsTrigger
-                  value="allJobs"
-                  className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
-                >
-                  All Jobs
-                </TabsTrigger>
-                <TabsTrigger
-                  value="newJobs"
-                  className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
-                >
-                  New Jobs
-                </TabsTrigger>
-                <TabsTrigger
-                  value="favorites"
-                  className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
-                >
-                  Favorites
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
+            <TabsList className="w-full max-w-max gap-16 mb-4 bg-transparent mx-6">
+              <TabsTrigger
+                value="allJobs"
+                className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
+              >
+                All Jobs
+              </TabsTrigger>
+              <TabsTrigger
+                value="newJobs"
+                className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
+              >
+                New Jobs
+              </TabsTrigger>
+              <TabsTrigger
+                value="favorites"
+                className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
+              >
+                Favorites
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
 
-            {/* Sub-tab content */}
-            {workingSubTab === "allJobs" && (
-              <div className="space-y-4 px-6 shadow-sm min-h-screen">
-                {currentJobs.map((job) => (
+          {/* Content */}
+          {workingSubTab === "allJobs" && (
+            <div className="space-y-4 px-6 shadow-sm min-h-screen">
+              {currentJobs.map((job) => (
+                <JobCard
+                  key={job.id}
+                  job={job}
+                  onViewDetails={() => handleViewDetails(job)}
+                  onApplyBid={handleApplyBid(job)}
+                />
+              ))}
+              <div className="mt-auto mb-6">
+                <Pagination
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
+                  totalPages={totalPages}
+                  jobsPerPage={jobsPerPage}
+                />
+              </div>
+            </div>
+          )}
+
+          {workingSubTab === "newJobs" && <div>🆕 New Jobs Content</div>}
+
+          {workingSubTab === "favorites" && (
+            <div className="space-y-4 px-6 shadow-sm min-h-screen">
+              {favoriteJobs.length > 0 ? (
+                favoriteJobs.map((job) => (
                   <JobCard
                     key={job.id}
                     job={job}
                     onViewDetails={() => handleViewDetails(job)}
                     onApplyBid={handleApplyBid(job)}
                   />
-                ))}
-                <div className="mt-auto mb-6">
-                  <Pagination
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    totalPages={totalPages}
-                    jobsPerPage={jobsPerPage}
-                  />
-                </div>
+                ))
+              ) : (
+                <p className="text-center text-muted-foreground py-12">
+                  You haven’t added any favorite jobs yet.
+                </p>
+              )}
+              <div className="mt-auto mb-6">
+                <Pagination
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
+                  totalPages={totalPages}
+                  jobsPerPage={jobsPerPage}
+                />
               </div>
-            )}
-
-            {workingSubTab === "newJobs" && <div>🆕 New Jobs Content</div>}
-
-            {/* Favorites */}
-            {workingSubTab === "favorites" && (
-              <div className="space-y-4 px-6 shadow-sm min-h-screen">
-                {favoriteJobs.length > 0 ? (
-                  favoriteJobs.map((job) => (
-                    <JobCard
-                      key={job.id}
-                      job={job}
-                      onViewDetails={() => handleViewDetails(job)}
-                      onApplyBid={handleApplyBid(job)}
-                    />
-                  ))
-                ) : (
-                  <p className="text-center text-muted-foreground py-12">
-                    You haven’t added any favorite jobs yet.
-                  </p>
-                )}
-                <div className="mt-auto mb-6">
-                  <Pagination
-                    currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
-                    totalPages={totalPages}
-                    jobsPerPage={jobsPerPage}
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Right Sidebar (optional) */}
-          <div className="col-span-1">📦 Extra panel / stats</div>
+            </div>
+          )}
         </div>
-      )}
 
-      {selectedTab === "message" && (
-        <div className="container mx-auto">
-          <div>
-            <MessagePage />
-          </div>
-        </div>
-      )}
-      {selectedTab === "myBusiness" && (
-        <div>
-          <MyBusinessPage />
-        </div>
-      )}
+        <div className="col-span-1">📦 Extra panel / stats</div>
+      </div>
 
       <JobDetailsModal
         open={showModal}
         onClose={() => setShowModal(false)}
         job={selectedJob}
-        onApplyBid={() => handleApplyBid(selectedJob)}
+        onApplyBid={handleApplyBid(selectedJob)}
       />
 
       <ApplyBidModal
@@ -174,6 +152,183 @@ export default function ServiceHome({ selectedTab }) {
     </main>
   );
 }
+
+// import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// import React, { useEffect, useState } from "react";
+// import { JobCard } from "../shared/JobCard";
+// import { AllJob } from "../serviceTypes/ServiceProvider.types";
+// import { JobDetailsModal } from "./JobDetailsModal";
+// import { ApplyBidModal } from "./ApplyBidModal";
+// import { JobFilterSidebar } from "./JobFilterSidebar";
+// import Pagination from "../shared/Pagination";
+// import MyBusinessPage from "../myBusiness/MyBusinessPage";
+// import MessagePage from "../Message/MessagePage";
+
+// export default function ServiceHome({ selectedTab }) {
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const [workingSubTab, setWorkingSubTab] = useState("allJobs");
+//   const [selectedJob, setSelectedJob] = useState<AllJob | null>(null);
+//   const [showModal, setShowModal] = useState(false);
+//   const [applyBidOpen, setApplyBidOpen] = useState(false);
+
+//   const handleViewDetails = (job: AllJob) => {
+//     setSelectedJob(job);
+//     setShowModal(true);
+//   };
+//   const handleApplyBid = (job: AllJob) => () => {
+//     setSelectedJob(job);
+//     setApplyBidOpen(true);
+//   };
+
+//   // For Pagination
+//   const jobsPerPage = 2;
+//   const totalPages = Math.ceil(dummyJobs.length / jobsPerPage);
+//   const currentJobs = dummyJobs.slice(
+//     (currentPage - 1) * jobsPerPage,
+//     currentPage * jobsPerPage
+//   );
+
+//   // For Favorite Jobs
+//   const favoriteJobIds = JSON.parse(
+//     localStorage.getItem("favoriteJobs") || "[]"
+//   ) as string[];
+
+//   const favoriteJobs = dummyJobs.filter((job) =>
+//     favoriteJobIds.includes(job.id)
+//   );
+
+//   useEffect(() => {
+//     window.scrollTo({ top: 0, behavior: "smooth" });
+//   }, [currentPage]);
+
+//   return (
+//     <main className="container mx-auto py-8">
+//       {selectedTab === "working" && (
+//         <div className="grid grid-cols-9 gap-2 container">
+//           {/* Left Sidebar */}
+//           <div className="col-span-2">
+//             <JobFilterSidebar />
+//           </div>
+
+//           {/* Main Content */}
+//           <div className="col-span-6 bg-solidWhite">
+//             <Tabs
+//               value={workingSubTab}
+//               onValueChange={setWorkingSubTab}
+//               className="mb-6 shadow-lg"
+//             >
+//               <h3 className="text-blackPrimary font-semibold text-xl pt-2 mb-6 mx-6">
+//                 Total 2935 jobs
+//               </h3>
+
+//               <TabsList className="w-full max-w-max gap-16 mb-4 bg-transparent mx-6">
+//                 <TabsTrigger
+//                   value="allJobs"
+//                   className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
+//                 >
+//                   All Jobs
+//                 </TabsTrigger>
+//                 <TabsTrigger
+//                   value="newJobs"
+//                   className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
+//                 >
+//                   New Jobs
+//                 </TabsTrigger>
+//                 <TabsTrigger
+//                   value="favorites"
+//                   className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
+//                 >
+//                   Favorites
+//                 </TabsTrigger>
+//               </TabsList>
+//             </Tabs>
+
+//             {/* Sub-tab content */}
+//             {workingSubTab === "allJobs" && (
+//               <div className="space-y-4 px-6 shadow-sm min-h-screen">
+//                 {currentJobs.map((job) => (
+//                   <JobCard
+//                     key={job.id}
+//                     job={job}
+//                     onViewDetails={() => handleViewDetails(job)}
+//                     onApplyBid={handleApplyBid(job)}
+//                   />
+//                 ))}
+//                 <div className="mt-auto mb-6">
+//                   <Pagination
+//                     currentPage={currentPage}
+//                     setCurrentPage={setCurrentPage}
+//                     totalPages={totalPages}
+//                     jobsPerPage={jobsPerPage}
+//                   />
+//                 </div>
+//               </div>
+//             )}
+
+//             {workingSubTab === "newJobs" && <div>🆕 New Jobs Content</div>}
+
+//             {/* Favorites */}
+//             {workingSubTab === "favorites" && (
+//               <div className="space-y-4 px-6 shadow-sm min-h-screen">
+//                 {favoriteJobs.length > 0 ? (
+//                   favoriteJobs.map((job) => (
+//                     <JobCard
+//                       key={job.id}
+//                       job={job}
+//                       onViewDetails={() => handleViewDetails(job)}
+//                       onApplyBid={handleApplyBid(job)}
+//                     />
+//                   ))
+//                 ) : (
+//                   <p className="text-center text-muted-foreground py-12">
+//                     You haven’t added any favorite jobs yet.
+//                   </p>
+//                 )}
+//                 <div className="mt-auto mb-6">
+//                   <Pagination
+//                     currentPage={currentPage}
+//                     setCurrentPage={setCurrentPage}
+//                     totalPages={totalPages}
+//                     jobsPerPage={jobsPerPage}
+//                   />
+//                 </div>
+//               </div>
+//             )}
+//           </div>
+
+//           {/* Right Sidebar (optional) */}
+//           <div className="col-span-1">📦 Extra panel / stats</div>
+//         </div>
+//       )}
+
+//       {selectedTab === "message" && (
+//         <div className="container mx-auto">
+//           <div>
+//             <MessagePage />
+//           </div>
+//         </div>
+//       )}
+//       {selectedTab === "myBusiness" && (
+//         <div>
+//           <MyBusinessPage />
+//         </div>
+//       )}
+
+//       <JobDetailsModal
+//         open={showModal}
+//         onClose={() => setShowModal(false)}
+//         job={selectedJob}
+//         onApplyBid={() => handleApplyBid(selectedJob)}
+//       />
+
+//       <ApplyBidModal
+//         open={applyBidOpen}
+//         onClose={() => setApplyBidOpen(false)}
+//         job={selectedJob}
+//       />
+//     </main>
+//   );
+// }
 
 export const dummyJobs: AllJob[] = [
   {
@@ -290,6 +445,118 @@ export const dummyJobs: AllJob[] = [
       "/images/patio-1.jpg",
       "/images/patio-2.jpg",
       "/images/patio-3.jpg",
+    ],
+  },
+  {
+    id: "job-006",
+    title: "Kitchen cabinet installation and adjustment",
+    description:
+      "Purchased IKEA kitchen cabinets. Need installation with precise leveling and alignment. Plumbing hookup already done. Includes minor drywall patching.",
+    price: "$2,700",
+    postedDate: "18/01/2024",
+    bids: 3,
+    isFavorite: false,
+    user: {
+      name: "Emily",
+      avatarUrl: "/images/avatars/emily.jpg",
+      location: "804 Greenview Ave, Austin",
+      contact: "+1 737 999 0101",
+    },
+    propertyType: "Condo",
+    employeeNeeds: "2 Workers",
+    startTime: "This weekend",
+    images: ["/images/kitchen-1.jpg", "/images/kitchen-2.jpg"],
+  },
+
+  {
+    id: "job-007",
+    title: "Garden landscaping and tree trimming",
+    description:
+      "Looking for a team to trim 5 large trees, remove shrubs, and install new turf in backyard (approx. 60 sq.m). Must bring tools.",
+    price: "$3,600",
+    postedDate: "19/01/2024",
+    bids: 5,
+    isFavorite: false,
+    user: {
+      name: "George",
+      avatarUrl: "/images/avatars/george.png",
+      location: "Old Kent Road, London",
+      contact: "+44 7780 554412",
+    },
+    propertyType: "Townhouse",
+    employeeNeeds: "3-4 Crew",
+    startTime: "By next Wednesday",
+    images: [
+      "/images/garden-1.jpg",
+      "/images/garden-2.jpg",
+      "/images/garden-3.jpg",
+    ],
+  },
+
+  {
+    id: "job-008",
+    title: "Install smart home lighting system",
+    description:
+      "Need an electrician to replace standard lights with Philips Hue smart bulbs and configure app. 10 bulbs total. Alexa integration a plus.",
+    price: "$950",
+    postedDate: "20/01/2024",
+    bids: 4,
+    isFavorite: false,
+    user: {
+      name: "Tomás",
+      avatarUrl: "/images/avatars/tomas.jpg",
+      location: "Av. Paulista 1009, São Paulo",
+      contact: "+55 11 99887 2211",
+    },
+    propertyType: "Apartment",
+    employeeNeeds: "1 Person",
+    startTime: "Weekday morning",
+    images: ["/images/smart-lighting-1.jpg"],
+  },
+
+  {
+    id: "job-009",
+    title: "Assemble and mount 3 wall shelves",
+    description:
+      "Shelves purchased from Wayfair. Require assembly and wall-mounting (drywall with studs). Please bring tools and level.",
+    price: "$300",
+    postedDate: "21/01/2024",
+    bids: 2,
+    isFavorite: false,
+    user: {
+      name: "Chloe",
+      avatarUrl: "/images/avatars/chloe.jpg",
+      location: "515 Mission St, San Francisco",
+      contact: "+1 415 888 8888",
+    },
+    propertyType: "Studio",
+    employeeNeeds: "1 Person",
+    startTime: "Any evening after 6 PM",
+    images: ["/images/shelves-1.jpg", "/images/shelves-2.jpg"],
+  },
+
+  {
+    id: "job-010",
+    title: "Replace broken fence panels and repaint",
+    description:
+      "Storm damaged 4 wood fence panels. Need them replaced and entire fence repainted (~25m). Paint will be provided.",
+    price: "$2,200",
+    postedDate: "22/01/2024",
+    bids: 5,
+    isFavorite: false,
+    user: {
+      name: "Ravi",
+      avatarUrl: "/images/avatars/ravi.png",
+      location: "Bangalore 560001, India",
+      contact: "+91 99889 22334",
+    },
+    propertyType: "Detached House",
+    employeeNeeds: "2-3 Workers",
+    startTime: "Next week preferred",
+    images: [
+      "/images/fence-1.jpg",
+      "/images/fence-2.jpg",
+      "/images/fence-3.jpg",
     ],
   },
 ];
