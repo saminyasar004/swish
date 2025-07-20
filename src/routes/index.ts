@@ -36,6 +36,9 @@ import GraphicsPage from "@/pages/ServiceProvider/myBusiness/GraphicsPage";
 import NotificationsPage from "@/pages/ServiceProvider/myBusiness/NotificationsPage";
 import EmployeesPage from "@/pages/ServiceProvider/myBusiness/EmployeesPage";
 import ManageEmployeesPage from "@/pages/ServiceProvider/myBusiness/ManageEmployeesPage";
+import HomePage from "@/pages/ServiceProvider/MessageUpdate/HomePage";
+import JobSetting from "@/pages/ServiceProvider/myBusiness/jobSetting/JobSetting";
+import MyBids from "@/pages/ServiceProvider/myBusiness/myBids/MyBids";
 
 export interface Route {
   path: string;
@@ -195,9 +198,14 @@ export const routes = [
   },
   {
     path: "/provider/message",
-    element: MessagePage,
+    element: HomePage,
     layout: ServiceLayout,
   },
+  // {
+  //   path: "/provider/message",
+  //   element: MessagePage,
+  //   layout: ServiceLayout,
+  // },
   {
     path: "/provider/my-business",
     element: MyBusinessPage,
@@ -216,12 +224,12 @@ export const routes = [
   {
     path: "/provider/my-business/profile/graphics",
     element: GraphicsPage,
-    layout: ServiceLayout, // if using common layout
+    layout: ServiceLayout,
   },
   {
     path: "/provider/my-business/profile/notifications",
     element: NotificationsPage,
-    layout: ServiceLayout, // if using common layout
+    layout: ServiceLayout,
   },
   {
     path: "/provider/my-business/profile/employees",
@@ -231,6 +239,19 @@ export const routes = [
   {
     path: "/provider/my-business/employees/manage",
     element: ManageEmployeesPage,
+    layout: ServiceLayout,
+  },
+
+  //job setting
+  {
+    path: "/provider/my-business/job-setting",
+    element: JobSetting,
+    layout: ServiceLayout,
+  },
+  //my bids
+  {
+    path: "/provider/my-business/my-bids",
+    element: MyBids,
     layout: ServiceLayout,
   },
 ];

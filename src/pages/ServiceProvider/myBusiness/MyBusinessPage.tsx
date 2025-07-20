@@ -42,27 +42,35 @@ export default function MyBusinessPage() {
         </Card>
 
         <Card className="cursor-pointer hover:shadow-md transition">
-          <CardContent className="p-6 space-y-3">
-            <div className="flex items-center gap-2 text-lg font-semibold">
-              <img src={SettingIcon} className="h-8 w-8" alt="Settings Icon" />
-              <span>Job Settings</span>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              Configure how you receive and manage jobs.
-            </p>
-          </CardContent>
+          <Link to="/provider/my-business/job-setting">
+            <CardContent className="p-6 space-y-3">
+              <div className="flex items-center gap-2 text-lg font-semibold">
+                <img
+                  src={SettingIcon}
+                  className="h-8 w-8"
+                  alt="Settings Icon"
+                />
+                <span>Job Settings</span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Configure how you receive and manage jobs.
+              </p>
+            </CardContent>
+          </Link>
         </Card>
 
         <Card className="cursor-pointer hover:shadow-md transition">
-          <CardContent className="p-6 space-y-3">
-            <div className="flex items-center gap-2 text-lg font-semibold">
-              <img src={MyBidsIcon} className="h-8 w-8" alt="Bids Icon" />
-              <span>My Bids</span>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              View detailed insights into the jobs you've bid on.
-            </p>
-          </CardContent>
+          <Link to="/provider/my-business/my-bids">
+            <CardContent className="p-6 space-y-3">
+              <div className="flex items-center gap-2 text-lg font-semibold">
+                <img src={MyBidsIcon} className="h-8 w-8" alt="Bids Icon" />
+                <span>My Bids</span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                View detailed insights into the jobs you've bid on.
+              </p>
+            </CardContent>
+          </Link>
         </Card>
       </div>
     </div>
