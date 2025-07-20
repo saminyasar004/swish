@@ -16,9 +16,9 @@ interface Employee {
 }
 
 const employees: Employee[] = [
-  { id: 1, name: "Mikel Jack", designation: "Designation", image: Employee1 },
-  { id: 2, name: "Mikel Jack", designation: "Designation", image: Employee2 },
-  { id: 3, name: "Mikel Jack", designation: "Designation", image: Employee3 },
+  { id: 1, name: "Mikel Jack", designation: "Developer", image: Employee1 },
+  { id: 2, name: "Jhon Cina", designation: "Wrestler", image: Employee2 },
+  { id: 3, name: "Brock Lasner", designation: "Player", image: Employee3 },
   // Add more if needed
 ];
 

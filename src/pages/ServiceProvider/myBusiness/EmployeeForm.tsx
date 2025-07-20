@@ -1,3 +1,6 @@
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
 interface Employee {
   name: string;
   designation: string;
@@ -18,46 +21,97 @@ export default function EmployeeForm({
   onSubmit,
   mode,
 }: Props) {
+  const isFormValid =
+    employee.name.trim() !== "" && employee.designation.trim() !== "";
+
+  // Handle Image Upload (preview and base64 encoding)
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        onChange({ ...employee, image: reader.result as string });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-6 max-w-xl">
       <div>
-        <label className="block text-sm font-medium mb-1">Full Name</label>
-        <input
+        <label className="block text-sm font-medium mb-1 text-blackSecondary">
+          Full Name
+        </label>
+        <Input
           value={employee.name}
           onChange={(e) => onChange({ ...employee, name: e.target.value })}
-          className="input"
           placeholder="Enter Name"
+          className="ring-2 ring-gray-100 focus:ring-blue-500"
         />
       </div>
+
       <div>
-        <label className="block text-sm font-medium mb-1">Designation</label>
-        <input
+        <label className="block text-sm font-medium mb-1 text-blackSecondary">
+          Designation
+        </label>
+        <Input
           value={employee.designation}
           onChange={(e) =>
             onChange({ ...employee, designation: e.target.value })
           }
-          className="input"
           placeholder="Enter Designation"
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium mb-1">
-          Reference (Optional)
-        </label>
-        <input
-          value={employee.reference || ""}
-          onChange={(e) => onChange({ ...employee, reference: e.target.value })}
-          className="input"
-          placeholder="Enter Reference"
+          className="ring-2 ring-gray-100 focus:ring-blue-500"
         />
       </div>
 
-      <button
-        className="bg-green-600 text-white px-4 py-2 rounded"
-        onClick={onSubmit}
-      >
-        {mode === "add" ? "Confirm" : "Update"}
-      </button>
+      <div>
+        <label className="block text-sm font-medium mb-1 text-blackSecondary">
+          Reference (Optional)
+        </label>
+        <Input
+          value={employee.reference || ""}
+          onChange={(e) => onChange({ ...employee, reference: e.target.value })}
+          placeholder="Enter Reference"
+          className="ring-2 ring-gray-100 focus:ring-blue-500"
+        />
+      </div>
+
+      {/* Image Upload */}
+      <div>
+        <label className="block text-sm font-medium mb-1 text-blackSecondary">
+          Profile Image
+        </label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          className="block w-full  text-sm text-gray-500 border border-gray-300 rounded-md"
+        />
+        {employee.image && (
+          <div className="mt-4">
+            <img
+              src={employee.image}
+              alt="Employee Image"
+              className="w-28 h-28 object-cover "
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Submit Button */}
+      <div className="pt-2">
+        <Button
+          className={`${
+            isFormValid
+              ? "bg-green-600 hover:bg-green-700"
+              : "bg-gray-300 cursor-not-allowed"
+          } text-white w-full`}
+          onClick={onSubmit}
+          disabled={!isFormValid}
+        >
+          {mode === "add" ? "Confirm" : "Update"}
+        </Button>
+      </div>
     </div>
   );
 }
