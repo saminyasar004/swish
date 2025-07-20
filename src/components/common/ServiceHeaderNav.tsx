@@ -135,8 +135,8 @@ export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
           </div>
 
           {/* NEW NAVIGATION INSTEAD OF TAB */}
-          <div className="flex w-full max-w-max items-center flex-col gap-6">
-            <div className="flex gap-6">
+          <div className="flex w-full max-w-max items-center gap-6 md:flex-row flex-col justify-between">
+            <div className="flex gap-6 flex-wrap justify-center">
               {/* Working Button */}
               <Button
                 onClick={() => handleTabClick("working")}
@@ -196,51 +196,10 @@ export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
             </div>
           </div>
 
-          {/* WAS TAB SECTION */}
-          {/* <div className="flex w-full max-w-max items-center flex-col gap-6">
-            <Tabs
-              value={selectedTab}
-              onValueChange={onTabChange}
-              className="bg-none"
-            >
-              <TabsList className="w-full gap-16">
-                <TabsTrigger value="working" className="gap-4 rounded-full">
-                  <p className="flex gap-2 px-2 py-1">
-                    Working <img src={jobIcon} className="max-w-[20px]" />
-                  </p>
-                </TabsTrigger>
-                <TabsTrigger value="message" className="gap-2 rounded-full">
-                  <p className="flex gap-2 px-2 py-1">
-                    {" "}
-                    Message <img src={messageIcon} className="max-w-[20px]" />
-                  </p>
-                </TabsTrigger>
-                <TabsTrigger value="myBusiness" className="gap-2 rounded-full">
-                  <p className="flex gap-2 px-2 py-1">
-                    My Business{" "}
-                    <img src={businessIcon} className="max-w-[20px]" />
-                  </p>
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </div> */}
-
-          {/* <div className="nav-items flex items-center justify-around gap-4">
-            <Sheet onOpenChange={setIsSheetOpen} open={isSheetOpen}>
-              <SheetTrigger asChild>
-                <Button variant="outline" className="rounded-full space-x-1">
-                  <Menu />
-                  <img src={UserIcon} alt="User" className="max-w-full" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent className="py-10 min-w-max sm:max-w-lg px-5">
-                <NavigationMenuSheetContent setIsSheetOpen={setIsSheetOpen} />
-              </SheetContent>
-            </Sheet>
-          </div> */}
+          {/* Profile Section */}
           <Link to="/provider/my-business/profile">
-            <div className="flex items-center gap-4">
-              <div className="bg-primary text-white rounded-md px-4 py-2 text-xl font-semibold">
+            <div className="flex items-center gap-2 md:gap-4">
+              <div className="bg-primary text-white rounded-md px-3 py-1.5 md:px-4 md:py-2 text-lg xl:text-xl font-semibold">
                 A
               </div>
               <h1 className="text-lg md:text-2xl font-semibold">Ali Mounji</h1>

@@ -11,6 +11,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@headlessui/react": "^2.2.4",
 		"@hookform/resolvers": "^3.9.0",
 		"@mantine/core": "^8.1.1",
 		"@mantine/hooks": "^8.1.1",

@@ -45,7 +45,7 @@ export default function ServiceHome() {
     <main className="container mx-auto py-8">
       <div className="grid grid-cols-9 gap-2 container">
         {/* Sidebar */}
-        <div className="col-span-2">
+        <div className="col-span-2 ">
           <JobFilterSidebar />
         </div>
 
