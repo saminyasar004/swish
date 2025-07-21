@@ -1,4 +1,5 @@
 import Logo from "@/assets/images/logo-black.svg";
+import LogoSmallScreen from "@/assets/images/LogoSmallScreen.svg";
 import UserIcon from "@/assets/images/user-icon.svg";
 import { Button } from "@/components/ui/button";
 
@@ -122,87 +123,69 @@ export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
 
   return (
     <>
-      <header className="w-full h-auto bg-liquidGreen py-3 sticky top-0 z-50 backdrop-blur-lg shadow-sm transition-all duration-300 ease-in-out">
-        <div className="container flex items-center justify-between">
-          <div className="logo">
-            <Link to="/provider">
-              <img
-                src={Logo}
-                alt="Swish.ma"
-                className="max-w-[90%] md:max-w-full"
-              />
-            </Link>
+      <header className="w-full bg-liquidGreen py-3 sticky top-0 z-50 backdrop-blur-lg shadow-sm transition-all duration-300 ease-in-out">
+        <div className="container md:container mx-auto flex  items-center justify-between gap-4 md:gap-6 text-center">
+          {/* Logo */}
+          <Link to="/provider" className="block ">
+            <img
+              src={Logo}
+              alt="Swish.ma"
+              className="hidden md:block max-w-[90%] md:max-w-full"
+            />
+            <img src={LogoSmallScreen} className="block md:hidden w-12 h-12" />
+          </Link>
+
+          {/* Navigation Tabs */}
+          <div className="flex  justify-center items-center gap-2 md:gap-3 lg:gap-6 ">
+            {[
+              {
+                key: "working",
+                label: "Working",
+                icon: selectedTab === "working" ? jobIconActive : jobIcon,
+              },
+              {
+                key: "message",
+                label: "Message",
+                icon:
+                  selectedTab === "message" ? messageIconActive : messageIcon,
+              },
+              {
+                key: "myBusiness",
+                label: "My Business",
+                icon:
+                  selectedTab === "myBusiness"
+                    ? businessIconActive
+                    : businessIcon,
+              },
+            ].map((tab) => (
+              <Button
+                key={tab.key}
+                onClick={() => handleTabClick(tab.key)}
+                variant={selectedTab === tab.key ? "default" : "outline"}
+                className={clsx(
+                  "rounded-full gap-2 font-semibold px-4 py-2 flex items-center hover:bg-greenSplash hover:text-primary",
+                  selectedTab === tab.key && "bg-greenSplash text-primary"
+                )}
+              >
+                <img
+                  src={tab.icon}
+                  alt={`${tab.label} icon`}
+                  className="w-5 h-5"
+                />
+                <span className="hidden md:block">{tab.label}</span>
+              </Button>
+            ))}
           </div>
 
-          {/* NEW NAVIGATION INSTEAD OF TAB */}
-          <div className="flex w-full max-w-max items-center gap-6 md:flex-row flex-col justify-between">
-            <div className="flex gap-6 flex-wrap justify-center">
-              {/* Working Button */}
-              <Button
-                onClick={() => handleTabClick("working")}
-                variant={selectedTab === "working" ? "default" : "outline"}
-                className={clsx(
-                  "rounded-full gap-2 font-semibold px-4 py-2 hover:bg-greenSplash hover:text-primary",
-                  selectedTab === "working" && "bg-greenSplash text-primary"
-                )}
-              >
-                <img
-                  src={selectedTab === "working" ? jobIconActive : jobIcon}
-                  alt="job icon"
-                  className="w-5 h-5"
-                />
-                <span>Working</span>
-              </Button>
-
-              {/* Message Button */}
-              <Button
-                onClick={() => handleTabClick("message")}
-                variant={selectedTab === "message" ? "default" : "outline"}
-                className={clsx(
-                  "rounded-full gap-2 font-semibold px-4 py-2 hover:bg-greenSplash hover:text-primary",
-                  selectedTab === "message" && "bg-greenSplash text-primary"
-                )}
-              >
-                <img
-                  src={
-                    selectedTab === "message" ? messageIconActive : messageIcon
-                  }
-                  alt="message icon"
-                  className="w-5 h-5"
-                />
-                <span>Message</span>
-              </Button>
-
-              {/* My Business Button */}
-              <Button
-                onClick={() => handleTabClick("myBusiness")}
-                variant={selectedTab === "myBusiness" ? "default" : "outline"}
-                className={clsx(
-                  "rounded-full gap-2 font-semibold px-4 py-2 hover:bg-greenSplash hover:text-primary",
-                  selectedTab === "myBusiness" && "bg-greenSplash text-primary"
-                )}
-              >
-                <img
-                  src={
-                    selectedTab === "myBusiness"
-                      ? businessIconActive
-                      : businessIcon
-                  }
-                  alt="business icon"
-                  className="w-5 h-5"
-                />
-                <span>My Business</span>
-              </Button>
-            </div>
-          </div>
-
-          {/* Profile Section */}
+          {/* Profile */}
           <Link to="/provider/my-business/profile">
-            <div className="flex items-center gap-2 md:gap-4">
-              <div className="bg-primary text-white rounded-md px-3 py-1.5 md:px-4 md:py-2 text-lg xl:text-xl font-semibold">
+            <div className="flex items-center gap-2 md:gap-2 lg:gap-3">
+              <div className="bg-primary text-white rounded-md  py-2 px-3 lg:px-4  text-md lg:text-xl font-semibold">
                 A
               </div>
-              <h1 className="text-lg md:text-2xl font-semibold">Ali Mounji</h1>
+              <h1 className="hidden md:block text-lg md:text-xl lg:text-2xl font-semibold">
+                Ali Mounji
+              </h1>
             </div>
           </Link>
         </div>
