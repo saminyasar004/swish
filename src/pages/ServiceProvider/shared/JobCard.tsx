@@ -49,16 +49,16 @@ export const JobCard: React.FC<JobCardProps> = ({
   return (
     <div className="border rounded-md p-4 shadow-sm hover:shadow-md transition-all">
       {/* Top */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="flex flex-row justify-between items-start md:items-center gap-2 md:gap-4">
         <div className="flex gap-3">
           <img
             src={avatarFallback || job.user.avatarUrl}
             alt={job.user.name}
             className="w-10 h-10 rounded-full object-cover"
           />
-          <div>
+          <div className="">
             <p className="font-semibold">{job.user.name}</p>
-            <p className="text-sm text-muted-foreground flex items-center gap-1">
+            <p className="text-sm text-muted-foreground flex items-center gap-1 max-w-36 md:max-w-max">
               <FaLocationArrow className="text-primary" size={14} />
               {job.user.location}
             </p>
@@ -66,7 +66,7 @@ export const JobCard: React.FC<JobCardProps> = ({
         </div>
 
         <div className="">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <button
               onClick={toggleFavorite}
               className="bg-liquidGreen rounded-full p-2 transition hover:scale-105"

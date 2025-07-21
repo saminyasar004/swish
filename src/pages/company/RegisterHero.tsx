@@ -1,7 +1,7 @@
 import Logo from "@/assets/images/LogoLight.svg";
 import SquaresImg from "@/assets/images/squares.svg";
 import { categories } from "@/components/common/Header";
-import { Button } from "@/components/ui/button";
+
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -15,8 +15,18 @@ import {
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { CompanyRegisterModal } from "./CompanyRegisterModal";
 
 export default function RegisterHero() {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const handleModalSubmit = (data: {
+    businessMail: string;
+    companyLocation: string;
+  }) => {
+    console.log("Company Registered with Data:", data);
+    // Handle the data here, like sending it to an API
+  };
   const countryCodes = ["+880", "+91", "+1", "+44", "+61"];
 
   const [currentCode, setCurrentCode] = useState(countryCodes[0]);
@@ -111,13 +121,20 @@ export default function RegisterHero() {
 
             {/* Submit Button */}
             <div className="pt-2">
-              <Link to="/">
-                <Button className="w-full h-10 text-sm font-medium">
-                  Continue
-                </Button>
-              </Link>
+              <Button
+                onClick={() => setModalOpen(true)}
+                className="w-full h-10 text-sm font-medium"
+              >
+                Continue
+              </Button>
             </div>
           </form>
+
+          <CompanyRegisterModal
+            open={isModalOpen}
+            onClose={() => setModalOpen(false)}
+            onSubmit={handleModalSubmit}
+          />
 
           {/* Terms Text */}
           <p className="text-xs text-center text-gray-200 mt-2">
@@ -135,6 +152,13 @@ export default function RegisterHero() {
           </div>
         </div>
       </div>
+
+      {/* Use the modal component */}
+      {/* <CompanyRegisterModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        onSubmit={handleFormSubmit}
+      /> */}
     </section>
   );
 }

@@ -1,4 +1,3 @@
-// components/ApplyBidModal.tsx
 import {
   Dialog,
   DialogContent,
@@ -11,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import { AllJob } from "../serviceTypes/ServiceProvider.types";
 
 type ApplyBidModalProps = {
@@ -29,7 +29,7 @@ export const ApplyBidModal = ({ open, onClose, job }: ApplyBidModalProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     reset,
   } = useForm<FormData>();
 
@@ -40,11 +40,15 @@ export const ApplyBidModal = ({ open, onClose, job }: ApplyBidModalProps) => {
     onClose();
   };
 
+  useEffect(() => {
+    if (!open) reset();
+  }, [open, reset]);
+
   if (!job) return null;
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-md">
+      <DialogContent className="max-w-md sm:min-h-[60vh]">
         <DialogHeader>
           <DialogTitle className="text-primary text-xl font-semibold">
             Apply Bid
@@ -61,8 +65,11 @@ export const ApplyBidModal = ({ open, onClose, job }: ApplyBidModalProps) => {
               Enter your price ($)
             </label>
             <Input
+              autoFocus
               type="number"
+              inputMode="numeric"
               placeholder="e.g. 1500"
+              onWheel={(e) => e.currentTarget.blur()}
               {...register("price", { required: "Price is required" })}
               className="ring-2 ring-gray-100"
             />
@@ -79,11 +86,9 @@ export const ApplyBidModal = ({ open, onClose, job }: ApplyBidModalProps) => {
             </label>
             <Input
               type="text"
-              className="ring-2 ring-gray-100"
               placeholder="e.g. 2 Weeks"
-              {...register("estimate", {
-                required: "Time estimate is required",
-              })}
+              {...register("estimate", { required: "Time estimate is required" })}
+              className="ring-2 ring-gray-100"
             />
             {errors.estimate && (
               <p className="text-sm text-red-500 mt-1">
@@ -94,14 +99,12 @@ export const ApplyBidModal = ({ open, onClose, job }: ApplyBidModalProps) => {
 
           <div>
             <label className="block text-sm font-medium mb-2">
-              Proposal Descriptions
+              Proposal Description
             </label>
             <Textarea
+              placeholder="Write here…"
+              {...register("description", { required: "Proposal description is required" })}
               className="ring-2 ring-gray-100"
-              placeholder="Write here……"
-              {...register("description", {
-                required: "Proposal description is required",
-              })}
             />
             {errors.description && (
               <p className="text-sm text-red-500 mt-1">
@@ -121,8 +124,8 @@ export const ApplyBidModal = ({ open, onClose, job }: ApplyBidModalProps) => {
             >
               Cancel
             </Button>
-            <Button type="submit" className="bg-primary text-white">
-              Apply For Bid
+            <Button type="submit" className="bg-primary text-white" disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Apply For Bid"}
             </Button>
           </DialogFooter>
         </form>

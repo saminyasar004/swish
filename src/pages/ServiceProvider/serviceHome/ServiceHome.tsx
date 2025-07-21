@@ -14,6 +14,9 @@ export default function ServiceHome() {
   const [showModal, setShowModal] = useState(false);
   const [applyBidOpen, setApplyBidOpen] = useState(false);
 
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+
   const handleViewDetails = (job: AllJob) => {
     setSelectedJob(job);
     setShowModal(true);
@@ -41,41 +44,61 @@ export default function ServiceHome() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [workingSubTab]);
+
   return (
-    <main className="container mx-auto py-8">
-      <div className="grid grid-cols-9 gap-2 container">
+    <main className="lg:container px-4 lg:px-0 mx-auto md:py-8">
+      <div className="grid grid-cols-1 md:grid-cols-9 gap-4">
         {/* Sidebar */}
-        <div className="col-span-2 ">
-          <JobFilterSidebar />
+        <div className="mb-6 col-span-1 md:col-span-2 ">
+          <JobFilterSidebar
+            isDrawerOpen={isDrawerOpen}
+            toggleDrawer={toggleDrawer}
+          />
         </div>
 
         {/* Main Content */}
-        <div className="col-span-6 bg-solidWhite">
+        <div className=" col-span-8 md:col-span-7 bg-solidWhite lg:mr-8">
           <Tabs
             value={workingSubTab}
             onValueChange={setWorkingSubTab}
-            className="mb-6 shadow-lg"
+            className="mb-6 shadow-md  lg:shadow-lg"
           >
-            <h3 className="text-blackPrimary font-semibold text-xl pt-2 mb-6 mx-6">
-              Total 2935 jobs
-            </h3>
+            {/* <h3 className="text-blackPrimary font-semibold text-xl pt-2 mb-4 lg:mb-6 mx-6">
+             Total {dummyJobs.length} jobs
+            </h3> */}
 
-            <TabsList className="w-full max-w-max gap-16 mb-4 bg-transparent mx-6">
+            <div className="flex items-center justify-between mx-3 md:mx-6 mb-4 ab ">
+              <h3 className="text-blackPrimary font-semibold text-xl md:text-2xl pt-2">
+                Total {dummyJobs.length} jobs
+              </h3>
+
+              <button
+                className="sm:hidden p-2 rounded-md relative text-white bg-primary translate-y-12"
+                onClick={toggleDrawer}
+              >
+                ☰
+              </button>
+            </div>
+
+            <TabsList className="w-full max-w-max gap-2 md:gap-16 mb-4 bg-transparent mx-2 md:mx-6">
               <TabsTrigger
                 value="allJobs"
-                className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
+                className="text-darkGreen md:px-4 py-2 rounded-full text-xs md:text-md lg:text-lg data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
               >
                 All Jobs
               </TabsTrigger>
               <TabsTrigger
                 value="newJobs"
-                className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
+                className="text-darkGreen md:px-4 py-2 rounded-full text-xs md:text-md lg:text-lg data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
               >
                 New Jobs
               </TabsTrigger>
               <TabsTrigger
                 value="favorites"
-                className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
+                className="text-darkGreen md:px-4 py-2 rounded-full text-xs md:text-md lg:text-lg data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
               >
                 Favorites
               </TabsTrigger>
@@ -84,7 +107,7 @@ export default function ServiceHome() {
 
           {/* Content */}
           {workingSubTab === "allJobs" && (
-            <div className="space-y-4 px-6 shadow-sm min-h-screen">
+            <div className="space-y-4  md:px-6 shadow-sm min-h-screen">
               {currentJobs.map((job) => (
                 <JobCard
                   key={job.id}
@@ -93,7 +116,7 @@ export default function ServiceHome() {
                   onApplyBid={handleApplyBid(job)}
                 />
               ))}
-              <div className="mt-auto mb-6">
+              <div className="mt-auto mb-6 flex justify-center">
                 <Pagination
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
@@ -122,7 +145,7 @@ export default function ServiceHome() {
                   You haven’t added any favorite jobs yet.
                 </p>
               )}
-              <div className="mt-auto mb-6">
+              <div className="mt-auto mb-6 flex justify-center">
                 <Pagination
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
@@ -134,7 +157,7 @@ export default function ServiceHome() {
           )}
         </div>
 
-        <div className="col-span-1">📦 Extra panel / stats</div>
+        {/* <div className="col-span-1">📦 Extra panel / stats</div> */}
       </div>
 
       <JobDetailsModal

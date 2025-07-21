@@ -124,7 +124,7 @@ export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
   return (
     <>
       <header className="w-full bg-liquidGreen py-3 sticky top-0 z-50 backdrop-blur-lg shadow-sm transition-all duration-300 ease-in-out">
-        <div className="container md:container mx-auto flex  items-center justify-between gap-4 md:gap-6 text-center">
+        <div className=" mx-6 lg:container lg:mx-auto flex  items-center justify-between gap-4 md:gap-6 text-center">
           {/* Logo */}
           <Link to="/provider" className="block ">
             <img

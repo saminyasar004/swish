@@ -5,24 +5,30 @@ import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import { Transition } from "@headlessui/react"; // For smooth transitions
 
-export const JobFilterSidebar = () => {
+export const JobFilterSidebar = ({
+  isDrawerOpen,
+  toggleDrawer,
+}: {
+  isDrawerOpen: boolean;
+  toggleDrawer: () => void;
+}) => {
   // State to control the drawer visibility
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  // const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // Toggle function for the drawer
-  const toggleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen);
-  };
+  // const toggleDrawer = () => {
+  //   setIsDrawerOpen(!isDrawerOpen);
+  // };
 
   return (
     <>
       {/* Hamburger Button for Small Screens */}
-      <button
+      {/* <button
         className="sm:hidden p-2 rounded-md text-white bg-primary"
         onClick={toggleDrawer}
       >
         ☰
-      </button>
+      </button> */}
 
       {/* Drawer Sidebar */}
       <Transition
@@ -50,12 +56,12 @@ export const JobFilterSidebar = () => {
             </h2>
 
             <div className="relative">
-              <Search
+              {/* <Search
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                 size={16}
-              />
+              /> */}
               <Input
-                className="w-full pl-10 ring-2 ring-gray-100"
+                className="w-full lg:pl-10 ring-2 ring-gray-100"
                 placeholder="Search"
               />
             </div>
@@ -132,10 +138,10 @@ export const JobFilterSidebar = () => {
 
       {/* Main Content */}
       <div className="sm:block hidden">
-        <aside className="w-full sm:w-64 p-4 bg-white space-y-6">
+        <aside className="w-full  p-4 bg-white space-y-6">
           {/* Search */}
           <div>
-            <h2 className="font-semibold text-lg md:text-xl lg:text-2xl mb-6">
+            <h2 className="font-semibold text-lg md:text-lg lg:text-xl xl:text-2xl mb-4">
               Search For Jobs
             </h2>
 
@@ -145,7 +151,7 @@ export const JobFilterSidebar = () => {
                 size={16}
               />
               <Input
-                className="w-full pl-10 ring-2 ring-gray-100"
+                className="w-full h-4 md:h-6 lg:h-10  pl-10 ring-2 ring-gray-100"
                 placeholder="Search"
               />
             </div>
