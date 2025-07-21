@@ -48,23 +48,16 @@ export const CompanyRegisterModal = ({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-md sm:min-h-[60vh]">
-        <DialogHeader>
-          <DialogTitle className="text-primary text-xl font-semibold">
-            Company Registration
-          </DialogTitle>
-          <DialogDescription>
-            Please fill in the details to register your company.
-          </DialogDescription>
-        </DialogHeader>
-
+      <DialogContent className="max-w-md">
         <form
           onSubmit={handleSubmit(handleFormSubmit)} // Ensure you're using react-hook-form to handle the submit
           className="space-y-4"
         >
           {/* Business Mail */}
           <div>
-            <label className="block text-sm font-medium mb-2">Business Mail</label>
+            <label className="block text-sm font-medium mb-2">
+              Business Mail
+            </label>
             <Input
               autoFocus
               type="email"
@@ -79,44 +72,40 @@ export const CompanyRegisterModal = ({
               className="ring-2 ring-gray-100"
             />
             {errors.businessMail && (
-              <p className="text-sm text-red-500 mt-1">{errors.businessMail.message}</p>
+              <p className="text-sm text-red-500 mt-1">
+                {errors.businessMail.message}
+              </p>
             )}
           </div>
 
           {/* Company Location */}
           <div>
-            <label className="block text-sm font-medium mb-2">Company Location</label>
+            <label className="block text-sm font-medium mb-2">
+              Company Location
+            </label>
             <Input
               type="text"
               placeholder="e.g. New York, USA"
-              {...register("companyLocation", { required: "Company location is required" })}
+              {...register("companyLocation", {
+                required: "Company location is required",
+              })}
               className="ring-2 ring-gray-100"
             />
             {errors.companyLocation && (
-              <p className="text-sm text-red-500 mt-1">{errors.companyLocation.message}</p>
+              <p className="text-sm text-red-500 mt-1">
+                {errors.companyLocation.message}
+              </p>
             )}
           </div>
 
-          <DialogFooter className="flex justify-end gap-4 pt-4">
-            {/* Cancel Button */}
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => {
-                reset();
-                onClose();
-              }}
-            >
-              Cancel
-            </Button>
-
+          <DialogFooter className="flex w-full pt-4">
             {/* Submit Button */}
             <Button
               type="submit" // Ensure the submit button type is set
-              className="bg-primary text-white"
+              className="bg-primary text-white w-full"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Submitting..." : "Register Company"}
+              {isSubmitting ? "Submitting..." : "Continue"}
             </Button>
           </DialogFooter>
         </form>

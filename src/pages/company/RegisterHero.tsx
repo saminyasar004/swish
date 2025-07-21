@@ -20,12 +20,44 @@ import { CompanyRegisterModal } from "./CompanyRegisterModal";
 
 export default function RegisterHero() {
   const [isModalOpen, setModalOpen] = useState(false);
-  const handleModalSubmit = (data: {
+  const [formData, setFormData] = useState({
+    companyName: "",
+    phone: "",
+    countryCode: "+880",
+    businessMail: "",
+    companyLocation: "",
+  });
+
+  // Handle data collection
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // Handle modal form data submission
+  const handleModalSubmit = (modalData: {
     businessMail: string;
     companyLocation: string;
   }) => {
-    console.log("Company Registered with Data:", data);
-    // Handle the data here, like sending it to an API
+    // Combine modal data with main form data
+    const completeData = { ...formData, ...modalData };
+    console.log("Complete Data to Backend:", completeData);
+
+    // Send the complete data to your backend
+    // You can make an API request here to send the formData to the backend
+
+    // Reset the modal and form
+    setModalOpen(false);
+    setFormData({
+      companyName: "",
+      phone: "",
+      countryCode: "+880",
+      businessMail: "",
+      companyLocation: "",
+    });
   };
   const countryCodes = ["+880", "+91", "+1", "+44", "+61"];
 
@@ -68,6 +100,9 @@ export default function RegisterHero() {
               <Input
                 id="companyName"
                 type="text"
+                name="companyName"
+                value={formData.companyName}
+                onChange={handleFormChange}
                 placeholder="Company Name"
                 className="h-10 text-sm"
               />
@@ -88,7 +123,10 @@ export default function RegisterHero() {
                     id="countryCode"
                     className="h-12 w-full rounded-md border-none bg-white px-4 py-2 text-base md:text-sm text-[#A8A8A8] ring-offset-white focus-visible:ring-2 focus-visible:ring-primary hover:ring-2 hover:ring-primary transition-all duration-200"
                   >
-                    <SelectValue placeholder="+880" className="leading-none" />
+                    <SelectValue
+                      placeholder={formData.countryCode}
+                      className="leading-none"
+                    />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -112,7 +150,11 @@ export default function RegisterHero() {
                 </label>
                 <Input
                   id="phone"
+                  name="phone"
                   type="tel"
+                  required
+                  value={formData.phone}
+                  onChange={handleFormChange}
                   placeholder="123 456 7890"
                   className="h-12 md:h-12 text-base md:text-sm"
                 />
@@ -122,6 +164,7 @@ export default function RegisterHero() {
             {/* Submit Button */}
             <div className="pt-2">
               <Button
+                type="button"
                 onClick={() => setModalOpen(true)}
                 className="w-full h-10 text-sm font-medium"
               >
@@ -152,13 +195,6 @@ export default function RegisterHero() {
           </div>
         </div>
       </div>
-
-      {/* Use the modal component */}
-      {/* <CompanyRegisterModal
-        isOpen={isModalOpen}
-        onClose={() => setModalOpen(false)}
-        onSubmit={handleFormSubmit}
-      /> */}
     </section>
   );
 }
