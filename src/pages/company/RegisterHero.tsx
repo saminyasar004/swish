@@ -148,13 +148,13 @@ export default function RegisterHero() {
           <img
             src={Logo}
             alt="Swish.ma"
-            className="w-full max-w-md lg:max-w-[500px]"
+            className="w-full max-w-[80%] md:max-w-md lg:max-w-[500px]"
           />
         </div>
 
         {/* Right - Form */}
-        <div className="max-w-lg flex flex-col gap-6">
-          <h2 className="text-3xl md:text-4xl font-semibold text-liquidGreen leading-snug">
+        <div className="max-w-lg flex flex-col gap-6 text-center md:text-start">
+          <h2 className="text-2xl md:text-4xl font-semibold text-liquidGreen leading-snug">
             Get new customers and attractive jobs
           </h2>
 
@@ -163,91 +163,96 @@ export default function RegisterHero() {
             and see all the jobs near you.
           </p>
 
-          {/* Company Registration Form */}
-          <form className="flex flex-col gap-4 w-full">
-            {/* Company Name */}
-            <div className="flex flex-col gap-1">
-              <label
-                htmlFor="companyName"
-                className="text-sm font-medium text-gray-200"
-              >
-                Company Name
-              </label>
-              <Input
-                id="companyName"
-                type="text"
-                name="companyName"
-                value={formData.companyName}
-                onChange={handleFormChange}
-                placeholder="Company Name"
-                className="h-10 text-sm"
-              />
-            </div>
-
-            {/* Phone Fields */}
-            <div className="flex gap-3 items-end">
-              {/* Country Code */}
-              <div className="w-[100px] flex flex-col gap-1">
+          <div>
+            {/* Company Registration Form */}
+            <form className="flex flex-col gap-4 w-full">
+              {/* Company Name */}
+              <div className="flex flex-col gap-1">
                 <label
-                  htmlFor="countryCode"
-                  className="text-sm font-medium text-gray-700"
+                  htmlFor="companyName"
+                  className="text-sm font-medium text-gray-200 text-start mb-2"
                 >
-                  Code
-                </label>
-                <Select value={currentCode} onValueChange={setCurrentCode}>
-                  <SelectTrigger
-                    id="countryCode"
-                    className="h-12 w-full rounded-md border-none bg-white px-4 py-2 text-base md:text-sm text-[#A8A8A8] ring-offset-white focus-visible:ring-2 focus-visible:ring-primary hover:ring-2 hover:ring-primary transition-all duration-200"
-                  >
-                    <SelectValue
-                      placeholder={formData.countryCode}
-                      className="leading-none"
-                    />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      {countryCodes.map((code) => (
-                        <SelectItem key={code} value={code} className="text-sm">
-                          {code}
-                        </SelectItem>
-                      ))}
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              {/* Phone Number */}
-              <div className="flex-1 flex flex-col gap-1">
-                <label
-                  htmlFor="phone"
-                  className="text-sm font-medium text-gray-700"
-                >
-                  Phone
+                  Company Name
                 </label>
                 <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
+                  id="companyName"
+                  type="text"
+                  name="companyName"
+                  value={formData.companyName}
                   onChange={handleFormChange}
-                  placeholder="123 456 7890"
-                  className="h-12 md:h-12 text-base md:text-sm"
+                  placeholder="Company Name"
+                  className="h-10 text-sm"
                 />
               </div>
-            </div>
 
-            {/* Continue Button */}
-            <div className="pt-2">
-              <Button
-                type="button"
-                onClick={() => setModalOpen(true)}
-                className="w-full h-12 text-sm font-medium"
-              >
-                Continue
-              </Button>
-            </div>
-          </form>
+              {/* Phone Fields */}
+              <div className="flex gap-3 items-end">
+                {/* Country Code */}
+                <div className="w-[100px] flex flex-col gap-1">
+                  <label
+                    htmlFor="countryCode"
+                    className="text-sm font-medium text-gray-200 text-start mb-1"
+                  >
+                    Number
+                  </label>
+                  <Select value={currentCode} onValueChange={setCurrentCode}>
+                    <SelectTrigger
+                      id="countryCode"
+                      className="h-12 w-full rounded-md border-none bg-white px-4 py-2 text-base md:text-sm text-[#A8A8A8] ring-offset-white focus-visible:ring-2 focus-visible:ring-primary hover:ring-2 hover:ring-primary transition-all duration-200"
+                    >
+                      <SelectValue
+                        placeholder={formData.countryCode}
+                        className="leading-none"
+                      />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        {countryCodes.map((code) => (
+                          <SelectItem
+                            key={code}
+                            value={code}
+                            className="text-sm"
+                          >
+                            {code}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </div>
 
+                {/* Phone Number */}
+                <div className="flex-1 flex flex-col gap-1">
+                  <label
+                    htmlFor="phone"
+                    className="text-sm font-medium text-gray-700"
+                  >
+                    Phone
+                  </label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleFormChange}
+                    placeholder="123 456 7890"
+                    className="h-12 md:h-12 text-base md:text-sm"
+                  />
+                </div>
+              </div>
+
+              {/* Continue Button */}
+              <div className="pt-2">
+                <Button
+                  type="button"
+                  onClick={() => setModalOpen(true)}
+                  className="w-full h-12 text-sm font-medium"
+                >
+                  Continue
+                </Button>
+              </div>
+            </form>
+          </div>
           <CompanyRegisterModal
             open={isModalOpen}
             onClose={() => setModalOpen(false)}
@@ -259,7 +264,7 @@ export default function RegisterHero() {
             open={isCategoryModalOpen}
             onOpenChange={setCategoryModalOpen}
           >
-            <DialogContent className="max-w-md">
+            <DialogContent className="max-w-sm md:max-w-md">
               <DialogHeader>
                 <DialogTitle>Select Categories</DialogTitle>
               </DialogHeader>
@@ -301,7 +306,7 @@ export default function RegisterHero() {
             open={isSubcategoryModalOpen}
             onOpenChange={setSubcategoryModalOpen}
           >
-            <DialogContent className="max-w-md">
+            <DialogContent className="max-w-sm md:max-w-md">
               <DialogHeader>
                 <DialogTitle>Select Subcategories</DialogTitle>
               </DialogHeader>
@@ -347,7 +352,7 @@ export default function RegisterHero() {
 
           {/* Upload Modal */}
           <Dialog open={isUploadModalOpen} onOpenChange={setUploadModalOpen}>
-            <DialogContent className="max-w-md">
+            <DialogContent className="max-w-sm md:max-w-md">
               <DialogHeader>
                 <DialogTitle>Upload Company Logo & Pictures</DialogTitle>
               </DialogHeader>

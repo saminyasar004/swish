@@ -48,7 +48,7 @@ export const CompanyRegisterModal = ({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-md">
+      <DialogContent className=" max-w-sm md:max-w-md">
         <form
           onSubmit={handleSubmit(handleFormSubmit)} // Ensure you're using react-hook-form to handle the submit
           className="space-y-4"
