@@ -32,7 +32,7 @@ export default function Services() {
   return (
     <section className="py-12 md:py-20 lg:py-24">
       <div className="container flex flex-col gap-14 items-center">
-        <SectionHeading title="Popular Services" />
+        <SectionHeading title="Popular services" />
 
         <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-3 items-center">
           {services.map((service, index) => (

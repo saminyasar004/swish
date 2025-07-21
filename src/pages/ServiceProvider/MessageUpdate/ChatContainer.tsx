@@ -5,7 +5,15 @@ import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
 import { formatMessageTime } from "./utils";
 
-const dummyMessages = [
+type Message = {
+  id: string;
+  sender: number;
+  sender_username: string;
+  message: string;
+  timestamp: string;
+};
+
+const dummyMessages: Message[] = [
   {
     id: "1",
     sender: 1,

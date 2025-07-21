@@ -28,7 +28,7 @@ export default function MyBusinessPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="cursor-pointer hover:shadow-md transition">
           <Link to="/provider/my-business/profile">
-            <CardContent className="p-6 space-y-3">
+            <CardContent className="p-4 lg:p-6 space-y-3">
               <div className="flex items-center gap-2 text-lg font-semibold">
                 <img src={ProfileIcon} className="h-8 w-8" alt="Profile Icon" />
                 <span>Profile Page</span>
@@ -43,7 +43,7 @@ export default function MyBusinessPage() {
 
         <Card className="cursor-pointer hover:shadow-md transition">
           <Link to="/provider/my-business/job-setting">
-            <CardContent className="p-6 space-y-3">
+            <CardContent className="p-4 lg:p-6 space-y-3">
               <div className="flex items-center gap-2 text-lg font-semibold">
                 <img
                   src={SettingIcon}
@@ -61,7 +61,7 @@ export default function MyBusinessPage() {
 
         <Card className="cursor-pointer hover:shadow-md transition">
           <Link to="/provider/my-business/my-bids">
-            <CardContent className="p-6 space-y-3">
+            <CardContent className="p-4 lg:p-6 space-y-3">
               <div className="flex items-center gap-2 text-lg font-semibold">
                 <img src={MyBidsIcon} className="h-8 w-8" alt="Bids Icon" />
                 <span>My Bids</span>
