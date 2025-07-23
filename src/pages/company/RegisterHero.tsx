@@ -1,4 +1,5 @@
-import Logo from "@/assets/images/LogoLight.svg";
+// import Logo from "@/assets/images/LogoLight.svg";
+import Logo from "@/assets/images/logoWhiteIcon.svg";
 import { categories } from "@/components/common/Header"; // Ensure categories are imported
 import { Input } from "@/components/ui/input";
 import {
@@ -78,15 +79,6 @@ export default function RegisterHero() {
     setCategoryModalOpen(true); // Open Category Modal after submitting company form
   };
 
-  // Handle category selection (Checkboxes for categories)
-  const handleCategoryChange = (category: string, checked: boolean) => {
-    if (checked) {
-      setSelectedCategories((prev) => [...prev, category]);
-    } else {
-      setSelectedCategories((prev) => prev.filter((cat) => cat !== category));
-    }
-  };
-
   // Handle subcategory checkbox change
   const handleSubcategoryChange = (subcategory: string, checked: boolean) => {
     if (checked) {
@@ -142,13 +134,13 @@ export default function RegisterHero() {
 
   return (
     <section className="py-16 md:py-24 lg:py-32 bg-secondary">
-      <div className="container mx-auto grid lg:grid-cols-2 items-center gap-8 px-4">
+      <div className="container mx-auto grid lg:grid-cols-2 items-center gap-6 px-4">
         {/* Left - Image */}
         <div className="flex justify-center lg:justify-start">
           <img
             src={Logo}
-            alt="Swish.ma"
-            className="w-full max-w-[80%] md:max-w-md lg:max-w-[500px]"
+            alt="swish.ma"
+            className="w-full max-w-[70%] md:max-w-md lg:max-w-[350px]"
           />
         </div>
 
@@ -526,7 +518,7 @@ export default function RegisterHero() {
 //         <div className="flex justify-center lg:justify-start">
 //           <img
 //             src={Logo}
-//             alt="Swish.ma"
+//             alt="swish.ma"
 //             className="w-full max-w-md lg:max-w-[500px]"
 //           />
 //         </div>
@@ -836,7 +828,7 @@ export default function RegisterHero() {
 //         <div className="flex justify-center lg:justify-start">
 //           <img
 //             src={Logo}
-//             alt="Swish.ma"
+//             alt="swish.ma"
 //             className="w-full max-w-md lg:max-w-[500px]"
 //           />
 //         </div>
@@ -1116,7 +1108,7 @@ export default function RegisterHero() {
 //         <div className="flex justify-center lg:justify-start">
 //           <img
 //             src={Logo}
-//             alt="Swish.ma"
+//             alt="swish.ma"
 //             className="w-full max-w-md lg:max-w-[500px]"
 //           />
 //         </div>
@@ -1353,7 +1345,7 @@ export default function RegisterHero() {
 //         <div className="flex justify-center lg:justify-start">
 //           <img
 //             src={Logo}
-//             alt="Swish.ma"
+//             alt="swish.ma"
 //             className="w-full max-w-md lg:max-w-[500px]"
 //           />
 //         </div>

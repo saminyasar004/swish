@@ -81,58 +81,80 @@ export default function Handyman() {
             <h4 className="text-xl font-semibold text-primaryDark mt-8 mb-6">
               General Home Repairs
             </h4>
-           
 
             <h4 className="text-xl font-semibold text-primaryDark ">
               Fixing Leaks
             </h4>
             <p className="text-sm leading-normal">
-            Plumbing leaks, faucet replacements, or water damage repair.
+              Plumbing leaks, faucet replacements, or water damage repair.
             </p>
 
             <h4 className="text-xl font-semibold text-primaryDark ">
-             Drywall Patching & Painting
+              Drywall Patching & Painting
             </h4>
             <p className="text-sm leading-normal">
-           Repairing holes, cracks, and finishing walls for a smooth surface.
+              Repairing holes, cracks, and finishing walls for a smooth surface.
             </p>
 
             <h4 className="text-xl font-semibold text-primaryDark ">
-             Electrical Repairs
+              Electrical Repairs
             </h4>
             <p className="text-sm leading-normal">
-           Replacing light fixtures, outlets, switches, or troubleshooting electrical problems.
+              Replacing light fixtures, outlets, switches, or troubleshooting
+              electrical problems.
             </p>
 
             <h4 className="text-xl font-semibold text-primaryDark ">
-             Small Appliance Repairs
+              Small Appliance Repairs
             </h4>
             <p className="text-sm leading-normal">
-           Fixing or installing kitchen and home appliances, such as dishwashers, refrigerators, or ovens.
-            </p>
-
-
-            <p className="text-sm leading-normal mt-8">
-             Tasks like gutter cleaning, power washing, or preparing outdoor spaces for different seasons.Fixing sticking doors, replacing door locks, or installing weather stripping to improve energy efficiency. Fixing cracked tiles, re-grouting bathroom or kitchen surfaces, and ensuring proper sealing to prevent water damage.
-            </p>
-
-            <p className="text-sm leading-normal">
-             After completing the task, the handyman will perform a final inspection to ensure everything is working correctly, securely installed, and aesthetically pleasing. If required, the customer is asked to review the work to ensure satisfaction. Any last-minute adjustments or refinements will be made. Once the work is completed, the handyman will tidy up the area, removing any debris, leftover materials, or packaging associated with the job. The space is left clean and ready to use.
+              Fixing or installing kitchen and home appliances, such as
+              dishwashers, refrigerators, or ovens.
             </p>
 
             <p className="text-sm leading-normal mt-8">
-              For precise measurements and to ensure that everything is installed straight and level. Essential for drilling holes and screwing fixtures into place. Used for driving nails, screws, or assembling parts. Used for cutting materials like drywall, insulation, and carpet.
+              Tasks like gutter cleaning, power washing, or preparing outdoor
+              spaces for different seasons.Fixing sticking doors, replacing door
+              locks, or installing weather stripping to improve energy
+              efficiency. Fixing cracked tiles, re-grouting bathroom or kitchen
+              surfaces, and ensuring proper sealing to prevent water damage.
+            </p>
+
+            <p className="text-sm leading-normal">
+              After completing the task, the handyman will perform a final
+              inspection to ensure everything is working correctly, securely
+              installed, and aesthetically pleasing. If required, the customer
+              is asked to review the work to ensure satisfaction. Any
+              last-minute adjustments or refinements will be made. Once the work
+              is completed, the handyman will tidy up the area, removing any
+              debris, leftover materials, or packaging associated with the job.
+              The space is left clean and ready to use.
+            </p>
+
+            <p className="text-sm leading-normal mt-8">
+              For precise measurements and to ensure that everything is
+              installed straight and level. Essential for drilling holes and
+              screwing fixtures into place. Used for driving nails, screws, or
+              assembling parts. Used for cutting materials like drywall,
+              insulation, and carpet.
             </p>
             <p className="text-sm leading-normal">
-             A general handyman is skilled in a wide variety of tasks, including repairs, installations, and maintenance. They can handle most home or office improvements and basic technical repairs.For more specific tasks, specialized handymen such as electricians, plumbers, or painters may be called upon to ensure professional work and compliance with local regulations.In larger projects, assistants help with material handling, prep work, and general support during the completion of tasks.
+              A general handyman is skilled in a wide variety of tasks,
+              including repairs, installations, and maintenance. They can handle
+              most home or office improvements and basic technical repairs.For
+              more specific tasks, specialized handymen such as electricians,
+              plumbers, or painters may be called upon to ensure professional
+              work and compliance with local regulations.In larger projects,
+              assistants help with material handling, prep work, and general
+              support during the completion of tasks.
             </p>
 
             <div className="bg-liquidGreen rounded-lg p-4 space-y-2 my-10">
               <h4 className="text-lg font-semibold text-primaryDark">
-               Are you need Handyman?
+                Are you need Handyman?
               </h4>
               <p className="text-sm leading-normal font-medium">
-                Register the job with Swish.ma
+                Register the job with swish.ma
               </p>
 
               <div className="">

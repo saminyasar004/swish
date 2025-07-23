@@ -129,7 +129,7 @@ export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
           <Link to="/provider" className="block ">
             <img
               src={Logo}
-              alt="Swish.ma"
+              alt="swish.ma"
               className="hidden md:block max-w-[90%] md:max-w-full"
             />
             <img src={LogoSmallScreen} className="block md:hidden w-12 h-12" />

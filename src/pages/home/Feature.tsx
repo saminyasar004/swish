@@ -12,14 +12,14 @@ export default function Feature() {
     {
       name: "Find skilled craftsmen",
       description:
-        "Swishma makes it easy to find craftsmen, regardless of whether the job is large or small. You can contact companies directly, or let us find the right one!",
+        "swishma makes it easy to find craftsmen, regardless of whether the job is large or small. You can contact companies directly, or let us find the right one!",
       icon: MessagesImg,
       url: "#",
     },
     {
       name: "Safe and reliable businesses",
       description:
-        "Swishma quality assures that companies can perform your type of job. The evaluations tell you what experiences others have had with the company.",
+        "swishma quality assures that companies can perform your type of job. The evaluations tell you what experiences others have had with the company.",
       icon: NotelistImg,
       url: "#",
     },
@@ -42,7 +42,7 @@ export default function Feature() {
       <div className="container flex flex-col gap-14 items-center">
         <SectionHeading
           title="A fast and safe way to find a craftsman"
-          description="At Swish.ma, we review the companies on the service regularly. We have also made it easier for you to ensure that you have chosen the best company for your project:"
+          description="At swish.ma, we review the companies on the service regularly. We have also made it easier for you to ensure that you have chosen the best company for your project:"
         />
 
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-center">

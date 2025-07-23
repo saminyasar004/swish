@@ -80,7 +80,7 @@ export default function Painter() {
             </div>
 
             <h4 className="text-xl font-semibold text-primaryDark mb-6">
-              "What painting services can you get help with via Swish.ma?"
+              "What painting services can you get help with via swish.ma?"
             </h4>
             <p className="text-sm leading-normal">
               When you are painting something, it is always worth using a
@@ -320,7 +320,7 @@ export default function Painter() {
                 Find a skilled painter
               </h4>
               <p className="text-sm leading-normal font-medium">
-                Register the job with Swish.ma
+                Register the job with swish.ma
               </p>
 
               <div className="">

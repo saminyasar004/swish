@@ -17,8 +17,6 @@ export default function MasonryConcrete() {
     ],
   };
 
- 
-
   return (
     <section className="py-10">
       <div className="container px-32">
@@ -153,7 +151,7 @@ export default function MasonryConcrete() {
                 Are you need Masonry & Concrete Work?
               </h4>
               <p className="text-sm leading-normal font-medium">
-                Register the job with Swish.ma
+                Register the job with swish.ma
               </p>
               <div className="">
                 <Link to="/">

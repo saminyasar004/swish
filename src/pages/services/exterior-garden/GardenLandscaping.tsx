@@ -155,7 +155,7 @@ export default function GardenLandscaping() {
                 Are you need Garden & Landscaping?
               </h4>
               <p className="text-sm leading-normal font-medium">
-                Register the job with Swish.ma
+                Register the job with swish.ma
               </p>
               <div className="">
                 <Link to="/">

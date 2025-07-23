@@ -235,7 +235,7 @@ export default function Electrician() {
                 Find skilled plumbers
               </h4>
               <p className="text-sm leading-normal font-medium">
-                Register the job with Swish.ma
+                Register the job with swish.ma
               </p>
 
               <div className="">

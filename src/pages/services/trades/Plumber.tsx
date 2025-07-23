@@ -46,8 +46,10 @@ export default function Plumber() {
   return (
     <section className="py-10">
       <div className="container lg:px-32">
-		
-      <ServiceHeader headerContent={plumberHeaderContent} bannerImg={PlumberBannerImg} />
+        <ServiceHeader
+          headerContent={plumberHeaderContent}
+          bannerImg={PlumberBannerImg}
+        />
 
         {/* // Content Section */}
 
@@ -72,7 +74,7 @@ export default function Plumber() {
 
             <div className="bg-liquidGreen rounded-lg p-4">
               <h4 className="text-lg font-semibold text-primaryDark">
-                Plumbers at Swish.ma can help you with, among other things:
+                Plumbers at swish.ma can help you with, among other things:
               </h4>
 
               <ul className="flex flex-col gap-2 list-disc pl-4 text-sm leading-normal py-3">
@@ -209,7 +211,7 @@ export default function Plumber() {
                 Find skilled plumbers
               </h4>
               <p className="text-sm leading-normal font-medium">
-                Register the job with Swish.ma
+                Register the job with swish.ma
               </p>
 
               <div className="">
@@ -219,9 +221,7 @@ export default function Plumber() {
               </div>
             </div>
           </div>
-          <div>
-            Advertise section
-          </div>
+          <div>Advertise section</div>
         </div>
       </div>
     </section>

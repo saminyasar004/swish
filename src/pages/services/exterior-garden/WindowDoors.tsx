@@ -100,10 +100,10 @@ export default function WindowDoors() {
 
             <div className="bg-liquidGreen rounded-lg p-4 space-y-2 my-10">
               <h4 className="text-lg font-semibold text-primaryDark">
-               Are you need Window & Door Work?
+                Are you need Window & Door Work?
               </h4>
               <p className="text-sm leading-normal font-medium">
-                Register the job with Swish.ma
+                Register the job with swish.ma
               </p>
               <div className="">
                 <Link to="/">
