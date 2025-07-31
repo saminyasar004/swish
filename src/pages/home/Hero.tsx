@@ -38,12 +38,30 @@ export default function Hero() {
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [highlightedIndex, setHighlightedIndex] = useState(0); 
 
   const filteredJobs = search
     ? jobSuggestions.filter((job) =>
         job.toLowerCase().includes(search.toLowerCase())
       )
     : [];
+
+     const handleKeyDown = (e: React.KeyboardEvent) => {
+      console.log(e.key);
+    if (e.key === "ArrowDown") {
+      setHighlightedIndex((prevIndex) =>
+        Math.min(prevIndex + 1, filteredJobs.length - 1)
+      );
+    } else if (e.key === "ArrowUp") {
+      setHighlightedIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+    } else if (e.key === "Enter") {
+      setSearch(filteredJobs[highlightedIndex]);
+      setSelected(filteredJobs[highlightedIndex]);
+      setIsDropdownOpen(false);
+    } else if (e.key === "Escape") {
+      setIsDropdownOpen(false); // Close dropdown on Escape
+    }
+  };
   // md:py-24 lg:py-32
   return (
     <section className=" py-16 md:py-24 lg:py-32 bg-liquidGreen">
@@ -77,6 +95,7 @@ export default function Hero() {
                 setSearch(e.target.value);
                 setIsDropdownOpen(true);
               }}
+               onKeyDown={handleKeyDown} // Add keydown handler
               placeholder="Hva trenger du hjelp til?"
               className="h-12 pr-10 pl-4 shadow-md rounded-lg"
             />
@@ -87,9 +106,9 @@ export default function Hero() {
 
             {search && isDropdownOpen && filteredJobs.length > 0 && (
               <div className="absolute top-full left-0 mt-1 w-full bg-white border rounded-lg shadow-md z-50">
-                <Command className="w-full">
+                <Command className="w-full ">
                   <CommandList className="max-h-[400px] overflow-y-auto">
-                    {filteredJobs.map((job) => (
+                    {filteredJobs.map((job, index) => (
                       <CommandItem
                         key={job}
                         value={job}
@@ -98,6 +117,9 @@ export default function Hero() {
                           setSelected(job);
                           setIsDropdownOpen(false); // close dropdown
                         }}
+                         className={`cursor-pointer px-4 py-2 ${
+      index === highlightedIndex ? "bg-gray-200 text-black" : ""
+    }`}
                       >
                         {job}
                       </CommandItem>

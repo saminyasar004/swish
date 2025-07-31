@@ -8,8 +8,11 @@ import { Eye, EyeOff } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 export default function Register() {
+  const [phone, setPhone] = useState("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] =
     useState<boolean>(false);
@@ -54,7 +57,17 @@ export default function Register() {
           <Label htmlFor="telephone" className="text-secondary">
             Telephone
           </Label>
-          <Input id="telephone" type="text" placeholder="+123 456 7890" />
+          {/* <Input id="telephone" type="text" placeholder="+123 456 7890" /> */}
+          <PhoneInput
+            country={"ma"}
+            value={phone}
+            onChange={setPhone}
+            placeholder="+ 123 456 7890"
+            inputStyle={{ height: "48px", width: "100%", borderRadius: "8px" }}
+          />
+          {/* {errors.phone && (
+          <span className="text-red-500">{errors.phone.message}</span>
+        )} */}
         </div>
 
         <div className="form-group flex flex-col gap-3 lg:px-10">

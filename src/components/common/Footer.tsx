@@ -86,7 +86,7 @@ export default function Footer() {
   return (
     <footer className="text-white">
       <div className="bg-accent text-white">
-        <div className="py-16 px-2 w-full max-w-[1800px] mx-auto grid md:grid-cols-2 lg:grid-cols-7 lg:gap-4 gap-12 justify-center items-center text-center md:justify-start md:items-start md:text-left">
+        <div className="py-16 px-2 w-full max-w-[1800px] mx-auto grid md:grid-cols-3 lg:grid-cols-6 lg:gap-4 gap-12 justify-center items-center text-center md:justify-start md:items-start md:text-left">
           {/* <div className="flex items-center justify-center md:justify-start lg:col-span-1 ">
             <img src={Logo} alt="swish.ma" className="max-w-full" />
           </div> */}
@@ -161,7 +161,7 @@ export default function Footer() {
 
             <p className="text-sm font-normal">Swish by Zoopy SARL © 2025</p>
 
-            <div className="w-full flex items-center justify-start gap-3">
+            <div className="w-full flex items-center justify-center md:justify-start gap-3">
               {footerLinks.map((link, index) => (
                 <Link
                   to={link.url}

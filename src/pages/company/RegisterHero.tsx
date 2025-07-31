@@ -151,8 +151,7 @@ export default function RegisterHero() {
           </h2>
 
           <p className="text-sm md:text-base text-liquidGreen">
-            Thousands of new missions every week. Create a free test profile now
-            and see all the jobs near you.
+            Hundreds of opportunities near you every single day. Create your free profile and discover real jobs waiting for someone like you.
           </p>
 
           <div>
