@@ -9,31 +9,31 @@ import "@mantine/core/styles.css";
 const queryClient = new QueryClient();
 
 const App = () => (
-	<MantineProvider>
-		<QueryClientProvider client={queryClient}>
-			<TooltipProvider>
-				<BrowserRouter>
-					<Routes>
-						{routes.map((route, index) => (
-							<Route
-								key={index}
-								path={route.path}
-								element={
-									route.layout ? (
-										<route.layout>
-											<route.element />
-										</route.layout>
-									) : (
-										<route.element />
-									)
-								}
-							/>
-						))}
-					</Routes>
-				</BrowserRouter>
-			</TooltipProvider>
-		</QueryClientProvider>
-	</MantineProvider>
+  <MantineProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <BrowserRouter>
+          <Routes>
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  route.layout ? (
+                    <route.layout>
+                      <route.element />
+                    </route.layout>
+                  ) : (
+                    <route.element />
+                  )
+                }
+              />
+            ))}
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </MantineProvider>
 );
 
 export default App;
