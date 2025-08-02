@@ -30,12 +30,12 @@ export default function Profile() {
 
         {/* Main Content */}
         <main className="w-full md:w-3/4 p-6 container mx-auto">
-          <div className="mt-16 shadow-md py-12">
-            {/* <PersonalInfo/> */}
+          <div className="mt-12 shadow-md py-12">
+            <PersonalInfo/>
 
             {/* <LoginAndSecurity /> */}
 
-            <Notification />
+            {/* <Notification /> */}
           </div>
         </main>
       </div>
