@@ -22,7 +22,7 @@ import Painter from "@/pages/services/trades/Painter";
 import Plumber from "@/pages/services/trades/Plumber";
 import Bathrooms from "@/pages/services/renovation/Bathrooms";
 import FloorLaying from "@/pages/services/renovation/FloorLaying";
-import Profile from "@/pages/auth/Profile";
+import Profile from "@/pages/profile/Profile";
 import RegisterCompany from "@/pages/company/RegisterCompany";
 import ServiceLayout from "@/components/common/ServiceLayout";
 import Working from "@/pages/ServiceProvider/serviceHome/Working";
@@ -39,6 +39,7 @@ import ManageEmployeesPage from "@/pages/ServiceProvider/myBusiness/ManageEmploy
 import HomePage from "@/pages/ServiceProvider/MessageUpdate/HomePage";
 import JobSetting from "@/pages/ServiceProvider/myBusiness/jobSetting/JobSetting";
 import MyBids from "@/pages/ServiceProvider/myBusiness/myBids/MyBids";
+import ProfileLayout from "@/components/common/ProfileLayout";
 
 export interface Route {
   path: string;
@@ -100,7 +101,7 @@ export const routes = [
   {
     path: "/profile",
     element: Profile,
-    layout: Layout,
+    layout: ProfileLayout,
   },
   // trades
   {
