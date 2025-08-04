@@ -11,7 +11,7 @@ import { RootState } from "../store";
 import { logout, setUser } from "../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api/v1",
+  baseUrl: "http://10.10.13.59:8001/",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
@@ -41,20 +41,23 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     //* Send Refresh
     console.log("Sending refresh token");
 
-    const res = await fetch("http://localhost:5000/api/v1/auth/refresh-token", {
-      method: "POST",
-      credentials: "include",
-    });
+    const res = await fetch(
+      "http://10.10.13.59:8001/accounts/api/v1/token/refresh",
+      {
+        method: "POST",
+        credentials: "include",
+      }
+    );
 
     const data = await res.json();
 
-    if (data?.data?.accessToken) {
+    if (data?.access) {
       const user = (api.getState() as RootState).auth.user;
 
       api.dispatch(
         setUser({
           user,
-          token: data.data.accessToken,
+          token: data.access,
         })
       );
 
