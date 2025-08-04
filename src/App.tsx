@@ -5,34 +5,45 @@ import { routes } from "@/routes";
 import { MantineProvider } from "@mantine/core";
 
 import "@mantine/core/styles.css";
+import { Toaster } from "sonner";
+import { Provider } from "react-redux";
+import { persistor, store } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <MantineProvider>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <BrowserRouter>
-          <Routes>
-            {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                element={
-                  route.layout ? (
-                    <route.layout>
-                      <route.element />
-                    </route.layout>
-                  ) : (
-                    <route.element />
-                  )
-                }
-              />
-            ))}
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        {/* <RouterProvider router={router} /> */}
+
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            <BrowserRouter>
+              <Routes>
+                {routes.map((route, index) => (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    element={
+                      route.layout ? (
+                        <route.layout>
+                          <route.element />
+                        </route.layout>
+                      ) : (
+                        <route.element />
+                      )
+                    }
+                  />
+                ))}
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </QueryClientProvider>
+      </PersistGate>
+      <Toaster />
+    </Provider>
   </MantineProvider>
 );
 
