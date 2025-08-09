@@ -77,7 +77,7 @@ export default function Login() {
               type="email"
               placeholder="jon.doe@example.com"
               {...register("email", { required: "Email is required" })}
-              defaultValue="arnob0188@gmail.com"
+              defaultValue="work.mohammadarif@gmail.com"
             />
             {errors.email && (
               <span className="text-red-500 text-sm">
@@ -97,7 +97,7 @@ export default function Login() {
                 placeholder="@#*%"
                 className="pr-16"
                 {...register("password", { required: "Password is required" })}
-                defaultValue="X1a0Ma1n"
+                defaultValue="223456"
               />
 
               <Separator
