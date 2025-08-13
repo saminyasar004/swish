@@ -9,15 +9,23 @@ import {
 import { toast } from "sonner";
 import { RootState } from "../store";
 import { logout, setUser } from "../features/auth/authSlice";
+export const baseUrl = "http://10.10.13.59:8001"
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://10.10.13.59:8001/",
   credentials: "include",
-  prepareHeaders: (headers, { getState }) => {
+  prepareHeaders: (headers, { getState, endpoint }) => {
+
+     // Skip token for specific endpoints
+      // if (endpoint === "allCategoryList" || endpoint === "allSubCategoryList") {
+      //   return headers; // no token added
+      // }
+
     const token = (getState() as RootState).auth.token;
 
     if (token) {
-      headers.set("authorization", `${token}`);
+      headers.set("Authorization", `Bearer ${token}`);
+     
     }
 
     return headers;
