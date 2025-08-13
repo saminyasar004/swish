@@ -40,6 +40,7 @@ import HomePage from "@/pages/ServiceProvider/MessageUpdate/HomePage";
 import JobSetting from "@/pages/ServiceProvider/myBusiness/jobSetting/JobSetting";
 import MyBids from "@/pages/ServiceProvider/myBusiness/myBids/MyBids";
 import ProfileLayout from "@/components/common/ProfileLayout";
+import StatusPage from "@/components/common/StatusPage";
 
 export interface Route {
   path: string;
@@ -110,15 +111,16 @@ export const routes = [
     layout: Layout,
   },
   {
-    path: "/trades/plumber",
-    element: Plumber,
-    layout: Layout,
-  },
-  {
     path: "/trades/electrician",
     element: Electrician,
     layout: Layout,
   },
+  {
+    path: "/trades/plumber",
+    element: Plumber,
+    layout: Layout,
+  },
+  
   {
     path: "/trades/painter",
     element: Painter,
@@ -152,6 +154,11 @@ export const routes = [
     layout: Layout,
   },
   {
+    path: "/indoor-renovation/floor-laying",
+    element: FloorLaying,
+    layout: Layout,
+  },
+  {
     path: "/exterior-garden/garden-landscaping",
     element: GardenLandscaping,
     layout: Layout,
@@ -168,11 +175,7 @@ export const routes = [
     element: Bathrooms,
     layout: Layout,
   },
-  {
-    path: "/indoor-renovation/floor-laying",
-    element: FloorLaying,
-    layout: Layout,
-  },
+  
 
   // services provider
   // {
@@ -254,5 +257,9 @@ export const routes = [
     path: "/provider/my-business/my-bids",
     element: MyBids,
     layout: ServiceLayout,
+  },
+  {
+    path: "*",
+    element: StatusPage,
   },
 ];
