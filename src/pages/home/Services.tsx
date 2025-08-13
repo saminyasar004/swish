@@ -12,21 +12,22 @@ import SolarHeaterImg from "@/assets/images/solar-heater.svg";
 import WindowsAndDoorsImg from "@/assets/images/windows-and-doors.svg";
 
 import SectionHeading from "@/components/common/SectionHeading";
+import { Link } from "react-router-dom";
 
 export default function Services() {
   const services = [
-    { name: "Plumber", image: PlumberImg },
-    { name: "Electrician", image: ElectricianImg },
-    { name: "Masonry & Concrete Work", image: ConcreteImg },
-    { name: "Floor Laying", image: FloorImg },
-    { name: "Painting", image: PaintingImg },
-    { name: "Garden & Landscaping", image: GardenSprayImg },
-    { name: "Handyman", image: HandymanImg },
-    { name: "Locksmith", image: LocksmithImg },
-    { name: "Renovating bathrooms", image: RenovatingBathroomsImg },
-    { name: "Windows & Doors", image: WindowsAndDoorsImg },
-    { name: "Solar Heater & AC Installation", image: SolarHeaterImg },
-    { name: "Full Rem & Buildout", image: HouseRenovationImg },
+    { name: "Plumber", image: PlumberImg, url: "/trades/plumber" },
+    { name: "Electrician", image: ElectricianImg, url: "/trades/electrician" },
+    { name: "Masonry & Concrete Work", image: ConcreteImg, url: "/exterior-garden/masonry-concrete-work" },
+    { name: "Floor Laying", image: FloorImg, url: "/indoor-renovation/floor-laying" },
+    { name: "Painting", image: PaintingImg , url: "/trades/painter"},
+    { name: "Garden & Landscaping", image: GardenSprayImg, url: "/exterior-garden/garden-landscaping" },
+    { name: "Handyman", image: HandymanImg, url: "/trades/handyman" },
+    { name: "Locksmith", image: LocksmithImg, url: "/trades/locksmith" },
+    { name: "Renovating bathrooms", image: RenovatingBathroomsImg, url: "/indoor-renovation/renovating-bathrooms" },
+    { name: "Windows & Doors", image: WindowsAndDoorsImg , url: "/exterior-garden/window-doors"},
+    { name: "Solar Heater & AC Installation", image: SolarHeaterImg, url: "/exterior-garden/solar-heater-ac-installation" },
+    { name: "Full Rem & Buildout", image: HouseRenovationImg, url: "/indoor-renovation/full-renovation-buildout" },
   ];
 
   return (
@@ -36,6 +37,7 @@ export default function Services() {
 
         <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-3 items-center">
           {services.map((service, index) => (
+            <Link to={service?.url} key={index}>
             <div
               key={index}
               className="w-full h-full flex flex-col items-center justify-center text-center  gap-4 rounded-lg p-2 md:p-8 bg-liquidGreen hover:bg-accent transition-all duration-300 cursor-pointer"
@@ -50,6 +52,7 @@ export default function Services() {
                 {service.name}
               </h4>
             </div>
+            </Link>
           ))}
         </div>
       </div>
