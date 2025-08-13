@@ -38,6 +38,7 @@ export default {
         greenSplash: "#CBECD6",
         blackPrimary: "#000000",
         blackSecondary: "#374151",
+        error: "#f56565",
       },
       keyframes: {
         "accordion-down": {
