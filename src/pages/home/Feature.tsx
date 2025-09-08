@@ -49,7 +49,7 @@ export default function Feature() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="w-full h-full flex flex-col items-start gap-4 rounded-lg p-8 bg-white"
+              className="w-full h-full flex flex-col items-start gap-4 rounded-lg p-4 md:p-8 bg-white"
             >
               <img
                 src={feature.icon}
@@ -63,12 +63,12 @@ export default function Feature() {
 
               <p className="text-[#404C67]">{feature.description}</p>
 
-              <Link
+              {/* <Link
                 to={feature.url}
                 className="text-primary font-semibold text-lg hover:underline transition-all duration-300"
               >
                 Read more
-              </Link>
+              </Link> */}
             </div>
           ))}
         </div>

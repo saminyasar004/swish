@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 
 export default function Process() {
   return (
-    <section className=" py-12 lg:py-24">
-      <div className="container flex flex-col gap-14 items-center">
-        <SectionHeading title="How swish.ma works" />
+    <section className=" py-20 lg:py-24">
+      <div className="container flex flex-col gap-8 lg:gap-14 items-center">
+        <SectionHeading title="How Does swish.ma works?" />
 
-        <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-5 items-center">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-center">
           <div className="w-full flex flex-col gap-4">
             <div className="w-full flex gap-2 items-center">
               <img src={NoteImg} alt="Note Image" className="max-w-full" />
@@ -63,7 +63,7 @@ export default function Process() {
         </div>
 
         <Link to="/post-job">
-          <Button>Post job</Button>
+          <Button size="lg" className="px-12 py-6 rounded-md text-base font-semibold">Post a job</Button>
         </Link>
       </div>
     </section>

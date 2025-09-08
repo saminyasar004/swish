@@ -31,16 +31,16 @@ export default function Services() {
   ];
 
   return (
-    <section className="py-12 md:py-20 lg:py-24">
+    <section className="pb-12 pt-4 md:pb-20 lg:pb-24">
       <div className="container flex flex-col gap-14 items-center">
-        <SectionHeading title="Popular services" />
+        <SectionHeading title="Popular services" description="Starting a big project or just need help with a small task? Post your job and receive offers from qualified professionals – or use the search to quickly find the right expert for you. " />
 
-        <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-3 items-center">
+        <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-2 items-center">
           {services.map((service, index) => (
             <Link to={service?.url} key={index}>
             <div
               key={index}
-              className="w-full h-full flex flex-col items-center justify-center text-center  gap-4 rounded-lg p-2 md:p-8 bg-liquidGreen hover:bg-accent transition-all duration-300 cursor-pointer"
+              className="w-full h-36 md:h-40 flex flex-col items-center justify-center text-center  gap-4 rounded-lg p-2 md:p-8 bg-liquidGreen hover:bg-accent transition-all duration-300 cursor-pointer"
             >
               <img
                 src={service.image}
@@ -48,7 +48,7 @@ export default function Services() {
                 className="max-w-full"
               />
 
-              <h4 className="text-base text-primary font-semibold">
+              <h4 className="text-sm md:text-base text-primary font-semibold">
                 {service.name}
               </h4>
             </div>

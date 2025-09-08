@@ -136,6 +136,11 @@ export const routes = [
     element: Handyman,
     layout: Layout,
   },
+  {
+    path: "/trades/air-conditioning",
+    element: SolarHeater,
+    layout: Layout,
+  },
 
   // exterior-garden
   {
