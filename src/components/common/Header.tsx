@@ -28,13 +28,17 @@ import CategoryExteriorIcon from "@/assets/images/CategoryExteriorIcon.svg";
 import GuardImg from "@/assets/images/guard.svg";
 import HomeImg from "@/assets/images/home.svg";
 import IndoorRenovationImg from "@/assets/images/IndoorRenovationImg.svg";
-// import IndoorRenovationImg from "@/assets/images/indoor-renovation.svg";
 import CategoryConstruction from "@/assets/images/CategoryConstruction.svg";
 import CategoryHomeIcon from "@/assets/images/CategoryHomeService.svg";
 import TradesToolsImg from "@/assets/images/trades-tools.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectCurrentToken } from "@/redux/features/auth/authSlice";
 import { toast } from "sonner";
+import adminlegal from "@/assets/images/admin&legal.svg";
+import techEnergy from "@/assets/images/techEnergy.svg";
+import MovingTransport from "@/assets/images/MovingTransport.svg";
+import CleaningServices from "@/assets/images/CleaningServices.svg";
+import Construction from "@/assets/images/Construction.svg";
 import {
   useAllCategoryListQuery,
   useGetUserProfileQuery,
@@ -49,44 +53,140 @@ import {
 import { TUserProfile } from "@/types/user.type";
 // import { useGetUserProfileQuery } from "@/redux/features/users/user.category.api";
 
+export interface SubCategoryProps {
+  name: string;
+  url: string;
+}
 export interface CategoryProps {
   name: string;
-  id: number
+  id: number;
   url: string;
   img?: string;
-  subcategories?: CategoryProps[];
+  subcategories?: SubCategoryProps[];
 }
 
 export const categories = [
   {
-    name: "Trades & Specialized Crafts",
+    // name: "New Construction & Permits",
+    name: "Construction & Renovation",
     id: 1,
+    url: "/post-job",
+    description:
+      "Planning a new build? From architectural design and permits to full construction and property registration—find trusted experts to realize your dream home from the ground up.",
+    img: CategoryConstruction,
+
+    subcategories: [
+      {
+        name: "General Contractor",
+        url: "/new-construction-permits/contractor",
+      },
+      {
+        name: "Project Manager",
+        url: "/new-construction-permits/project-manager",
+      },
+      {
+        name: "Architect",
+        url: "/new-construction-permits/architect",
+      },
+      {
+        name: "Interior Designer",
+        url: "/new-construction-permits/interior",
+      },
+
+      // {
+      //   name: "Building",
+      //   url: "/new-construction-permits/building",
+      // },
+      {
+        name: "Civil Engineer",
+        url: "/new-construction-permits/civil-engineer",
+      },
+
+      {
+        name: "Structural Engineer",
+        url: "/new-construction-permits/structural-engineer",
+      },
+      {
+        name: "Facade Renovation ",
+        url: "/new-construction-permits/facade-renovation",
+      },
+      // {
+      //   name: "Garage/House/Hut/Extension/Add-on",
+      //   url: "/new-construction-permits/garage-house",
+      // },
+      // {
+      //   name: "Permit Support & Legalization",
+      //   url: "/new-construction-permits/permit-support-legalization",
+      // },
+      // {
+      //   name: " Property Documentation",
+      //   url: "/new-construction-permits/property-documentation",
+      // },
+      // {
+      //   name: "Land Surveying",
+      //   url: "/new-construction-permits/land-surveying",
+      // },
+      {
+        name: "Demolition",
+        url: "/new-construction-permits/demolition",
+      },
+      {
+        name: "Excavation & Earthworks",
+        url: "/new-construction-permits/excavation-earthworks",
+      },
+      {
+        name: "Scaffolding Services",
+        url: "/new-construction-permits/scaffolding-services ",
+      },
+      {
+        name: "Insulation Works",
+        url: "/new-construction-permits/insulation-works",
+      },
+      {
+        name: "Concrete & Foundations",
+        url: "/new-construction-permits/concrete-foundations",
+      },
+    ],
+  },
+
+  {
+    // name: "Trades & Specialized Crafts",
+    name: "Home repairs & Trades",
+    id: 2,
     url: "/trades",
     description:
       "Skilled craftsmanship experts for all your specialist needs. From plumbing and wiring to stunning traditional Moroccan plasterwork and bespoke iron details.",
     img: TradesToolsImg,
     subcategories: [
+      { name: "Mason", url: "/trades/mason" },
+      { name: "Carpenter/Joiner", url: "/trades/carpenter" },
       { name: "Electrician", url: "/trades/electrician" },
       { name: "Plumber", url: "/trades/plumber" },
-      { name: "Carpenter/Joiner", url: "/trades/carpenter" },
       { name: "Roofer", url: "/trades/roofer" },
-      { name: "Painter", url: "/trades/painter" },
-      { name: "Tiler", url: "/trades/tiler" },
       { name: "Locksmith", url: "/trades/locksmith" },
-      { name: "Sheet Metal Specialist", url: "/trades/specialist" },
+      { name: "Plasterwork", url: "/trades/plasterwork" },
+      { name: "Aluminium, Glass & Metalwork", url: "/trades/specialist" },
+      { name: "Painter", url: "/trades/painter" },
+      // { name: "Tiler", url: "/trades/tiler" },
       { name: "Handyman", url: "/trades/handyman" },
-      { name: "Excavation", url: "/trades/excavation" },
-      { name: "Mason", url: "/trades/mason" },
-      { name: "Traditional Plaster & Zellige", url: "/trades/plaster" },
-      { name: "Concrete Walls", url: "/trades/concrete" },
-      { name: "Ironwork", url: "/trades/ironwork" },
+      // { name: "Excavation", url: "/trades/excavation" },
+      // { name: "Traditional Plaster & Zellige", url: "/trades/plaster" },
+      // { name: "Concrete Walls", url: "/trades/concrete" },
+      // { name: "Ironwork", url: "/trades/ironwork" },
+      { name: "Air Conditioning (AC)", url: "/trades/air-conditioning" },
+      { name: "Waterproofing", url: "/trades/waterproofing" },
+      { name: "Contractor", url: "/trades/contractor" },
+      { name: "Traditional Crafts", url: "/trades/traditionalCrafts" },
+      { name: "Wells & Septic Services", url: "/trades/septicServices" },
     ],
   },
 
   {
-    name: "Exterior & Garden",
-    id: 2,
-    url: "/exterior-garden",
+    // name: "Exterior & Garden",
+    name: "Garden & Outdoor",
+    id: 3,
+    // url: "/exterior-garden",
+    url: "/post-job",
     description:
       "Upgrade your outdoor spaces—curb appeal, functionality, and green living in mind. We connect you with experts for gardens, terraces, roofs, driveways, and supporting systems.",
     img: CategoryExteriorIcon,
@@ -107,252 +207,393 @@ export const categories = [
     // ],
     subcategories: [
       {
-        name: "Paving",
-        url: "/exterior-garden/paving",
-      },
-      {
-        name: "Asphalting",
-        url: "/exterior-garden/asphalting",
-      },
-      {
-        name: "Pergolas",
-        url: "/exterior-garden/pergolas",
-      },
-      {
-        name: "Fence & Gate",
-        url: "/exterior-garden/fence-gate",
-      },
-      {
-        name: "Gardening",
-        url: "/exterior-garden/gardening",
-      },
-      {
-        name: "Roof Repair",
-        url: "/exterior-garden/roof-repair",
-      },
-      {
-        name: "Chimney Repair",
-        url: "/exterior-garden/chimney-repair",
-      },
-      {
-        name: "Demolition",
-        url: "/exterior-garden/demolition",
-      },
-      {
-        name: "Water & Drainage",
-        url: "/exterior-garden/water-drainage",
-      },
-      {
-        name: "Solar Heater & AC Installation",
-        url: "/exterior-garden/solar-heater-ac-installation",
-      },
-      {
-        name: "Waterproofing",
-        url: "/exterior-garden/waterproofing",
-      },
-      {
-        name: "Facade & Painting",
-        url: "/exterior-garden/facade-painting",
-      },
-      {
-        name: "Groundwork",
-        url: "/exterior-garden/groundwork",
-      },
-      {
         name: "Garden & Landscaping",
         url: "/exterior-garden/garden-landscaping",
       },
       {
-        name: "Masonry & Concrete Work",
-        url: "/exterior-garden/masonry-concrete-work",
+        name: "Tree Cutting & Stump Removal",
+        url: "/exterior-garden/tree-cutting-stump-removal",
       },
       {
-        name: "Deck & Patio",
-        url: "/exterior-garden/deck-patio",
+        name: "Pool Maintenance",
+        url: "/exterior-garden/pool-maintenance",
       },
       {
-        name: "Tree Care",
-        url: "/exterior-garden/tree-care",
-      },
-      { name: "Window & Doors", url: "/exterior-garden/window-doors" },
-      {
-        name: "Terrace Shade",
-        url: "/exterior-garden/terrace-shade",
+        name: "Terrace & Exterior Cleaning",
+        url: "/exterior-garden/terrace-exterior-cleaning",
       },
       {
-        name: "Water Tanks",
-        url: "/exterior-garden/water-tanks",
+        name: "Fence & Gate Installation & Repair",
+        url: "/exterior-garden/fence-gate-installation-repair",
       },
+      {
+        name: "Irrigation Systems",
+        url: "/exterior-garden/irrigation-systems",
+      },
+
+      // {
+      //   name: "Paving",
+      //   url: "/exterior-garden/paving",
+      // },
+      // {
+      //   name: "Asphalting",
+      //   url: "/exterior-garden/asphalting",
+      // },
+      // {
+      //   name: "Pergolas",
+      //   url: "/exterior-garden/pergolas",
+      // },
+      // {
+      //   name: "Fence & Gate",
+      //   url: "/exterior-garden/fence-gate",
+      // },
+      // {
+      //   name: "Gardening",
+      //   url: "/exterior-garden/gardening",
+      // },
+      // {
+      //   name: "Roof Repair",
+      //   url: "/exterior-garden/roof-repair",
+      // },
+      // {
+      //   name: "Chimney Repair",
+      //   url: "/exterior-garden/chimney-repair",
+      // },
+      // {
+      //   name: "Demolition",
+      //   url: "/exterior-garden/demolition",
+      // },
+      // {
+      //   name: "Water & Drainage",
+      //   url: "/exterior-garden/water-drainage",
+      // },
+
+      // {
+      //   name: "Waterproofing",
+      //   url: "/exterior-garden/waterproofing",
+      // },
+      // {
+      //   name: "Facade & Painting",
+      //   url: "/exterior-garden/facade-painting",
+      // },
+      // {
+      //   name: "Groundwork",
+      //   url: "/exterior-garden/groundwork",
+      // },
+
+      // {
+      //   name: "Masonry & Concrete Work",
+      //   url: "/exterior-garden/masonry-concrete-work",
+      // },
+      // {
+      //   name: "Deck & Patio",
+      //   url: "/exterior-garden/deck-patio",
+      // },
+      // {
+      //   name: "Tree Care",
+      //   url: "/exterior-garden/tree-care",
+      // },
+      // { name: "Window & Doors", url: "/exterior-garden/window-doors" },
+      // {
+      //   name: "Terrace Shade",
+      //   url: "/exterior-garden/terrace-shade",
+      // },
+      // {
+      //   name: "Water Tanks",
+      //   url: "/exterior-garden/water-tanks",
+      // },
     ],
   },
 
   {
-    name: "New Construction & Permits",
-    id: 3,
-    url: "/new-construction-permits",
-    description:
-      "Planning a new build? From architectural design and permits to full construction and property registration—find trusted experts to realize your dream home from the ground up.",
-    img: CategoryConstruction,
-
-    subcategories: [
-      {
-        name: "Architect",
-        url: "/new-construction-permits/architect",
-      },
-      {
-        name: "Building",
-        url: "/new-construction-permits/building",
-      },
-
-      {
-        name: "Contractor",
-        url: "/new-construction-permits/contractor",
-      },
-      {
-        name: "Project Manager",
-        url: "/new-construction-permits/project-manager",
-      },
-      {
-        name: "Structural Engineer",
-        url: "/new-construction-permits/structural-engineer",
-      },
-      {
-        name: "Full Renovation",
-        url: "/new-construction-permits/full-renovation",
-      },
-      {
-        name: "Garage/House/Hut/Extension/Add-on",
-        url: "/new-construction-permits/garage-house",
-      },
-      {
-        name: "Permit Support & Legalization",
-        url: "/new-construction-permits/permit-support-legalization",
-      },
-      {
-        name: " Property Documentation",
-        url: "/new-construction-permits/property-documentation",
-      },
-      {
-        name: "Land Surveying",
-        url: "/new-construction-permits/land-surveying",
-      },
-    ],
-  },
-
-  {
-    name: "Indoor Renovation",
+    name: "Admin & Legal Services",
     id: 4,
-    url: "/indoor-renovation",
+    url: "/post-job",
     description:
       "Transform your interiors—whether modern upgrades, full remodels or cozy rental conversions. We'll help you find trusted craftsmen for every room.",
-    img: IndoorRenovationImg,
+    img: adminlegal,
 
     subcategories: [
       {
-        name: "Full Renovation / Buildout",
-        url: "/indoor-renovation/full-renovation-buildout",
+        name: "Accountant",
+        url: "/admin-legal-services/accountant",
       },
       {
-        name: "Renovating Bathrooms",
-        url: "/indoor-renovation/renovating-bathrooms",
-      },
-      { name: "Floor Laying", url: "/indoor-renovation/floor-laying" },
-      {
-        name: "Interior Architect",
-        url: "/indoor-renovation/interior-architect",
-      },
-
-      {
-        name: "Waterproofing",
-        url: "/indoor-renovation/waterproofing",
+        name: "Notary Services",
+        url: "/admin-legal-services/notary-services",
       },
       {
-        name: "Microcement",
-        url: "/indoor-renovation/microcement",
+        name: "Lawyer",
+        url: "/admin-legal-services/lawyer",
       },
       {
-        name: "Tiling",
-        url: "/indoor-renovation/tiling",
+        name: "Tax Declaration & Filing",
+        url: "/admin-legal-services/tax-declaration-filing",
       },
       {
-        name: "Painting & Wallpapering",
-        url: "/indoor-renovation/painting-wallpapering",
+        name: "Company Registration",
+        url: "/admin-legal-services/company-registration",
       },
       {
-        name: "Fireplace/Stove Installation",
-        url: "/indoor-renovation/fireplace-stove-installation",
+        name: "Government Documents",
+        url: "/admin-legal-services/government-documents",
       },
       {
-        name: "Concrete Floor Breaking",
-        url: "/indoor-renovation/concrete-floor-breaking",
+        name: "Property Paperwork",
+        url: "/admin-legal-services/property-paperwork",
+      },
+      {
+        name: "Import & Export Paperwork",
+        url: "/admin-legal-services/import-export-paperwork",
+      },
+      {
+        name: "Visa & Residency Support",
+        url: "/admin-legal-services/visa-residency-support",
+      },
+      {
+        name: "Translation & Forms",
+        url: "/admin-legal-services/translation-forms",
       },
     ],
   },
 
   {
-    name: " Home Services & Installations",
+    name: "Tech & Energy",
     id: 5,
-    url: "/home-services-installations",
+    url: "/post-job",
     description:
-      "Support services that keep your home running smoothly. From security systems and cleaning, to EV chargers, pest control and moving help.",
-    img: CategoryHomeIcon,
+      "Transform your interiors—whether modern upgrades, full remodels or cozy rental conversions. We'll help you find trusted craftsmen for every room.",
+    img: techEnergy,
 
     subcategories: [
       {
-        name: "Alarm & Security",
-        url: "/home-services-installations/alarm-security",
+        name: "WiFi & Network Help",
+        url: "/tech-energy/wifi-network-help",
       },
       {
-        name: "Waste Disposal",
-        url: "/home-services-installations/waste-disposal",
-      },
-
-      {
-        name: "Car Services",
-        url: "/home-services-installations/car-services",
+        name: "TV & Satellite Installation",
+        url: "/tech-energy/TV-satellite-installation",
       },
       {
-        name: "EV Charger Install",
-        url: "/home-services-installations/ev-charger-install",
-      },
-
-      {
-        name: "Cleaning & Move-Out Services",
-        url: "/home-services-installations/cleaning-move-out-services",
+        name: "Security Cameras & Alarms",
+        url: "/tech-energy/security-cameras-alarms",
       },
       {
-        name: "Pest Control",
-        url: "/home-services-installations/pest-control",
-      },
-
-      {
-        name: "Appliance Install & Assembly",
-        url: "/home-services-installations/appliance-install-assembly",
+        name: "Smart Home Devices",
+        url: "/tech-energy/smart-home-devices",
       },
       {
-        name: "Mechanical Workshops",
-        url: "/home-services-installations/mechanical-workshops",
-      },
-
-      {
-        name: "Sun Shading & Blinds",
-        url: "/home-services-installations/sun-shading-blinds",
+        name: "Smart Home Devices",
+        url: "/tech-energy/solar-panels",
       },
       {
-        name: "Surveyor/Valuation",
-        url: "/home-services-installations/surveyor-valuation",
-      },
-
-      {
-        name: "Transport & Equipment Rental",
-        url: "/home-services-installations/transport-equipment-rental",
+        name: "EV Charger Installation",
+        url: "/tech-energy/EV-charger-installation",
       },
       {
-        name: "Solar Panels",
-        url: "/home-services-installations/solar-panels",
+        name: "Energy Consulting",
+        url: "/tech-energy/energy-consulting",
       },
     ],
   },
+
+  {
+    name: "Moving & Transport",
+    id: 6,
+    url: "/post-job",
+    description:
+      "Transform your interiors—whether modern upgrades, full remodels or cozy rental conversions. We'll help you find trusted craftsmen for every room.",
+    img: MovingTransport,
+
+    subcategories: [
+      {
+        name: "Home Moving",
+        url: "/moving-transport/home-moving",
+      },
+      {
+        name: "Office Moving",
+        url: "/moving-transport/office-moving",
+      },
+      {
+        name: "Furniture Assembly & Disassembly",
+        url: "/moving-transport/furniture-assembly-disassembly",
+      },
+      {
+        name: "Pickup & Delivery",
+        url: "/moving-transport/pickup-delivery",
+      },
+
+      {
+        name: "Intercity Transport",
+        url: "/moving-transport/intercity-transport",
+      },
+      {
+        name: "International Moving",
+        url: "/moving-transport/international-moving",
+      },
+    ],
+  },
+
+  {
+    name: "Cleaning Services",
+    id: 7,
+    url: "/post-job",
+    description:
+      "Transform your interiors—whether modern upgrades, full remodels or cozy rental conversions. We'll help you find trusted craftsmen for every room.",
+    img: CleaningServices,
+
+    subcategories: [
+      {
+        name: "Home Cleaning",
+        url: "/cleaning-services/home-cleaning",
+      },
+      
+      {
+        name: "Office & Commercial Cleaning",
+        url: "/cleaning-services/office-commercial-cleaning",
+      },
+      {
+        name: "Carpet & Upholstery Cleaning",
+        url: "/cleaning-services/carpet-upholstery-cleaning",
+      },
+      {
+        name: "Window Cleaning",
+        url: "/cleaning-services/window-cleaning",
+      },
+      {
+        name: "Deep Cleaning",
+        url: "/cleaning-services/deep-cleaning",
+      },
+      {
+        name: "Kitchen & Restaurant Cleaning",
+        url: "/cleaning-services/kitchen-restaurant-cleaning",
+      },
+      {
+        name: "Move-out Cleaning",
+        url: "/cleaning-services/move-out-cleaning",
+      },
+      {
+        name: "Water Tank Cleaning",
+        url: "/cleaning-services/water-tank-cleaning",
+      },
+      
+    ],
+  },
+
+  // {
+  //   name: "Indoor Renovation",
+  //   id: 4,
+  //   url: "/indoor-renovation",
+  //   description:
+  //     "Transform your interiors—whether modern upgrades, full remodels or cozy rental conversions. We'll help you find trusted craftsmen for every room.",
+  //   img: IndoorRenovationImg,
+
+  //   subcategories: [
+  //     {
+  //       name: "Full Renovation / Buildout",
+  //       url: "/indoor-renovation/full-renovation-buildout",
+  //     },
+  //     {
+  //       name: "Renovating Bathrooms",
+  //       url: "/indoor-renovation/renovating-bathrooms",
+  //     },
+  //     { name: "Floor Laying", url: "/indoor-renovation/floor-laying" },
+  //     {
+  //       name: "Interior Architect",
+  //       url: "/indoor-renovation/interior-architect",
+  //     },
+
+  //     {
+  //       name: "Waterproofing",
+  //       url: "/indoor-renovation/waterproofing",
+  //     },
+  //     {
+  //       name: "Microcement",
+  //       url: "/indoor-renovation/microcement",
+  //     },
+  //     {
+  //       name: "Tiling",
+  //       url: "/indoor-renovation/tiling",
+  //     },
+  //     {
+  //       name: "Painting & Wallpapering",
+  //       url: "/indoor-renovation/painting-wallpapering",
+  //     },
+  //     {
+  //       name: "Fireplace/Stove Installation",
+  //       url: "/indoor-renovation/fireplace-stove-installation",
+  //     },
+  //     {
+  //       name: "Concrete Floor Breaking",
+  //       url: "/indoor-renovation/concrete-floor-breaking",
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   name: " Home Services & Installations",
+  //   id: 5,
+  //   url: "/home-services-installations",
+  //   description:
+  //     "Support services that keep your home running smoothly. From security systems and cleaning, to EV chargers, pest control and moving help.",
+  //   img: CategoryHomeIcon,
+
+  //   subcategories: [
+  //     {
+  //       name: "Alarm & Security",
+  //       url: "/home-services-installations/alarm-security",
+  //     },
+  //     {
+  //       name: "Waste Disposal",
+  //       url: "/home-services-installations/waste-disposal",
+  //     },
+
+  //     {
+  //       name: "Car Services",
+  //       url: "/home-services-installations/car-services",
+  //     },
+  //     {
+  //       name: "EV Charger Install",
+  //       url: "/home-services-installations/ev-charger-install",
+  //     },
+
+  //     {
+  //       name: "Cleaning & Move-Out Services",
+  //       url: "/home-services-installations/cleaning-move-out-services",
+  //     },
+  //     {
+  //       name: "Pest Control",
+  //       url: "/home-services-installations/pest-control",
+  //     },
+
+  //     {
+  //       name: "Appliance Install & Assembly",
+  //       url: "/home-services-installations/appliance-install-assembly",
+  //     },
+  //     {
+  //       name: "Mechanical Workshops",
+  //       url: "/home-services-installations/mechanical-workshops",
+  //     },
+
+  //     {
+  //       name: "Sun Shading & Blinds",
+  //       url: "/home-services-installations/sun-shading-blinds",
+  //     },
+  //     {
+  //       name: "Surveyor/Valuation",
+  //       url: "/home-services-installations/surveyor-valuation",
+  //     },
+
+  //     {
+  //       name: "Transport & Equipment Rental",
+  //       url: "/home-services-installations/transport-equipment-rental",
+  //     },
+  //     {
+  //       name: "Solar Panels",
+  //       url: "/home-services-installations/solar-panels",
+  //     },
+  //   ],
+  // },
 ];
 
 export default function Header() {
