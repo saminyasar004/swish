@@ -43,6 +43,12 @@ export default function WhatNeedSearch() {
     }
   };
 
+  const handleSubmit = () => {
+    if (filteredJobs.length > 0) {
+      navigate(filteredJobs[highlightedIndex].url);
+    }
+  };
+
   return (
     <div className="relative w-full max-w-xl mx-auto">
       <Input
@@ -55,17 +61,13 @@ export default function WhatNeedSearch() {
         }}
         onKeyDown={handleKeyDown}
         placeholder="Hva trenger du hjelp til?"
-        className="h-12 pr-10 pl-4 shadow-md rounded-lg"
+        className="md:h-12 pr-10 pl-4 shadow-md rounded-lg"
       />
 
       <div
         // className="absolute top-1/2 right-3 -translate-y-1/2 text-primary cursor-pointer"
         className="cursor-pointer w-max p-1 bg-primary rounded-full flex item-center justify-center text-white absolute top-1/2 right-3 -translate-y-1/2"
-        onClick={() => {
-          if (filteredJobs.length > 0) {
-            navigate(filteredJobs[highlightedIndex].url);
-          }
-        }}
+        onClick={handleSubmit}
       >
         <ArrowRight />
       </div>
