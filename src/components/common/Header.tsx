@@ -856,6 +856,17 @@ function NavigationMenuSheetContent({
             />
           </Link>
           <Link
+            to="/company-search"
+            className="w-full flex items-center justify-between font-medium text-sm transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md"
+            onClick={() => setIsSheetOpen(false)}
+          >
+            Company search
+            <ChevronRight
+              size={16}
+              className="text-primary pointer-events-none"
+            />
+          </Link>
+          <Link
             to="/"
             className="w-full flex items-center justify-between font-medium text-sm transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md"
             onClick={() => setIsSheetOpen(false)}

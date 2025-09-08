@@ -102,6 +102,7 @@ export default function BusinessSearchWithLocation() {
     const job = jobName || search;
     const loc = locName || location;
     console.log("Searching for:", job, loc);
+    navigate("/company-search/results", { state: { job, location: loc } });
 
     // 🔥 Example: call backend
     // try {

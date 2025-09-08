@@ -1,4 +1,3 @@
-
 // import {
 //   Dialog,
 //   DialogContent,
@@ -76,7 +75,7 @@
 //                 })}
 //               />
 //               {errors.companyName && (
-//                 <p className="text-sm text-error">
+//                 <p className="text-xs text-error">
 //                   {errors.companyName.message}
 //                 </p>
 //               )}
@@ -127,7 +126,7 @@
 //           </div>
 
 //           {/* Row 3: Business Mail */}
-//           <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> 
+//           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 //             <div>
 //               <Label>Business Mail</Label>
 //               <Input
@@ -176,7 +175,7 @@
 //                    className="ring-2 ring-gray-200 col-span-2"
 //                     placeholder="Enter link..."
 //                     {...register(field.name as keyof FormData)}
-             
+
 //                   />
 //                 </div>
 //               ))}
@@ -199,12 +198,16 @@
 //   );
 // };
 
-
 // =============================
 // File: components/register/CompanyRegisterModal.tsx
 // =============================
 
-import { Dialog, DialogContent, DialogFooter, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -231,13 +234,15 @@ export type CompanyRegisterModalProps = {
   open: boolean;
   onClose: () => void;
   onSubmit: (data: CompanyFormData) => void;
-  onBack?: () => void; 
+  onBack?: () => void;
 };
 
-export const CompanyRegisterModal = ({  open,
+export const CompanyRegisterModal = ({
+  open,
   onClose,
   onSubmit,
-  onBack, }: CompanyRegisterModalProps) => {
+  onBack,
+}: CompanyRegisterModalProps) => {
   const {
     register,
     handleSubmit,
@@ -258,36 +263,56 @@ export const CompanyRegisterModal = ({  open,
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent
-        className="max-w-3xl"
-        onInteractOutside={(e) => e.preventDefault()}  // optional: block outside click
-        onEscapeKeyDown={(e) => e.preventDefault()}    // optional: block Esc
+        className="sm:max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-4xl shadow-2xl"
+        onInteractOutside={(e) => e.preventDefault()} // optional: block outside click
+        onEscapeKeyDown={(e) => e.preventDefault()} // optional: block Esc
       >
-        <div className="flex items-center gap-2 mb-2">
+        <div className="flex items-center gap-2">
           {onBack && (
             <button
               type="button"
               aria-label="Back"
-              className="p-1 rounded hover:bg-muted"
+              className="rounded-full p-1 bg-primary hover:bg-muted"
               onClick={onBack}
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
           )}
-          <DialogTitle className="text-2xl font-semibold">Company Info</DialogTitle>
+          <DialogTitle className="text-2xl font-semibold">
+            Company Info
+          </DialogTitle>
         </div>
 
-        <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-2">
+        <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-2 overflow-y-auto px-2">
           {/* Row 1 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <Label>Company Name</Label>
-              <Input className="ring-2 ring-gray-200 mt-2" placeholder="Enter Company Name" {...register("companyName", { required: "Company name is required" })} />
-              {errors.companyName && <p className="text-sm text-error">{errors.companyName.message}</p>}
+              <Input
+                className="ring-2 ring-gray-200 mt-1 lg:h-12"
+                placeholder="Enter Company Name"
+                {...register("companyName", {
+                  required: "Company name is required",
+                })}
+              />
+              {errors.companyName && (
+                <p className="text-xs text-error">
+                  {errors.companyName.message}
+                </p>
+              )}
             </div>
             <div>
               <Label>Org. number (ICE)</Label>
-              <Input className="ring-2 ring-gray-200 mt-2" placeholder="Enter ICE Number" {...register("orgNumber", { required: "Organization number is required" })} />
-              {errors.orgNumber && <p className="text-sm text-error">{errors.orgNumber.message}</p>}
+              <Input
+                className="ring-2 ring-gray-200 mt-1"
+                placeholder="Enter ICE Number"
+                {...register("orgNumber", {
+                  required: "Organization number is required",
+                })}
+              />
+              {errors.orgNumber && (
+                <p className="text-xs text-error">{errors.orgNumber.message}</p>
+              )}
             </div>
           </div>
 
@@ -295,13 +320,25 @@ export const CompanyRegisterModal = ({  open,
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <Label>Address</Label>
-              <Input className="ring-2 ring-gray-200 mt-2" placeholder="Company Address" {...register("address", { required: "Address is required" })} />
-              {errors.address && <p className="text-sm text-error">{errors.address.message}</p>}
+              <Input
+                className="ring-2 ring-gray-200 mt-1"
+                placeholder="Company Address"
+                {...register("address", { required: "Address is required" })}
+              />
+              {errors.address && (
+                <p className="text-xs text-error">{errors.address.message}</p>
+              )}
             </div>
             <div>
               <Label>City</Label>
-              <Input className="ring-2 ring-gray-200 mt-2" placeholder="Enter City" {...register("city", { required: "City is required" })} />
-              {errors.city && <p className="text-sm text-error">{errors.city.message}</p>}
+              <Input
+                className="ring-2 ring-gray-200 mt-1"
+                placeholder="Enter City"
+                {...register("city", { required: "City is required" })}
+              />
+              {errors.city && (
+                <p className="text-xs text-error">{errors.city.message}</p>
+              )}
             </div>
           </div>
 
@@ -310,23 +347,35 @@ export const CompanyRegisterModal = ({  open,
             <div>
               <Label>Business Mail</Label>
               <Input
-                className="ring-2 ring-gray-200 mt-2"
+                className="ring-2 ring-gray-200 mt-1"
                 placeholder="Enter Business Mail"
                 type="email"
                 {...register("mail", {
                   required: "Business mail is required",
-                  pattern: { value: /[^\s@]+@[^\s@]+\.[^\s@]+/, message: "Enter a valid email" },
+                  pattern: {
+                    value: /[^\s@]+@[^\s@]+\.[^\s@]+/,
+                    message: "Enter a valid email",
+                  },
                 })}
               />
-              {errors.mail && <p className="text-sm text-error">{errors.mail.message}</p>}
+              {errors.mail && (
+                <p className="text-xs text-error">{errors.mail.message}</p>
+              )}
             </div>
           </div>
 
           {/* About */}
           <div>
             <Label>About</Label>
-            <Textarea className="ring-2 ring-gray-200 mt-2" placeholder="Describe" rows={3} {...register("about", { required: "About section is required" })} />
-            {errors.about && <p className="text-sm text-error">{errors.about.message}</p>}
+            <Textarea
+              className="ring-2 ring-gray-200 mt-1"
+              placeholder="Describe"
+              rows={2}
+              {...register("about", { required: "About section is required" })}
+            />
+            {errors.about && (
+              <p className="text-xs text-error">{errors.about.message}</p>
+            )}
           </div>
 
           {/* Socials */}
@@ -340,16 +389,28 @@ export const CompanyRegisterModal = ({  open,
                 { name: "youtube", label: "YouTube" },
                 { name: "tiktok", label: "TikTok" },
               ].map((field) => (
-                <div key={field.name} className="grid grid-cols-3 gap-2 mt-2">
-                  <Input value={field.label} readOnly className="bg-gray-100 text-gray-700 col-span-1" />
-                  <Input className="ring-2 ring-gray-200 col-span-2" placeholder="Enter link..." {...register(field.name as keyof CompanyFormData)} />
+                <div key={field.name} className="grid grid-cols-3 gap-2 mt-1">
+                  <Input
+                    value={field.label}
+                    readOnly
+                    className="bg-gray-100 text-gray-700 col-span-1"
+                  />
+                  <Input
+                    className="ring-2 ring-gray-200 col-span-2"
+                    placeholder="Enter link..."
+                    {...register(field.name as keyof CompanyFormData)}
+                  />
                 </div>
               ))}
             </div>
           </div>
 
           <DialogFooter className="pt-4">
-            <Button type="submit" className="bg-green-500 hover:bg-green-600 text-white w-full" disabled={isSubmitting}>
+            <Button
+              type="submit"
+              className="bg-primary hover:bg-secondary text-white w-full transition-all ease-in-out duration-200 "
+              disabled={isSubmitting}
+            >
               {isSubmitting ? "Submitting..." : "Continue"}
             </Button>
           </DialogFooter>
@@ -358,4 +419,3 @@ export const CompanyRegisterModal = ({  open,
     </Dialog>
   );
 };
-

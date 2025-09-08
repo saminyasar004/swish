@@ -61,7 +61,7 @@ export default function WhatNeedSearch() {
         }}
         onKeyDown={handleKeyDown}
         placeholder="Hva trenger du hjelp til?"
-        className="md:h-12 pr-10 pl-4 shadow-md rounded-lg"
+        className="md:h-12 lg:h-14 pr-10 pl-4 shadow-md rounded-lg"
       />
 
       <div

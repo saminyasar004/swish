@@ -954,7 +954,7 @@ const handleFileClick = (type: "logo" | "wallpaper") => {
             onOpenChange={() => setCategoryModalOpen(false)}
           >
             <DialogContent
-              className="max-w-sm md:max-w-md lg:max-w-lg"
+              className="max-w-sm md:max-w-lg lg:max-w-xl xl:max-w-2xl"
               onInteractOutside={(e) => e.preventDefault()}
             >
               <DialogHeader className="flex items-center justify-between">
@@ -968,7 +968,7 @@ const handleFileClick = (type: "logo" | "wallpaper") => {
                 <DialogTitle>Select Categories</DialogTitle>
               </DialogHeader>
 
-              <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 py-6 items-start">
+              <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 lg:gap-6 md:py-6 items-start">
                 {(categories as Category[] | undefined)?.map((category) => (
                   <div key={String(category.id)}>
                     <button
@@ -1009,7 +1009,7 @@ const handleFileClick = (type: "logo" | "wallpaper") => {
             onOpenChange={() => setSubcategoryModalOpen(false)}
           >
             <DialogContent
-              className="max-w-sm md:max-w-md lg:max-w-lg"
+              className="max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
               onInteractOutside={(e) => e.preventDefault()}
             >
               <DialogHeader className="flex items-center justify-between">
@@ -1063,7 +1063,7 @@ const handleFileClick = (type: "logo" | "wallpaper") => {
 
           {/* Step 5: Upload */}
       <Dialog open={isUploadModalOpen} onOpenChange={() => setUploadModalOpen(false)}>
-    <DialogContent className="max-w-lg p-6 rounded-xl" onInteractOutside={(e) => e.preventDefault()}>
+    <DialogContent className=" max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl p-6 rounded-xl" onInteractOutside={(e) => e.preventDefault()}>
       <DialogHeader className="flex items-center justify-between">
         <Button className="flex justify-center self-start rounded-full" size="icon" onClick={() => handleBack("upload")}>
           <ArrowLeft className="w-5 h-5" />

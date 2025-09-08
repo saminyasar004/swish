@@ -286,7 +286,7 @@ export const CompanyOpeningHour = ({  open,
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent
-        className="max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl"
+        className="max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl"
         onInteractOutside={(e) => e.preventDefault()}  // optional
         onEscapeKeyDown={(e) => e.preventDefault()}    // optional
       >
@@ -295,7 +295,7 @@ export const CompanyOpeningHour = ({  open,
             <button
               type="button"
               aria-label="Back"
-              className="p-1 rounded hover:bg-muted"
+              className="rounded-full p-1 bg-primary hover:bg-muted"
               onClick={onBack}
             >
               <ArrowLeft className="h-5 w-5" />
@@ -327,20 +327,20 @@ export const CompanyOpeningHour = ({  open,
             <h3 className="text-lg font-semibold mb-4">Time Configuration</h3>
             {days.map((day) => (
               <div key={day} className="mb-4">
-                <Label className="block text-sm font-medium mb-2">{day}</Label>
+                <Label className="block text-sm font-medium mb-1">{day}</Label>
                 <div className="flex space-x-2">
                   <Controller
                     name={`companyOpeningHours.${day}.start` as const}
                     control={control}
                     render={({ field }) => (
-                      <input type="time" step="900" className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50 hover:border-gray-400" {...field} />
+                      <input type="time" step="900" className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 shadow-sm focus:border-green-500  focus:ring-opacity-50 hover:border-gray-400" {...field} />
                     )}
                   />
                   <Controller
                     name={`companyOpeningHours.${day}.end` as const}
                     control={control}
                     render={({ field }) => (
-                      <input type="time" step="900" className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50 hover:border-gray-400" {...field} />
+                      <input type="time" step="900" className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 shadow-sm focus:border-green-500  focus:ring-opacity-50 hover:border-gray-400" {...field} />
                     )}
                   />
                 </div>
