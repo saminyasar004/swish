@@ -35,6 +35,7 @@ export default {
         warning: "#ff523b",
         greyWhite: "#CFD2D9",
         solidWhite: "#FFFFFF",
+        muteWhite: "#F9FAFB",
         greenSplash: "#CBECD6",
         blackPrimary: "#000000",
         blackSecondary: "#374151",
