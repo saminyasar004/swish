@@ -14,8 +14,8 @@ import WindowsAndDoorsImg from "@/assets/images/windows-and-doors.svg";
 import SectionHeading from "@/components/common/SectionHeading";
 import { Link } from "react-router-dom";
 
-export default function Services() {
-  const services = [
+
+export const services = [
     { name: "Plumber", image: PlumberImg, url: "/trades/plumber" },
     { name: "Electrician", image: ElectricianImg, url: "/trades/electrician" },
     { name: "Masonry & Concrete Work", image: ConcreteImg, url: "/exterior-garden/masonry-concrete-work" },
@@ -29,6 +29,10 @@ export default function Services() {
     { name: "Solar Heater & AC Installation", image: SolarHeaterImg, url: "/exterior-garden/solar-heater-ac-installation" },
     { name: "Full Rem & Buildout", image: HouseRenovationImg, url: "/indoor-renovation/full-renovation-buildout" },
   ];
+  
+
+export default function Services() {
+  
 
   return (
     <section className="pb-12 pt-4 md:pb-20 lg:pb-24">

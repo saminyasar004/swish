@@ -618,14 +618,14 @@ export default function Header() {
     window.scrollTo(0, 0);
   }, [location]);
 
-  if (isUserProfileLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-[200px]">
-        <span className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></span>
-        <span className="ml-3 text-gray-600">Loading data...</span>
-      </div>
-    );
-  }
+  // if (isUserProfileLoading) {
+  //   return (
+  //     <div className="flex justify-center items-center min-h-[200px]">
+  //       <span className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></span>
+  //       <span className="ml-3 text-gray-600">Loading data...</span>
+  //     </div>
+  //   );
+  // }
 
   return (
     <header className="w-full h-auto bg-white/50 py-3 sticky top-0 z-50 backdrop-blur-lg shadow-sm transition-all duration-300 ease-in-out">
@@ -793,18 +793,25 @@ function NavigationMenuSheetContent({
 
         <Separator className="bg-slate-200" />
 
-        <div className="flex gap-1 flex-col items-center mt-2">
+        <div className="flex flex-col items-center mt-2">
           <Link
             to="/post-job"
-            className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md"
+            className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
             onClick={() => setIsSheetOpen(false)}
           >
             Post a job
           </Link>
+          <Link
+            to="/profile"
+            className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
+            onClick={() => setIsSheetOpen(false)}
+          >
+            Profile
+          </Link>
 
           <Link
             to="/"
-            className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md"
+            className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
             onClick={() => setIsSheetOpen(false)}
           >
             Register your business

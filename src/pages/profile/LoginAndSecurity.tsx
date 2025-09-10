@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function LoginAndSecurity() {
   return (
-    <div className="space-y-8 px-6">
+    <div className="space-y-8 px-6 my-12">
               {/* Password Section */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">

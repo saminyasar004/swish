@@ -50,6 +50,15 @@ export interface Route {
   layout?: JSX.Element;
 }
 
+// export const routesAfterLogged = [
+//   {
+//     path: "/profile",
+//     element: Profile,
+//     layout: ProfileLayout,
+//   },
+// ]
+
+
 export const routes = [
   {
     path: "/",
@@ -103,6 +112,21 @@ export const routes = [
   },
   {
     path: "/profile",
+    element: Profile,
+    layout: ProfileLayout,
+  },
+  {
+    path: "/profile/login-security",
+    element: Profile,
+    layout: ProfileLayout,
+  },
+  {
+    path: "/profile/notifications",
+    element: Profile,
+    layout: ProfileLayout,
+  },
+  {
+    path: "/profile/customer-service",
     element: Profile,
     layout: ProfileLayout,
   },

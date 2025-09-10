@@ -2,7 +2,7 @@
 
 export default function Notification() {
   return (
-   <div className="bg-white p-6 ">
+   <div className="bg-white p-6 my-12">
               <h3 className="text-xl font-semibold text-gray-900 mb-8">
                 Notifications
               </h3>
