@@ -41,8 +41,9 @@ import JobSetting from "@/pages/ServiceProvider/myBusiness/jobSetting/JobSetting
 import MyBids from "@/pages/ServiceProvider/myBusiness/myBids/MyBids";
 import ProfileLayout from "@/components/common/ProfileLayout";
 import StatusPage from "@/components/common/StatusPage";
-import FindCompany from "@/pages/loggedInUser/FindCompany";
-import FindCompanyResult from "@/pages/loggedInUser/FindCompanyResult";
+import FindCompany from "@/pages/loggedInUserFindCompany/FindCompany";
+import FindCompanyResult from "@/pages/loggedInUserFindCompany/FindCompanyResult";
+import CompanyProfileHome from "@/pages/companyPorfile/CompanyProfileHome";
 
 export interface Route {
   path: string;
@@ -57,7 +58,6 @@ export interface Route {
 //     layout: ProfileLayout,
 //   },
 // ]
-
 
 export const routes = [
   {
@@ -128,6 +128,13 @@ export const routes = [
   {
     path: "/profile/customer-service",
     element: Profile,
+    layout: ProfileLayout,
+  },
+
+  // COMPANY PROFILE
+  {
+    path: "/company-search/:id",
+    element: CompanyProfileHome,
     layout: ProfileLayout,
   },
   // trades
