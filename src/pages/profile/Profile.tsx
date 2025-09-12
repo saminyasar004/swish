@@ -16,11 +16,15 @@ import ProfileSidebar from "./ProfileSidebar";
 import PersonalInfo from "./PersonalInfo";
 import LoginAndSecurity from "./LoginAndSecurity";
 import Notification from "./Notification";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import CustomerService from "./CustomerService";
+import { useAppDispatch } from "@/redux/hooks";
+import { logout } from "@/redux/features/auth/authSlice";
+import { toast } from "sonner";
 
 export default function Profile() {
   const { pathname } = useLocation();
+
 
   let content;
   if (pathname === "/profile") content = <PersonalInfo />;

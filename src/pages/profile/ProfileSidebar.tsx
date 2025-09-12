@@ -5,9 +5,9 @@ import GraphicsIcon from "@/assets/images/GraphicsIcon.svg";
 import NotificationsIcon from "@/assets/images/NotificationsIcon.svg";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Edit, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
-import { useAppSelector } from "@/redux/hooks";
-import { selectCurrentToken } from "@/redux/features/auth/authSlice";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { logout, selectCurrentToken } from "@/redux/features/auth/authSlice";
 import { useGetUserProfileQuery } from "@/redux/features/users/user.category.api";
 
 import profileIconBlack from "@/assets/icon/profileIconBlack.svg";
@@ -20,6 +20,7 @@ import notificationIconBlack from "@/assets/icon/notificationIconBlack.svg";
 import customerIconLight from "@/assets/icon/customerIconLight.svg";
 import customerIconBlack from "@/assets/icon/customerIconBlack.svg";
 import logoutIconRed from "@/assets/icon/logoutIconRed.svg";
+import { toast } from "sonner";
 
 const menuItems = [
   {
@@ -55,6 +56,18 @@ export default function ProfileSidebar({
 }) {
   const token = useAppSelector(selectCurrentToken);
    const { pathname } = useLocation();
+
+       const dispatch = useAppDispatch();
+       const navigate = useNavigate();
+     
+       const handleLogOut = () => {
+         dispatch(logout());
+         toast.success("Logout Successful");
+         setTimeout(() => {
+           navigate("/login");
+         }, 500);
+       };
+     
 
   // GET PROFILE
   const { data: userProfile, isLoading: isUserProfileLoading } =
@@ -157,7 +170,7 @@ export default function ProfileSidebar({
           })}
         </ul>
 
-        <Button className="w-full mt-3 bg-transparent text-red-500 font-semibold justify-start hover:text-red-600 px-3 py-3 gap-3 rounded-md hover:bg-red-50">
+        <Button onClick={handleLogOut} className="w-full mt-3 bg-transparent text-red-500 font-semibold justify-start hover:text-red-600 px-3 py-3 gap-3 rounded-md hover:bg-red-50">
           <img src={logoutIconRed} alt="Logout icon" className="w-5 h-5" />
           Logout
         </Button>
