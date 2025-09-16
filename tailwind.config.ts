@@ -26,9 +26,9 @@ export default {
       },
       colors: {
         primary: "#57B576",
+        secondary: "#1a482a",
         liquidGreen: "#EEF8F1",
         darkGreen: "#57B576",
-        secondary: "#1a482a",
         accent: "#0c381b",
         accentDark: "#082c14",
         primaryDark: "#101F41",
@@ -40,6 +40,13 @@ export default {
         blackPrimary: "#000000",
         blackSecondary: "#374151",
         error: "#f56565",
+
+        // FOR COMPANY DASHBOARD
+        providerPrimary: "#1D2534",
+        providerSecondary: "#F4F4F4",
+        providerBlackSecondary: "#262626",
+        providerWhitePrimary: "#F8FAFC",
+        providerWhiteSecondary: "#E5E5E5",
       },
       keyframes: {
         "accordion-down": {
