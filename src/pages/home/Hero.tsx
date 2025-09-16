@@ -94,7 +94,7 @@ export default function Hero() {
           <WhatNeedSearch />
 
           <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 py-6 items-start">
-            {categories?.map((category, index) => (
+            {categories?.slice(0, 7).map((category, index) => (
               <Link to={category.url} key={index}>
                 <div className="w-full flex flex-col gap-2 md:gap-4 items-center justify-center py-4 hover:text-primary hover:underline">
                   <img

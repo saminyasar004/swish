@@ -46,21 +46,24 @@ export default function BusinessCard({
           </Link>
 
           <div className="flex flex-col gap-1">
-            <Link to={`/company-search/${id}`}> <h2 className="font-bold text-lg">{name}</h2></Link>
+            <Link to={`/company-search/${id}`}>
+              {" "}
+              <h2 className="font-bold text-lg">{name}</h2>
+            </Link>
 
             {/* Rating */}
             <div className="flex items-center gap-1 text-sm text-gray-600">
               <Star className="text-yellow-400 fill-yellow-400 w-4 h-4" />
               <span className="font-semibold">{rating.toFixed(1)}</span>
               <span>({reviewsCount})</span>
-              
+
               <Link to={`/company-search/${id}`}>
-              <a
-                href={referencesUrl}
-                className="text-darkGreen hover:underline ml-2 transition-all duration-300 ease-in-out"
-              >
-                See references
-              </a>
+                <a
+                  href={referencesUrl}
+                  className="text-darkGreen hover:underline ml-2 transition-all duration-300 ease-in-out"
+                >
+                  See references
+                </a>
               </Link>
             </div>
 
@@ -79,12 +82,14 @@ export default function BusinessCard({
         </div>
 
         {/* Right: CTA button */}
-        <Button
-          variant="outline"
-          className="text-secondary border-primary font-semibold hover:bg-primary/20"
-        >
-          Request a quote
-        </Button>
+        <Link to={`/request-quote/${id}`}>
+          <Button
+            variant="outline"
+            className="text-secondary border-primary font-semibold hover:bg-primary/20"
+          >
+            Request a quote
+          </Button>
+        </Link>
       </div>
 
       {/* Business description */}

@@ -14,6 +14,7 @@ import MyJobs from "./AfterLoggedIn/MyJobs";
 import PrevUsedCompany from "./AfterLoggedIn/PrevUsedCompany";
 import { useGetUserProfileQuery } from "@/redux/features/users/user.category.api";
 import { useSelector } from "react-redux";
+import ProcessNewOne from "./ProcessNewOne";
 
 export default function Home() {
   const token = useSelector(selectCurrentToken);
@@ -34,12 +35,12 @@ export default function Home() {
           <LoggedServices />
           <Feature />
           <SearchBusiness />
-          <BusinessSignup />
+          {/* <BusinessSignup /> */}
         </>
       ) : (
         <>
           <Hero />
-          <Process />
+          <ProcessNewOne />
           <Services />
           <Feature />
           <SearchBusiness />

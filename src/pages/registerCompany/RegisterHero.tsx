@@ -593,6 +593,7 @@ import {
 } from "./CompanyOpeningHoure";
 import { ArrowLeft } from "lucide-react";
 import { set } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 // Types
 export type Category = { id: number | string; name: string; img: string };
@@ -765,28 +766,30 @@ export default function RegisterHero() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-const handleFileChange = (
-  e: React.ChangeEvent<HTMLInputElement>,
-  type: "logo" | "wallpaper"
-) => {
-  const file = e.target.files?.[0] ?? null;  // Get the selected file
-  if (!file) return;  // If no file is selected, do nothing
+  const handleFileChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    type: "logo" | "wallpaper"
+  ) => {
+    const file = e.target.files?.[0] ?? null; // Get the selected file
+    if (!file) return; // If no file is selected, do nothing
 
-  // Create a preview URL for the image
-  const previewURL = URL.createObjectURL(file);
+    // Create a preview URL for the image
+    const previewURL = URL.createObjectURL(file);
 
-  // Update the formData to store the file and its preview URL
-  setFormData((prev) => ({
-    ...prev,
-    [type]: file,  // Store the file itself
-    ...(type === "logo" ? { logoPreview: previewURL } : { wallpaperPreview: previewURL }), // Update the preview
-  }));
-};
+    // Update the formData to store the file and its preview URL
+    setFormData((prev) => ({
+      ...prev,
+      [type]: file, // Store the file itself
+      ...(type === "logo"
+        ? { logoPreview: previewURL }
+        : { wallpaperPreview: previewURL }), // Update the preview
+    }));
+  };
 
-const handleFileClick = (type: "logo" | "wallpaper") => {
-  // Trigger the file input when the image is clicked
-  document.getElementById(type)?.click();
-};
+  const handleFileClick = (type: "logo" | "wallpaper") => {
+    // Trigger the file input when the image is clicked
+    document.getElementById(type)?.click();
+  };
 
   const handleUploadModalSubmit = () => {
     const payload = {
@@ -805,7 +808,7 @@ const handleFileClick = (type: "logo" | "wallpaper") => {
   };
 
   return (
-    <section className="py-16 md:py-24 lg:py-32 bg-secondary">
+    <section className="py-16 md:py-24 lg:py-32 bg-providerPrimary">
       <div className="container mx-auto grid lg:grid-cols-2 items-center gap-6 px-4">
         {/* Left */}
         <div className="flex justify-center lg:justify-start">
@@ -913,9 +916,10 @@ const handleFileClick = (type: "logo" | "wallpaper") => {
 
               <div className="pt-2">
                 <Button
+                  variant="outline"
                   type="button"
                   onClick={handleContinueClick}
-                  className="w-full h-12 text-sm font-medium"
+                  className="w-full h-12 text-sm font-medium bg-transparent border-2 border-solidWhite text-solidWhite hover:bg-solidWhite hover:text-blackPrimary transition-all duration-300 ease-in-out"
                   disabled={
                     !formData.companyName.trim() || !isPhoneValid(phone)
                   }
@@ -924,6 +928,23 @@ const handleFileClick = (type: "logo" | "wallpaper") => {
                 </Button>
               </div>
             </form>
+
+            <div className="mt-4 space-y-2 text-xs text-solidWhite flex flex-col text-center">
+  <p>
+    By continuing to register, you agree to the terms of use of MyTender. You
+    can read more about the processing of personal data here.
+  </p>
+  <p className="text-sm text-muted-foreground">
+    Already have an account?{" "}
+    <Link
+      to="/login"
+      className="font-semibold underline text-solidWhite"
+    >
+      Log in
+    </Link>
+  </p>
+</div>
+
           </div>
 
           {/* Step 2 */}
@@ -1062,75 +1083,119 @@ const handleFileClick = (type: "logo" | "wallpaper") => {
           </Dialog>
 
           {/* Step 5: Upload */}
-      <Dialog open={isUploadModalOpen} onOpenChange={() => setUploadModalOpen(false)}>
-    <DialogContent className=" max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl p-6 rounded-xl" onInteractOutside={(e) => e.preventDefault()}>
-      <DialogHeader className="flex items-center justify-between">
-        <Button className="flex justify-center self-start rounded-full" size="icon" onClick={() => handleBack("upload")}>
-          <ArrowLeft className="w-5 h-5" />
-        </Button>
-        <DialogTitle className="text-center text-2xl font-semibold flex-1">Upload Company Logo & Pictures</DialogTitle>
-      </DialogHeader>
+          <Dialog
+            open={isUploadModalOpen}
+            onOpenChange={() => setUploadModalOpen(false)}
+          >
+            <DialogContent
+              className=" max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl p-6 rounded-xl"
+              onInteractOutside={(e) => e.preventDefault()}
+            >
+              <DialogHeader className="flex items-center justify-between">
+                <Button
+                  className="flex justify-center self-start rounded-full"
+                  size="icon"
+                  onClick={() => handleBack("upload")}
+                >
+                  <ArrowLeft className="w-5 h-5" />
+                </Button>
+                <DialogTitle className="text-center text-2xl font-semibold flex-1">
+                  Upload Company Logo & Pictures
+                </DialogTitle>
+              </DialogHeader>
 
-      <div className="space-y-8 py-6">
-        {["logo", "wallpaper"].map((type) => (
-          <div key={type} className="text-center">
-            <p className="mb-3 font-medium">Upload {type === "logo" ? "Logo" : "Wallpaper"}</p>
-            <div className="border border-blackSecondary rounded-lg p-6 text-blackSecondary cursor-pointer hover:border-primary transition relative">
-              <div className="flex flex-col items-center">
-                {/* Display preview image if available */}
-                {(type === "logo" ? formData.logoPreview : formData.wallpaperPreview) ? (
-                  <img
-                    src={(type === "logo" ? formData.logoPreview : formData.wallpaperPreview) as string}
-                    alt={`${type} preview`}
-                    className="max-h-32 mb-2 rounded-md object-contain cursor-pointer"
-                    onClick={() => handleFileClick(type as "logo" | "wallpaper")}  // Clicking the image will trigger file input
-                  />
-                ) : (
-                  <>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blackSecondary mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12V4m0 0l-4 4m4-4l4 4" />
-                    </svg>
-                    <p>
-                      Drag and drop file or <label htmlFor={type} className="text-primary cursor-pointer">Choose file</label>
+              <div className="space-y-8 py-6">
+                {["logo", "wallpaper"].map((type) => (
+                  <div key={type} className="text-center">
+                    <p className="mb-3 font-medium">
+                      Upload {type === "logo" ? "Logo" : "Wallpaper"}
                     </p>
-                    <p className="text-xs mt-1">Recommended size: 126px x 126px, PNG or JPEG</p>
-                  </>
-                )}
+                    <div className="border border-blackSecondary rounded-lg p-6 text-blackSecondary cursor-pointer hover:border-primary transition relative">
+                      <div className="flex flex-col items-center">
+                        {/* Display preview image if available */}
+                        {(
+                          type === "logo"
+                            ? formData.logoPreview
+                            : formData.wallpaperPreview
+                        ) ? (
+                          <img
+                            src={
+                              (type === "logo"
+                                ? formData.logoPreview
+                                : formData.wallpaperPreview) as string
+                            }
+                            alt={`${type} preview`}
+                            className="max-h-32 mb-2 rounded-md object-contain cursor-pointer"
+                            onClick={() =>
+                              handleFileClick(type as "logo" | "wallpaper")
+                            } // Clicking the image will trigger file input
+                          />
+                        ) : (
+                          <>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-6 w-6 text-blackSecondary mb-2"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12V4m0 0l-4 4m4-4l4 4"
+                              />
+                            </svg>
+                            <p>
+                              Drag and drop file or{" "}
+                              <label
+                                htmlFor={type}
+                                className="text-primary cursor-pointer"
+                              >
+                                Choose file
+                              </label>
+                            </p>
+                            <p className="text-xs mt-1">
+                              Recommended size: 126px x 126px, PNG or JPEG
+                            </p>
+                          </>
+                        )}
+                      </div>
+                      {/* File input for changing logo or wallpaper */}
+                      <input
+                        type="file"
+                        id={type}
+                        onChange={(e) =>
+                          handleFileChange(e, type as "logo" | "wallpaper")
+                        }
+                        className="hidden"
+                        accept="image/png, image/jpeg"
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
-              {/* File input for changing logo or wallpaper */}
-              <input
-                type="file"
-                id={type}
-                onChange={(e) => handleFileChange(e, type as "logo" | "wallpaper")}
-                className="hidden"
-                accept="image/png, image/jpeg"
-              />
-            </div>
-          </div>
-        ))}
-      </div>
 
-      <DialogFooter className="flex justify-center gap-4">
-        <Button
-          type="button"
-          variant="outline"
-          className="border-primary text-primary hover:bg-liquidGreen"
-          onClick={handleUploadModalSubmit}  // Trigger submit action even if skipped
-        >
-          Skip
-        </Button>
+              <DialogFooter className="flex justify-center gap-4">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="border-primary text-primary hover:bg-liquidGreen"
+                  onClick={handleUploadModalSubmit} // Trigger submit action even if skipped
+                >
+                  Skip
+                </Button>
 
-        <Button
-          type="button"
-          className="bg-primary text-solidWhite"
-          onClick={handleUploadModalSubmit}  // Trigger submit action
-        >
-          Confirm
-        </Button>
-      </DialogFooter>
-    </DialogContent>
-  </Dialog>
-
+                <Button
+                  type="button"
+                  className="bg-primary text-solidWhite"
+                  onClick={handleUploadModalSubmit} // Trigger submit action
+                >
+                  Confirm
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </section>

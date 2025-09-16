@@ -60,7 +60,7 @@ export default function WhatNeedSearch() {
           setHighlightedIndex(0);
         }}
         onKeyDown={handleKeyDown}
-        placeholder="Hva trenger du hjelp til?"
+        placeholder="What do you need help with?"
         className="md:h-12 lg:h-14 pr-10 pl-4 shadow-md rounded-lg"
       />
 

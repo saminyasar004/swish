@@ -619,6 +619,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import BusinessProfileImage from "@/assets/images/BusinessProfileImage.svg";
 import SearchCompanyLogo from "@/assets/images/SearchCompanyLogo.svg";
+import { Link } from "react-router-dom";
 
 type RatingBarProps = { label: string; value: number; total: number };
 const RatingBar: React.FC<RatingBarProps> = ({ label, value, total }) => {
@@ -1028,6 +1029,7 @@ export default function CompanyProfileInfo() {
     },
     logo: SearchCompanyLogo,
     cover: BusinessProfileImage,
+    id: 1,
   };
 
   return (
@@ -1071,9 +1073,11 @@ export default function CompanyProfileInfo() {
               </div>
             </div>
 
-            <Button className="h-12 whitespace-nowrap font-semibold">
-              Request a quote from the company
-            </Button>
+            <Link to={`/request-quote/${company.id}`}>
+              <Button className="h-12 whitespace-nowrap font-semibold">
+                Request a quote from the company
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

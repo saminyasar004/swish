@@ -38,7 +38,8 @@ import adminlegal from "@/assets/images/admin&legal.svg";
 import techEnergy from "@/assets/images/techEnergy.svg";
 import MovingTransport from "@/assets/images/MovingTransport.svg";
 import CleaningServices from "@/assets/images/CleaningServices.svg";
-import Construction from "@/assets/images/Construction.svg";
+import CustomTasks from "@/assets/icon/CustomTasks.svg";
+import PestControl from "@/assets/icon/PestControl.svg";
 import {
   useAllCategoryListQuery,
   useGetUserProfileQuery,
@@ -62,6 +63,7 @@ export interface CategoryProps {
   id: number;
   url: string;
   img?: string;
+  description: string;
   subcategories?: SubCategoryProps[];
 }
 
@@ -79,6 +81,7 @@ export const categories = [
       {
         name: "General Contractor",
         url: "/new-construction-permits/contractor",
+        
       },
       {
         name: "Project Manager",
@@ -447,7 +450,7 @@ export const categories = [
         name: "Home Cleaning",
         url: "/cleaning-services/home-cleaning",
       },
-      
+
       {
         name: "Office & Commercial Cleaning",
         url: "/cleaning-services/office-commercial-cleaning",
@@ -476,7 +479,71 @@ export const categories = [
         name: "Water Tank Cleaning",
         url: "/cleaning-services/water-tank-cleaning",
       },
-      
+    ],
+  },
+
+  {
+    name: "Pest Control",
+    id: 8,
+    url: "/post-job",
+    description:
+      "Protect your home and office with our professional pest control services. Safe, effective, and reliable solutions to keep your space pest-free.",
+    img: PestControl,
+
+    subcategories: [
+      {
+        name: "Cockroaches",
+        url: "/pest-control/cockroaches",
+      },
+
+      {
+        name: "Mosquito Control",
+        url: "/pest-control/mosquito-control",
+      },
+      {
+        name: "Termites",
+        url: "/pest-control/Bed Bugs",
+      },
+      {
+        name: "Rodents",
+        url: "/pest-control/rodents",
+      },
+      {
+        name: "Disinfection Services",
+        url: "/pest-control/disinfection-services",
+      },
+    ],
+  },
+
+  {
+    name: "Custom Tasks",
+    id: 9,
+    url: "/post-job",
+    description:
+      "Get any task done your way with our flexible and reliable custom services. We handle it all, so you don’t have to worry.",
+    img: CustomTasks,
+
+    subcategories: [
+      {
+        name: "Describe Your Task Freely",
+        url: "/custom-tasks/describe-your-task-freely",
+      },
+      {
+        name: "Office Moving",
+        url: "/custom-tasks/office-moving",
+      },
+      {
+        name: "Furniture Assembly & Disassembly",
+        url: "/custom-tasks/furniture-assembly-disassembly",
+      },
+      {
+        name: "Upload Images or Videos",
+        url: "/custom-tasks/upload-images-videos",
+      },
+      {
+        name: "Get Matched with Professionals",
+        url: "/custom-tasks/get-matched-with-professionals",
+      },
     ],
   },
 
@@ -793,30 +860,56 @@ function NavigationMenuSheetContent({
 
         <Separator className="bg-slate-200" />
 
-        <div className="flex flex-col items-center mt-2">
-          <Link
-            to="/post-job"
-            className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
-            onClick={() => setIsSheetOpen(false)}
-          >
-            Post a job
-          </Link>
-          <Link
-            to="/profile"
-            className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
-            onClick={() => setIsSheetOpen(false)}
-          >
-            Profile
-          </Link>
+        {userProfile ? (
+          <div className="flex flex-col items-center mt-2">
+            <Link
+              to="/"
+              className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
+            >
+              Home
+            </Link>
+            <Link
+              to="/post-job"
+              className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
+              onClick={() => setIsSheetOpen(false)}
+            >
+              Post a job
+            </Link>
+            <Link
+              to="/profile"
+              className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
+              onClick={() => setIsSheetOpen(false)}
+            >
+              Profile
+            </Link>
 
-          <Link
-            to="/"
-            className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
-            onClick={() => setIsSheetOpen(false)}
-          >
-            Register your business
-          </Link>
-        </div>
+            <Link
+              to="/my-post"
+              className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
+              onClick={() => setIsSheetOpen(false)}
+            >
+              My Jobs
+            </Link>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center mt-2">
+            <Link
+              to="/post-job"
+              className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
+              onClick={() => setIsSheetOpen(false)}
+            >
+              Post a job
+            </Link>
+
+            <Link
+              to="/"
+              className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
+              onClick={() => setIsSheetOpen(false)}
+            >
+              Register your business
+            </Link>
+          </div>
+        )}
 
         <Separator className="bg-slate-200" />
 
@@ -851,17 +944,6 @@ function NavigationMenuSheetContent({
         <Separator className="bg-slate-200" />
 
         <div className="py-5 flex flex-col gap-1">
-          <Link
-            to="/my-post"
-            className="w-full flex items-center justify-between font-medium text-sm transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md"
-            onClick={() => setIsSheetOpen(false)}
-          >
-            My Post
-            <ChevronRight
-              size={16}
-              className="text-primary pointer-events-none"
-            />
-          </Link>
           <Link
             to="/company-search"
             className="w-full flex items-center justify-between font-medium text-sm transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md"

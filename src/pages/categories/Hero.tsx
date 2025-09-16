@@ -21,7 +21,7 @@ export default function Hero() {
           <div className="cursor-pointer w-max p-1 bg-primary rounded-full flex item-center justify-center text-white absolute top-1/2 right-3 -translate-y-1/2">
             <ArrowRight size={18} />
           </div> */}
-        <WhatNeedSearch/>
+          <WhatNeedSearch />
         </div>
       </div>
     </section>

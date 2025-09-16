@@ -23,7 +23,7 @@ import Plumber from "@/pages/services/trades/Plumber";
 import Bathrooms from "@/pages/services/renovation/Bathrooms";
 import FloorLaying from "@/pages/services/renovation/FloorLaying";
 import Profile from "@/pages/profile/Profile";
-import RegisterCompany from "@/pages/company/RegisterCompany";
+import RegisterCompany from "@/pages/registerCompany/RegisterCompany";
 import ServiceLayout from "@/components/common/ServiceLayout";
 import Working from "@/pages/ServiceProvider/serviceHome/Working";
 import ServiceHome from "@/pages/ServiceProvider/serviceHome/ServiceHome";
@@ -44,6 +44,8 @@ import StatusPage from "@/components/common/StatusPage";
 import FindCompany from "@/pages/loggedInUserFindCompany/FindCompany";
 import FindCompanyResult from "@/pages/loggedInUserFindCompany/FindCompanyResult";
 import CompanyProfileHome from "@/pages/companyPorfile/CompanyProfileHome";
+import RequestQuoteCategory from "@/pages/requestAQuoteFromCompany/RequestQuoteCategory";
+import LayoutRegisterCompany from "@/pages/registerCompany/LayoutRegisterCompany";
 
 export interface Route {
   path: string;
@@ -83,10 +85,12 @@ export const routes = [
     path: "/login",
     element: Login,
   },
+
+  // REGISTER COMPANY
   {
     path: "/register-company",
     element: RegisterCompany,
-    layout: Layout,
+    layout: LayoutRegisterCompany,
   },
   {
     path: "/forgot-password",
@@ -135,6 +139,11 @@ export const routes = [
   {
     path: "/company-search/:id",
     element: CompanyProfileHome,
+    layout: ProfileLayout,
+  },
+  {
+    path: "/request-quote/:id",
+    element: RequestQuoteCategory,
     layout: ProfileLayout,
   },
   // trades
