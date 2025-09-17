@@ -46,6 +46,13 @@ import FindCompanyResult from "@/pages/loggedInUserFindCompany/FindCompanyResult
 import CompanyProfileHome from "@/pages/companyPorfile/CompanyProfileHome";
 import RequestQuoteCategory from "@/pages/requestAQuoteFromCompany/RequestQuoteCategory";
 import LayoutRegisterCompany from "@/pages/registerCompany/LayoutRegisterCompany";
+import HelpCenter from "@/pages/helpCenterArticle/HelpCenter";
+import HowSwishWorks from "@/pages/helpCenterArticle/HowSwishWorks";
+import HowChooseRightCompany from "@/pages/helpCenterArticle/HowChooseRightCompany";
+import ProblemResolution from "@/pages/helpCenterArticle/ProblemResolution";
+import reviewsOnSwishma from "@/pages/helpCenterArticle/ReviewsOnSwishma";
+import WriteGoodJobDescription from "@/pages/helpCenterArticle/WriteGoodJobDescription";
+import HelpCenterFaq from "@/pages/helpCenterArticle/HelpCenterFaq";
 
 export interface Route {
   path: string;
@@ -86,12 +93,6 @@ export const routes = [
     element: Login,
   },
 
-  // REGISTER COMPANY
-  {
-    path: "/register-company",
-    element: RegisterCompany,
-    layout: LayoutRegisterCompany,
-  },
   {
     path: "/forgot-password",
     element: ForgotPassword,
@@ -114,6 +115,8 @@ export const routes = [
     element: Contact,
     layout: Layout,
   },
+
+  // PROFILE
   {
     path: "/profile",
     element: Profile,
@@ -135,7 +138,44 @@ export const routes = [
     layout: ProfileLayout,
   },
 
-  // COMPANY PROFILE
+  // HELP CENTER
+  {
+    path: "/help-center",
+    element: HelpCenter,
+    layout: Layout,
+  },
+  {
+    path: "/articles/help-center/how-swish-works",
+    element: HowSwishWorks,
+    layout: Layout,
+  },
+  {
+    path: "/articles/help-center/choose-company",
+    element: HowChooseRightCompany,
+    layout: Layout,
+  },
+  {
+    path: "/articles/help-center/problem-resolution",
+    element: ProblemResolution,
+    layout: Layout,
+  },
+  {
+    path: "/articles/help-center/reviews-swishma",
+    element: reviewsOnSwishma,
+    layout: Layout,
+  },
+  {
+    path: "/articles/help-center/write-good-job-description",
+    element: WriteGoodJobDescription,
+    layout: Layout,
+  },
+  {
+    path: "/articles/help-center/faq",
+    element: HelpCenterFaq,
+    layout: Layout,
+  },
+
+  // COMPANY PROFILE REGISTER COMPANY
   {
     path: "/company-search/:id",
     element: CompanyProfileHome,
@@ -146,6 +186,12 @@ export const routes = [
     element: RequestQuoteCategory,
     layout: ProfileLayout,
   },
+  {
+    path: "/register-company",
+    element: RegisterCompany,
+    layout: LayoutRegisterCompany,
+  },
+
   // trades
   {
     path: "/trades",

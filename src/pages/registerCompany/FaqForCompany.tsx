@@ -3,9 +3,9 @@ import { ChevronDown, ChevronUp } from "lucide-react"
 
 const faqs = [
   {
-    question: "What is MyTender?",
+    question: "What Job are available on Swish.ma",
     answer:
-      "MyTender is a platform that connects businesses with tenders and opportunities tailored to their needs.",
+      "On Swish.ma there is a varied selection of jobs for different industries. Every day, assignments are posted for everything from electricians, painters and plumbers, to moving companies, cleaning companies and architects. There is therefore a high probability that your company will find jobs that suit you! . Regardless of whether your company wants small jobs or larger projects, you will find relevant projects with us!",
   },
   {
     question: "How can I register my company?",

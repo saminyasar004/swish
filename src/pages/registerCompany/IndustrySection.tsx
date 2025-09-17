@@ -50,42 +50,26 @@ const IndustrySection = () => {
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10 text-center w-full max-w-4xl">
           {/* Stat 1 */}
-          <div className="flex flex-col items-center">
-            <img
-              src={jobsLastYear}
-              alt="Job volume icon"
-              className="mb-2 w-6 h-6"
-            />
-            <h3 className="text-xl font-bold text-providerWhitePrimary">
-              211 000
-            </h3>
-            <p className="text-sm text-providerWhiteSecondary">
-              Jobs in the last year
-            </p>
+          <div className="flex flex-col  items-center">
+            <img src={jobsLastYear} alt="Job volume icon" />
+            <h3 className="text-xl font-bold text-providerWhitePrimary mt-3">5M+</h3>
+            <p className="text-sm text-providerWhiteSecondary">Households</p>
           </div>
 
           {/* Stat 2 */}
           <div className="flex flex-col items-center">
-            <img
-              src={responseIcon}
-              alt="Message icon"
-              className="mb-2 w-6 h-6"
-            />
-            <h3 className="text-xl font-bold text-providerWhitePrimary">4</h3>
-            <p className="text-sm text-providerWhiteSecondary">
-              Average response per job
-            </p>
+            <img src={responseIcon} alt="Message icon" />
+            <h3 className="text-xl font-bold text-providerWhitePrimary mt-3">
+              36M+{" "}
+            </h3>
+            <p className="text-sm text-providerWhiteSecondary">People</p>
           </div>
 
           {/* Stat 3 */}
           <div className="flex flex-col items-center">
-            <img src={avgPriceIcon} alt="Star icon" className="mb-2 w-6 h-6" />
-            <h3 className="text-xl font-bold text-providerWhitePrimary">
-              32 000
-            </h3>
-            <p className="text-sm text-providerWhiteSecondary">
-              Average price per job
-            </p>
+            <img src={avgPriceIcon} alt="Star icon" />
+            <h3 className="text-xl font-bold text-providerWhitePrimary mt-3">1</h3>
+            <p className="text-sm text-providerWhiteSecondary">Platform</p>
           </div>
         </div>
       </div>
