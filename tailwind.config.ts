@@ -43,6 +43,7 @@ export default {
 
         // FOR COMPANY DASHBOARD
         providerPrimary: "#1D2534",
+        providerAccent: "#11151f",
         providerSecondary: "#F4F4F4",
         providerBlackSecondary: "#262626",
         providerWhitePrimary: "#F8FAFC",
