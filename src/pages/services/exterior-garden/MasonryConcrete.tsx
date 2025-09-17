@@ -7,7 +7,7 @@ import SectionBgSketch from "@/assets/images/section-bg-sketch.svg";
 
 export default function MasonryConcrete() {
   const solarHeaterHeaderContent = {
-    title: "Are you need Masonry & Concrete Work?",
+    title: "Are you in need Masonry & Concrete Work?",
     description:
       "We offer expert masonry and concrete services, from custom brickwork to durable foundations, driveways, and patios. Quality craftsmanship and reliable results, built to last.",
     items: [
@@ -146,7 +146,7 @@ export default function MasonryConcrete() {
               durable results.
             </p>
 
-            <div className="bg-liquidGreen rounded-lg p-4 space-y-2 my-10">
+            <div className="bg-liquidGreen rounded-lg py-6 px-4 space-y-3 my-10">
               <h4 className="text-lg font-semibold text-primaryDark">
                 Are you need Masonry & Concrete Work?
               </h4>
@@ -154,8 +154,10 @@ export default function MasonryConcrete() {
                 Register the job with swish.ma
               </p>
               <div className="">
-                <Link to="/">
-                  <Button size="sm">Get Started</Button>
+                <Link to="/register-company">
+                  <Button className="lg:px-8 lg:h-12 rounded-sm">
+                    Get Started
+                  </Button>
                 </Link>
               </div>
             </div>

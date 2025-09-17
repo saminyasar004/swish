@@ -8,7 +8,7 @@ import SketchWithText from "../SketchWithText";
 
 export default function GardenLandscaping() {
   const GardenLandscapingHeaderContent = {
-    title: "Do you need Garden & Landscaping?",
+    title: "Do you need help with gardening and landscaping?",
     description:
       "Our garden and landscaping services offer expert design and installation to enhance the beauty and functionality of your outdoor space. From planting and lawn care to hardscaping and custom designs, we create personalized solutions tailored to your needs. Let us transform your garden into a stunning, sustainable retreat.",
     items: [

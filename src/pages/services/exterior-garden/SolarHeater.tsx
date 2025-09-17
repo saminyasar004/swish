@@ -6,7 +6,7 @@ import CanHelpYou from "../CanHelpYou";
 
 export default function SolarHeater() {
   const solarHeaterHeaderContent = {
-    title: "Are you need Solar Heater & AC Installation?",
+    title: "Do you need help with the solar heater or AC installation?",
     description:
       "Our Solar Heater and AC installation services offer energy-efficient solutions for cooling and heating your space. We provide expert installation of solar-powered water heaters and air conditioning systems, ensuring optimal performance and reduced energy costs. With professional installation and reliable service, we help you achieve a comfortable and sustainable environment.",
     items: [

@@ -6,7 +6,7 @@ import CanHelpYou from "../CanHelpYou";
 
 export default function Locksmith() {
   const locksmithHeaderContent = {
-    title: "Do you need Locksmith?",
+    title: "Do you need a Locksmith?",
     description:
       "Our locksmith services provide fast, reliable solutions for lockouts, key replacements, and security upgrades. Whether it’s for your home, office, or car, we ensure your property stays secure with expert craftsmanship and prompt service.",
 

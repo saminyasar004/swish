@@ -7,7 +7,7 @@ import SectionBgSketch from "@/assets/images/section-bg-sketch.svg";
 
 export default function WindowDoors() {
   const windowDoorsHeaderContent = {
-    title: "Are you need Windows & Door?",
+    title: "Are you in need of windows and doors?",
     description:
       "Our window and door services specialize in installation, repair, and replacement, ensuring enhanced security, energy efficiency, and aesthetic appeal. Whether upgrading to modern designs or fixing existing issues, we provide high-quality solutions tailored to your needs, improving both function and style for your home or business.",
     items: [

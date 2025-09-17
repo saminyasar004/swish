@@ -8,7 +8,7 @@ import SketchWithText from "../SketchWithText";
 
 export default function FloorLaying() {
   const floorLayingHeaderContent = {
-    title: "Do you need a Floor Laying",
+    title: "Do you need Floor Laying",
     description:
       "Our Floor Laying service provides expert installation of hardwood, laminate, vinyl, tile, and carpet flooring. We handle everything from site preparation to final finishing, ensuring precise, durable, and aesthetically pleasing results. This guide covers the process, tools, techniques, and skilled craftsmen involved.",
     items: [

@@ -8,7 +8,7 @@ import SketchWithText from "../SketchWithText";
 
 export default function Renovation() {
   const renovationHeaderContent = {
-    title: "Are you need Full Renovation / Buildout?",
+    title: "Do you need help with renovation and building?",
     description:
       "Our full renovation and buildout services transform your space with expert design and construction. From updating interiors to complete structural changes, we handle every aspect of the project. Whether it’s a home makeover or a commercial buildout, our team delivers high-quality results tailored to your vision, ensuring functionality and style in every detail.",
     items: [

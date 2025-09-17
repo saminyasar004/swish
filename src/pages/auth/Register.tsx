@@ -65,7 +65,7 @@ export default function Register() {
         id: toastId,
         duration: 2000,
       });
-      navigate("/login");
+      navigate("/verify-otp");
     } catch (err: any) {
       console.log({ err });
       toast.error(err?.data?.email[0] || "Registration failed", {

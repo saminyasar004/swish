@@ -6,7 +6,7 @@ import CanHelpYou from "../CanHelpYou";
 
 export default function Handyman() {
   const locksmithHeaderContent = {
-    title: "Do you need Handyman?",
+    title: "Do you need a handyman?",
     description:
       "Our handyman services cover a wide range of home repairs, from fixing leaks to furniture assembly. Our skilled professionals ensure quality work, keeping your home in top condition.",
 
