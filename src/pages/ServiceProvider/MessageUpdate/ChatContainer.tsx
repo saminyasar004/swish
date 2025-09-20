@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
 import { formatMessageTime } from "./utils";
+import { X } from "lucide-react";
 
 type Message = {
   id: string;
@@ -98,6 +99,41 @@ const dummyMessages: Message[] = [
     message: "Awesome! Are you free for a call?",
     timestamp: new Date().toISOString(),
   },
+  {
+    id: "13",
+    sender: 2,
+    sender_username: "You",
+    message: "Hey! I’m good, thanks for asking 😊",
+    timestamp: new Date().toISOString(),
+  },
+  {
+    id: "14",
+    sender: 1,
+    sender_username: "Jane Cooper",
+    message: "Awesome! Are you free for a call?",
+    timestamp: new Date().toISOString(),
+  },
+  {
+    id: "15",
+    sender: 1,
+    sender_username: "Jane Cooper",
+    message: "Awesome! Are you free for a call?",
+    timestamp: new Date().toISOString(),
+  },
+  {
+    id: "16",
+    sender: 2,
+    sender_username: "You",
+    message: "Hey! I’m good, thanks for asking 😊",
+    timestamp: new Date().toISOString(),
+  },
+  {
+    id: "17",
+    sender: 1,
+    sender_username: "Jane Cooper",
+    message: "Awesome! Are you free for a call?",
+    timestamp: new Date().toISOString(),
+  },
 ];
 
 const authUserId = 2;
@@ -110,7 +146,7 @@ const selectedUser = {
   profile_image: "/avatar2.png",
 };
 
-const ChatContainer = () => {
+const ChatContainer = ({ selectedUser, setSelectedProfilePage }: { selectedUser: any; setSelectedProfilePage: any }) => {
   const [messages, setMessages] = useState(dummyMessages);
   const messageEndRef = useRef<HTMLDivElement | null>(null);
 
@@ -123,11 +159,9 @@ const ChatContainer = () => {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-100px)] w-full bg-white border-l border-zinc-200">
+    <div className="flex flex-col h-[calc(100vh-100px)] w-full bg-white  border-zinc-200">
       {/* Header */}
-      <ChatHeader
-      // selectedUser={selectedUser}
-      />
+      <ChatHeader selectedUser={selectedUser} setSelectedProfilePage={setSelectedProfilePage} />
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -173,8 +207,8 @@ const ChatContainer = () => {
                   <div
                     className={`px-4 py-2 rounded-lg text-sm break-words ${
                       isOwn
-                        ? "bg-blue-500 text-white rounded-br-none"
-                        : "bg-zinc-100 text-zinc-800 rounded-bl-none"
+                        ? "bg-primary text-white rounded-br-none"
+                        : "bg-zinc-200 text-zinc-900 rounded-bl-none"
                     }`}
                   >
                     {msg.message}
@@ -188,7 +222,7 @@ const ChatContainer = () => {
       </div>
 
       {/* Message Input */}
-      <div className="p-4 border-t border-zinc-200">
+      <div className="p-4 ">
         <MessageInput
           roomId={selectedUser.chat_room_id}
           senderId={authUserId}

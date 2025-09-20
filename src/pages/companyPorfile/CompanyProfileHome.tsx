@@ -3,7 +3,7 @@ import CompanyProfileInfo from "./CompanyProfileInfo";
 
 export default function CompanyProfileHome() {
   return (
-    <section className="container mx-auto py-12">
+    <section className="container mx-auto py-12 overflow-x-hidden overflow-y-auto">
       <CompanyProfileInfo />
     </section>
   );

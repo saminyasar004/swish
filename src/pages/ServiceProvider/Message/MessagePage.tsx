@@ -22,7 +22,7 @@ const messages = [
 
 export default function MessagePage() {
   return (
-    <div className="flex flex-col lg:flex-row w-full min-h-screen">
+    <div className="flex flex-col lg:flex-row w-full min-h-screen container mx-auto">
       {/* Left Sidebar */}
       <MessageSidebar />
 

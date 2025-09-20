@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
-import { Avatar } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import clsx from "clsx";
 
 const tabs = ["Inbox", "Unread", "Active"];
@@ -52,7 +52,7 @@ export const MessageSidebar = () => {
   const [selectedUser, setSelectedUser] = useState("Jane Cooper");
 
   return (
-    <aside className="w-full md:w-1/3 lg:w-1/4 bg-[#F5FBF7] p-4 space-y-6 scroll-y-a">
+    <aside className="w-full md:w-1/3 lg:w-1/4 bg-[#F5FBF7] p-4 space-y-6 ">
       {/* Search */}
       <Input
         placeholder="Search"
@@ -79,7 +79,7 @@ export const MessageSidebar = () => {
       </div>
 
       {/* Messages */}
-      <div className="space-y-3">
+      <div className="space-y-3 overflow-y-auto">
         {users.map((user) => (
           <div
             key={user.name}
@@ -89,7 +89,10 @@ export const MessageSidebar = () => {
               selectedUser === user.name ? "bg-green-200" : "hover:bg-gray-100"
             )}
           >
-            <Avatar size="small" name={user.name} />
+            <Avatar className="w-10 h-10">
+              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
             <div>
               <p
                 className={clsx(

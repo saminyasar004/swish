@@ -1033,7 +1033,7 @@ export default function CompanyProfileInfo() {
   };
 
   return (
-    <section className="w-full">
+    <section className="w-full  overflow-y-auto">
       {/* Hero / Cover */}
       <div className="relative w-full">
         <img

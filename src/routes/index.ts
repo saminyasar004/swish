@@ -53,6 +53,7 @@ import ProblemResolution from "@/pages/helpCenterArticle/ProblemResolution";
 import reviewsOnSwishma from "@/pages/helpCenterArticle/ReviewsOnSwishma";
 import WriteGoodJobDescription from "@/pages/helpCenterArticle/WriteGoodJobDescription";
 import HelpCenterFaq from "@/pages/helpCenterArticle/HelpCenterFaq";
+import MessagePageUpdated from "@/pages/home/Messages/MessagePage";
 
 export interface Route {
   path: string;
@@ -173,6 +174,13 @@ export const routes = [
     path: "/articles/help-center/faq",
     element: HelpCenterFaq,
     layout: Layout,
+  },
+
+  // MESSAGE
+  {
+    path: "/message/:id",
+    element: MessagePageUpdated,
+    layout: ProfileLayout,
   },
 
   // COMPANY PROFILE REGISTER COMPANY

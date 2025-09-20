@@ -1,28 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { Mail, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
+import companyProfile from "@/assets/images/SearchCompanyLogo.svg";
 
 interface CardProps {
-  name: string;
+  company_name;
+  logo: string;
   rating: number;
-  image: string;
-  onContactClick: () => void;
+  company: number;
 }
 
-export default function PrevUsedCompanyCard({
-  name,
-  rating,
-  image,
-  onContactClick,
-}: CardProps) {
+export default function PrevUsedCompanyCard({ job }: { job: CardProps }) {
   const stars = Array(5)
     .fill(false)
-    .map((_, index) => index < Math.round(rating));
+    .map((_, index) => index < Math.round(job?.rating || 0));
   return (
-    <div className="flex flex-col border  rounded-lg p-4 shadow-md bg-white w-96 hover:bg-gray-50 transition-all duration-300 ease-in-out ">
+    <div className="flex flex-col border  rounded-lg p-4 shadow-md bg-white w-full hover:bg-gray-50 transition-all duration-300 ease-in-out ">
       <div className="flex items-center">
-        <img src={image} alt={name} className="w-20 h-20 rounded-full mr-4" />
+        <img
+          src={job?.logo || companyProfile}
+          alt={job?.company_name}
+          className="w-20 h-20 rounded-full mr-4"
+        />
         <div className="ml-4">
-          <h3 className="text-lg font-semibold">{name}</h3>
+          <h3 className="text-lg font-semibold">{job?.company_name}</h3>
           <div className="flex items-center mt-2">
             {stars.map((filled, index) => (
               <span
@@ -32,18 +33,21 @@ export default function PrevUsedCompanyCard({
                 &#9733;
               </span>
             ))}
-            <span className="ml-2 text-sm text-gray-500">({rating})</span>
+            <span className="ml-2 text-sm text-gray-500">
+              ({job?.rating || 0})
+            </span>
           </div>
         </div>
       </div>
-      <Button
-        variant="outline"
-        className="mt-4 w-full border border-primary text-primary hover:bg-liquidGreen hover:text-secondary font-semibold"
-        onClick={onContactClick}
-      >
-        <Mail className="mr-2" />
-        Contact
-      </Button>
+      <Link to={`/message/${job?.company}`}>
+        <Button
+          variant="outline"
+          className="mt-4 w-full border border-primary text-primary hover:bg-liquidGreen hover:text-secondary font-semibold"
+        >
+          <Mail className="mr-2" />
+          Contact
+        </Button>
+      </Link>
     </div>
   );
 }
