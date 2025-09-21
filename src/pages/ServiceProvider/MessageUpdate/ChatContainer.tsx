@@ -159,7 +159,7 @@ const ChatContainer = ({ selectedUser, setSelectedProfilePage }: { selectedUser:
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-100px)] w-full bg-white  border-zinc-200">
+    <div className="flex flex-col h-[calc(100vh-56px)] w-full bg-white  border-zinc-200 shadow-xl mx-2">
       {/* Header */}
       <ChatHeader selectedUser={selectedUser} setSelectedProfilePage={setSelectedProfilePage} />
 
@@ -222,7 +222,7 @@ const ChatContainer = ({ selectedUser, setSelectedProfilePage }: { selectedUser:
       </div>
 
       {/* Message Input */}
-      <div className="p-4 ">
+      <div className="py-4 mb-2">
         <MessageInput
           roomId={selectedUser.chat_room_id}
           senderId={authUserId}

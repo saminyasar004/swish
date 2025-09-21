@@ -9,6 +9,7 @@ import NoChatSelected from "@/pages/ServiceProvider/MessageUpdate/NoChatSelected
 import ChatContainer from "@/pages/ServiceProvider/MessageUpdate/ChatContainer";
 import { X } from "lucide-react";
 import CompanyProfileHome from "@/pages/companyPorfile/CompanyProfileHome";
+import CompanyProfileHomeInMsg from "@/pages/companyPorfile/companyPorfileInMsg/CompanyProfileHomeInMsg";
 
 const messages = [
   {
@@ -29,7 +30,7 @@ export default function MessagePageUpdated() {
   // {isOpen && <ChatHome isOpen={isOpen} onClose={() => setIsOpen(false)} />}
   const [isOpen, setIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(1);
-  const [selectedProfilePage, setSelectedProfilePage] = useState(false);
+  const [selectedProfilePage, setSelectedProfilePage] = useState(true);
 
   // fixed
 
@@ -47,7 +48,10 @@ export default function MessagePageUpdated() {
         {!selectedUser ? (
           <NoChatSelected />
         ) : (
-          <ChatContainer selectedUser={selectedUser}  setSelectedProfilePage={setSelectedProfilePage} />
+          <ChatContainer
+            selectedUser={selectedUser}
+            setSelectedProfilePage={setSelectedProfilePage}
+          />
         )}
         {/* Navbar */}
         {/* <MessageNavBar name="Jane Cooper" /> */}
@@ -58,18 +62,14 @@ export default function MessagePageUpdated() {
         {/* Message Input */}
         {/* <MessageInput /> */}
         {selectedProfilePage && (
-        <div className="flex h-[100%] rounded-lg overflow-hidden  container mx-auto w-full">
-          {" "}
-          <X
-            className="cursor-pointer"
-            size={20}
-            onClick={() => setSelectedProfilePage(false)}
-          />{" "}
-         <CompanyProfileHome/>
-        </div>
-      )}
+          // container mx-auto w-full
+          <div className="flex h-[100%] rounded-lg overflow-hidden max-w-[25%] ">
+            <CompanyProfileHomeInMsg
+              setSelectedProfilePage={setSelectedProfilePage}
+            />
+          </div>
+        )}
       </div>
-      
     </div>
   );
 }

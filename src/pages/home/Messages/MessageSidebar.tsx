@@ -127,7 +127,7 @@ export const MessageSidebar = ({ onClose, isOpen, onSelectUser }) => {
 
   return (
     // fixed
-    <aside className="w-full md:w-1/3 lg:w-1/4 h-[86%] border-r  border-base-300 flex flex-col">
+    <aside className="w-full md:w-1/3 lg:w-1/4 h-[94%] border-r  border-base-300 flex flex-col  mx-1 shadow-xl">
       <div className="py-4 px-2 space-y-4 sticky top-0 z-10 bg-white shadow-sm">
         <h3 className="text-lg font-semibold">
           Installation of new door and door frame
@@ -155,7 +155,7 @@ export const MessageSidebar = ({ onClose, isOpen, onSelectUser }) => {
       </div>
 
       {/* Messages List */}
-      <div className=" overflow-y-auto w-full py-3">
+      <div className=" overflow-y-auto w-full py-3 flex flex-col gap-4">
         {users.map((user) => (
           <div
             key={user.name}
