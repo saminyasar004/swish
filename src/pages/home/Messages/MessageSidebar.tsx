@@ -14,7 +14,7 @@ import { FaStar } from "react-icons/fa";
 const baseURL = "https://backend.thaimassagesnearmeapp.com/";
 // const baseURL = "http://10.10.13.75:3333/";
 
-const tabs = ["Inbox", "Job"];
+const tabs = ["Inbox", "The Job"];
 
 const users = [
   {
@@ -86,15 +86,20 @@ const users = [
   },
 ];
 
-export const MessageSidebar = ({ onClose, isOpen, onSelectUser }) => {
-  const [activeTab, setActiveTab] = useState("Inbox");
+export const MessageSidebar = ({
+  onClose,
+  isOpen,
+  onSelectUser,
+  activeTab,
+  setActiveTab,
+}) => {
+  // const [activeTab, setActiveTab] = useState("Inbox");
   const [selectedUser, setSelectedUser] = useState("Jane Cooper");
 
   const token = useSelector(selectCurrentToken);
   // const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
-  const onlineUsers = ["1", "2"]; // Static for now
 
   useEffect(() => {
     if (!isOpen) return;
@@ -127,7 +132,7 @@ export const MessageSidebar = ({ onClose, isOpen, onSelectUser }) => {
 
   return (
     // fixed
-    <aside className="w-full md:w-1/3 lg:w-1/4 h-[94%] border-r  border-base-300 flex flex-col  mx-1 shadow-xl">
+    <aside className="w-full md:w-1/3 lg:w-1/4 h-[94%] border-r  border-base-300 flex flex-col  mx-1 shadow-xl min-w-[20%]">
       <div className="py-4 px-2 space-y-4 sticky top-0 z-10 bg-white shadow-sm">
         <h3 className="text-lg font-semibold">
           Installation of new door and door frame
@@ -140,7 +145,7 @@ export const MessageSidebar = ({ onClose, isOpen, onSelectUser }) => {
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={clsx(
-                "px-6 py-2 text-sm font-medium transition-colors duration-200 rounded-md",
+                "px-8 py-2 text-sm font-medium transition-colors duration-200 rounded-md",
                 activeTab === tab
                   ? "text-gray-900 bg-white shadow-sm"
                   : "text-gray-500 hover:text-gray-700"
@@ -154,42 +159,93 @@ export const MessageSidebar = ({ onClose, isOpen, onSelectUser }) => {
         </div>
       </div>
 
-      {/* Messages List */}
-      <div className=" overflow-y-auto w-full py-3 flex flex-col gap-4">
-        {users.map((user) => (
-          <div
-            key={user.name}
-            onClick={() => setSelectedUser(user.name)}
-            className={clsx(
-              "flex items-center gap-3 p-3 rounded-md cursor-pointer transition-colors",
-              selectedUser === user.name
-                ? "bg-liquidGreen"
-                : "hover:bg-gray-100"
-            )}
-          >
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <div>
-              <p
-                className={clsx(
-                  "font-semibold text-sm",
-                  selectedUser === user.name && "text-green-900"
-                )}
-              >
-                {user.name}
-              </p>
-              <p className="text-xs text-muted-foreground truncate w-[180px] flex  items-center gap-1">
-                {user.review} <FaStar size={12} className="text-yellow-400" />{" "}
-                (29 reviews)
-              </p>
-              <p className="text-xs font-extralight truncate w-[180px]">
-                {user.message}
-              </p>
+      {/* Tab Content */}
+      <div className="flex-1 overflow-y-auto w-full py-3 flex flex-col gap-4">
+        {activeTab === "Inbox" &&
+          users.map((user) => (
+            <div
+              key={user.name}
+              onClick={() => handleUserSelect(user)}
+              className={clsx(
+                "flex items-center gap-3 p-3 rounded-md cursor-pointer transition-colors",
+                selectedUser === user.name
+                  ? "bg-liquidGreen"
+                  : "hover:bg-gray-100"
+              )}
+            >
+              <Avatar>
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>{user.name[0]}</AvatarFallback>
+              </Avatar>
+              <div>
+                <p
+                  className={clsx(
+                    "font-semibold text-sm",
+                    selectedUser === user.name && "text-green-900"
+                  )}
+                >
+                  {user.name}
+                </p>
+                <p className="text-xs text-muted-foreground truncate w-[180px] flex items-center gap-1">
+                  {user.review} <FaStar size={12} className="text-yellow-400" />{" "}
+                  (29 reviews)
+                </p>
+                <p className="text-xs font-extralight truncate w-[180px]">
+                  {user.message}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+
+        {activeTab === "The Job" && (
+  <div className="flex flex-col gap-4 p-3">
+    {/* Company Chosen */}
+    <div className="bg-green-50 border rounded-lg p-4">
+      <h4 className="text-base font-semibold">Company chosen!</h4>
+      <p className="text-sm text-gray-600 mt-1">
+        You have chosen Flislegging Oslo AS to do the job.
+      </p>
+      <p className="text-xs text-gray-500 mt-1">
+        Chose the wrong company?{" "}
+        <button className="text-blue-500 mt-2 underline">Change here</button>
+      </p>
+
+      <div className="flex items-center mt-4 gap-2 bg-white rounded-md p-2 shadow-sm border">
+        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-orange-200 text-xs font-bold text-gray-700">
+          FR
+        </div>
+        <p className="text-sm font-medium">Timber Crafts AS</p>
+      </div>
+    </div>
+
+    {/* Information about the job */}
+    <div>
+      <h5 className="text-sm font-semibold mb-1">Information about the job</h5>
+      <button className="w-full text-left px-3 py-2 rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm">
+        See the job
+      </button>
+    </div>
+
+    {/* Documentation */}
+    <div>
+      <h5 className="text-sm font-semibold mb-1">Documentation</h5>
+      <p className="text-gray-500 text-sm">Documentation in ......</p>
+    </div>
+
+    {/* Evaluation */}
+    <div>
+      <h5 className="text-sm font-semibold mb-1">Evaluation</h5>
+      <button className="text-sm text-blue-500 underline">Write Evaluation</button>
+    </div>
+
+    {/* Settings */}
+    <div>
+      <h5 className="text-sm font-semibold mb-1">Settings</h5>
+      <button className="text-sm text-red-500 underline">Close job</button>
+    </div>
+  </div>
+)}
+
       </div>
     </aside>
   );

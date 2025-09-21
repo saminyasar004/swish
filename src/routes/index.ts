@@ -53,7 +53,7 @@ import ProblemResolution from "@/pages/helpCenterArticle/ProblemResolution";
 import reviewsOnSwishma from "@/pages/helpCenterArticle/ReviewsOnSwishma";
 import WriteGoodJobDescription from "@/pages/helpCenterArticle/WriteGoodJobDescription";
 import HelpCenterFaq from "@/pages/helpCenterArticle/HelpCenterFaq";
-import MessagePageUpdated from "@/pages/home/Messages/MessagePage";
+import MessagePageUpdated from "@/pages/home/Messages/MessagePageUpdated";
 
 export interface Route {
   path: string;
