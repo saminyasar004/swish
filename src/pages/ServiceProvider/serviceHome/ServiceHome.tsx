@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import LightbulbImage from "@/assets/providerIcon/LightbulbImage.svg";
 import { X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function ServiceHome() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -96,7 +97,7 @@ export default function ServiceHome() {
 
   return (
     <main className="lg:container px-4 lg:px-0 mx-auto md:py-8">
-      <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-10 gap-2">
         {/* Sidebar */}
         <div className="mb-6 col-span-1 md:col-span-2 ">
           <JobFilterSidebar
@@ -106,7 +107,7 @@ export default function ServiceHome() {
         </div>
 
         {/* Main Content */}
-        <div className=" col-span-8 md:col-span-7 bg-solidWhite lg:mr-8">
+        <div className=" col-span-8 md:col-span-7 bg-solidWhite ">
           {tips && (
             <Card className="relative flex items-center justify-between border rounded-md p-4 shadow-sm mb-16">
               <CardContent className="p-0 flex flex-col gap-3">
@@ -165,7 +166,6 @@ export default function ServiceHome() {
             </div>
 
             <TabsList className="w-full max-w-max gap-3 mb-4 bg-transparent mx-3 ">
-
               {subtabs.map((tab) => (
                 <TabsTrigger
                   key={tab.value}
@@ -175,9 +175,6 @@ export default function ServiceHome() {
                   {tab.label}
                 </TabsTrigger>
               ))}
-             
-
-             
             </TabsList>
           </Tabs>
 
@@ -233,7 +230,20 @@ export default function ServiceHome() {
           )}
         </div>
 
-        <div className="col-span-1">📦 Extra panel / stats</div>
+        <div className="col-span-1">
+          {" "}
+          {tips && (
+            <Card className="flex items-center justify-between border rounded-md  shadow-sm p-2">
+              <CardContent className="p-0 flex flex-col">
+                <h3 className="text-base font-semibold">Available clips</h3>
+                <h1 className="text-2xl font-semibold">7</h1>
+                <p className="mt-3 text-xs text-providerPrimary">
+                  Show Expiring clips
+                </p>
+              </CardContent>
+            </Card>
+          )}
+        </div>
       </div>
 
       <JobDetailsModal
