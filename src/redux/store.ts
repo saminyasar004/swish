@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './features/auth/authSlice';
 import { baseApi } from './api/baseApi';
+import postJobReducer from './features/postJob/postJobSlice';
 import {
   persistReducer,
   persistStore,
@@ -18,17 +19,27 @@ const persistConfig = {
   storage,
 };
 
+// Persist config for postJob slice, excluding site_images
+const postJobPersistConfig = {
+  key: 'postJob',
+  storage,
+  blacklist: ['formData.site_images'], // Exclude non-serializable File objects
+};
+
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
+const persistedPostJobReducer = persistReducer(postJobPersistConfig, postJobReducer);
 
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistedAuthReducer,
+    postJob: persistedPostJobReducer,
   },
   middleware: (getDefaultMiddlewares) =>
     getDefaultMiddlewares({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredPaths: ['postJob.formData.site_images'],
       },
     }).concat(baseApi.middleware),
 });

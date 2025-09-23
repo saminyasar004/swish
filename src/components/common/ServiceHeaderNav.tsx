@@ -35,6 +35,7 @@ import businessIcon from "@/assets/images/HomeIcon.svg";
 import businessIconActive from "@/assets/images/businessIconActive.svg";
 import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
+import LogoLight from "@/assets/providerIcon/LogoLight.svg";
 
 export interface CategoryProps {
   name: string;
@@ -123,12 +124,12 @@ export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
 
   return (
     <>
-      <header className="w-full bg-liquidGreen py-3 sticky top-0 z-50 backdrop-blur-lg shadow-sm transition-all duration-300 ease-in-out">
+      <header className="w-full h-auto bg-providerPrimary py-3 sticky top-0 z-50 backdrop-blur-lg shadow-sm transition-all duration-300 ease-in-out">
         <div className=" mx-6 lg:container lg:mx-auto flex  items-center justify-between gap-4 md:gap-6 text-center">
           {/* Logo */}
           <Link to="/provider" className="block ">
             <img
-              src={Logo}
+              src={LogoLight}
               alt="swish.ma"
               className="hidden md:block max-w-[90%] md:max-w-full"
             />
@@ -183,7 +184,7 @@ export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
               <div className="bg-primary text-white rounded-md  py-2 px-3 lg:px-4  text-md lg:text-xl font-semibold">
                 A
               </div>
-              <h1 className="hidden md:block text-lg md:text-xl lg:text-2xl font-semibold">
+              <h1 className="hidden md:block text-lg md:text-xl lg:text-2xl font-semibold text-providerWhiteSecondary">
                 Ali Mounji
               </h1>
             </div>

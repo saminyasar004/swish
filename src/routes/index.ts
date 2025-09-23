@@ -29,7 +29,7 @@ import Working from "@/pages/ServiceProvider/serviceHome/Working";
 import ServiceHome from "@/pages/ServiceProvider/serviceHome/ServiceHome";
 import BusinessProfile from "@/pages/ServiceProvider/myBusiness/BusinessProfile";
 import ServiceLayoutMain from "@/components/common/ServiceLayoutMain";
-import MessagePage from "@/pages/ServiceProvider/Message/MessagePage";
+import MessagePage from "@/pages/ServiceProvider/messageComponentNotInUse/Message/MessagePage";
 import MyBusinessPage from "@/pages/ServiceProvider/myBusiness/MyBusinessPage";
 import CompanyPage from "@/pages/ServiceProvider/myBusiness/CompanyPage";
 import GraphicsPage from "@/pages/ServiceProvider/myBusiness/GraphicsPage";
@@ -85,6 +85,27 @@ export const routes = [
     element: PostJob,
     layout: Layout,
   },
+  // {
+  //   path: "/post-job/step/about",
+  //   element: AboutTheJob,
+  //   layout: Layout,
+  // },
+  // {
+  //   path: "/post-job/step/images",
+  //   element: Images,
+  //   layout: Layout,
+  // },
+  // {
+  //   path: "/post-job/step/contact",
+  //   element: ContactInfo,
+  //   layout: Layout,
+  // },
+  // {
+  //   path: "/post-job/step/complete",
+  //   element: Completed,
+  //   layout: Layout,
+  // },
+
   {
     path: "/register",
     element: Register,
@@ -176,6 +197,8 @@ export const routes = [
     layout: Layout,
   },
 
+
+  
   // MESSAGE
   {
     path: "/message/:id",

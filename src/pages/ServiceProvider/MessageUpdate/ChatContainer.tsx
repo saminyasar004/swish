@@ -146,7 +146,7 @@ const selectedUser = {
   profile_image: "/avatar2.png",
 };
 
-const ChatContainer = ({ selectedUser, setSelectedProfilePage }: { selectedUser: any; setSelectedProfilePage: any }) => {
+const ChatContainer = ({  setSelectedProfilePage }: {  setSelectedProfilePage: any }) => {
   const [messages, setMessages] = useState(dummyMessages);
   const messageEndRef = useRef<HTMLDivElement | null>(null);
 
@@ -224,7 +224,7 @@ const ChatContainer = ({ selectedUser, setSelectedProfilePage }: { selectedUser:
       {/* Message Input */}
       <div className="py-4 mb-2">
         <MessageInput
-          roomId={selectedUser.chat_room_id}
+          roomId={selectedUser?.chat_room_id}
           senderId={authUserId}
           receiverId={selectedUser.user_id}
           onSend={handleSend}

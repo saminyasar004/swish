@@ -1,8 +1,9 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import ServiceHeaderNav from "./ServiceHeaderNav";
+import LogoLight from "@/assets/providerIcon/LogoLight.svg";
 
-export default function ServiceLayout({ children }) {
+export default function ServiceLayout() {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -27,8 +28,7 @@ export default function ServiceLayout({ children }) {
         onTabChange={handleTabChange}
       />
       {/* <Outlet /> */}
-      {/* <Outlet /> */}
-      {children}
+      <Outlet />
     </>
   );
 }

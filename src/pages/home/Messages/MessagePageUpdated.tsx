@@ -8,21 +8,6 @@ import CompanyProfileHome from "@/pages/companyPorfile/CompanyProfileHome";
 import CompanyProfileHomeInMsg from "@/pages/companyPorfile/companyPorfileInMsg/CompanyProfileHomeInMsg";
 import TheJobMessageTab from "./TheJobMessageTab";
 
-const messages = [
-  {
-    sender: "you",
-    content: "I want to make an appointment tomorrow from 2:00 to 5:00pm?",
-    time: "1:55pm",
-  },
-  {
-    sender: "other",
-    content: "Hello, I will check the schedule and inform you.",
-    time: "1:58pm",
-  },
-  { sender: "you", content: "Thanks for your reply.", time: "1:59pm" },
-  { sender: "other", content: "You are welcome!", time: "2:00pm" },
-];
-
 export default function MessagePageUpdated() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(1);
@@ -49,9 +34,6 @@ export default function MessagePageUpdated() {
             setSelectedProfilePage={setSelectedProfilePage}
           />
         ) : (
-          // <CompanyProfileHomeInMsg
-          //   setSelectedProfilePage={setSelectedProfilePage}
-          // />
           <TheJobMessageTab />
         )}
         {selectedProfilePage && (

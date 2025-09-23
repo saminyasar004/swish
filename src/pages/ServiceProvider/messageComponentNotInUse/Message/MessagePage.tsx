@@ -1,9 +1,9 @@
 // pages/MessagePage.tsx
 
-import { MessageContent } from "./MessageContent";
+import { MessageContent } from "../MessageContent";
 import { MessageInput } from "./MessageInput";
-import { MessageNavBar } from "./MessageNavBar";
-import { MessageSidebar } from "./MessageSidebar";
+import { MessageNavBar } from "../MessageNavBar";
+import { MessageSidebar } from "../MessageSidebar";
 
 const messages = [
   {

@@ -10,7 +10,7 @@ export const MessageInput = () => {
         className="flex-1"
         placeholder="Write here..."
         aria-label="Write message"
-        variant="outline"
+        
       />
       <Button variant="outline" className="p-2">
         <PaperclipIcon size={16} />

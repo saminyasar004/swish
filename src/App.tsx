@@ -1,6 +1,6 @@
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, RouterProvider } from "react-router-dom";
 import { routes } from "@/routes";
 import { MantineProvider } from "@mantine/core";
 
@@ -9,6 +9,7 @@ import { Toaster } from "sonner";
 import { Provider } from "react-redux";
 import { persistor, store } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
+import { router } from "./routes/routes";
 
 const queryClient = new QueryClient();
 
@@ -20,7 +21,8 @@ const App = () => (
 
         <QueryClientProvider client={queryClient}>
           <TooltipProvider>
-            <BrowserRouter>
+            <RouterProvider router={router} />
+            {/* <BrowserRouter>
               <Routes>
                 {routes.map((route, index) => (
                   <Route
@@ -38,7 +40,8 @@ const App = () => (
                   />
                 ))}
               </Routes>
-            </BrowserRouter>
+            </BrowserRouter> */}
+            
           </TooltipProvider>
         </QueryClientProvider>
       </PersistGate>

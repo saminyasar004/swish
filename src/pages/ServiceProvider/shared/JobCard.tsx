@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaLocationArrow } from "react-icons/fa";
-import { CalendarDays, Heart, HeartOff, User2 } from "lucide-react";
+import { CalendarDays, Heart, HeartOff, Locate, LocationEdit, User2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import avatarFallback from "@/assets/images/avatar.png";
 import { AllJob } from "../serviceTypes/ServiceProvider.types";
@@ -47,7 +47,7 @@ export const JobCard: React.FC<JobCardProps> = ({
   };
 
   return (
-    <div className="border rounded-md p-4 shadow-sm hover:shadow-md transition-all">
+    <div className="border  rounded-md p-4 shadow-sm transition-all hover:bg-gray-50  duration-300 ease-in-out">
       {/* Top */}
       <div className="flex flex-row justify-between items-start md:items-center gap-2 md:gap-4">
         <div className="flex gap-3">
@@ -59,7 +59,7 @@ export const JobCard: React.FC<JobCardProps> = ({
           <div className="">
             <p className="font-semibold">{job.user.name}</p>
             <p className="text-sm text-muted-foreground flex items-center gap-1 max-w-36 md:max-w-max">
-              <FaLocationArrow className="text-primary" size={14} />
+              <LocationEdit className="text-providerPrimary" size={14} />
               {job.user.location}
             </p>
           </div>

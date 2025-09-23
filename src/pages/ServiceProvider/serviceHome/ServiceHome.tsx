@@ -6,6 +6,10 @@ import { JobDetailsModal } from "./JobDetailsModal";
 import { ApplyBidModal } from "./ApplyBidModal";
 import { JobFilterSidebar } from "./JobFilterSidebar";
 import Pagination from "../shared/Pagination";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import LightbulbImage from "@/assets/providerIcon/LightbulbImage.svg";
+import { X } from "lucide-react";
 
 export default function ServiceHome() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -48,9 +52,51 @@ export default function ServiceHome() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [workingSubTab]);
 
+  const onClose = () => {
+    setShowModal(false);
+    setApplyBidOpen(false);
+  };
+
+  const tips = true;
+  const subtabs = [
+    {
+      value: "allJobs",
+      label: "All Jobs",
+    },
+    {
+      value: "newJobs",
+      label: "New Jobs",
+    },
+    {
+      value: "favorites",
+      label: "Favorites",
+    },
+    {
+      value: "directJobs",
+      label: "Direct Jobs",
+    },
+    {
+      value: "wantMoreAnswers",
+      label: "Want More Answers",
+    },
+    {
+      value: "clipFree",
+      label: "Clip Free",
+    },
+
+    {
+      value: "won",
+      label: "Won",
+    },
+    {
+      value: "Deleted",
+      label: "deleted",
+    },
+  ];
+
   return (
     <main className="lg:container px-4 lg:px-0 mx-auto md:py-8">
-      <div className="grid grid-cols-1 md:grid-cols-9 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
         {/* Sidebar */}
         <div className="mb-6 col-span-1 md:col-span-2 ">
           <JobFilterSidebar
@@ -61,17 +107,52 @@ export default function ServiceHome() {
 
         {/* Main Content */}
         <div className=" col-span-8 md:col-span-7 bg-solidWhite lg:mr-8">
+          {tips && (
+            <Card className="relative flex items-center justify-between border rounded-md p-4 shadow-sm mb-16">
+              <CardContent className="p-0 flex flex-col gap-3">
+                <h3 className="text-lg font-semibold">
+                  Make the most of your trial period
+                </h3>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Want to get off to a good start? See our top tips on how to
+                  increase your chances of winning jobs.
+                </p>
+                <Button
+                  variant="default"
+                  className="mt-3 w-fit bg-providerPrimary hover:bg-providerPrimary/90"
+                >
+                  See tips
+                </Button>
+              </CardContent>
+
+              <div className="ml-4 flex-shrink-0">
+                <img
+                  src={LightbulbImage}
+                  alt="Lightbulb"
+                  className="w-full h-full"
+                />
+              </div>
+
+              <button
+                onClick={onClose}
+                className="absolute top-2 right-2 text-muted-foreground hover:text-foreground"
+              >
+                <X size={18} />
+              </button>
+            </Card>
+          )}
+
           <Tabs
             value={workingSubTab}
             onValueChange={setWorkingSubTab}
-            className="mb-6 shadow-md  lg:shadow-lg"
+            className="mb-6 border rounded-md  shadow-sm"
           >
             {/* <h3 className="text-blackPrimary font-semibold text-xl pt-2 mb-4 lg:mb-6 mx-6">
              Total {dummyJobs.length} jobs
             </h3> */}
 
-            <div className="flex items-center justify-between mx-3 md:mx-6 mb-4 ab ">
-              <h3 className="text-blackPrimary font-semibold text-xl md:text-2xl pt-2">
+            <div className="flex items-center justify-between mx-3  mb-2 ">
+              <h3 className="text-providerBlackSecondary font-normal text-xl  pt-2">
                 Total {dummyJobs.length} jobs
               </h3>
 
@@ -83,31 +164,26 @@ export default function ServiceHome() {
               </button>
             </div>
 
-            <TabsList className="w-full max-w-max gap-2 md:gap-16 mb-4 bg-transparent mx-2 md:mx-6">
-              <TabsTrigger
-                value="allJobs"
-                className="text-darkGreen md:px-4 py-2 rounded-full text-xs md:text-md lg:text-lg data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
-              >
-                All Jobs
-              </TabsTrigger>
-              <TabsTrigger
-                value="newJobs"
-                className="text-darkGreen md:px-4 py-2 rounded-full text-xs md:text-md lg:text-lg data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
-              >
-                New Jobs
-              </TabsTrigger>
-              <TabsTrigger
-                value="favorites"
-                className="text-darkGreen md:px-4 py-2 rounded-full text-xs md:text-md lg:text-lg data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
-              >
-                Favorites
-              </TabsTrigger>
+            <TabsList className="w-full max-w-max gap-3 mb-4 bg-transparent mx-3 ">
+
+              {subtabs.map((tab) => (
+                <TabsTrigger
+                  key={tab.value}
+                  value={tab.value}
+                  className=" md:px-4 ring-2 ring-providerPrimary text-providerPrimary  focus-visible:ring-1 focus-visible:ring-offset-0 py-2   border-1 rounded-full text-xs md:text-md  data-[state=active]:text-solidWhite data-[state=active]:bg-providerPrimary"
+                >
+                  {tab.label}
+                </TabsTrigger>
+              ))}
+             
+
+             
             </TabsList>
           </Tabs>
 
           {/* Content */}
           {workingSubTab === "allJobs" && (
-            <div className="space-y-4  md:px-6 shadow-sm min-h-screen">
+            <div className="space-y-2  md:px-6 shadow-sm min-h-screen">
               {currentJobs.map((job) => (
                 <JobCard
                   key={job.id}
@@ -157,7 +233,7 @@ export default function ServiceHome() {
           )}
         </div>
 
-        {/* <div className="col-span-1">📦 Extra panel / stats</div> */}
+        <div className="col-span-1">📦 Extra panel / stats</div>
       </div>
 
       <JobDetailsModal

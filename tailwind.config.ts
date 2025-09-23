@@ -46,6 +46,7 @@ export default {
         providerAccent: "#11151f",
         providerSecondary: "#F4F4F4",
         providerBlackSecondary: "#262626",
+        providerBlackTertiary: "##313131",
         providerWhitePrimary: "#F8FAFC",
         providerWhiteSecondary: "#E5E5E5",
       },

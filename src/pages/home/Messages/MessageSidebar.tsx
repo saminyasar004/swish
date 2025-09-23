@@ -1,15 +1,13 @@
-"use client";
-
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import clsx from "clsx";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { X, Users, Star, Stars, StarHalf } from "lucide-react";
 import axios from "axios";
 import { selectCurrentToken } from "@/redux/features/auth/authSlice";
 import { FaStar } from "react-icons/fa";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const baseURL = "https://backend.thaimassagesnearmeapp.com/";
 // const baseURL = "http://10.10.13.75:3333/";
@@ -198,54 +196,48 @@ export const MessageSidebar = ({
           ))}
 
         {activeTab === "The Job" && (
-  <div className="flex flex-col gap-4 p-3">
-    {/* Company Chosen */}
-    <div className="bg-green-50 border rounded-lg p-4">
-      <h4 className="text-base font-semibold">Company chosen!</h4>
-      <p className="text-sm text-gray-600 mt-1">
-        You have chosen Flislegging Oslo AS to do the job.
-      </p>
-      <p className="text-xs text-gray-500 mt-1">
-        Chose the wrong company?{" "}
-        <button className="text-blue-500 mt-2 underline">Change here</button>
-      </p>
+          <div className="flex flex-col gap-6 p-3">
+            {/* Information about the job */}
+            <div>
+              <h5 className="text-sm font-semibold mb-2">
+                Information about the job
+              </h5>
+              <Link to="/job/1/job-details">
+                <Button className="w-full text-left px-3 py-2 rounded-md bg-gray-100 text-gray-900 text-sm font-medium hover:bg-gray-200">
+                  See the job
+                </Button>
+              </Link>
+            </div>
+            <div>
+              <h5 className="text-sm font-semibold mb-2">Documentation</h5>
 
-      <div className="flex items-center mt-4 gap-2 bg-white rounded-md p-2 shadow-sm border">
-        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-orange-200 text-xs font-bold text-gray-700">
-          FR
-        </div>
-        <p className="text-sm font-medium">Timber Crafts AS</p>
-      </div>
-    </div>
+              <Link to="/job/1/documentation">
+                <Button className="w-full text-left px-3 py-2 rounded-md bg-gray-100 text-gray-900 text-sm font-medium hover:bg-gray-200">
+                  Documentation
+                </Button>
+              </Link>
+            </div>
 
-    {/* Information about the job */}
-    <div>
-      <h5 className="text-sm font-semibold mb-1">Information about the job</h5>
-      <button className="w-full text-left px-3 py-2 rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm">
-        See the job
-      </button>
-    </div>
+            {/* Evaluation */}
+            <div>
+              <h5 className="text-sm font-semibold mb-2">Evaluation</h5>
 
-    {/* Documentation */}
-    <div>
-      <h5 className="text-sm font-semibold mb-1">Documentation</h5>
-      <p className="text-gray-500 text-sm">Documentation in ......</p>
-    </div>
+              <Link to="/job/1/evaluation">
+                <Button className="w-full text-left px-3 py-2 rounded-md bg-gray-100 text-gray-900 text-sm font-medium hover:bg-gray-200">
+                  Write Evaluation
+                </Button>
+              </Link>
+            </div>
 
-    {/* Evaluation */}
-    <div>
-      <h5 className="text-sm font-semibold mb-1">Evaluation</h5>
-      <button className="text-sm text-blue-500 underline">Write Evaluation</button>
-    </div>
-
-    {/* Settings */}
-    <div>
-      <h5 className="text-sm font-semibold mb-1">Settings</h5>
-      <button className="text-sm text-red-500 underline">Close job</button>
-    </div>
-  </div>
-)}
-
+            {/* Settings */}
+            <div>
+              <h5 className="text-sm font-semibold mb-2">Settings</h5>
+              <button className="text-sm text-red-500 hover:text-red-600">
+                Close job
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </aside>
   );

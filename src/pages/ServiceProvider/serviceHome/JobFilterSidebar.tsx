@@ -40,7 +40,7 @@ export const JobFilterSidebar = ({
         leaveFrom="transform translate-x-0"
         leaveTo="transform translate-x-full"
       >
-        <aside className="fixed inset-0 sm:w-64 w-full p-4 bg-white space-y-6 z-50 sm:relative sm:translate-x-0">
+        <aside className="fixed inset-0 sm:w-64 w-full p-4 bg-providerSecondary space-y-6 z-50 sm:relative sm:translate-x-0">
           {/* Close Button */}
           <button
             className="sm:hidden absolute top-4 right-4 text-xl font-bold"
@@ -137,11 +137,11 @@ export const JobFilterSidebar = ({
       </Transition>
 
       {/* Main Content */}
-      <div className="sm:block hidden">
-        <aside className="w-full  p-4 bg-white space-y-6">
+      <div className="sm:block hidden bg-providerSecondary min-h-full">
+        <aside className="w-full  p-4 bg-providerSecondary space-y-6">
           {/* Search */}
           <div>
-            <h2 className="font-semibold text-lg md:text-lg lg:text-xl xl:text-2xl mb-4">
+            <h2 className="font-semibold text-lg md:text-lg lg:text-xl xl:text-2xl mb-4 text-providerBlackTertiary">
               Search For Jobs
             </h2>
 
@@ -151,7 +151,7 @@ export const JobFilterSidebar = ({
                 size={16}
               />
               <Input
-                className="w-full h-4 md:h-6 lg:h-10  pl-10 ring-2 ring-gray-100"
+                className="w-full h-4 md:h-6 lg:h-12  pl-10 ring-2 ring-gray-100"
                 placeholder="Search"
               />
             </div>
@@ -189,7 +189,7 @@ export const JobFilterSidebar = ({
                 The Cove (1318)
               </label>
             </div>
-            <button className="text-primary text-sm font-semibold mt-3 hover:underline">
+            <button className="text-providerAccent text-sm font-bold mt-3 hover:underline">
               Add Area
             </button>
           </div>
@@ -219,7 +219,7 @@ export const JobFilterSidebar = ({
                 Mason
               </label>
             </div>
-            <button className="text-primary text-sm font-semibold mt-3 hover:underline">
+            <button className="text-providerAccent text-sm font-bold mt-3 hover:underline">
               Add Work Types
             </button>
           </div>

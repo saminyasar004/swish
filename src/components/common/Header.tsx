@@ -81,7 +81,6 @@ export const categories = [
       {
         name: "General Contractor",
         url: "/new-construction-permits/contractor",
-        
       },
       {
         name: "Project Manager",

@@ -82,7 +82,7 @@ const schema = z
   .object({
     heading: z.string().min(1, "Heading is required"),
     description: z.string().min(1, "Description is required"),
-    category: z.string().min(1, "Category is required"),
+    category: z.number().min(1, "Category is required").int(),
     email: z
       .string()
       .email("Invalid email address")
@@ -138,40 +138,15 @@ export default function PostJob() {
 
   const onSubmit = (data: PostJobForm) => {
     const formData = new FormData();
-
     Object.entries(data).forEach(([key, value]) => {
-      if (value === undefined || value === null) return;
-
-      // Handle arrays (site_images and others)
       if (Array.isArray(value)) {
-        value.forEach((item) => {
-          if (item instanceof File) {
-            formData.append(key, item); // ✅ file stays file
-          } else {
-            formData.append(key, String(item));
-          }
-        });
-      }
-      // Handle booleans
-      else if (typeof value === "boolean") {
-        formData.append(key, value ? "true" : "false");
-      }
-      // Handle numbers
-      else if (typeof value === "number") {
+        value.forEach((item) => formData.append(key, item));
+      } else {
         formData.append(key, value.toString());
       }
-      // Handle File
-      else if (value instanceof File) {
-        formData.append(key, value);
-      }
-      // Everything else (string, etc.)
-      else {
-        formData.append(key, String(value));
-      }
     });
-
     try {
-      console.log("Submitted data:", data);
+      // Simulate API call
       console.log([...formData.entries()]);
       toast.success("Job posted successfully!");
     } catch (error) {
@@ -181,7 +156,7 @@ export default function PostJob() {
 
   const handleCategorySelect = (category: CategoryProps) => {
     setSelectedCategory(category);
-    setValue("category", category.name);
+    setValue("category", category.id);
   };
 
   const filteredCategories = categories.filter((cat) =>
