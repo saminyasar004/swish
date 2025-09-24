@@ -57,6 +57,8 @@ import WriteGoodJobDescription from "@/pages/helpCenterArticle/WriteGoodJobDescr
 import HelpCenterFaq from "@/pages/helpCenterArticle/HelpCenterFaq";
 import MessagePageUpdated from "@/pages/home/Messages/MessagePageUpdated";
 import ReviewsOnSwishma from "@/pages/helpCenterArticle/ReviewsOnSwishma";
+import BuisinessHome from "@/pages/ServiceProvider/myBusiness/BusinessHome";
+import BusinessHome from "@/pages/ServiceProvider/myBusiness/BusinessHome";
 
 export interface Route {
   path: string;
@@ -201,7 +203,7 @@ export const router = createBrowserRouter([
     element: <ProfileLayout />,
     children: [
       {
-       index: true,
+        index: true,
         element: <Profile />,
       },
       {
@@ -255,7 +257,7 @@ export const router = createBrowserRouter([
       // },
       {
         path: "/provider/my-business",
-        element: <MyBusinessPage />,
+        element: <BusinessHome />,
       },
       {
         path: "/provider/my-business/profile",

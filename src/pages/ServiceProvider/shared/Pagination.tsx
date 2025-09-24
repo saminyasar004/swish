@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 interface PaginationProps {
   currentPage: number;
@@ -33,6 +33,10 @@ export default function Pagination({
     return range;
   };
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [setCurrentPage]);
+
   return (
     <div className="flex justify-center mt-6">
       <nav className="flex items-center gap-1">
@@ -57,7 +61,7 @@ export default function Pagination({
               onClick={() => setCurrentPage(page)}
               className={`px-3 py-1 rounded border ${
                 currentPage === page
-                  ? "bg-primary text-white"
+                  ? "bg-providerPrimary text-white"
                   : "hover:bg-gray-100"
               }`}
             >

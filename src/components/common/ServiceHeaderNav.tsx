@@ -37,6 +37,14 @@ import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import LogoLight from "@/assets/providerIcon/LogoLight.svg";
 
+import bag from "@/assets/providerIcon/bag.svg"
+import home from "@/assets/providerIcon/home.svg"
+import message from "@/assets/providerIcon/message.svg"
+
+import bagBlack from "@/assets/providerIcon/bagBlack.svg"
+import homeBlack from "@/assets/providerIcon/homeBlack.svg"
+import messageBlack from "@/assets/providerIcon/messageBlack.svg"
+
 export interface CategoryProps {
   name: string;
 
@@ -137,54 +145,56 @@ export default function ServiceHeaderNav({ selectedTab, onTabChange }) {
           </Link>
 
           {/* Navigation Tabs */}
-          <div className="flex  justify-center items-center gap-2 md:gap-3 lg:gap-6 ">
-            {[
-              {
-                key: "working",
-                label: "Working",
-                icon: selectedTab === "working" ? jobIconActive : jobIcon,
-              },
-              {
-                key: "message",
-                label: "Message",
-                icon:
-                  selectedTab === "message" ? messageIconActive : messageIcon,
-              },
-              {
-                key: "myBusiness",
-                label: "My Business",
-                icon:
-                  selectedTab === "myBusiness"
-                    ? businessIconActive
-                    : businessIcon,
-              },
-            ].map((tab) => (
-              <Button
-                key={tab.key}
-                onClick={() => handleTabClick(tab.key)}
-                variant={selectedTab === tab.key ? "default" : "outline"}
-                className={clsx(
-                  "rounded-full gap-2 font-semibold px-4 py-2 flex items-center hover:bg-greenSplash hover:text-primary",
-                  selectedTab === tab.key && "bg-greenSplash text-primary"
-                )}
-              >
-                <img
-                  src={tab.icon}
-                  alt={`${tab.label} icon`}
-                  className="w-5 h-5"
-                />
-                <span className="hidden md:block">{tab.label}</span>
-              </Button>
-            ))}
-          </div>
+<div className="flex justify-center items-center gap-2 md:gap-3 lg:gap-6">
+  {[
+    {
+      key: "working",
+      label: "Working",
+      icon: selectedTab === "working" ? bagBlack : bag,
+    },
+    {
+      key: "message",
+      label: "Message",
+      icon: selectedTab === "message" ? messageBlack : message,
+    },
+    {
+      key: "myBusiness",
+      label: "My Business",
+      icon: selectedTab === "myBusiness" ? homeBlack : home,
+    },
+  ].map((tab) => {
+    const isActive = selectedTab === tab.key
+    return (
+      <Button
+        key={tab.key}
+        onClick={() => handleTabClick(tab.key)}
+        variant="outline"
+        className={clsx(
+          "flex items-center gap-2 rounded-full px-4 py-2 font-semibold transition-all duration-200",
+          isActive
+            ? "bg-providerWhitePrimary text-providerPrimary border-providerPrimary"
+            : "bg-transparent text-providerWhiteSecondary hover:bg-transparent hover:text-slate-50"
+        )}
+      >
+        <img
+          src={tab.icon}
+          alt={`${tab.label} icon`}
+          className="w-5 h-5"
+        />
+        <span className="hidden md:block">{tab.label}</span>
+      </Button>
+    )
+  })}
+</div>
+
 
           {/* Profile */}
           <Link to="/provider/my-business/profile">
             <div className="flex items-center gap-2 md:gap-2 lg:gap-3">
-              <div className="bg-primary text-white rounded-md  py-2 px-3 lg:px-4  text-md lg:text-xl font-semibold">
+              <div className="bg-providerWhitePrimary text-providerAccent rounded-md  py-1.5 px-3 lg:px-4  text-md lg:text-xl font-semibold">
                 A
               </div>
-              <h1 className="hidden md:block text-lg md:text-xl lg:text-2xl font-semibold text-providerWhiteSecondary">
+              <h1 className="hidden md:block text-lg md:text-lg lg:text-xl font-semibold text-providerWhiteSecondary">
                 Ali Mounji
               </h1>
             </div>

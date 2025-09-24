@@ -11,6 +11,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import LightbulbImage from "@/assets/providerIcon/LightbulbImage.svg";
 import { X } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ButtonProvider } from "@/components/ui/buttonProvider";
+import { BuyClipsModal } from "./BuyClipsModal";
+import { set } from "react-hook-form";
 
 export default function ServiceHome() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -56,6 +59,12 @@ export default function ServiceHome() {
   const onClose = () => {
     setShowModal(false);
     setApplyBidOpen(false);
+  };
+
+  const [isBuyClipsModalOpen, setBuyClipsModalOpen] = useState(false);
+
+  const handleBuyClips = () => {
+    setBuyClipsModalOpen(!isBuyClipsModalOpen);
   };
 
   const tips = true;
@@ -109,7 +118,7 @@ export default function ServiceHome() {
         {/* Main Content */}
         <div className=" col-span-8 md:col-span-7 bg-solidWhite ">
           {tips && (
-            <Card className="relative flex items-center justify-between border rounded-md p-4 shadow-sm mb-16">
+            <Card className="relative flex items-center justify-between border rounded-md px-4 py-2 shadow-sm mb-8">
               <CardContent className="p-0 flex flex-col gap-3">
                 <h3 className="text-lg font-semibold">
                   Make the most of your trial period
@@ -180,7 +189,7 @@ export default function ServiceHome() {
 
           {/* Content */}
           {workingSubTab === "allJobs" && (
-            <div className="space-y-2  md:px-6 shadow-sm min-h-screen">
+            <div className="space-y-2   shadow-sm min-h-screen w-full">
               {currentJobs.map((job) => (
                 <JobCard
                   key={job.id}
@@ -230,27 +239,50 @@ export default function ServiceHome() {
           )}
         </div>
 
-        <div className="col-span-1">
-          {" "}
-          {tips && (
-            <Card className="flex items-center justify-between border rounded-md  shadow-sm p-2">
+        {tips && (
+          <div className="col-span-1 ">
+            <Card className=" border rounded-md  shadow-sm p-2 mb-6">
               <CardContent className="p-0 flex flex-col">
                 <h3 className="text-base font-semibold">Available clips</h3>
                 <h1 className="text-2xl font-semibold">7</h1>
-                <p className="mt-3 text-xs text-providerPrimary">
-                  Show Expiring clips
+                <p className="mt-3 text-xs font-semibold text-providerPrimary">
+                  Expiring clips
                 </p>
               </CardContent>
             </Card>
-          )}
-        </div>
+            <Card className=" border rounded-md  shadow-sm p-2 mb-6">
+              <CardContent className="p-0 flex flex-col text-providerPrimary">
+                <h3 className="text-base font-semibold">Profile view</h3>
+                <h1 className="text-2xl font-semibold">45</h1>
+              </CardContent>
+            </Card>
+
+            <Card className="border rounded-md  shadow-sm p-2 mb-6">
+              <CardContent className="p-0 flex flex-col gap-3">
+                <h3 className="text-base font-semibold">Need More Clips</h3>
+                <h1 className="text-xs font-light">
+                  Easily buy clip with just a few clicks! Unlock jobs and gain
+                  full access instantly.
+                </h1>
+                <ButtonProvider
+                  onClick={handleBuyClips}
+                  size="md"
+                  className="w-full "
+                >
+                  Buy Clips
+                </ButtonProvider>
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </div>
+
+      <BuyClipsModal open={isBuyClipsModalOpen} onClose={handleBuyClips} />
 
       <JobDetailsModal
         open={showModal}
         onClose={() => setShowModal(false)}
         job={selectedJob}
-        onApplyBid={handleApplyBid(selectedJob)}
       />
 
       <ApplyBidModal
@@ -261,183 +293,6 @@ export default function ServiceHome() {
     </main>
   );
 }
-
-// import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// import React, { useEffect, useState } from "react";
-// import { JobCard } from "../shared/JobCard";
-// import { AllJob } from "../serviceTypes/ServiceProvider.types";
-// import { JobDetailsModal } from "./JobDetailsModal";
-// import { ApplyBidModal } from "./ApplyBidModal";
-// import { JobFilterSidebar } from "./JobFilterSidebar";
-// import Pagination from "../shared/Pagination";
-// import MyBusinessPage from "../myBusiness/MyBusinessPage";
-// import MessagePage from "../Message/MessagePage";
-
-// export default function ServiceHome({ selectedTab }) {
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const [workingSubTab, setWorkingSubTab] = useState("allJobs");
-//   const [selectedJob, setSelectedJob] = useState<AllJob | null>(null);
-//   const [showModal, setShowModal] = useState(false);
-//   const [applyBidOpen, setApplyBidOpen] = useState(false);
-
-//   const handleViewDetails = (job: AllJob) => {
-//     setSelectedJob(job);
-//     setShowModal(true);
-//   };
-//   const handleApplyBid = (job: AllJob) => () => {
-//     setSelectedJob(job);
-//     setApplyBidOpen(true);
-//   };
-
-//   // For Pagination
-//   const jobsPerPage = 2;
-//   const totalPages = Math.ceil(dummyJobs.length / jobsPerPage);
-//   const currentJobs = dummyJobs.slice(
-//     (currentPage - 1) * jobsPerPage,
-//     currentPage * jobsPerPage
-//   );
-
-//   // For Favorite Jobs
-//   const favoriteJobIds = JSON.parse(
-//     localStorage.getItem("favoriteJobs") || "[]"
-//   ) as string[];
-
-//   const favoriteJobs = dummyJobs.filter((job) =>
-//     favoriteJobIds.includes(job.id)
-//   );
-
-//   useEffect(() => {
-//     window.scrollTo({ top: 0, behavior: "smooth" });
-//   }, [currentPage]);
-
-//   return (
-//     <main className="container mx-auto py-8">
-//       {selectedTab === "working" && (
-//         <div className="grid grid-cols-9 gap-2 container">
-//           {/* Left Sidebar */}
-//           <div className="col-span-2">
-//             <JobFilterSidebar />
-//           </div>
-
-//           {/* Main Content */}
-//           <div className="col-span-6 bg-solidWhite">
-//             <Tabs
-//               value={workingSubTab}
-//               onValueChange={setWorkingSubTab}
-//               className="mb-6 shadow-lg"
-//             >
-//               <h3 className="text-blackPrimary font-semibold text-xl pt-2 mb-6 mx-6">
-//                 Total 2935 jobs
-//               </h3>
-
-//               <TabsList className="w-full max-w-max gap-16 mb-4 bg-transparent mx-6">
-//                 <TabsTrigger
-//                   value="allJobs"
-//                   className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
-//                 >
-//                   All Jobs
-//                 </TabsTrigger>
-//                 <TabsTrigger
-//                   value="newJobs"
-//                   className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
-//                 >
-//                   New Jobs
-//                 </TabsTrigger>
-//                 <TabsTrigger
-//                   value="favorites"
-//                   className="text-darkGreen px-4 py-2 rounded-full text-md data-[state=active]:text-solidWhite data-[state=active]:bg-primary"
-//                 >
-//                   Favorites
-//                 </TabsTrigger>
-//               </TabsList>
-//             </Tabs>
-
-//             {/* Sub-tab content */}
-//             {workingSubTab === "allJobs" && (
-//               <div className="space-y-4 px-6 shadow-sm min-h-screen">
-//                 {currentJobs.map((job) => (
-//                   <JobCard
-//                     key={job.id}
-//                     job={job}
-//                     onViewDetails={() => handleViewDetails(job)}
-//                     onApplyBid={handleApplyBid(job)}
-//                   />
-//                 ))}
-//                 <div className="mt-auto mb-6">
-//                   <Pagination
-//                     currentPage={currentPage}
-//                     setCurrentPage={setCurrentPage}
-//                     totalPages={totalPages}
-//                     jobsPerPage={jobsPerPage}
-//                   />
-//                 </div>
-//               </div>
-//             )}
-
-//             {workingSubTab === "newJobs" && <div>🆕 New Jobs Content</div>}
-
-//             {/* Favorites */}
-//             {workingSubTab === "favorites" && (
-//               <div className="space-y-4 px-6 shadow-sm min-h-screen">
-//                 {favoriteJobs.length > 0 ? (
-//                   favoriteJobs.map((job) => (
-//                     <JobCard
-//                       key={job.id}
-//                       job={job}
-//                       onViewDetails={() => handleViewDetails(job)}
-//                       onApplyBid={handleApplyBid(job)}
-//                     />
-//                   ))
-//                 ) : (
-//                   <p className="text-center text-muted-foreground py-12">
-//                     You haven’t added any favorite jobs yet.
-//                   </p>
-//                 )}
-//                 <div className="mt-auto mb-6">
-//                   <Pagination
-//                     currentPage={currentPage}
-//                     setCurrentPage={setCurrentPage}
-//                     totalPages={totalPages}
-//                     jobsPerPage={jobsPerPage}
-//                   />
-//                 </div>
-//               </div>
-//             )}
-//           </div>
-
-//           {/* Right Sidebar (optional) */}
-//           <div className="col-span-1">📦 Extra panel / stats</div>
-//         </div>
-//       )}
-
-//       {selectedTab === "message" && (
-//         <div className="container mx-auto">
-//           <div>
-//             <MessagePage />
-//           </div>
-//         </div>
-//       )}
-//       {selectedTab === "myBusiness" && (
-//         <div>
-//           <MyBusinessPage />
-//         </div>
-//       )}
-
-//       <JobDetailsModal
-//         open={showModal}
-//         onClose={() => setShowModal(false)}
-//         job={selectedJob}
-//         onApplyBid={() => handleApplyBid(selectedJob)}
-//       />
-
-//       <ApplyBidModal
-//         open={applyBidOpen}
-//         onClose={() => setApplyBidOpen(false)}
-//         job={selectedJob}
-//       />
-//     </main>
-//   );
-// }
 
 export const dummyJobs: AllJob[] = [
   {
@@ -459,6 +314,9 @@ export const dummyJobs: AllJob[] = [
     employeeNeeds: "2 Workers",
     startTime: "Within 3 days",
     images: [
+      "/images/flooring-1.jpg",
+      "/images/flooring-2.jpg",
+      "/images/flooring-3.jpg",
       "/images/flooring-1.jpg",
       "/images/flooring-2.jpg",
       "/images/flooring-3.jpg",
