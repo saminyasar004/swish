@@ -12,7 +12,8 @@ import { logout, setUser } from "../features/auth/authSlice";
 export const baseUrl = "http://10.10.13.59:8001"
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://10.10.13.59:8001/",
+  // baseUrl: "http://10.10.13.59:8001/",
+  baseUrl: "http://13.233.139.76:8001/",
   credentials: "include",
   prepareHeaders: (headers, { getState, endpoint }) => {
 
@@ -50,7 +51,8 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     console.log("Sending refresh token");
 
     const res = await fetch(
-      "http://10.10.13.59:8001/accounts/api/v1/token/refresh",
+      // "http://10.10.13.59:8001/accounts/api/v1/token/refresh",
+      "http://13.233.139.76:8001/accounts/api/v1/token/refresh",
       {
         method: "POST",
         credentials: "include",
