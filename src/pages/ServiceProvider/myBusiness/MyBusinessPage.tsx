@@ -72,17 +72,10 @@ export default function MyBusinessPage() {
   return (
     <div className="container mx-auto py-6">
       {/* Header */}
-      <div className="flex items-center gap-4 my-12">
-        <div className="bg-primary text-white rounded-md px-4 py-2 text-4xl font-semibold">
-          {userName.charAt(0)}
-        </div>
-        <h1 className="text-3xl md:text-4xl font-semibold">{userName}</h1>
-      </div>
-
-      <hr className="border-gray-200" />
+     
 
       {/* Section Title */}
-      <h2 className="text-2xl mt-10 mb-6 font-semibold text-gray-800">
+      <h2 className="text-2xl  mb-6 font-semibold text-gray-800">
         My company
       </h2>
 
