@@ -30,9 +30,9 @@ export default function EmployeesPage() {
   );
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-gray-50">
+    <div className="flex flex-col md:flex-row min-h-screen container mx-auto">
       {/* Sidebar */}
-      <aside className="w-full md:w-1/4 bg-solidWhite shadow-xl">
+      <aside className="w-full md:w-1/4 ">
         <BusinessSidebar />
       </aside>
 
@@ -66,7 +66,7 @@ export default function EmployeesPage() {
         </div>
 
         {/* Employee Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2  md:grid-cols-3 gap-6">
           {filteredEmployees.map((emp) => (
             <div
               key={emp.id}

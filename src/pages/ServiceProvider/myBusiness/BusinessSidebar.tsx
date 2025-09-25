@@ -2,6 +2,7 @@ import CompanyIcon from "@/assets/images/CompanyIcon.svg";
 import EmployeesIcon from "@/assets/images/EmployeeIcon.svg";
 import GraphicsIcon from "@/assets/images/GraphicsIcon.svg";
 import NotificationsIcon from "@/assets/images/NotificationsIcon.svg";
+import { Separator } from "@/components/ui/separator";
 import { ChevronRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -22,9 +23,19 @@ export default function BusinessSidebar({
       route: "/provider/my-business/profile/graphics",
     },
     {
+      icon: GraphicsIcon,
+      label: "Picture",
+      route: "/provider/my-business/profile/graphics",
+    },
+    {
       icon: EmployeesIcon,
       label: "Employees",
       route: "/provider/my-business/profile/employees",
+    },
+    {
+      icon: NotificationsIcon,
+      label: "Qualifications",
+      route: "/provider/my-business/profile/notifications",
     },
     {
       icon: NotificationsIcon,
@@ -34,7 +45,7 @@ export default function BusinessSidebar({
   ];
 
   return (
-    <aside className="w-full px-6 md:px-12 py-10 space-y-10 bg-white h-full relative">
+    <aside className="w-full px-6 md:px-6 py-10 space-y-4 bg-white h-full relative">
       {/* Close on mobile */}
       {closeSidebar && (
         <button
@@ -51,7 +62,8 @@ export default function BusinessSidebar({
         Ali Mounji
       </div>
 
-      <hr className="border border-gray-200" />
+      {/* <hr className="border border-gray-200" /> */}
+      <Separator/>
 
       {/* Navigation List */}
       <nav>

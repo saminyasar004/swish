@@ -7,6 +7,7 @@ import profileOutlineIcon from "@/assets/providerIcon/profileOutlineIcon.svg";
 import businessJobIcon from "@/assets/providerIcon/businessJobIcon.svg";
 import messageOutlineIcon from "@/assets/providerIcon/messageOutlineIcon.svg";
 import { Separator } from "@/components/ui/separator";
+import { ButtonProvider } from "@/components/ui/buttonProvider";
 
 export default function GetStartedWinJob() {
   const userName = "Ali Mounji";
@@ -35,9 +36,9 @@ export default function GetStartedWinJob() {
     {
       id: 3,
       title: "Answers to jobs",
-      description: "Start with small and uncut jobs to gather evaluations.",
+      description: "Start with small and uncut jobs to gather \n evaluations.",
       icon: messageOutlineIcon,
-      button: "See cut-free jobs",
+      button: "See free jobs",
       link: "/provider/my-business/direct-jobs",
       color: "bg-[#00B68B]",
     },
@@ -60,7 +61,7 @@ export default function GetStartedWinJob() {
 
       {/* Section Title */}
       <h2 className="text-2xl mt-10 mb-6 font-semibold text-gray-800">
-        Get started – and win your first jobs
+        Get started and win your first jobs
       </h2>
 
       {/* Business Options */}
@@ -71,21 +72,32 @@ export default function GetStartedWinJob() {
             className="overflow-hidden rounded-lg shadow-sm"
           >
             {/* Colored header with icon */}
-            <div
-              className={`${option.color} flex items-center justify-center h-52`}
-            >
-              <img src={option.icon} alt={option.title} className="h-10 w-10" />
-            </div>
+            <Link to={option.link}>
+              <div
+                className={`${option.color} flex items-center justify-center h-52`}
+              >
+                <img
+                  src={option.icon}
+                  alt={option.title}
+                  className="h-10 w-10"
+                />
+              </div>
+            </Link>
 
             {/* Content */}
             <CardContent className="p-6 space-y-2 bg-white">
               <h3 className="text-lg font-semibold">{option.title}</h3>
-              <p className="text-sm text-gray-600">{option.description}</p>
+              <p className="text-sm text-gray-600 whitespace-pre-line">
+                {option.description}
+              </p>
 
               <Link to={option.link}>
-                <Button variant="outline" className="w-fit mt-4">
+                <ButtonProvider
+                  variant="outline"
+                  className="w-fit mt-4 lg:h-12 text-providerPrimary"
+                >
                   {option.button}
-                </Button>
+                </ButtonProvider>
               </Link>
             </CardContent>
           </Card>

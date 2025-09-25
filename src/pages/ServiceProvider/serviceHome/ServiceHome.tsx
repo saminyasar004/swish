@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { ButtonProvider } from "@/components/ui/buttonProvider";
 import { BuyClipsModal } from "./BuyClipsModal";
 import { set } from "react-hook-form";
+import { SeeTipsModal } from "./SeeTipsModal";
 
 export default function ServiceHome() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,6 +22,7 @@ export default function ServiceHome() {
   const [selectedJob, setSelectedJob] = useState<AllJob | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [applyBidOpen, setApplyBidOpen] = useState(false);
+  const [tipsViwOpen, setTipsViwOpen] = useState(false);
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
@@ -66,6 +68,10 @@ export default function ServiceHome() {
   const handleBuyClips = () => {
     setBuyClipsModalOpen(!isBuyClipsModalOpen);
   };
+
+  const handleTipsView = () => {
+    setTipsViwOpen(!tipsViwOpen);
+  }
 
   const tips = true;
   const subtabs = [
@@ -128,6 +134,7 @@ export default function ServiceHome() {
                   increase your chances of winning jobs.
                 </p>
                 <Button
+                onClick={handleTipsView}
                   variant="default"
                   className="mt-3 w-fit bg-providerPrimary hover:bg-providerPrimary/90"
                 >
@@ -290,6 +297,11 @@ export default function ServiceHome() {
         onClose={() => setApplyBidOpen(false)}
         job={selectedJob}
       />
+
+
+      <SeeTipsModal open={tipsViwOpen} onClose={handleTipsView} />
+
+
     </main>
   );
 }

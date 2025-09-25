@@ -37,7 +37,7 @@ export default function BusinessCard({
       <div className="flex justify-between items-start gap-4">
         {/* Left: Logo + Info */}
         <div className="flex gap-4">
-          <Link to={`/company-search/${id}`}>
+          <Link to={`/profile/company-search/${id}`}>
             <img
               src={logo}
               alt={name}
@@ -46,7 +46,7 @@ export default function BusinessCard({
           </Link>
 
           <div className="flex flex-col gap-1">
-            <Link to={`/company-search/${id}`}>
+            <Link to={`/profile/company-search/${id}`}>
               {" "}
               <h2 className="font-bold text-lg">{name}</h2>
             </Link>
@@ -57,7 +57,7 @@ export default function BusinessCard({
               <span className="font-semibold">{rating.toFixed(1)}</span>
               <span>({reviewsCount})</span>
 
-              <Link to={`/company-search/${id}`}>
+              <Link to={`/profile/company-search/${id}`}>
                 <a
                   href={referencesUrl}
                   className="text-darkGreen hover:underline ml-2 transition-all duration-300 ease-in-out"
@@ -82,7 +82,7 @@ export default function BusinessCard({
         </div>
 
         {/* Right: CTA button */}
-        <Link to={`/request-quote/${id}`}>
+        <Link to={`/profile/request-quote/${id}`}>
           <Button
             variant="outline"
             className="text-secondary border-primary font-semibold hover:bg-primary/20"

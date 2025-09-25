@@ -261,8 +261,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/provider/my-business/profile",
-        element: <BusinessProfile />,
+        element: <CompanyProfileHome />,
       },
+      // {
+      //   path: "/provider/my-business/profile",
+      //   element: <BusinessProfile />,
+      // },
       {
         path: "/provider/my-business/profile/company",
         element: <CompanyPage />, // if using common layout
@@ -296,6 +300,8 @@ export const router = createBrowserRouter([
       },
     ],
   },
+
+
 
   {
     path: "/register-company",

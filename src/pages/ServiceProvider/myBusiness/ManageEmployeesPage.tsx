@@ -9,6 +9,7 @@ import EmployeeForm from "./EmployeeForm";
 import Employee1 from "@/assets/images/Employee1.svg";
 import Employee2 from "@/assets/images/Employee2.svg";
 import Employee3 from "@/assets/images/Employee3.svg";
+import { Separator } from "@/components/ui/separator";
 
 interface Employee {
   id: number;
@@ -70,17 +71,19 @@ export default function ManageEmployeesPage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-gray-50">
+    <div className="flex flex-col md:flex-row min-h-screen container mx-auto">
       {/* Sidebar */}
-      <aside className="w-full md:w-1/4 bg-white shadow-xl">
+      <aside className="w-full md:w-1/4 ">
         <BusinessSidebar />
       </aside>
 
       {/* Main Content */}
-      <main className="w-full md:w-3/4 p-6 space-y-8 container mx-auto mt-6">
+      <main className="w-full md:w-3/4 p-6 space-y-4 container mx-auto mt-6">
         <h2 className="text-3xl font-semibold text-gray-800 mb-2">
           Manage Employees
         </h2>
+
+        <Separator/>
 
         {/* Employee Avatars */}
         <div className="flex gap-4 flex-wrap items-center">

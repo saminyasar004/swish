@@ -19,9 +19,9 @@ export default function NotificationsPage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-gray-50">
+    <div className="flex flex-col md:flex-row min-h-screen container mx-auto">
       {/* Sidebar */}
-      <aside className="w-full md:w-1/4 bg-white shadow-xl">
+      <aside className="w-full md:w-1/4 ">
         <BusinessSidebar />
       </aside>
 
