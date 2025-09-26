@@ -3,7 +3,6 @@ import ProfileIcon from "@/assets/images/ProfileIcon.svg";
 import SettingIcon from "@/assets/images/SettingIcon.svg";
 import MyBidsIcon from "@/assets/images/MyBidsIcon.svg";
 
-
 import helpGuideIcon from "@/assets/providerIcon/helpGuidIcon.svg";
 import evaluationIcon from "@/assets/providerIcon/evaluationIcon.svg";
 import personalSettingsIcon from "@/assets/providerIcon/personalSettingIcon.svg";
@@ -27,12 +26,13 @@ export default function MyBusinessPage() {
       title: "Settings",
       description: "Choose the servicin ond asas you wont to mork in.",
       icon: SettingIcon,
-      link: "/provider/my-business/job-setting",
+      link: "/provider/my-business/job-setting/company-info",
     },
     {
       id: 3,
       title: "My Bids",
-      description: " See your reviews and request new anas trom exising cutamers.",
+      description:
+        " See your reviews and request new anas trom exising cutamers.",
       icon: MyBidsIcon,
       link: "/provider/my-business/my-bids",
     },
@@ -72,25 +72,25 @@ export default function MyBusinessPage() {
   return (
     <div className="container mx-auto py-6">
       {/* Header */}
-     
 
       {/* Section Title */}
-      <h2 className="text-2xl  mb-6 font-semibold text-gray-800">
-        My company
-      </h2>
+      <h2 className="text-2xl  mb-6 font-semibold text-gray-800">My company</h2>
 
       {/* Business Options */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {businessOptions.map((option) => (
-          <Card key={option.id} className="cursor-pointer hover:shadow-md transition">
+          <Card
+            key={option.id}
+            className="cursor-pointer hover:shadow-md transition"
+          >
             <Link to={option.link}>
-              <CardContent className="p-4 lg:p-6 space-y-3">
-                <div className="flex items-center gap-2 text-lg font-semibold">
-                  <img
-                    src={option.icon}
-                    className="h-8 w-8"
-                    alt="Profile Icon"
-                  />
+              <CardContent className="p-4 lg:p-6 ">
+                <img
+                  src={option.icon}
+                  className="h-8 w-8 mb-4"
+                  alt="Profile Icon"
+                />
+                <div className=" text-lg font-semibold mb-2">
                   <span>{option.title}</span>
                 </div>
                 <p className="text-sm text-muted-foreground">

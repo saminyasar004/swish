@@ -59,6 +59,7 @@ import MessagePageUpdated from "@/pages/home/Messages/MessagePageUpdated";
 import ReviewsOnSwishma from "@/pages/helpCenterArticle/ReviewsOnSwishma";
 import BuisinessHome from "@/pages/ServiceProvider/myBusiness/BusinessHome";
 import BusinessHome from "@/pages/ServiceProvider/myBusiness/BusinessHome";
+import CompanyProfileFromUser from "@/pages/companyPorfile/CompanyProfileFromUser";
 
 export interface Route {
   path: string;
@@ -228,7 +229,7 @@ export const router = createBrowserRouter([
       // COMPANY PROFILE REGISTER COMPANY
       {
         path: "company-search/:id",
-        element: <CompanyProfileHome />,
+        element: <CompanyProfileFromUser />,
       },
       {
         path: "request-quote/:id",
@@ -256,11 +257,11 @@ export const router = createBrowserRouter([
       //>/
       // },
       {
-        path: "/provider/my-business",
+        path: "my-business",
         element: <BusinessHome />,
       },
       {
-        path: "/provider/my-business/profile",
+        path: "my-business/profile",
         element: <CompanyProfileHome />,
       },
       // {
@@ -290,7 +291,11 @@ export const router = createBrowserRouter([
 
       //job setting
       {
-        path: "/provider/my-business/job-setting",
+        path: "my-business/job-setting/company-info",
+        element: <JobSetting />,
+      },
+      {
+        path: "my-business/job-setting/notifications",
         element: <JobSetting />,
       },
       //my bids
@@ -300,8 +305,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
-
-
 
   {
     path: "/register-company",
