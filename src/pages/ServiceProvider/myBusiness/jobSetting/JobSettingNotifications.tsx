@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import notifactionEmail from "@/assets/providerIcon/settingIcon/notifactionEmail.svg";
+import { Separator } from "@/components/ui/separator";
 
 export default function JobSettingNotifications() {
   const [notifications, setNotifications] = useState({
@@ -226,6 +227,7 @@ export default function JobSettingNotifications() {
           </div>
         </div>
       </section>
+
       <div className=" py-8 ">
         <div className="flex justify-between items-center pb-2 font-semibold ">
           <Label className="flex-1 text-lg font-semibold" htmlFor="rejectBids">

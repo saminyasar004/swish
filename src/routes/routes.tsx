@@ -60,6 +60,7 @@ import ReviewsOnSwishma from "@/pages/helpCenterArticle/ReviewsOnSwishma";
 import BuisinessHome from "@/pages/ServiceProvider/myBusiness/BusinessHome";
 import BusinessHome from "@/pages/ServiceProvider/myBusiness/BusinessHome";
 import CompanyProfileFromUser from "@/pages/companyPorfile/CompanyProfileFromUser";
+import SwitchAccount from "@/pages/ServiceProvider/myBusiness/jobSetting/SwitchAccount";
 
 export interface Route {
   path: string;
@@ -196,6 +197,11 @@ export const router = createBrowserRouter([
         path: "/company-search/results",
         element: <FindCompanyResult />,
       },
+
+      {
+        path: "switch-account",
+        element: <SwitchAccount />,
+      },
     ],
   },
 
@@ -296,6 +302,22 @@ export const router = createBrowserRouter([
       },
       {
         path: "my-business/job-setting/notifications",
+        element: <JobSetting />,
+      },
+      {
+        path: "my-business/job-setting/job-search",
+        element: <JobSetting />,
+      },
+      {
+        path: "my-business/job-setting/customer-service",
+        element: <JobSetting />,
+      },
+      {
+        path: "my-business/job-setting/help-guide",
+        element: <JobSetting />,
+      },
+      {
+        path: "my-business/job-setting/receipts",
         element: <JobSetting />,
       },
       //my bids

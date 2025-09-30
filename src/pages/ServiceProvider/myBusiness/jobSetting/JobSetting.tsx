@@ -3,8 +3,12 @@ import { ButtonProvider } from "@/components/ui/buttonProvider";
 import companyInfoBag from "@/assets/providerIcon/settingIcon/companyInfoBag.svg";
 import passwordIcon from "@/assets/providerIcon/settingIcon/passwordIcon.svg";
 import bankIcon from "@/assets/providerIcon/settingIcon/bankIcon.svg";
-import JobSettingNotification from "./JobSettingNotification";
 import JobSettingNotifications from "./JobSettingNotifications";
+import JobSearchInJobSetting from "./JobSearchInJobSetting";
+import CustomerServiceInSetting from "./CustomerServiceInSetting";
+import HelpGuidSetting from "./HelpGuidSetting";
+import ReceiptsInSetting from "./ReceiptsInSetting";
+import SwitchAccountInSetting from "./SwitchAccount";
 
 const userSettings = [
   {
@@ -34,7 +38,12 @@ const userSettings = [
   },
   {
     name: "Billing",
-    subcategories: [{ subname: "Receipts", url: "/receipts" }],
+    subcategories: [
+      {
+        subname: "Receipts",
+        url: "/provider/my-business/job-setting/receipts",
+      },
+    ],
   },
 ];
 
@@ -46,8 +55,15 @@ export default function JobSetting() {
   const contentMap: Record<string, JSX.Element> = {
     "/provider/my-business/job-setting/company-info": <CompanyInfo />,
     // add other pages here later:
-    "/provider/my-business/job-setting/notifications": <JobSettingNotifications />,
-    // "/provider/my-business/job-setting/job-search": <JobSearch />,
+    "/provider/my-business/job-setting/notifications": (
+      <JobSettingNotifications />
+    ),
+    "/provider/my-business/job-setting/job-search": <JobSearchInJobSetting />,
+    "/provider/my-business/job-setting/customer-service": (
+      <CustomerServiceInSetting />
+    ),
+    "/provider/my-business/job-setting/help-guide": <HelpGuidSetting />,
+    "/provider/my-business/job-setting/receipts": <ReceiptsInSetting />,
   };
 
   const content = contentMap[pathname] ?? (
@@ -72,6 +88,8 @@ export default function JobSetting() {
 }
 
 export function NavigationMenuContent() {
+  const location = useLocation();
+  const pathname = location.pathname;
   return (
     <div className="w-full min-w-max flex flex-col gap-2 relative overflow-hidden px-6">
       <div className="py-5 space-y-2">
@@ -93,16 +111,24 @@ export function NavigationMenuContent() {
 
               {/* Subcategories */}
               <div className="flex flex-col">
-                {category.subcategories.map((subcategory, subIndex) => (
-                  <Link key={subIndex} to={subcategory.url}>
-                    <ButtonProvider
-                      variant="link"
-                      className="w-full flex items-center justify-between font-medium text-sm whitespace-normal break-words transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md hover:no-underline text-left"
-                    >
-                      {subcategory.subname}
-                    </ButtonProvider>
-                  </Link>
-                ))}
+                {category.subcategories.map((subcategory, subIndex) => {
+                  const isActive = pathname === subcategory.url;
+                  return (
+                    <Link key={subIndex} to={subcategory.url} className="mb-1">
+                      <ButtonProvider
+                        variant="link"
+                        className={`w-full flex items-center justify-between font-medium text-sm whitespace-normal break-words transition-all duration-300 cursor-pointer py-3 px-2 rounded-md text-left hover:no-underline
+                          ${
+                            isActive
+                              ? "bg-slate-100 text-primaryDark font-semibold"
+                              : "hover:bg-slate-100 text-gray-700"
+                          }`}
+                      >
+                        {subcategory.subname}
+                      </ButtonProvider>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           ))}
@@ -116,12 +142,14 @@ export function NavigationMenuContent() {
           </Link>
         </div>
         <div className="flex flex-col ">
-          <ButtonProvider
-            variant="link"
-            className="w-full flex items-center justify-between font-semibold text-sm whitespace-normal break-words transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md hover:no-underline text-left"
-          >
-            Switch account
-          </ButtonProvider>
+          <Link to="/switch-account">
+            <ButtonProvider
+              variant="link"
+              className="w-full flex items-center justify-between font-semibold text-sm whitespace-normal break-words transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md hover:no-underline text-left"
+            >
+              Switch account
+            </ButtonProvider>
+          </Link>
           <ButtonProvider
             variant="link"
             className="w-full flex items-center text-red-500 justify-between font-medium text-sm whitespace-normal break-words transition-all duration-300 cursor-pointer hover:bg-slate-100 py-3 px-2 rounded-md hover:no-underline text-left"
