@@ -63,6 +63,8 @@ import CompanyProfileFromUser from "@/pages/companyPorfile/CompanyProfileFromUse
 import SwitchAccount from "@/pages/ServiceProvider/myBusiness/jobSetting/SwitchAccount";
 import HelpGuidSetting from "@/pages/ServiceProvider/myBusiness/jobSetting/helpGuid/HelpGuidSetting";
 import FilterSavedSearch from "@/pages/ServiceProvider/myBusiness/jobSetting/helpGuid/FilterSavedSearch";
+import PrivacyPolicy from "@/pages/PrivacyTerm/PrivacyPolicy";
+import TermsConditions from "@/pages/PrivacyTerm/TermsConditions";
 
 export interface Route {
   path: string;
@@ -203,6 +205,14 @@ export const router = createBrowserRouter([
       {
         path: "switch-account",
         element: <SwitchAccount />,
+      },
+      {
+        path: "privacy-policy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "terms-and-conditions",
+        element: <TermsConditions />,
       },
     ],
   },

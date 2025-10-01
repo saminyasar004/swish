@@ -14,10 +14,8 @@ export default function FooterCompanyRegister() {
   ];
 
   const termCondition = [
-    { name: "Privacy Statement", url: "#" },
-    { name: "• Sitemap", url: "#" },
-    { name: "• Term", url: "#" },
-    { name: "• Cookie Settings", url: "#" },
+    { name: "Privacy Policy", url: "/privacy-policy" },
+    { name: "Term", url: "/terms-and-conditions" },
   ];
 
   const quickLinks = [

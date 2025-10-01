@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 
-export default function 
-Footer() {
+export default function Footer() {
   const footerRoutes = [
     { name: "Help Guide", url: "/help-center" },
     { name: "Contact", url: "/contact" },
@@ -15,10 +14,8 @@ Footer() {
   ];
 
   const termCondition = [
-    { name: "Privacy Statement", url: "#" },
-    { name: "• Sitemap", url: "#" },
-    { name: "• Term", url: "#" },
-    { name: "• Cookie Settings", url: "#" },
+    { name: "Privacy Policy", url: "/privacy-policy" },
+    { name: "Term", url: "/terms-and-conditions" },
   ];
 
   const quickLinks = [
