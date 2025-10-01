@@ -61,6 +61,8 @@ import BuisinessHome from "@/pages/ServiceProvider/myBusiness/BusinessHome";
 import BusinessHome from "@/pages/ServiceProvider/myBusiness/BusinessHome";
 import CompanyProfileFromUser from "@/pages/companyPorfile/CompanyProfileFromUser";
 import SwitchAccount from "@/pages/ServiceProvider/myBusiness/jobSetting/SwitchAccount";
+import HelpGuidSetting from "@/pages/ServiceProvider/myBusiness/jobSetting/helpGuid/HelpGuidSetting";
+import FilterSavedSearch from "@/pages/ServiceProvider/myBusiness/jobSetting/helpGuid/FilterSavedSearch";
 
 export interface Route {
   path: string;
@@ -270,6 +272,7 @@ export const router = createBrowserRouter([
         path: "my-business/profile",
         element: <CompanyProfileHome />,
       },
+
       // {
       //   path: "/provider/my-business/profile",
       //   element: <BusinessProfile />,
@@ -318,6 +321,44 @@ export const router = createBrowserRouter([
       },
       {
         path: "my-business/job-setting/receipts",
+        element: <JobSetting />,
+      },
+
+      // HELP GUID
+      {
+        path: "my-business/job-setting/help-guide/filters",
+        element: <JobSetting />,
+      },
+      {
+        path: "my-business/job-setting/help-guide/how-clips-work",
+        element: <JobSetting />,
+      },
+      {
+        path: "my-business/job-setting/help-guide/answers-win-jobs",
+        element: <JobSetting />,
+      },
+      {
+        path: "my-business/job-setting/help-guide/work-types-areas",
+        element: <JobSetting />,
+      },
+      {
+        path: "my-business/job-setting/help-guide/cut-free-jobs",
+        element: <JobSetting />,
+      },
+      {
+        path: "my-business/job-setting/help-guide/standard-response",
+        element: <JobSetting />,
+      },
+      {
+        path: "my-business/job-setting/help-guide/profile-page",
+        element: <JobSetting />,
+      },
+      {
+        path: "my-business/job-setting/help-guide/get-jobs-directly",
+        element: <JobSetting />,
+      },
+      {
+        path: "my-business/job-setting/help-guide/evaluations",
         element: <JobSetting />,
       },
       //my bids

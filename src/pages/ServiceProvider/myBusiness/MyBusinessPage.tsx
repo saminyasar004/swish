@@ -28,21 +28,21 @@ export default function MyBusinessPage() {
       icon: SettingIcon,
       link: "/provider/my-business/job-setting/company-info",
     },
-    {
-      id: 3,
-      title: "My Bids",
-      description:
-        " See your reviews and request new anas trom exising cutamers.",
-      icon: MyBidsIcon,
-      link: "/provider/my-business/my-bids",
-    },
+    // {
+    //   id: 3,
+    //   title: "My Bids",
+    //   description:
+    //     " See your reviews and request new anas trom exising cutamers.",
+    //   icon: MyBidsIcon,
+    //   link: "/provider/my-business/my-bids",
+    // },
     {
       id: 4,
       title: "Help guide",
       description:
         "Add basic information and photos to build trust and attract customers.",
       icon: helpGuideIcon,
-      link: "/provider/my-business/help-guide",
+      link: "/provider/my-business/job-setting/help-guide",
     },
     {
       id: 5,
@@ -50,14 +50,14 @@ export default function MyBusinessPage() {
       description:
         "See your reviews and request new anas trom exising cutamers.",
       icon: evaluationIcon,
-      link: "/provider/my-business/evaluations",
+      link: "/provider/my-business/job-setting/help-guide/evaluations",
     },
     {
       id: 6,
       title: "Personal settings",
       description: "Customira your user protle and natifications.",
       icon: personalSettingsIcon,
-      link: "/provider/my-business/personal-settings",
+      link: "/provider/my-business/job-setting/company-info",
     },
     {
       id: 7,
@@ -65,7 +65,7 @@ export default function MyBusinessPage() {
       description:
         "Add basic information and photos to build trust and attract customers.",
       icon: customerServiceIcon,
-      link: "/provider/my-business/help-guide",
+      link: "/provider/my-business/job-setting/customer-service",
     },
   ];
 

@@ -30,7 +30,7 @@ export default function GetStartedWinJob() {
         "Ask clients to post jobs on your profile to collect reviews.",
       icon: businessJobIcon,
       button: "Read more",
-      link: "/provider/my-business/answer-jobs",
+      link: "/provider/my-business/job-setting/help-guide/get-jobs-directly",
       color: "bg-[#9477FF]",
     },
     {
@@ -39,7 +39,7 @@ export default function GetStartedWinJob() {
       description: "Start with small and uncut jobs to gather \n evaluations.",
       icon: messageOutlineIcon,
       button: "See free jobs",
-      link: "/provider/my-business/direct-jobs",
+      link: "/provider/clip-free-jobs",
       color: "bg-[#00B68B]",
     },
   ];

@@ -6,9 +6,18 @@ import bankIcon from "@/assets/providerIcon/settingIcon/bankIcon.svg";
 import JobSettingNotifications from "./JobSettingNotifications";
 import JobSearchInJobSetting from "./JobSearchInJobSetting";
 import CustomerServiceInSetting from "./CustomerServiceInSetting";
-import HelpGuidSetting from "./HelpGuidSetting";
+import HelpGuidSetting from "./helpGuid/HelpGuidSetting";
 import ReceiptsInSetting from "./ReceiptsInSetting";
 import SwitchAccountInSetting from "./SwitchAccount";
+import FilterSavedSearch from "./helpGuid/FilterSavedSearch";
+import HowClipsWork from "./helpGuid/HowClipsWork";
+import AnswerWinJob from "./helpGuid/AnswerWinJob";
+import WorkTypeArea from "./helpGuid/WorkTypeArea";
+import CutFreeJobs from "./helpGuid/CutFreeJobs";
+import StandardResponse from "./helpGuid/StandardResponse";
+import GoodProfilePage from "./helpGuid/GoodProfilePage";
+import GetJobsDirectly from "./helpGuid/GetJobsDirectly";
+import EvaluationsReview from "./helpGuid/EvaluationsReview";
 
 const userSettings = [
   {
@@ -64,6 +73,15 @@ export default function JobSetting() {
     ),
     "/provider/my-business/job-setting/help-guide": <HelpGuidSetting />,
     "/provider/my-business/job-setting/receipts": <ReceiptsInSetting />,
+    "/provider/my-business/job-setting/help-guide/filters": <FilterSavedSearch />,
+    "/provider/my-business/job-setting/help-guide/how-clips-work": <HowClipsWork />,
+    "/provider/my-business/job-setting/help-guide/answers-win-jobs": <AnswerWinJob />,
+    "/provider/my-business/job-setting/help-guide/work-types-areas": <WorkTypeArea />,
+    "/provider/my-business/job-setting/help-guide/cut-free-jobs": <CutFreeJobs />,
+    "/provider/my-business/job-setting/help-guide/standard-response": <StandardResponse />,
+    "/provider/my-business/job-setting/help-guide/profile-page": <GoodProfilePage />,
+    "/provider/my-business/job-setting/help-guide/get-jobs-directly": <GetJobsDirectly />,
+    "/provider/my-business/job-setting/help-guide/evaluations": <EvaluationsReview />,
   };
 
   const content = contentMap[pathname] ?? (

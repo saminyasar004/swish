@@ -21,51 +21,60 @@ const guides = [
     description:
       "Filter jobs, save searches, and get notifications — so you can stay up to date and respond quickly.",
     icon: Filter,
+    link: "/provider/my-business/job-setting/help-guide/filters",
   },
   {
     title: "How clips work",
     description:
       "With Clips you can respond to all relevant jobs – here's how it works.",
     icon: PlayCircle,
+    link: "/provider/my-business/job-setting/help-guide/how-clips-work",
   },
   {
     title: "Answers that win jobs",
     description: "Good answers get more jobs – learn what works best.",
     icon: Trophy,
+    link: "/provider/my-business/job-setting/help-guide/answers-win-jobs",
   },
   {
     title: "Work types and areas",
     description:
       "See the most relevant jobs – customize the category and area to what you're looking for.",
     icon: Briefcase,
+    link: "/provider/my-business/job-setting/help-guide/work-types-areas",
   },
   {
     title: "Cut-free jobs",
     description: "Free opportunities – how to get the most out of them.",
     icon: BadgePercent,
+    link: "/provider/my-business/job-setting/help-guide/cut-free-jobs",
   },
   {
     title: "Standard response",
     description:
       "Use standard responses for faster and better customer dialogue.",
     icon: MessageSquare,
+    link: "/provider/my-business/job-setting/help-guide/standard-response",
   },
   {
     title: "Profile page",
     description:
       "Get more jobs with a strong profile page – see how to improve it.",
     icon: UserCircle,
+    link: "/provider/my-business/job-setting/help-guide/profile-page",
   },
   {
     title: "Get jobs directly",
     description:
       "With a profile page on Mittanbud you can receive direct jobs from customers.",
     icon: Send,
+    link: "/provider/my-business/job-setting/help-guide/get-jobs-directly",
   },
   {
     title: "Evaluations",
     description: "Attract more and better assignments with good evaluations.",
     icon: Star,
+    link: "/provider/my-business/job-setting/help-guide/evaluations",
   },
 ];
 
@@ -87,22 +96,21 @@ export default function HelpGuidSetting() {
       {/* Guide cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
         {guides.map((guide, i) => (
-          <Card
-            key={i}
-            className="shadow-sm hover:shadow-md cursor-pointer hover:bg-slate-50 transition-all ease-in-out duration-300"
-          >
-            <CardHeader className="flex flex-col gap-2">
-              <guide.icon className="w-6 h-6 text-providerPrimary" />
-              <CardTitle className="text-lg font-semibold leading-snug">
-                {guide.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                {guide.description}
-              </p>
-            </CardContent>
-          </Card>
+          <Link key={i} to={guide.link}>
+            <Card className="shadow-sm hover:shadow-md cursor-pointer hover:bg-slate-50 transition-all ease-in-out duration-300">
+              <CardHeader className="flex flex-col gap-2">
+                <guide.icon className="w-6 h-6 text-providerPrimary" />
+                <CardTitle className="text-lg font-semibold leading-snug">
+                  {guide.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  {guide.description}
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
 
