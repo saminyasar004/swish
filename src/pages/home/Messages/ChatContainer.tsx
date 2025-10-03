@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import ChatHeader from "./ChatHeader";
-import MessageInput from "./MessageInput";
-import { formatMessageTime } from "./utils";
+import ChatHeader from "../../ServiceProvider/MessageUpdate/ChatHeader";
+import MessageInput from "../../ServiceProvider/MessageUpdate/MessageInput";
+import { formatMessageTime } from "../../ServiceProvider/MessageUpdate/utils";
 import { X } from "lucide-react";
 
 type Message = {
@@ -146,7 +146,11 @@ const selectedUser = {
   profile_image: "/avatar2.png",
 };
 
-const ChatContainer = ({  setSelectedProfilePage }: {  setSelectedProfilePage: any }) => {
+const ChatContainer = ({
+  setSelectedProfilePage,
+}: {
+  setSelectedProfilePage: any;
+}) => {
   const [messages, setMessages] = useState(dummyMessages);
   const messageEndRef = useRef<HTMLDivElement | null>(null);
 
@@ -159,9 +163,12 @@ const ChatContainer = ({  setSelectedProfilePage }: {  setSelectedProfilePage: a
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-56px)] w-full bg-white  border-zinc-200 shadow-xl mx-2">
+    <div className="flex flex-col h-[calc(100vh-56px)] w-full bg-white  border-zinc-200 shadow-sm mx-2">
       {/* Header */}
-      <ChatHeader selectedUser={selectedUser} setSelectedProfilePage={setSelectedProfilePage} />
+      <ChatHeader
+        selectedUser={selectedUser}
+        setSelectedProfilePage={setSelectedProfilePage}
+      />
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">

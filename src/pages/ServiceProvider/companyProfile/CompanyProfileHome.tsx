@@ -14,6 +14,7 @@ import GraphicsPage from "./GraphicsPage";
 import { CompanyInfoUpdate } from "./CompanyInfoUpdate";
 import PicturesAlbum from "./PicturesAlbum";
 import { useState } from "react";
+import BusinessProfile from "../myBusiness/BusinessProfile";
 
 const menuItems = [
   {
@@ -46,11 +47,11 @@ const menuItems = [
     label: "Review",
     route: "/provider/my-business/profile/review",
   },
-  {
-    icon: NotificationsIcon,
-    label: "Notifications",
-    route: "/provider/my-business/profile/notifications",
-  },
+  // {
+  //   icon: NotificationsIcon,
+  //   label: "Notifications",
+  //   route: "/provider/my-business/profile/notifications",
+  // },
 ];
 
 export default function CompanyProfileHome() {
@@ -59,14 +60,12 @@ export default function CompanyProfileHome() {
   const location = useLocation();
   const pathname = location.pathname;
 
-  
-
-
   // ✅ Map path → content
   const contentMap: Record<string, JSX.Element> = {
+    "/provider/my-business/profile": <CompanyProfileInfo />,
     "/provider/my-business/profile/company-info-update": <CompanyInfoUpdate />,
     "/provider/my-business/profile/graphics": <GraphicsPage />,
-    "/provider/my-business/profile/pictures": <PicturesAlbum  />,
+    "/provider/my-business/profile/pictures": <PicturesAlbum />,
   };
 
   const content = contentMap[pathname] ?? (

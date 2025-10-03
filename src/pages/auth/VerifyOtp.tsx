@@ -155,7 +155,7 @@ export default function VerifyOtp() {
         </div>
 
         <h3 className="text-primary font-semibold text-xl md:text-4xl">
-          Verify Your Mail!
+          Verify your mail!
         </h3>
         <h6 className="text-xs md:text-sm">
           We’ve sent a verification code to <br />

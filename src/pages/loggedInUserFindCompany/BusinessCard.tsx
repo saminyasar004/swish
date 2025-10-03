@@ -5,31 +5,34 @@ import { Link } from "react-router-dom";
 interface BusinessCardProps {
   id: number;
   logo: string;
-  name: string;
-  rating: number;
-  reviewsCount: number;
+  company_name: string;
+  about: string;
+
+  average_rating: number;
+  rating_count: number;
   referencesUrl: string;
   respondsQuickly: boolean;
-  chosenBy: number;
+  chosen_count: number;
   description: string;
-  reviewer?: {
-    name: string;
+  recently_reviewed_by?: {
+    reviewed_by: string;
+    description: string;
     date: string;
-    comment: string;
   };
 }
 
 export default function BusinessCard({
   id,
   logo,
-  name,
-  rating,
-  reviewsCount,
+  company_name,
+
+  average_rating,
+  rating_count,
   referencesUrl,
   respondsQuickly,
-  chosenBy,
-  description,
-  reviewer,
+  chosen_count,
+  about,
+  recently_reviewed_by,
 }: BusinessCardProps) {
   return (
     <div className="border rounded-md p-4 md:p-6 bg-solidWhite shadow-sm flex flex-col gap-4">
@@ -40,7 +43,7 @@ export default function BusinessCard({
           <Link to={`/profile/company-search/${id}`}>
             <img
               src={logo}
-              alt={name}
+              alt={company_name}
               className="w-16 h-16 object-contain rounded-md border"
             />
           </Link>
@@ -48,14 +51,14 @@ export default function BusinessCard({
           <div className="flex flex-col gap-1">
             <Link to={`/profile/company-search/${id}`}>
               {" "}
-              <h2 className="font-bold text-lg">{name}</h2>
+              <h2 className="font-bold text-lg">{company_name}</h2>
             </Link>
 
             {/* Rating */}
             <div className="flex items-center gap-1 text-sm text-gray-600">
               <Star className="text-yellow-400 fill-yellow-400 w-4 h-4" />
-              <span className="font-semibold">{rating.toFixed(1)}</span>
-              <span>({reviewsCount})</span>
+              <span className="font-semibold">{average_rating}</span>
+              <span>({rating_count})</span>
 
               <Link to={`/profile/company-search/${id}`}>
                 <a
@@ -69,13 +72,13 @@ export default function BusinessCard({
 
             {/* Badges */}
             <div className="flex flex-wrap gap-2 mt-1">
-              {respondsQuickly && (
+              {/* {respondsQuickly && (
                 <span className="text-xs bg-liquidGreen border rounded-full px-3 py-1">
                   Responds quickly
                 </span>
-              )}
+              )} */}
               <span className="text-xs bg-liquidGreen border rounded-full px-3 py-1">
-                Chosen by {chosenBy} users
+                Chosen by {chosen_count} users
               </span>
             </div>
           </div>
@@ -93,22 +96,27 @@ export default function BusinessCard({
       </div>
 
       {/* Business description */}
-      <p className="text-sm text-blackSecondary">{description}</p>
+      <p className="text-sm text-blackSecondary">{about}</p>
 
       {/* Review block */}
-      {reviewer && (
+      {recently_reviewed_by && (
         <div className="bg-liquidGreen rounded-md p-2 py-6 text-sm">
-          <div className="flex items-center gap-2 font-medium text-blackPrimary mb-1">
+          <div className="flex items-center gap-2  text-blackPrimary mb-1">
             <div className="bg-blackPrimary text-white rounded-full w-7 h-7 flex justify-center items-center">
               {" "}
-              {reviewer.name[0]}{" "}
+              {recently_reviewed_by.reviewed_by[0]}{" "}
             </div>
-            Recently reviewed by {reviewer.name}
+            <p>
+              Recently reviewed by{" "}
+              <span className="font-semibold">
+                {recently_reviewed_by.reviewed_by}
+              </span>
+            </p>
           </div>
           <div className="text-xs text-blackSecondary mb-2 ml-8">
-            {reviewer.date}
+            {recently_reviewed_by.date}
           </div>
-          <p className="mt-4">{reviewer.comment}</p>
+          <p className="mt-4">{recently_reviewed_by.description}</p>
         </div>
       )}
     </div>

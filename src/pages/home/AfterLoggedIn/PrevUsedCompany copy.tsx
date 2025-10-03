@@ -70,13 +70,16 @@ export default function PrevUsedCompany() {
         modules={[Navigation, Pagination]}
         spaceBetween={20}
         slidesPerView={1}
-        navigation
+        navigation={{
+          nextEl: ".swiper-button-next-custom",
+          prevEl: ".swiper-button-prev-custom",
+        }}
         pagination={{ clickable: true }}
         breakpoints={{
           640: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
         }}
-        className="mySwiper"
+        className="mySwiper relative"
       >
         {prevUsedCompany?.previously_used_companies?.length > 0 ? (
           prevUsedCompany.previously_used_companies.map((company) => (
@@ -91,6 +94,33 @@ export default function PrevUsedCompany() {
             </SwiperSlide>
           ))
         )}
+        {/* Custom Navigation Buttons */}
+        <div className="swiper-button-prev-custom absolute top-1/2 left-0 transform -translate-y-1/2 z-10 cursor-pointer">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="text-gray-600 hover:text-gray-800"
+          >
+            <circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="2" />
+            <path d="M14 8L10 12L14 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        <div className="swiper-button-next-custom absolute top-1/2 right-0 transform -translate-y-1/2 z-10 cursor-pointer">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="text-gray-600 hover:text-gray-800"
+          >
+            <circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="2" />
+            <path d="M10 8L14 12L10 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
       </Swiper>
     </section>
   );

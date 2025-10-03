@@ -64,7 +64,7 @@ export default function Login() {
           <Link to="/">
             <img src={LogoBlack} alt="swish.ma" className="max-w-full" />
           </Link>
-          <h5 className="text-primary text-xl">Welcome Back!</h5>
+          <h5 className="text-primary text-xl">Welcome back!</h5>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">

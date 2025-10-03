@@ -1,4 +1,4 @@
-import ChatContainer from "./ChatContainer";
+import ChatContainer from "../../home/Messages/ChatContainer";
 import NoChatSelected from "./NoChatSelected";
 import Sidebar from "./Sidebar";
 

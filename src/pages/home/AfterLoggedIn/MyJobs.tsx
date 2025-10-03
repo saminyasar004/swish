@@ -63,14 +63,14 @@ export default function MyJobs() {
         {/* Section header */}
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-medium">My Jobs</h1>
-          <Button
+          <Link to="/my-post"><Button
             variant="outline"
             className="rounded-3xl border-primary font-semibold"
             disabled={!prevUsedCompany?.started_jobs?.length}
             aria-label="Show all jobs"
           >
             Show All
-          </Button>
+          </Button></Link>
         </div>
 
         {/* Jobs content */}

@@ -1083,7 +1083,7 @@ export default function CompanyProfileInfo() {
       </div>
 
       {/* Body */}
-      <div className="mx-auto mt-8 grid gap-6 px-4 md:grid-cols-3 md:px-6">
+      <div className="mx-auto mt-8 grid gap-6 px-4 md:grid-cols-3 ">
         {/* Main */}
         <div className="space-y-8 col-span-2">
           {/* Company blurb */}

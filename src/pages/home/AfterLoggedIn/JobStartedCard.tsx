@@ -6,7 +6,7 @@ const JobStartedCard = ({ job }) => {
   const backgroundImage = googleMap;
 
   return (
-    <Link to={`/message/${job?.id}`}>
+    <Link to={`/profile/message/inbox/${job?.id}`}>
       <div
         className="relative rounded-sm shadow-lg mt-6 min-h-[200px]"
         style={{

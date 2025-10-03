@@ -69,10 +69,17 @@ const ChatHeader = ({ setSelectedProfilePage }) => {
                 {/* {onlineUsers.includes(selectedUser._id) ? "Online" : "Offline"} */}
                 {selectedUser?.rating} <FaStar /> (66 reviews)
               </p>
-              <p className="text-xs  text-secondary">
-                {/* {onlineUsers.includes(selectedUser._id) ? "Online" : "Offline"} */}
-                Show more information
-              </p>
+              <Button
+                size="sm"
+                className="bg-transparent hover:bg-transparent"
+                onClick={() => setSelectedProfilePage(true)}
+              >
+                {" "}
+                <p className="text-xs  text-secondary">
+                  {/* {onlineUsers.includes(selectedUser._id) ? "Online" : "Offline"} */}
+                  Show more information
+                </p>
+              </Button>
             </div>
             <Button
               variant="outline"

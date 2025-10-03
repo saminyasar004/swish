@@ -45,11 +45,11 @@ export default function Feature() {
           description="At swish.ma, we review the companies on the service regularly. We have also made it easier for you to ensure that you have chosen the best company for your project:"
         />
 
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-center">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-center text-center">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="w-full h-full flex flex-col items-start gap-4 rounded-lg p-4 md:p-8 bg-white"
+              className="w-full h-full flex flex-col items-center gap-4 rounded-lg p-4 md:p-8 bg-white"
             >
               <img
                 src={feature.icon}

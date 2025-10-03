@@ -39,7 +39,7 @@ export default function PrevUsedCompanyCard({ job }: { job: CardProps }) {
           </div>
         </div>
       </div>
-      <Link to={`/message/${job?.company}`}>
+      <Link to={`/profile/message/${job?.company}`}>
         <Button
           variant="outline"
           className="mt-4 w-full border border-primary text-primary hover:bg-liquidGreen hover:text-secondary font-semibold"

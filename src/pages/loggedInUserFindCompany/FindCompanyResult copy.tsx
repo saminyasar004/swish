@@ -12,11 +12,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useLocation, useSearchParams } from "react-router-dom";
-import {
-  useGetCompaniesQuery,
-  useLazyGetCompaniesQuery,
-} from "@/redux/features/users/user.findCompany.api";
+import { useLocation } from "react-router-dom";
+import { useGetCompaniesQuery, useLazyGetCompaniesQuery } from "@/redux/features/users/user.findCompany.api";
 
 export const businessData = [
   {
@@ -90,23 +87,44 @@ export const businessData = [
 ];
 
 export default function FindCompanyResult() {
-  
-  const [searchParams] = useSearchParams();
-  // const [job, setJob] = useState("");
-  // const [loc, setLoc] = useState("");
+  const locationState = useLocation();
+  const [job, setJob] = useState("");
+  const [loc, setLoc] = useState("");
 
-  const job = searchParams.get("job") || "";
-  const loc = searchParams.get("location") || "";
 
-  console.log({ job, loc });
 
-  const { data, isLoading, isError } = useGetCompaniesQuery(
-    { search: job, area_name: loc },
-    { skip: !job || !loc }
-  );
+  // ✅ Filter businessData based on job or location (basic example)
+ const filteredBusinesses = businessData.filter((b) =>
+  b.description.toLowerCase().includes(job.toLowerCase())
+);
+
+  // ✅ Fetch companies based on job + location
+  // const { data, isLoading, isError } = useGetCompaniesQuery({
+  //   job,
+  //   location: loc,
+  // });
+
+const [getCompanies, { data, isLoading, isError }] = useLazyGetCompaniesQuery();
+
   console.log("Fetched companies:", data);
 
-  if (isLoading) return <div>Loading...</div>;
+    // ✅ Pre-fill state from navigation
+  useEffect(() => {
+    if (locationState.state) {
+      setJob(locationState.state.job || "");
+      setLoc(locationState.state.location || "");
+    }
+  }, [locationState.state]);
+  
+
+  // ✅ Fetch companies whenever job + location are available
+  useEffect(() => {
+    if (job && loc) {
+      getCompanies({ job, location: loc });
+    }
+  }, [job, loc, getCompanies]);
+
+if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading companies.</div>;
 
   const companies = data?.companies || [];
@@ -124,14 +142,18 @@ export default function FindCompanyResult() {
             className=" max-w-[15%] hidden lg:block md:max-w-full absolute top-[25%] -right-6 -translate-y-[20%] md:top-[20%] md:right-16 md:-translate-y-[25%] z-0"
           />
 
-          {/* ✅ Pass getCompanies but not used here directly anymore */}
-          <BusinessSearchWithLocation initialJob={job} initialLocation={loc} />
+         {/* ✅ Pass getCompanies but not used here directly anymore */}
+          <BusinessSearchWithLocation
+            initialJob={job}
+            initialLocation={loc}
+            getCompanies={() => {}}
+          />
         </div>
       </div>
 
       <div className="flex justify-between items-center">
         <h3 className="font-semibold text-primaryDark text-lg mt-12 mb-6">
-          {data?.results?.length} companies match your search
+          41 companies match your search
         </h3>
         <div className="flex items-center space-x-4">
           <span className="text-primaryDark">Sort by:</span>
@@ -162,8 +184,8 @@ export default function FindCompanyResult() {
       {isLoading && <p>Loading companies...</p>}
       {isError && <p className="text-red-500">Failed to load companies.</p>}
 
-      <div className="grid grid-cols-1 gap-4">
-        {data?.results?.map((company, index) => (
+     <div className="grid grid-cols-1 gap-4">
+        {companies.map((company, index) => (
           <BusinessCard key={index} {...company} />
         ))}
       </div>

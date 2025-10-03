@@ -65,6 +65,9 @@ import HelpGuidSetting from "@/pages/ServiceProvider/myBusiness/jobSetting/helpG
 import FilterSavedSearch from "@/pages/ServiceProvider/myBusiness/jobSetting/helpGuid/FilterSavedSearch";
 import PrivacyPolicy from "@/pages/PrivacyTerm/PrivacyPolicy";
 import TermsConditions from "@/pages/PrivacyTerm/TermsConditions";
+import { SeeTheJob } from "@/pages/home/Messages/SeeTheJob";
+import { Evaluation } from "@/pages/home/Messages/Evaluation";
+import { CreateAppointment } from "@/pages/home/Messages/TheJob/CreateAppointment";
 
 export interface Route {
   path: string;
@@ -240,8 +243,39 @@ export const router = createBrowserRouter([
 
       // MESSAGE
       {
-        path: "message/:id",
+        path: "message/inbox/:id",
         element: <MessagePageUpdated />,
+      },
+      {
+        path: "message/job/:id",
+        element: <MessagePageUpdated />,
+        children: [
+        {
+          index: true, // optional redirect to default child
+          element: <SeeTheJob />, // default page shown if only `/job/:id` is visited
+        },
+        {
+          path: "job-details",
+          element: <SeeTheJob />,
+        },
+        // you can add more here:
+        {
+          path: "appointment",
+          element: <CreateAppointment />,
+        },
+        // {
+        //   path: "documentation",
+        //   element: <DocumentationPage />,
+        // },
+        {
+          path: "evaluation",
+          element: <Evaluation />,
+        },
+      ],
+      },
+      {
+        path: "message/job/:id/job-details",
+        element: <SeeTheJob />,
       },
 
       // COMPANY PROFILE REGISTER COMPANY
@@ -278,6 +312,8 @@ export const router = createBrowserRouter([
         path: "my-business",
         element: <BusinessHome />,
       },
+
+      // COMPANY PROFILE
       {
         path: "my-business/profile",
         element: <CompanyProfileHome />,

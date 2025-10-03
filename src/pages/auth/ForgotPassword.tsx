@@ -123,7 +123,7 @@ export default function ForgotPassword() {
         </div>
 
         <h3 className="text-primary font-semibold text-xl md:text-4xl">
-          Forgot Your Password
+          Forgot Your password
         </h3>
         <h6 className="text-primary text-xs md:text-sm">
           Enter your email and we&apos;ll send you a reset PIN

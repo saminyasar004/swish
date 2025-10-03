@@ -1,18 +1,41 @@
 // pages/MessagePage.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MessageSidebar } from "./MessageSidebar";
 import NoChatSelected from "@/pages/ServiceProvider/MessageUpdate/NoChatSelected";
-import ChatContainer from "@/pages/ServiceProvider/MessageUpdate/ChatContainer";
+import ChatContainer from "@/pages/home/Messages/ChatContainer";
 import { X } from "lucide-react";
 import CompanyProfileHome from "@/pages/ServiceProvider/companyProfile/CompanyProfileHome";
 import CompanyProfileHomeInMsg from "@/pages/companyPorfile/companyPorfileInMsg/CompanyProfileHomeInMsg";
 import TheJobMessageTab from "./TheJobMessageTab";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 export default function MessagePageUpdated() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(1);
   const [selectedProfilePage, setSelectedProfilePage] = useState(false);
   const [activeTab, setActiveTab] = useState("Inbox");
+
+  // 🔄 Sync tab with URL
+  useEffect(() => {
+    if (location.pathname.includes("job")) {
+      setActiveTab("The Job");
+    } else {
+      setActiveTab("Inbox");
+    }
+  }, [location.pathname]);
+
+  // 🧭 When tab changes, navigate
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    navigate(
+      tab === "Inbox"
+        ? "/profile/message/inbox/1"
+        : "/profile/message/job/1/job-details"
+    );
+  };
 
   return (
     <div className="flex w-full h-screen overflow-hidden rounded-xl fixed justify-center items-center">
@@ -23,7 +46,7 @@ export default function MessagePageUpdated() {
           isOpen={isOpen}
           onSelectUser={setSelectedUser}
           activeTab={activeTab}
-          setActiveTab={setActiveTab}
+          setActiveTab={handleTabChange}
         />
 
         {!selectedUser ? (
@@ -34,7 +57,8 @@ export default function MessagePageUpdated() {
             setSelectedProfilePage={setSelectedProfilePage}
           />
         ) : (
-          <TheJobMessageTab />
+          // <TheJobMessageTab />
+          <Outlet />
         )}
         {selectedProfilePage && (
           // container mx-auto w-full

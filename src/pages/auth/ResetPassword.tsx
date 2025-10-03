@@ -130,6 +130,7 @@ export default function ResetPassword() {
 
   const token = state?.token;
 
+
   const {
     register,
     handleSubmit,
@@ -176,10 +177,10 @@ export default function ResetPassword() {
           <ShieldCheck size={96} />
         </div>
 
-        <h3 className="text-primary font-semibold text-xl md:text-4xl">
+        {/* <h3 className="text-primary font-semibold text-xl md:text-4xl">
           Hello Ali!
         </h3>
-        <h6 className="text-xs md:text-sm">Welcome Back!</h6>
+        <h6 className="text-xs md:text-sm">Welcome back!</h6> */}
 
         <form
           onSubmit={handleSubmit(onSubmit)}

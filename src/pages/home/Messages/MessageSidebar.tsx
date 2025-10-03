@@ -130,8 +130,8 @@ export const MessageSidebar = ({
 
   return (
     // fixed
-    <aside className="w-full md:w-1/3 lg:w-1/4 h-[94%] border-r  border-base-300 flex flex-col  mx-1 shadow-xl min-w-[20%]">
-      <div className="py-4 px-2 space-y-4 sticky top-0 z-10 bg-white shadow-sm">
+    <aside className="w-full md:w-1/3 lg:w-1/4 h-[94%] border-r  border-base-300 flex flex-col  mx-1 shadow-sm min-w-[20%]">
+      <div className="py-4 px-1 space-y-4 sticky top-0 z-10 bg-white ">
         <h3 className="text-lg font-semibold">
           Installation of new door and door frame
         </h3>
@@ -199,33 +199,37 @@ export const MessageSidebar = ({
           <div className="flex flex-col gap-6 p-3">
             {/* Information about the job */}
             <div>
-              <h5 className="text-sm font-semibold mb-2">
-                Information about the job
-              </h5>
-              <Link to="/job/1/job-details">
-                <Button className="w-full text-left px-3 py-2 rounded-md bg-gray-100 text-gray-900 text-sm font-medium hover:bg-gray-200">
+              <h5 className="text-sm font-semibold mb-2">Job Information</h5>
+              <Link to="/profile/message/job/1/job-details">
+                <button className="w-full text-left  py-4 rounded-md  text-gray-900 text-sm font-normal hover:bg-gray-50">
                   See the job
-                </Button>
+                </button>
               </Link>
             </div>
             <div>
-              <h5 className="text-sm font-semibold mb-2">Documentation</h5>
-
-              <Link to="/job/1/documentation">
-                <Button className="w-full text-left px-3 py-2 rounded-md bg-gray-100 text-gray-900 text-sm font-medium hover:bg-gray-200">
-                  Documentation
-                </Button>
-              </Link>
+              <div className="">
+                <h5 className="text-sm font-semibold mb-2">Documentation</h5>
+                <Link to="/profile/message/job/1/appointment">
+                  <button className="w-full text-left  py-4 rounded-md  text-gray-900 text-sm font-normal hover:bg-gray-50">
+                    Create an appointment
+                  </button>
+                </Link>
+                {/* <Link to="/profile/message/job/1/documentation">
+                  <button className="w-full text-left  py-4 rounded-md  text-gray-900 text-sm font-normal hover:bg-gray-50">
+                    Documentation
+                  </button>
+                </Link> */}
+              </div>
             </div>
 
             {/* Evaluation */}
             <div>
               <h5 className="text-sm font-semibold mb-2">Evaluation</h5>
 
-              <Link to="/job/1/evaluation">
-                <Button className="w-full text-left px-3 py-2 rounded-md bg-gray-100 text-gray-900 text-sm font-medium hover:bg-gray-200">
+              <Link to="/profile/message/job/1/evaluation">
+                <button className="w-full text-left  py-4 rounded-md  text-gray-900 text-sm font-normal hover:bg-gray-50">
                   Write Evaluation
-                </Button>
+                </button>
               </Link>
             </div>
 

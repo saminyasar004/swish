@@ -1,5 +1,6 @@
 import React from "react";
 import companyInfoBag from "@/assets/providerIcon/settingIcon/companyInfoBag.svg";
+import { Button } from "@/components/ui/button";
 
 export function CompanyInfoUpdate() {
   return (
@@ -156,6 +157,11 @@ export function CompanyInfoUpdate() {
                   Closed
                 </button>
               </div>
+            </div>
+
+            {/* Update Button */}
+            <div className="flex justify-center pt-2">
+              <Button className="bg-primary  text-white px-6">Update</Button>
             </div>
           </div>
         </form>
