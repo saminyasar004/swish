@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Edit, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import BusinessSidebar from "./BusinessSidebar";
+import BusinessSidebar from "../companyProfile/BusinessSidebar";
 import CompanyEditModal from "./EditCompanyModal";
 
 export default function CompanyPage() {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BusinessSidebar from "./BusinessSidebar";
+import BusinessSidebar from "../companyProfile/BusinessSidebar";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { Link } from "react-router-dom";

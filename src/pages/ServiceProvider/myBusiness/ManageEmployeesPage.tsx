@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import BusinessSidebar from "./BusinessSidebar";
+import BusinessSidebar from "../companyProfile/BusinessSidebar";
 
 import AddIcon from "@/assets/add-icon.svg"; // Optional
 import EmployeeCard from "./EmployeeCard";
@@ -83,7 +83,7 @@ export default function ManageEmployeesPage() {
           Manage Employees
         </h2>
 
-        <Separator/>
+        <Separator />
 
         {/* Employee Avatars */}
         <div className="flex gap-4 flex-wrap items-center">

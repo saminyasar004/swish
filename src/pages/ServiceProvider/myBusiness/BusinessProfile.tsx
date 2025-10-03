@@ -1,7 +1,7 @@
 import BusinessContact from "./BusinessContact";
 import BusinessHeader from "./BusinessHeader";
 import BusinessServices from "./BusinessServices";
-import BusinessSidebar from "./BusinessSidebar";
+import BusinessSidebar from "../companyProfile/BusinessSidebar";
 
 export default function BusinessProfile() {
   return (

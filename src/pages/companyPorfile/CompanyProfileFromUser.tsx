@@ -1,6 +1,6 @@
 import React from "react";
 import CompanyProfileInfo from "./CompanyProfileInfo";
-import BusinessSidebar from "../ServiceProvider/myBusiness/BusinessSidebar";
+import BusinessSidebar from "../ServiceProvider/companyProfile/BusinessSidebar";
 
 export default function CompanyProfileFromUser() {
   return (

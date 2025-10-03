@@ -34,7 +34,7 @@ import ServiceLayoutMain from "@/components/common/ServiceLayoutMain";
 import MessagePage from "@/pages/ServiceProvider/messageComponentNotInUse/Message/MessagePage";
 import MyBusinessPage from "@/pages/ServiceProvider/myBusiness/MyBusinessPage";
 import CompanyPage from "@/pages/ServiceProvider/myBusiness/CompanyPage";
-import GraphicsPage from "@/pages/ServiceProvider/myBusiness/GraphicsPage";
+import GraphicsPage from "@/pages/ServiceProvider/companyProfile/GraphicsPage";
 import NotificationsPage from "@/pages/ServiceProvider/myBusiness/NotificationsPage";
 import EmployeesPage from "@/pages/ServiceProvider/myBusiness/EmployeesPage";
 import ManageEmployeesPage from "@/pages/ServiceProvider/myBusiness/ManageEmployeesPage";
@@ -45,7 +45,7 @@ import ProfileLayout from "@/components/common/ProfileLayout";
 import StatusPage from "@/components/common/StatusPage";
 import FindCompany from "@/pages/loggedInUserFindCompany/FindCompany";
 import FindCompanyResult from "@/pages/loggedInUserFindCompany/FindCompanyResult";
-import CompanyProfileHome from "@/pages/companyPorfile/CompanyProfileHome";
+import CompanyProfileHome from "@/pages/ServiceProvider/companyProfile/CompanyProfileHome";
 import RequestQuoteCategory from "@/pages/requestAQuoteFromCompany/RequestQuoteCategory";
 import LayoutRegisterCompany from "@/pages/registerCompany/LayoutRegisterCompany";
 import HelpCenter from "@/pages/helpCenterArticle/HelpCenter";
@@ -288,13 +288,21 @@ export const router = createBrowserRouter([
       //   element: <BusinessProfile />,
       // },
       {
-        path: "/provider/my-business/profile/company",
-        element: <CompanyPage />, // if using common layout
+        path: "my-business/profile/company-info-update",
+        element: <CompanyProfileHome />,
       },
       {
         path: "/provider/my-business/profile/graphics",
-        element: <GraphicsPage />,
+        element: <CompanyProfileHome />,
       },
+      {
+        path: "/provider/my-business/profile/pictures",
+        element: <CompanyProfileHome />,
+      },
+      // {
+      //   path: "/provider/my-business/profile/graphics",
+      //   element: <GraphicsPage />,
+      // },
       {
         path: "/provider/my-business/profile/notifications",
         element: <NotificationsPage />,

@@ -2,6 +2,8 @@ import CompanyIcon from "@/assets/images/CompanyIcon.svg";
 import EmployeesIcon from "@/assets/images/EmployeeIcon.svg";
 import GraphicsIcon from "@/assets/images/GraphicsIcon.svg";
 import NotificationsIcon from "@/assets/images/NotificationsIcon.svg";
+import reviewIcon from "@/assets/providerIcon/profile/review.svg";
+import qualificationIcon from "@/assets/providerIcon/profile/qualification.svg";
 import { Separator } from "@/components/ui/separator";
 import { ChevronRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -33,9 +35,14 @@ export default function BusinessSidebar({
       route: "/provider/my-business/profile/employees",
     },
     {
-      icon: NotificationsIcon,
+      icon: qualificationIcon,
       label: "Qualifications",
-      route: "/provider/my-business/profile/notifications",
+      route: "/provider/my-business/profile/qualifications",
+    },
+    {
+      icon: reviewIcon,
+      label: "Review",
+      route: "/provider/my-business/profile/review",
     },
     {
       icon: NotificationsIcon,

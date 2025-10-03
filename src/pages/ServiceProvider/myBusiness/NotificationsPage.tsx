@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import BusinessSidebar from "./BusinessSidebar";
+import BusinessSidebar from "../companyProfile/BusinessSidebar";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 

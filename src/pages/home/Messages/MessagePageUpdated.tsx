@@ -4,7 +4,7 @@ import { MessageSidebar } from "./MessageSidebar";
 import NoChatSelected from "@/pages/ServiceProvider/MessageUpdate/NoChatSelected";
 import ChatContainer from "@/pages/ServiceProvider/MessageUpdate/ChatContainer";
 import { X } from "lucide-react";
-import CompanyProfileHome from "@/pages/companyPorfile/CompanyProfileHome";
+import CompanyProfileHome from "@/pages/ServiceProvider/companyProfile/CompanyProfileHome";
 import CompanyProfileHomeInMsg from "@/pages/companyPorfile/companyPorfileInMsg/CompanyProfileHomeInMsg";
 import TheJobMessageTab from "./TheJobMessageTab";
 
