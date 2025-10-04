@@ -39,12 +39,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface Post {
   id: number;
   title: string;
   date: string;
-  status: "Open" | "In Progress" | "Completed";
+  status: "Open" | "In Progress" | "Completed" | "Paused";
   content: string;
   author?: string;
   image?: string;
@@ -98,69 +99,248 @@ const posts: Post[] = [
   },
 ];
 
+// export default function MyPost() {
+//   const [selectedPostStatus, setSelectedPostStatus] = useState("all");
+//   const [selectedPostTime, setSelectedPostTime] = useState("newest");
+//   const [selectedPost, setSelectedPost] = useState<number | null>(null);
+
+//   return (
+//     <section className="py-8 flex flex-col gap-5">
+//       <div className="py-20 w-[99%] mx-auto rounded-md bg-liquidGreen flex flex-col items-center justify-center">
+//         <div className="container text-center space-y-4">
+//           <h3 className="text-primaryDark font-semibold text-2xl">My Post</h3>
+
+//           <div className="w-full flex items-center justify-center gap-5">
+//             <Filter className="text-primary fill-primary" size={34} />
+
+//             <Select
+//               value={selectedPostStatus}
+//               onValueChange={setSelectedPostStatus}
+//             >
+//               <SelectTrigger className="w-[300px]">
+//                 <SelectValue placeholder="Select an option" />
+//               </SelectTrigger>
+//               <SelectContent>
+//                 <SelectGroup>
+//                   <SelectItem value="all">All Posts</SelectItem>
+//                   <SelectItem value="open">Open</SelectItem>
+//                   <SelectItem value="inProgress">In Progress</SelectItem>
+//                   <SelectItem value="completed">Completed</SelectItem>
+//                 </SelectGroup>
+//               </SelectContent>
+//             </Select>
+
+//             <Select
+//               value={selectedPostTime}
+//               onValueChange={setSelectedPostTime}
+//             >
+//               <SelectTrigger className="w-[300px]">
+//                 <SelectValue placeholder="Select an option" />
+//               </SelectTrigger>
+//               <SelectContent>
+//                 <SelectGroup>
+//                   <SelectItem value="newest">Newest List</SelectItem>
+//                   <SelectItem value="oldest">Oldest List</SelectItem>
+//                 </SelectGroup>
+//               </SelectContent>
+//             </Select>
+//           </div>
+//         </div>
+//       </div>
+
+//       <div className="container py-8 flex flex-col gap-4">
+//         <Accordion
+//           type="single"
+//           collapsible
+//           className="w-full flex flex-col gap-6"
+//           defaultValue={selectedPost?.toString()}
+//         >
+//           {posts.map((post, index) => (
+//             <PostCard
+//               key={index}
+//               post={post}
+//               onSelect={() => setSelectedPost(post.id)}
+//             />
+//           ))}
+//         </Accordion>
+//       </div>
+//     </section>
+//   );
+// }
+
+// export default function MyPost() {
+//   const [selectedPostStatus, setSelectedPostStatus] = useState("all");
+//   const [selectedPostTime, setSelectedPostTime] = useState("newest");
+//   const [selectedPost, setSelectedPost] = useState<number | null>(null);
+
+//   return (
+//     <section className="py-8 flex flex-col gap-5">
+//       <div className="w-full mx-auto rounded-md ">
+//         <div className="container  flex  items-center justify-between w-full">
+//           <h3 className="text-primaryDark font-semibold text-2xl">My Post</h3>
+
+//           <div className="w-full ">
+//             {/* <Filter className="text-primary fill-primary" size={34} /> */}
+
+//             {/* Tabs for Post Status */}
+//             <Tabs
+//               value={selectedPostStatus}
+//               onValueChange={setSelectedPostStatus}
+//               className="w-full"
+//             >
+//               <TabsList className="flex flex-wrap justify-center gap-2">
+//                 <TabsTrigger value="all">All Posts</TabsTrigger>
+//                 <TabsTrigger value="open">Open</TabsTrigger>
+//                 <TabsTrigger value="inProgress">In Progress</TabsTrigger>
+//                 <TabsTrigger value="completed">Completed</TabsTrigger>
+//               </TabsList>
+//             </Tabs>
+
+//             {/* Tabs for Sorting
+//             <Tabs
+//               value={selectedPostTime}
+//               onValueChange={setSelectedPostTime}
+//               className="w-full"
+//             >
+//               <TabsList className="flex flex-wrap justify-center gap-2">
+//                 <TabsTrigger value="newest">Newest List</TabsTrigger>
+//                 <TabsTrigger value="oldest">Oldest List</TabsTrigger>
+//               </TabsList>
+//             </Tabs> */}
+//           </div>
+//         </div>
+//       </div>
+
+//       <div className="container py-8 flex flex-col gap-4">
+//         <Accordion
+//           type="single"
+//           collapsible
+//           className="w-full flex flex-col gap-6"
+//           defaultValue={selectedPost?.toString()}
+//         >
+//           {posts
+//             .filter((post) => {
+//               if (selectedPostStatus === "all") return true;
+//               if (selectedPostStatus === "open")
+//                 return post.status === "Open";
+//               if (selectedPostStatus === "inProgress")
+//                 return post.status === "In Progress";
+//               if (selectedPostStatus === "completed")
+//                 return post.status === "Completed";
+//               return true;
+//             })
+//             .sort((a, b) =>
+//               selectedPostTime === "newest"
+//                 ? new Date(b.date).getTime() - new Date(a.date).getTime()
+//                 : new Date(a.date).getTime() - new Date(b.date).getTime()
+//             )
+//             .map((post) => (
+//               <PostCard
+//                 key={post.id}
+//                 post={post}
+//                 onSelect={() => setSelectedPost(post.id)}
+//               />
+//             ))}
+//         </Accordion>
+//       </div>
+//     </section>
+//   );
+// }
+
 export default function MyPost() {
   const [selectedPostStatus, setSelectedPostStatus] = useState("all");
-  const [selectedPostTime, setSelectedPostTime] = useState("newest");
   const [selectedPost, setSelectedPost] = useState<number | null>(null);
 
+  // ✅ Filtering logic here
+  const filteredPosts = posts.filter((post) => {
+    if (selectedPostStatus === "all") return true;
+    if (selectedPostStatus === "open") return post.status === "Open";
+    if (selectedPostStatus === "inProgress") return post.status === "In Progress";
+    if (selectedPostStatus === "completed") return post.status === "Completed";
+    if (selectedPostStatus === "paused") return post.status === "Paused";
+    return true;
+  });
+
   return (
-    <section className="py-8 flex flex-col gap-5">
-      <div className="py-20 w-[99%] mx-auto rounded-md bg-liquidGreen flex flex-col items-center justify-center">
-        <div className="container text-center space-y-4">
+    <section className="py-16 flex flex-col gap-5">
+      <div className="w-full mx-auto rounded-md">
+        <div className="container flex items-center justify-between w-full">
           <h3 className="text-primaryDark font-semibold text-2xl">My Post</h3>
 
-          <div className="w-full flex items-center justify-center gap-5">
-            <Filter className="text-primary fill-primary" size={34} />
-
-            <Select
-              value={selectedPostStatus}
-              onValueChange={setSelectedPostStatus}
-            >
-              <SelectTrigger className="w-[300px]">
-                <SelectValue placeholder="Select an option" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="all">All Posts</SelectItem>
-                  <SelectItem value="open">Open</SelectItem>
-                  <SelectItem value="inProgress">In Progress</SelectItem>
-                  <SelectItem value="completed">Completed</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-
-            <Select
-              value={selectedPostTime}
-              onValueChange={setSelectedPostTime}
-            >
-              <SelectTrigger className="w-[300px]">
-                <SelectValue placeholder="Select an option" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="newest">Newest List</SelectItem>
-                  <SelectItem value="oldest">Oldest List</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
+          {/* ✅ Styled Tabs */}
+          <Tabs
+            value={selectedPostStatus}
+            onValueChange={setSelectedPostStatus}
+            className="w-auto bg-gray-100 rounded-full px-6 py-1"
+          >
+            <TabsList className="flex bg-muted p-1 rounded-full gap-1">
+              <TabsTrigger
+                value="all"
+                className="data-[state=active]:bg-white data-[state=active]:shadow-sm 
+                           data-[state=active]:text-primary text-primaryDark 
+                           px-6 py-2 text-sm font-medium rounded-full transition"
+              >
+                All
+              </TabsTrigger>
+              <TabsTrigger
+                value="open"
+                className="data-[state=active]:bg-white data-[state=active]:shadow-sm 
+                           data-[state=active]:text-primary text-primaryDark 
+                           px-6 py-2 text-sm font-medium rounded-full transition"
+              >
+                Open
+              </TabsTrigger>
+              <TabsTrigger
+                value="inProgress"
+                className="data-[state=active]:bg-white data-[state=active]:shadow-sm 
+                           data-[state=active]:text-primary text-primaryDark 
+                           px-6 py-2 text-sm font-medium rounded-full transition"
+              >
+                In Progress
+              </TabsTrigger>
+              <TabsTrigger
+                value="paused"
+                className="data-[state=active]:bg-white data-[state=active]:shadow-sm 
+                           data-[state=active]:text-primary text-primaryDark 
+                           px-6 py-2 text-sm font-medium rounded-full transition"
+              >
+                Paused
+              </TabsTrigger>
+              <TabsTrigger
+                value="completed"
+                className="data-[state=active]:bg-white data-[state=active]:shadow-sm 
+                           data-[state=active]:text-primary text-primaryDark 
+                           px-6 py-2 text-sm font-medium rounded-full transition"
+              >
+                Completed
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
         </div>
       </div>
 
-      <div className="container py-8 flex flex-col gap-4">
+      <div className="container py-4 flex flex-col gap-4">
         <Accordion
           type="single"
           collapsible
           className="w-full flex flex-col gap-6"
           defaultValue={selectedPost?.toString()}
         >
-          {posts.map((post, index) => (
+          {/* ✅ Use filteredPosts instead of all posts */}
+          {filteredPosts.map((post, index) => (
             <PostCard
               key={index}
               post={post}
               onSelect={() => setSelectedPost(post.id)}
             />
           ))}
+
+          {/* ✅ No post message */}
+          {filteredPosts.length === 0 && (
+            <div className="text-center text-gray-500 py-10">
+              No posts found for this category.
+            </div>
+          )}
         </Accordion>
       </div>
     </section>
@@ -308,7 +488,7 @@ function PostCard({ post, onSelect }: { post: Post; onSelect: () => void }) {
               )}
             </div>
 
-			{/* Review Modal */}
+            {/* Review Modal */}
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogContent className="max-w-lg">
                 <DialogHeader>
@@ -385,4 +565,3 @@ function BidderCard() {
     </div>
   );
 }
-

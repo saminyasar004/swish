@@ -3,7 +3,7 @@ import { categories, CategoryProps } from "@/components/common/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label"; // Added for a11y
+import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { CheckIcon, Stepper } from "@mantine/core";
@@ -11,73 +11,18 @@ import {
   ArrowRight,
   Check,
   CheckCircle,
-  ImageIcon, // Added for images step icon
+  ImageIcon,
   Info,
   MailIcon,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import { useForm, Controller, UseFormReturn } from "react-hook-form"; // Updated import
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useForm, Controller, UseFormReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import toast from "react-hot-toast";
 import PhoneInput from "react-phone-input-2";
 
-// ... (countryPhoneCodes array unchanged)
-const countryPhoneCodes = [
-  { code: "+880", country: "Bangladesh" },
-  { code: "+1", country: "United States" },
-  { code: "+44", country: "United Kingdom" },
-  { code: "+91", country: "India" },
-  { code: "+86", country: "China" },
-  { code: "+81", country: "Japan" },
-  { code: "+49", country: "Germany" },
-  { code: "+33", country: "France" },
-  { code: "+39", country: "Italy" },
-  { code: "+34", country: "Spain" },
-  { code: "+7", country: "Russia" },
-  { code: "+55", country: "Brazil" },
-  { code: "+54", country: "Argentina" },
-  { code: "+52", country: "Mexico" },
-  { code: "+351", country: "Portugal" },
-  { code: "+31", country: "Netherlands" },
-  { code: "+46", country: "Sweden" },
-  { code: "+41", country: "Switzerland" },
-  { code: "+43", country: "Austria" },
-  { code: "+32", country: "Belgium" },
-  { code: "+45", country: "Denmark" },
-  { code: "+47", country: "Norway" },
-  { code: "+358", country: "Finland" },
-  { code: "+48", country: "Poland" },
-  { code: "+420", country: "Czech Republic" },
-  { code: "+36", country: "Hungary" },
-  { code: "+40", country: "Romania" },
-  { code: "+90", country: "Turkey" },
-  { code: "+20", country: "Egypt" },
-  { code: "+27", country: "South Africa" },
-  { code: "+61", country: "Australia" },
-  { code: "+64", country: "New Zealand" },
-  { code: "+65", country: "Singapore" },
-  { code: "+66", country: "Thailand" },
-  { code: "+63", country: "Philippines" },
-  { code: "+62", country: "Indonesia" },
-  { code: "+60", country: "Malaysia" },
-  { code: "+82", country: "South Korea" },
-  { code: "+84", country: "Vietnam" },
-  { code: "+98", country: "Iran" },
-  { code: "+92", country: "Pakistan" },
-  { code: "+971", country: "United Arab Emirates" },
-  { code: "+966", country: "Saudi Arabia" },
-  { code: "+93", country: "Afghanistan" },
-  { code: "+94", country: "Sri Lanka" },
-  { code: "+95", country: "Myanmar" },
-  { code: "+977", country: "Nepal" },
-  { code: "+975", country: "Bhutan" },
-  { code: "+673", country: "Brunei" },
-  { code: "+676", country: "Tonga" },
-];
-
-// Updated Zod schema (removed estimated_time, employee_need, value; added phone_code)
 const schema = z
   .object({
     heading: z.string().min(1, "Heading is required"),
@@ -92,7 +37,7 @@ const schema = z
     phone: z
       .string()
       .min(1, "Phone number is required")
-      .regex(/^\+?[1-9]\d{1,14}$/, "Invalid phone number"), // Basic phone validation
+      .regex(/^\+?[1-9]\d{1,14}$/, "Invalid phone number"),
     mission_address: z.string().min(1, "Mission address is required"),
     area: z.string().min(3, "Area is required"),
     postal_code: z.number().min(1, "Postal code is required"),
@@ -111,89 +56,49 @@ const schema = z
   })
   .required();
 
-type PostJobForm = z.infer<typeof schema>; // Updated type
+type PostJobForm = z.infer<typeof schema>;
 
 export default function PostJob() {
-  const [selectedCategory, setSelectedCategory] =
-    useState<CategoryProps | null>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [selectedCategory, setSelectedCategory] = useState<CategoryProps | null>(
+    location.state?.selectedCategory || null
+  );
   const [searchTerm, setSearchTerm] = useState("");
 
   const form = useForm<PostJobForm>({
     resolver: zodResolver(schema),
     mode: "onChange",
-    defaultValues: {
+    defaultValues: location.state?.formData || {
       through_swish_or_telephone: true,
+      category: location.state?.selectedCategory?.name || "",
     },
   });
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-    watch,
-    register,
-    trigger,
-  } = form;
-
-  const onSubmit = (data: PostJobForm) => {
-    const formData = new FormData();
-
-    Object.entries(data).forEach(([key, value]) => {
-      if (value === undefined || value === null) return;
-
-      // Handle arrays (site_images and others)
-      if (Array.isArray(value)) {
-        value.forEach((item) => {
-          if (item instanceof File) {
-            formData.append(key, item); // ✅ file stays file
-          } else {
-            formData.append(key, String(item));
-          }
-        });
-      }
-      // Handle booleans
-      else if (typeof value === "boolean") {
-        formData.append(key, value ? "true" : "false");
-      }
-      // Handle numbers
-      else if (typeof value === "number") {
-        formData.append(key, value.toString());
-      }
-      // Handle File
-      else if (value instanceof File) {
-        formData.append(key, value);
-      }
-      // Everything else (string, etc.)
-      else {
-        formData.append(key, String(value));
-      }
-    });
-
-    try {
-      console.log("Submitted data:", data);
-      console.log([...formData.entries()]);
-      toast.success("Job posted successfully!");
-    } catch (error) {
-      toast.error("Failed to post job");
-    }
-  };
+  const { setValue } = form;
 
   const handleCategorySelect = (category: CategoryProps) => {
     setSelectedCategory(category);
     setValue("category", category.name);
+    // Navigate to form with category data
+    navigate("/post-job/create", {
+      state: { selectedCategory: category },
+    });
   };
 
   const filteredCategories = categories.filter((cat) =>
     cat.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Show form if we're on /post-job/create route OR if category is selected
+  const showForm = location.pathname === "/post-job/create" || selectedCategory;
+
   return (
     <section className="md:py-16 lg:py-20 bg-liquidGreen">
-      {selectedCategory ? (
+      {showForm ? (
         <div className="container py-6">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <PostJobStepper form={form} onSubmit={handleSubmit(onSubmit)} />
+          <form onSubmit={form.handleSubmit(() => {})}>
+            <PostJobStepper form={form} />
           </form>
         </div>
       ) : (
@@ -258,19 +163,48 @@ export default function PostJob() {
   );
 }
 
-// Updated props to receive entire form
-function PostJobStepper({
-  form,
-  onSubmit,
-}: {
-  form: UseFormReturn<PostJobForm>;
-  onSubmit: (data: PostJobForm) => void;
-}) {
-  const { trigger } = form;
+function PostJobStepper({ form }: { form: UseFormReturn<PostJobForm> }) {
+  const navigate = useNavigate();
+  const { trigger, handleSubmit } = form;
   const [active, setActive] = useState(0);
 
   const goNext = () => setActive(active + 1);
   const goBack = () => setActive(active - 1);
+
+  const onSubmit = (data: PostJobForm) => {
+    const formData = new FormData();
+
+    Object.entries(data).forEach(([key, value]) => {
+      if (value === undefined || value === null) return;
+
+      if (Array.isArray(value)) {
+        value.forEach((item) => {
+          if (item instanceof File) {
+            formData.append(key, item);
+          } else {
+            formData.append(key, String(item));
+          }
+        });
+      } else if (typeof value === "boolean") {
+        formData.append(key, value ? "true" : "false");
+      } else if (typeof value === "number") {
+        formData.append(key, value.toString());
+      } else if (value instanceof File) {
+        formData.append(key, value);
+      } else {
+        formData.append(key, String(value));
+      }
+    });
+
+    try {
+      console.log("Submitted data:", data);
+      console.log([...formData.entries()]);
+      toast.success("Job posted successfully!");
+      navigate("/post-job/complete");
+    } catch (error) {
+      toast.error("Failed to post job");
+    }
+  };
 
   return (
     <Card className="sm:max-w-4xl mx-auto shadow-sm">
@@ -279,7 +213,7 @@ function PostJobStepper({
           active={active}
           color="#57B576"
           onStepClick={async (step) => {
-            if (step <= active) return setActive(step); // Allow going back
+            if (step <= active) return setActive(step);
             const fields =
               step === 1
                 ? ["heading", "description"]
@@ -310,7 +244,7 @@ function PostJobStepper({
               goNext={goNext}
               form={form}
               goBack={goBack}
-              onSubmit={onSubmit}
+              onSubmit={handleSubmit(onSubmit)}
             />
           </Stepper.Step>
           <Stepper.Step icon={<CheckCircle size={18} />} label="Complete">
@@ -322,7 +256,6 @@ function PostJobStepper({
   );
 }
 
-// Updated to receive form; fixed heading; added back button example (pass goBack if needed)
 function AboutTheJob({
   goNext,
   form,
@@ -389,7 +322,6 @@ function AboutTheJob({
   );
 }
 
-// New Images component (replaces Value); handles upload and preview
 function Images({
   goNext,
   goBack,
@@ -407,16 +339,13 @@ function Images({
     setValue,
   } = form;
 
-  // Watch current files
   const siteImages = watch("site_images") || [];
 
-  // Create preview URLs; memoized to avoid re-creating
   const previews = useMemo(() => {
     if (!siteImages || !Array.isArray(siteImages)) return [];
     return siteImages.map((file) => URL.createObjectURL(file));
   }, [siteImages]);
 
-  // Revoke URLs on unmount
   useEffect(() => {
     return () => previews.forEach(URL.revokeObjectURL);
   }, [previews]);
@@ -448,10 +377,8 @@ function Images({
                 const newFiles = e.target.files
                   ? Array.from(e.target.files)
                   : [];
-                // Merge new files with existing ones
                 const updatedFiles = [...siteImages, ...newFiles];
                 field.onChange(updatedFiles);
-                // Reset input value to allow re-selecting the same file
                 e.target.value = "";
               }}
             />
@@ -478,7 +405,6 @@ function Images({
                 size="sm"
                 className="absolute top-1 right-1"
                 onClick={() => {
-                  // Remove the image at this index
                   const updatedFiles = siteImages.filter((_, i) => i !== index);
                   setValue("site_images", updatedFiles);
                 }}
@@ -512,7 +438,6 @@ function Images({
   );
 }
 
-// Updated; fixed heading, bound phone_code with Controller, bound through_swish_or_telephone with setValue
 function ContactInfo({
   goNext,
   form,
@@ -522,7 +447,7 @@ function ContactInfo({
   goNext: () => void;
   form: UseFormReturn<PostJobForm>;
   goBack?: () => void;
-  onSubmit: (data: PostJobForm) => void;
+  onSubmit: () => void;
 }) {
   const {
     register,
@@ -530,13 +455,11 @@ function ContactInfo({
     trigger,
     control,
     setValue,
-    handleSubmit,
   } = form;
   const [selectedContactWay, setSelectedContactWay] = useState<
     "swish" | "email"
   >("swish");
 
-  // Bind toggle to form field
   useEffect(() => {
     setValue("through_swish_or_telephone", selectedContactWay === "swish");
   }, [selectedContactWay, setValue]);
@@ -553,7 +476,7 @@ function ContactInfo({
     ]);
     if (isValid) {
       goNext();
-      handleSubmit(onSubmit)(); // Trigger form submission
+      onSubmit();
     }
   };
 
@@ -741,6 +664,7 @@ function ContactInfo({
     </div>
   );
 }
+
 function Completed() {
   return (
     <>

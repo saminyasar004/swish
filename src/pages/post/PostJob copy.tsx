@@ -23,66 +23,13 @@ import { z } from "zod";
 import toast from "react-hot-toast";
 import PhoneInput from "react-phone-input-2";
 
-// ... (countryPhoneCodes array unchanged)
-const countryPhoneCodes = [
-  { code: "+880", country: "Bangladesh" },
-  { code: "+1", country: "United States" },
-  { code: "+44", country: "United Kingdom" },
-  { code: "+91", country: "India" },
-  { code: "+86", country: "China" },
-  { code: "+81", country: "Japan" },
-  { code: "+49", country: "Germany" },
-  { code: "+33", country: "France" },
-  { code: "+39", country: "Italy" },
-  { code: "+34", country: "Spain" },
-  { code: "+7", country: "Russia" },
-  { code: "+55", country: "Brazil" },
-  { code: "+54", country: "Argentina" },
-  { code: "+52", country: "Mexico" },
-  { code: "+351", country: "Portugal" },
-  { code: "+31", country: "Netherlands" },
-  { code: "+46", country: "Sweden" },
-  { code: "+41", country: "Switzerland" },
-  { code: "+43", country: "Austria" },
-  { code: "+32", country: "Belgium" },
-  { code: "+45", country: "Denmark" },
-  { code: "+47", country: "Norway" },
-  { code: "+358", country: "Finland" },
-  { code: "+48", country: "Poland" },
-  { code: "+420", country: "Czech Republic" },
-  { code: "+36", country: "Hungary" },
-  { code: "+40", country: "Romania" },
-  { code: "+90", country: "Turkey" },
-  { code: "+20", country: "Egypt" },
-  { code: "+27", country: "South Africa" },
-  { code: "+61", country: "Australia" },
-  { code: "+64", country: "New Zealand" },
-  { code: "+65", country: "Singapore" },
-  { code: "+66", country: "Thailand" },
-  { code: "+63", country: "Philippines" },
-  { code: "+62", country: "Indonesia" },
-  { code: "+60", country: "Malaysia" },
-  { code: "+82", country: "South Korea" },
-  { code: "+84", country: "Vietnam" },
-  { code: "+98", country: "Iran" },
-  { code: "+92", country: "Pakistan" },
-  { code: "+971", country: "United Arab Emirates" },
-  { code: "+966", country: "Saudi Arabia" },
-  { code: "+93", country: "Afghanistan" },
-  { code: "+94", country: "Sri Lanka" },
-  { code: "+95", country: "Myanmar" },
-  { code: "+977", country: "Nepal" },
-  { code: "+975", country: "Bhutan" },
-  { code: "+673", country: "Brunei" },
-  { code: "+676", country: "Tonga" },
-];
 
 // Updated Zod schema (removed estimated_time, employee_need, value; added phone_code)
 const schema = z
   .object({
     heading: z.string().min(1, "Heading is required"),
     description: z.string().min(1, "Description is required"),
-    category: z.number().min(1, "Category is required").int(),
+    category: z.string().min(1, "Category is required"),
     email: z
       .string()
       .email("Invalid email address")
@@ -138,15 +85,40 @@ export default function PostJob() {
 
   const onSubmit = (data: PostJobForm) => {
     const formData = new FormData();
+
     Object.entries(data).forEach(([key, value]) => {
+      if (value === undefined || value === null) return;
+
+      // Handle arrays (site_images and others)
       if (Array.isArray(value)) {
-        value.forEach((item) => formData.append(key, item));
-      } else {
+        value.forEach((item) => {
+          if (item instanceof File) {
+            formData.append(key, item); // ✅ file stays file
+          } else {
+            formData.append(key, String(item));
+          }
+        });
+      }
+      // Handle booleans
+      else if (typeof value === "boolean") {
+        formData.append(key, value ? "true" : "false");
+      }
+      // Handle numbers
+      else if (typeof value === "number") {
         formData.append(key, value.toString());
       }
+      // Handle File
+      else if (value instanceof File) {
+        formData.append(key, value);
+      }
+      // Everything else (string, etc.)
+      else {
+        formData.append(key, String(value));
+      }
     });
+
     try {
-      // Simulate API call
+      console.log("Submitted data:", data);
       console.log([...formData.entries()]);
       toast.success("Job posted successfully!");
     } catch (error) {
@@ -156,7 +128,7 @@ export default function PostJob() {
 
   const handleCategorySelect = (category: CategoryProps) => {
     setSelectedCategory(category);
-    setValue("category", category.id);
+    setValue("category", category.name);
   };
 
   const filteredCategories = categories.filter((cat) =>

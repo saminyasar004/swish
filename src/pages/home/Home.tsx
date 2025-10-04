@@ -33,7 +33,7 @@ export default function Home() {
           {/* <Process /> */}
           <PrevUsedCompany />
           <LoggedServices />
-          <Feature />
+          {/* <Feature /> */}
           <SearchBusiness />
           {/* <BusinessSignup /> */}
         </>

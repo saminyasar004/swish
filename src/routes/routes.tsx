@@ -89,10 +89,23 @@ export const router = createBrowserRouter([
         path: "/categories",
         element: <Categories />,
       },
+      // {
+      //   path: "/post-job",
+      //   element: <PostJob />,
+      // },
+
       {
-        path: "/post-job",
-        element: <PostJob />,
-      },
+  path: "/post-job",
+  element: <PostJob />
+},
+{
+  path: "/post-job/create",
+  element: <PostJob />
+},
+{
+  path: "/post-job/complete",
+  element: <PostJob />
+},
 
       {
         path: "/my-post",
@@ -229,15 +242,15 @@ export const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "profile/login-security",
+        path: "login-security",
         element: <Profile />,
       },
       {
-        path: "profile/notifications",
+        path: "notifications",
         element: <Profile />,
       },
       {
-        path: "profile/customer-service",
+        path: "customer-service",
         element: <Profile />,
       },
 

@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/sheet";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ChevronLeft, ChevronRight, Menu } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Separator } from "../ui/separator";
@@ -27,7 +27,7 @@ import GardenCoconutTreeImg from "@/assets/images/garden-coconut-tree.svg";
 import CategoryExteriorIcon from "@/assets/images/CategoryExteriorIcon.svg";
 import GuardImg from "@/assets/images/guard.svg";
 import HomeImg from "@/assets/images/home.svg";
-import IndoorRenovationImg from "@/assets/images/IndoorRenovationImg.svg";
+import loggedInUserIcon from "@/assets/icon/loggedInUserIcon.svg";
 import CategoryConstruction from "@/assets/images/CategoryConstruction.svg";
 import CategoryHomeIcon from "@/assets/images/CategoryHomeService.svg";
 import TradesToolsImg from "@/assets/images/trades-tools.svg";
@@ -742,11 +742,27 @@ export default function Header() {
             <SheetTrigger asChild>
               <Button variant="outline" className="rounded-full space-x-1">
                 <Menu />
-                <img
-                  src={userProfile?.image || UserIcon}
+                {/* <img
+                  // src={userProfile?.image || UserIcon}
+                  src={userProfile?.image || loggedInUserIcon}
                   alt="User"
                   className="max-w-full"
-                />
+                /> */}
+
+                {userProfile ? (
+                  <img
+                    src={userProfile?.image || loggedInUserIcon}
+                    alt="User"
+                    className="max-w-full"
+                  />
+                ) : (
+                  <img
+                    // src={userProfile?.image || UserIcon}
+                    src={userProfile?.image || UserIcon}
+                    alt="User"
+                    className="max-w-full"
+                  />
+                )}
               </Button>
             </SheetTrigger>
             <SheetContent className="py-10 min-w-max sm:max-w-lg px-5">
@@ -794,55 +810,82 @@ function NavigationMenuSheetContent({
       >
         {userProfile ? (
           <SheetHeader onClick={() => setIsSheetOpen(false)}>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <div className="flex gap-3 items-center cursor-pointer p-2 rounded-md hover:bg-slate-100">
-                  <img
-                    src={userProfile.image || UserIcon}
-                    alt="User"
-                    className="w-8 h-8 rounded-full"
-                  />
-                  <span className="font-medium">{userProfile.surname}</span>
-                  <span className="font-medium">{userProfile.email}</span>
-                </div>
-              </DropdownMenuTrigger>
+            <div className="flex justify-between items-center p-2 rounded-md hover:bg-slate-100">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <div className="flex gap-3 items-center cursor-pointer">
+                    {/* <img
+                      src={userProfile.image || UserIcon}
+                      alt="User"
+                      className="w-8 h-8 rounded-full"
+                    /> */}
+                    {userProfile ? (
+                      <img
+                        src={userProfile?.image || loggedInUserIcon}
+                        alt="User"
+                        className="max-w-full"
+                      />
+                    ) : (
+                      <img
+                        // src={userProfile?.image || UserIcon}
+                        src={userProfile?.image || UserIcon}
+                        alt="User"
+                        className="max-w-full"
+                      />
+                    )}
+                    <div className="flex flex-col">
+                      <span className="font-medium text-sm">
+                        {userProfile.surname}
+                      </span>
+                      <span className="font-light text-xs">
+                        {userProfile.email}
+                      </span>
+                    </div>
+                  </div>
+                </DropdownMenuTrigger>
 
-              {/* Align dropdown to start (left) */}
-              <DropdownMenuContent align="start" className="w-48">
-                <DropdownMenuItem asChild>
-                  <Link to="/profile">
-                    <Button
-                      size="md"
-                      className="w-full rounded-md cursor-pointer"
-                    >
-                      Profile
-                    </Button>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/provider">
-                    <Button
-                      size="md"
-                      className="w-full rounded-md cursor-pointer"
-                    >
-                      Provider Panel{" "}
-                    </Button>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to={"/login"}>
-                    <Button
-                      variant="destructive"
-                      size="md"
-                      className="w-full rounded-md cursor-pointer"
-                      onClick={handleLogOut}
-                    >
-                      Logout
-                    </Button>
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                <DropdownMenuContent align="start" className="w-48">
+                  <DropdownMenuItem asChild>
+                    <Link to="/profile">
+                      <Button
+                        size="md"
+                        className="w-full rounded-md cursor-pointer"
+                      >
+                        Profile
+                      </Button>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/provider">
+                      <Button
+                        size="md"
+                        className="w-full rounded-md cursor-pointer"
+                      >
+                        Provider Panel
+                      </Button>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/login" onClick={handleLogOut}>
+                      <Button
+                        variant="destructive"
+                        size="md"
+                        className="w-full rounded-md cursor-pointer"
+                      >
+                        Logout
+                      </Button>
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* ✅ OUTSIDE THE TRIGGER */}
+              <Link to="/switch-account">
+                <h3 className="font-medium text-blue-500 hover:underline">
+                  Change User
+                </h3>
+              </Link>
+            </div>
           </SheetHeader>
         ) : (
           <SheetHeader onClick={() => setIsSheetOpen(false)}>

@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/button";
 export default function SwitchAccount() {
   return (
     <div className="flex flex-col items-center justify-center text-center py-24">
-      <Card className="w-full max-w-md shadow-sm">
+      <Card className="w-full max-w-md shadow-2xl">
         <CardContent className="p-4 space-y-6">
           {/* Current user */}
-          <div className="flex items-center justify-between border rounded-md p-3">
+          <div className="flex items-center justify-between border rounded-md p-3 shadow-sm">
             <div className="flex items-center gap-3">
               <Avatar className="h-10 w-10">
                 <AvatarImage src="/logo.png" alt="Tolvstyfim AS" />
@@ -32,7 +32,7 @@ export default function SwitchAccount() {
             <p className="text-base font-semibold text-gray-900 mb-2">
               Other users
             </p>
-            <button className="w-full flex items-center justify-between border rounded-md p-3 text-left hover:bg-gray-50 transition">
+            <button className="w-full flex items-center justify-between border rounded-md p-3 text-left hover:bg-gray-50 transition shadow-sm">
               <div className="flex items-center gap-3">
                 <Avatar className="h-10 w-10">
                   <AvatarFallback>😊</AvatarFallback>
@@ -45,10 +45,10 @@ export default function SwitchAccount() {
 
           {/* Links */}
           <div className="space-y-2 pt-4 flex flex-col">
-            <Button className="bg-transparent shadow-sm  text-providerPrimary hover:bg-slate-100">
+            <Button className="bg-transparent bg-gray-50 text-providerPrimary hover:bg-slate-100">
               Go to your business
             </Button>
-            <Button className="bg-transparent shadow-sm  text-providerPrimary hover:bg-slate-100">
+            <Button className="bg-transparent bg-gray-50 text-providerPrimary hover:bg-slate-100">
               Logout
             </Button>
           </div>

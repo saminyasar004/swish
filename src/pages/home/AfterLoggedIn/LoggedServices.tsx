@@ -32,7 +32,7 @@ export default function LoggedServices() {
   // ];
 
   return (
-    <section className="pb-12 pt-4 md:pb-20 lg:pb-24">
+    <section className="pb-4 pt-4 ">
       <div className="container flex flex-col gap-14 items-center">
         <SectionHeading
           title="Popular services"

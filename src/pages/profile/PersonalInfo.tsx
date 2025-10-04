@@ -81,6 +81,17 @@ export default function PersonalInfo() {
 
           <div className="form-group flex flex-col ">
             <Label htmlFor="address" className="text-secondary">
+              Postal Code
+            </Label>
+            <Input
+              className="ring-1 ring-gray-300"
+              id="postalCode"
+              type="number"
+              placeholder="Postal Code"
+            />
+          </div>
+          <div className="form-group flex flex-col col-span-2">
+            <Label htmlFor="address" className="text-secondary">
               Address
             </Label>
             <Input
