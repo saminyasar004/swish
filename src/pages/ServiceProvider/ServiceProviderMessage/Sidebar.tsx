@@ -181,6 +181,18 @@ const dummyUsers: ChatUser[] = [
     message: "I am waiting for your response",
     profilePic: "/avatar9.png",
   },
+  {
+    id: "13",
+    name: "Jacob Jones",
+    message: "I am waiting for your response",
+    profilePic: "/avatar8.png",
+  },
+  {
+    id: "14",
+    name: "Leslie Alexander",
+    message: "I am waiting for your response",
+    profilePic: "/avatar9.png",
+  },
 ];
 
 export default function MessageSidebar() {
@@ -228,31 +240,33 @@ export default function MessageSidebar() {
 
   return (
     // fixed
-    <aside className="w-full md:w-1/3 lg:w-1/4 h-[94%] border-r  border-base-300 flex flex-col  mx-1 shadow-sm min-w-[20%]">
-      <div className="py-4 px-1 space-y-4 sticky top-0 z-10 bg-white ">
+    <aside className="w-full md:w-1/3 lg:w-1/4 h-[94%] border-r  border-base-300 flex flex-col  mx-1 shadow-sm min-w-[20%] bg-white">
+      <div className="py-4 px-1 space-y-4 sticky top-0 z-10  ">
         <h3 className="text-lg font-semibold">
           Installation of new door and door frame
         </h3>
 
         {/* Tabs */}
-        <div className="flex items-center justify-around bg-[#E7E7E7] rounded-lg p-1">
-          {tabs.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={clsx(
-                "px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-md",
-                activeTab === tab
-                  ? "text-gray-900 bg-white shadow-sm"
-                  : "text-gray-500 hover:text-gray-700"
-              )}
-              aria-label={`Switch to ${tab} tab`}
-              aria-pressed={activeTab === tab}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
+        {/* Underline Tabs */}
+<div className="w-full  scrollbar-hide border-b border-gray-200">
+  <div className="flex min-w-max space-x-5 px-2">
+    {tabs.map((tab) => (
+      <button
+        key={tab}
+        onClick={() => setActiveTab(tab)}
+        className={clsx(
+          "relative pb-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap",
+          activeTab === tab
+            ? "text-gray-900 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-gray-800"
+            : "text-gray-500 hover:text-gray-800"
+        )}
+      >
+        {tab}
+      </button>
+    ))}
+  </div>
+</div>
+
       </div>
 
       {/* Tab Content */}
