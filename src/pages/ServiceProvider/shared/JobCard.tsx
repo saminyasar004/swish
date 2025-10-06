@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import avatarFallback from "@/assets/images/avatar.png";
+import LocationIcon from "@/assets/providerIcon/locationIcon.svg";
+import calendarIcon from "@/assets/providerIcon/calendarIcon.svg";
 import { AllJob } from "../serviceTypes/ServiceProvider.types";
 
 type JobCardProps = {
@@ -69,7 +71,8 @@ export const JobCard: React.FC<JobCardProps> = ({
             <div className="text-start">
               <p className="font-semibold">{job.user.name}</p>
               <p className="text-sm text-providerPrimary flex items-center gap-1 max-w-36 md:max-w-max">
-                <LocationEdit className="text-providerPrimary" size={14} />
+                
+                <img src={LocationIcon} className="max-w-[20px]" />
                 {job.user.location}
               </p>
             </div>
@@ -78,7 +81,8 @@ export const JobCard: React.FC<JobCardProps> = ({
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center  text-sm text-muted-foreground gap-2">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1">
-                <CalendarDays size={14} />
+               
+                <img src={calendarIcon} className="max-w-[14px]" />
                 Posted: {job.postedDate}
               </span>
               <span className="flex items-center gap-1">

@@ -1,5 +1,6 @@
 import ChatContainer from "../../home/Messages/ChatContainer";
-import NoChatSelected from "./NoChatSelected";
+import NoChatSelected from "../MessageUpdate/NoChatSelected";
+import { ChatContainerInProvider } from "./ChatContainerInProvider";
 import Sidebar from "./Sidebar";
 
 const HomePage = () => {
@@ -18,7 +19,7 @@ const HomePage = () => {
           <div className="flex h-full rounded-lg overflow-hidden">
             <Sidebar />
             {/* {!selectedUser ? <NoChatSelected /> : <ChatContainer />} */}
-            {!selectedUser ? <NoChatSelected /> : <ChatContainer />}
+            {!selectedUser ? <NoChatSelected /> : <ChatContainerInProvider />}
           </div>
         </div>
       </div>

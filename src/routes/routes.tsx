@@ -38,7 +38,7 @@ import GraphicsPage from "@/pages/ServiceProvider/companyProfile/GraphicsPage";
 import NotificationsPage from "@/pages/ServiceProvider/myBusiness/NotificationsPage";
 import EmployeesPage from "@/pages/ServiceProvider/myBusiness/EmployeesPage";
 import ManageEmployeesPage from "@/pages/ServiceProvider/myBusiness/ManageEmployeesPage";
-import HomePage from "@/pages/ServiceProvider/MessageUpdate/HomePage";
+import HomePage from "@/pages/ServiceProvider/ServiceProviderMessage/HomePage";
 import JobSetting from "@/pages/ServiceProvider/myBusiness/jobSetting/JobSetting";
 import MyBids from "@/pages/ServiceProvider/myBusiness/myBids/MyBids";
 import ProfileLayout from "@/components/common/ProfileLayout";
@@ -95,17 +95,17 @@ export const router = createBrowserRouter([
       // },
 
       {
-  path: "/post-job",
-  element: <PostJob />
-},
-{
-  path: "/post-job/create",
-  element: <PostJob />
-},
-{
-  path: "/post-job/complete",
-  element: <PostJob />
-},
+        path: "/post-job",
+        element: <PostJob />,
+      },
+      {
+        path: "/post-job/create",
+        element: <PostJob />,
+      },
+      {
+        path: "/post-job/complete",
+        element: <PostJob />,
+      },
 
       {
         path: "/my-post",
@@ -263,28 +263,28 @@ export const router = createBrowserRouter([
         path: "message/job/:id",
         element: <MessagePageUpdated />,
         children: [
-        {
-          index: true, // optional redirect to default child
-          element: <SeeTheJob />, // default page shown if only `/job/:id` is visited
-        },
-        {
-          path: "job-details",
-          element: <SeeTheJob />,
-        },
-        // you can add more here:
-        {
-          path: "appointment",
-          element: <CreateAppointment />,
-        },
-        // {
-        //   path: "documentation",
-        //   element: <DocumentationPage />,
-        // },
-        {
-          path: "evaluation",
-          element: <Evaluation />,
-        },
-      ],
+          {
+            index: true, // optional redirect to default child
+            element: <SeeTheJob />, // default page shown if only `/job/:id` is visited
+          },
+          {
+            path: "job-details",
+            element: <SeeTheJob />,
+          },
+          // you can add more here:
+          {
+            path: "appointment",
+            element: <CreateAppointment />,
+          },
+          // {
+          //   path: "documentation",
+          //   element: <DocumentationPage />,
+          // },
+          {
+            path: "evaluation",
+            element: <Evaluation />,
+          },
+        ],
       },
       {
         path: "message/job/:id/job-details",

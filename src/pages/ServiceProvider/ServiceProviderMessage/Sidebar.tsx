@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 const baseURL = "https://backend.thaimassagesnearmeapp.com/";
 // const baseURL = "http://10.10.13.75:3333/";
 
-const tabs = ["Inbox", "The Job"];
+const tabs = ["Inbox", "Unread", "Won", "Archived"];
 
 const users = [
   {
@@ -84,15 +84,113 @@ const users = [
   },
 ];
 
-export const MessageSidebar = ({
-  onClose,
-  isOpen,
-  onSelectUser,
-  activeTab,
-  setActiveTab,
-}) => {
+interface ChatUser {
+  id: string;
+  name: string;
+  message: string;
+  profilePic: string;
+  isOnline?: boolean;
+}
+
+const dummyUsers: ChatUser[] = [
+  {
+    id: "1",
+    name: "Jane Cooper",
+    message: "I cam across your profile and...",
+    profilePic: "/avatar1.png",
+    isOnline: true,
+  },
+  {
+    id: "2",
+    name: "Mariya Desoja",
+    message: "I like your confidence",
+    profilePic: "/avatar2.png",
+  },
+  {
+    id: "3",
+    name: "Cameron Williamson",
+    message: "I am waiting for your response",
+    profilePic: "/avatar3.png",
+    isOnline: true,
+  },
+  {
+    id: "4",
+    name: "Wade Warren",
+    message: "I am waiting for your response",
+    profilePic: "/avatar4.png",
+  },
+  {
+    id: "5",
+    name: "Esther Howard",
+    message: "I am waiting for your response",
+    profilePic: "/avatar5.png",
+  },
+  {
+    id: "6",
+    name: "Guy Hawkins",
+    message: "I am waiting for your response",
+    profilePic: "/avatar6.png",
+    isOnline: true,
+  },
+  {
+    id: "7",
+    name: "Brooklyn Simmons",
+    message: "I am waiting for your response",
+    profilePic: "/avatar7.png",
+  },
+  {
+    id: "8",
+    name: "Jacob Jones",
+    message: "I am waiting for your response",
+    profilePic: "/avatar8.png",
+  },
+  {
+    id: "9",
+    name: "Leslie Alexander",
+    message: "I am waiting for your response",
+    profilePic: "/avatar9.png",
+  },
+  {
+    id: "10",
+    name: "Esther Howard",
+    message: "I am waiting for your response",
+    profilePic: "/avatar5.png",
+  },
+  {
+    id: "11",
+    name: "Guy Hawkins",
+    message: "I am waiting for your response",
+    profilePic: "/avatar6.png",
+    isOnline: true,
+  },
+  {
+    id: "12",
+    name: "Brooklyn Simmons",
+    message: "I am waiting for your response",
+    profilePic: "/avatar7.png",
+  },
+  {
+    id: "13",
+    name: "Jacob Jones",
+    message: "I am waiting for your response",
+    profilePic: "/avatar8.png",
+  },
+  {
+    id: "14",
+    name: "Leslie Alexander",
+    message: "I am waiting for your response",
+    profilePic: "/avatar9.png",
+  },
+];
+
+export default function MessageSidebar() {
   // const [activeTab, setActiveTab] = useState("Inbox");
   const [selectedUser, setSelectedUser] = useState("Jane Cooper");
+
+  const [users, setUsers] = useState(dummyUsers);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("Inbox");
 
   const token = useSelector(selectCurrentToken);
   // const [users, setUsers] = useState([]);
@@ -143,7 +241,7 @@ export const MessageSidebar = ({
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={clsx(
-                "px-8 py-2 text-sm font-medium transition-colors duration-200 rounded-md",
+                "px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-md",
                 activeTab === tab
                   ? "text-gray-900 bg-white shadow-sm"
                   : "text-gray-500 hover:text-gray-700"
@@ -245,4 +343,4 @@ export const MessageSidebar = ({
       </div>
     </aside>
   );
-};
+}

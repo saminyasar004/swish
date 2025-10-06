@@ -34,7 +34,7 @@ export const BuyClipsModal = ({ open, onClose }: BuyClipsModalProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-md">
+      <DialogContent className="max-w-xl">
         <div className="flex items-center justify-center">
           <img src={logoBlack} alt="Logo" />
         </div>

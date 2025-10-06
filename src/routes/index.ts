@@ -36,7 +36,7 @@ import GraphicsPage from "@/pages/ServiceProvider/companyProfile/GraphicsPage";
 import NotificationsPage from "@/pages/ServiceProvider/myBusiness/NotificationsPage";
 import EmployeesPage from "@/pages/ServiceProvider/myBusiness/EmployeesPage";
 import ManageEmployeesPage from "@/pages/ServiceProvider/myBusiness/ManageEmployeesPage";
-import HomePage from "@/pages/ServiceProvider/MessageUpdate/HomePage";
+import HomePage from "@/pages/ServiceProvider/ServiceProviderMessage/HomePage";
 import JobSetting from "@/pages/ServiceProvider/myBusiness/jobSetting/JobSetting";
 import MyBids from "@/pages/ServiceProvider/myBusiness/myBids/MyBids";
 import ProfileLayout from "@/components/common/ProfileLayout";

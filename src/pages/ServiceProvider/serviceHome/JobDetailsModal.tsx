@@ -244,7 +244,7 @@ export const JobDetailsModal = ({ open, onClose, job }: Props) => {
                     <MoreVertical size={18} />
                   </button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuContent align="end" className="w-48 space-y-2 ">
                   <DropdownMenuItem className="flex items-center gap-2 text-xs font-semibold">
                     <Heart size={16} className="text-red-500" />
                     Remove from favorites
