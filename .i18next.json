@@ -1,0 +1,4 @@
+{
+  "input": ["src/**/*.{ts,tsx}"],
+  "output": "src/i18n/locales/$LOCALE/$NAMESPACE.json"
+}

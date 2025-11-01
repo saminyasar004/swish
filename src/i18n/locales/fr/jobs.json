@@ -1,0 +1,34 @@
+{
+  "my-jobs": "Mes travaux",
+  "active-tab": "Actif",
+  "completed-tab": "Terminé",
+  "loading": "Chargement...",
+  "error": "Erreur lors du chargement des travaux.",
+  "no-jobs": "Aucun travail disponible dans cette catégorie.",
+  "companies-contacted": "{{count}} entreprises ont contacté",
+  "posted": "Publié le {{date}}",
+
+  "post-job": {
+    "title": "Publier un nouveau travail",
+    "subtitle": "Décrivez les exigences de votre travail",
+    "job-title": "Titre du travail",
+    "description": "Description du travail",
+    "category": "Catégorie",
+    "location": "Localisation",
+    "budget": "Budget",
+    "timeline": "Calendrier",
+    "submit": "Publier le travail",
+    "success": "Travail publié avec succès"
+  },
+
+  "job-details": {
+    "posted-by": "Publié par",
+    "posted-on": "Publié le",
+    "budget": "Budget",
+    "timeline": "Calendrier",
+    "description": "Description",
+    "requirements": "Exigences",
+    "contact": "Contact",
+    "apply": "Postuler maintenant"
+  }
+}

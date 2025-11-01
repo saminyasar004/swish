@@ -1,14 +1,21 @@
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import Header from "@/components/common/Header";
-import Footer from "@/components/common/Footer";
+// src/components/common/Layout.tsx
+import { ReactNode, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { Outlet } from "react-router-dom";
 
-export default function Layout({ children }) {
-	return (
-		<>
-			<Sonner />
-			<Header />
-			{children}
-			<Footer />
-		</>
-	);
+interface LayoutProps {
+  children?: ReactNode;
 }
+
+const Layout = ({ children }: LayoutProps) => {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    document.documentElement.dir = i18n.language === "ar" ? "rtl" : "ltr";
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
+
+  return <>{children || <Outlet />}</>;
+};
+
+export default Layout;

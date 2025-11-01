@@ -1,3 +1,4 @@
+// src/routes.tsx
 import Main from "@/components/common/Main";
 import { createBrowserRouter } from "react-router-dom";
 import Home from "@/pages/home/Home";
@@ -52,11 +53,10 @@ import HelpCenter from "@/pages/helpCenterArticle/HelpCenter";
 import HowSwishWorks from "@/pages/helpCenterArticle/HowSwishWorks";
 import HowChooseRightCompany from "@/pages/helpCenterArticle/HowChooseRightCompany";
 import ProblemResolution from "@/pages/helpCenterArticle/ProblemResolution";
-import reviewsOnSwishma from "@/pages/helpCenterArticle/ReviewsOnSwishma";
+import ReviewsOnSwishma from "@/pages/helpCenterArticle/ReviewsOnSwishma";
 import WriteGoodJobDescription from "@/pages/helpCenterArticle/WriteGoodJobDescription";
 import HelpCenterFaq from "@/pages/helpCenterArticle/HelpCenterFaq";
 import MessagePageUpdated from "@/pages/home/Messages/MessagePageUpdated";
-import ReviewsOnSwishma from "@/pages/helpCenterArticle/ReviewsOnSwishma";
 import BuisinessHome from "@/pages/ServiceProvider/myBusiness/BusinessHome";
 import BusinessHome from "@/pages/ServiceProvider/myBusiness/BusinessHome";
 import CompanyProfileFromUser from "@/pages/companyPorfile/CompanyProfileFromUser";
@@ -78,320 +78,166 @@ export interface Route {
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />,
+    element: <Layout />,
     children: [
       {
-        path: "/",
-        element: <Home />,
-      },
-
-      {
-        path: "/categories",
-        element: <Categories />,
-      },
-      // {
-      //   path: "/post-job",
-      //   element: <PostJob />,
-      // },
-
-      {
-        path: "/post-job",
-        element: <PostJob />,
-      },
-      {
-        path: "/post-job/create",
-        element: <PostJob />,
-      },
-      {
-        path: "/post-job/complete",
-        element: <PostJob />,
-      },
-
-      {
-        path: "/my-post",
-        element: <MyPost />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
-      {
-        path: "/help-center",
-        element: <HelpCenter />,
-      },
-      {
-        path: "/articles/help-center/how-swish-works",
-        element: <HowSwishWorks />,
-      },
-      {
-        path: "/articles/help-center/choose-company",
-        element: <HowChooseRightCompany />,
-      },
-
-      {
-        path: "/articles/help-center/problem-resolution",
-        element: <ProblemResolution />,
-      },
-      {
-        path: "/articles/help-center/reviews-swishma",
-        element: <ReviewsOnSwishma />,
-      },
-      {
-        path: "/articles/help-center/write-good-job-description",
-        element: <WriteGoodJobDescription />,
-      },
-      {
-        path: "/articles/help-center/faq",
-        element: <HelpCenterFaq />,
-      },
-
-      // trades
-      {
-        path: "/trades",
-        element: <Trades />,
-      },
-      {
-        path: "/trades/electrician",
-        element: <Electrician />,
-      },
-      {
-        path: "/trades/plumber",
-        element: <Plumber />,
-      },
-
-      {
-        path: "/trades/painter",
-        element: <Painter />,
-      },
-      {
-        path: "/trades/locksmith",
-        element: <Locksmith />,
-      },
-      {
-        path: "/trades/handyman",
-        element: <Handyman />,
-      },
-      {
-        path: "/trades/air-conditioning",
-        element: <SolarHeater />,
-      },
-
-      // exterior-garden
-      {
-        path: "/exterior-garden/solar-heater-ac-installation",
-        element: <SolarHeater />,
-      },
-      {
-        path: "/exterior-garden/masonry-concrete-work",
-        element: <MasonryConcrete />,
-      },
-      {
-        path: "/exterior-garden/window-doors",
-        element: <WindowDoors />,
-      },
-      {
-        path: "/indoor-renovation/floor-laying",
-        element: <FloorLaying />,
-      },
-      {
-        path: "/exterior-garden/garden-landscaping",
-        element: <GardenLandscaping />,
-      },
-
-      // indoor-renovation
-      {
-        path: "/indoor-renovation/full-renovation-buildout",
-        element: <Renovation />,
-      },
-      {
-        path: "/indoor-renovation/renovating-bathrooms",
-        element: <Bathrooms />,
-      },
-
-      // AFTER LOGIN
-      {
-        path: "/company-search",
-        element: <FindCompany />,
-      },
-      {
-        path: "/company-search/results",
-        element: <FindCompanyResult />,
-      },
-
-      {
-        path: "switch-account",
-        element: <SwitchAccount />,
-      },
-      {
-        path: "privacy-policy",
-        element: <PrivacyPolicy />,
-      },
-      {
-        path: "terms-and-conditions",
-        element: <TermsConditions />,
+        path: "",
+        element: <Main />,
+        children: [
+          { index: true, element: <Home /> },
+          { path: "categories", element: <Categories /> },
+          { path: "post-job", element: <PostJob /> },
+          { path: "post-job/create", element: <PostJob /> },
+          { path: "post-job/complete", element: <PostJob /> },
+          { path: "my-post", element: <MyPost /> },
+          { path: "contact", element: <Contact /> },
+          { path: "help-center", element: <HelpCenter /> },
+          {
+            path: "articles/help-center/how-swish-works",
+            element: <HowSwishWorks />,
+          },
+          {
+            path: "articles/help-center/choose-company",
+            element: <HowChooseRightCompany />,
+          },
+          {
+            path: "articles/help-center/problem-resolution",
+            element: <ProblemResolution />,
+          },
+          {
+            path: "articles/help-center/reviews-swishma",
+            element: <ReviewsOnSwishma />,
+          },
+          {
+            path: "articles/help-center/write-good-job-description",
+            element: <WriteGoodJobDescription />,
+          },
+          { path: "articles/help-center/faq", element: <HelpCenterFaq /> },
+          { path: "trades", element: <Trades /> },
+          { path: "trades/electrician", element: <Electrician /> },
+          { path: "trades/plumber", element: <Plumber /> },
+          { path: "trades/painter", element: <Painter /> },
+          { path: "trades/locksmith", element: <Locksmith /> },
+          { path: "trades/handyman", element: <Handyman /> },
+          { path: "trades/air-conditioning", element: <SolarHeater /> },
+          {
+            path: "exterior-garden/solar-heater-ac-installation",
+            element: <SolarHeater />,
+          },
+          {
+            path: "exterior-garden/masonry-concrete-work",
+            element: <MasonryConcrete />,
+          },
+          { path: "exterior-garden/window-doors", element: <WindowDoors /> },
+          { path: "indoor-renovation/floor-laying", element: <FloorLaying /> },
+          {
+            path: "exterior-garden/garden-landscaping",
+            element: <GardenLandscaping />,
+          },
+          {
+            path: "indoor-renovation/full-renovation-buildout",
+            element: <Renovation />,
+          },
+          {
+            path: "indoor-renovation/renovating-bathrooms",
+            element: <Bathrooms />,
+          },
+          { path: "company-search", element: <FindCompany /> },
+          { path: "company-search/results", element: <FindCompanyResult /> },
+          { path: "switch-account", element: <SwitchAccount /> },
+          { path: "privacy-policy", element: <PrivacyPolicy /> },
+          { path: "terms-and-conditions", element: <TermsConditions /> },
+        ],
       },
     ],
   },
-
   {
     path: "/profile",
-    element: <ProfileLayout />,
+    element: <Layout />,
     children: [
       {
         index: true,
-        element: <Profile />,
+        element: (
+          <ProfileLayout>
+            <Profile />
+          </ProfileLayout>
+        ),
       },
       {
         path: "login-security",
-        element: <Profile />,
+        element: (
+          <ProfileLayout>
+            <Profile />
+          </ProfileLayout>
+        ),
       },
       {
         path: "notifications",
-        element: <Profile />,
+        element: (
+          <ProfileLayout>
+            <Profile />
+          </ProfileLayout>
+        ),
       },
       {
         path: "customer-service",
-        element: <Profile />,
+        element: (
+          <ProfileLayout>
+            <Profile />
+          </ProfileLayout>
+        ),
       },
-
-      // MESSAGE
-      {
-        path: "message/inbox/:id",
-        element: <MessagePageUpdated />,
-      },
+      { path: "message/inbox/:id", element: <MessagePageUpdated /> },
       {
         path: "message/job/:id",
         element: <MessagePageUpdated />,
         children: [
-          {
-            index: true, // optional redirect to default child
-            element: <SeeTheJob />, // default page shown if only `/job/:id` is visited
-          },
-          {
-            path: "job-details",
-            element: <SeeTheJob />,
-          },
-          // you can add more here:
-          {
-            path: "appointment",
-            element: <CreateAppointment />,
-          },
-          // {
-          //   path: "documentation",
-          //   element: <DocumentationPage />,
-          // },
-          {
-            path: "evaluation",
-            element: <Evaluation />,
-          },
+          { index: true, element: <SeeTheJob /> },
+          { path: "job-details", element: <SeeTheJob /> },
+          { path: "appointment", element: <CreateAppointment /> },
+          { path: "evaluation", element: <Evaluation /> },
         ],
       },
-      {
-        path: "message/job/:id/job-details",
-        element: <SeeTheJob />,
-      },
-
-      // COMPANY PROFILE REGISTER COMPANY
-      {
-        path: "company-search/:id",
-        element: <CompanyProfileFromUser />,
-      },
-      {
-        path: "request-quote/:id",
-        element: <RequestQuoteCategory />,
-      },
+      { path: "message/job/:id/job-details", element: <SeeTheJob /> },
+      { path: "company-search/:id", element: <CompanyProfileFromUser /> },
+      { path: "request-quote/:id", element: <RequestQuoteCategory /> },
     ],
   },
-
-  // PROVIDER
   {
     path: "/provider",
-    element: <ServiceLayout />,
+    element: <Layout />,
     children: [
-      {
-        path: "/provider",
-        element: <ServiceHome />,
-      },
-      {
-        path: "message",
-        element: <HomePage />,
-      },
-      // {
-      //   path: "/provider/message",
-      //   element: MessagePage,
-      //>/
-      // },
-      {
-        path: "my-business",
-        element: <BusinessHome />,
-      },
-
-      // COMPANY PROFILE
-      {
-        path: "my-business/profile",
-        element: <CompanyProfileHome />,
-      },
-
-      // {
-      //   path: "/provider/my-business/profile",
-      //   element: <BusinessProfile />,
-      // },
+      { index: true, element: <ServiceHome /> }, // Use index for default route
+      { path: "message", element: <HomePage /> },
+      { path: "my-business", element: <BusinessHome /> },
+      { path: "my-business/profile", element: <CompanyProfileHome /> },
       {
         path: "my-business/profile/company-info-update",
         element: <CompanyProfileHome />,
       },
+      { path: "my-business/profile/graphics", element: <CompanyProfileHome /> },
+      { path: "my-business/profile/pictures", element: <CompanyProfileHome /> },
       {
-        path: "/provider/my-business/profile/graphics",
-        element: <CompanyProfileHome />,
-      },
-      {
-        path: "/provider/my-business/profile/pictures",
-        element: <CompanyProfileHome />,
-      },
-      // {
-      //   path: "/provider/my-business/profile/graphics",
-      //   element: <GraphicsPage />,
-      // },
-      {
-        path: "/provider/my-business/profile/notifications",
+        path: "my-business/profile/notifications",
         element: <NotificationsPage />,
       },
+      { path: "my-business/profile/employees", element: <EmployeesPage /> },
       {
-        path: "/provider/my-business/profile/employees",
-        element: <EmployeesPage />,
-      },
-      {
-        path: "/provider/my-business/employees/manage",
+        path: "my-business/employees/manage",
         element: <ManageEmployeesPage />,
       },
-
-      //job setting
-      {
-        path: "my-business/job-setting/company-info",
-        element: <JobSetting />,
-      },
+      { path: "my-business/job-setting/company-info", element: <JobSetting /> },
       {
         path: "my-business/job-setting/notifications",
         element: <JobSetting />,
       },
-      {
-        path: "my-business/job-setting/job-search",
-        element: <JobSetting />,
-      },
+      { path: "my-business/job-setting/job-search", element: <JobSetting /> },
       {
         path: "my-business/job-setting/customer-service",
         element: <JobSetting />,
       },
-      {
-        path: "my-business/job-setting/help-guide",
-        element: <JobSetting />,
-      },
-      {
-        path: "my-business/job-setting/receipts",
-        element: <JobSetting />,
-      },
-
-      // HELP GUID
+      { path: "my-business/job-setting/help-guide", element: <JobSetting /> },
+      { path: "my-business/job-setting/receipts", element: <JobSetting /> },
       {
         path: "my-business/job-setting/help-guide/filters",
         element: <JobSetting />,
@@ -428,47 +274,62 @@ export const router = createBrowserRouter([
         path: "my-business/job-setting/help-guide/evaluations",
         element: <JobSetting />,
       },
-      //my bids
-      {
-        path: "/provider/my-business/my-bids",
-        element: <MyBids />,
-      },
+      { path: "my-business/my-bids", element: <MyBids /> },
     ],
   },
-
   {
     path: "/register-company",
-    element: <LayoutRegisterCompany />,
+    element: <Layout />,
     children: [
-      {
-        path: "/register-company",
-        element: <RegisterCompany />,
-      },
+      { path: "", element: <RegisterCompany /> }, // Use empty string for default
     ],
   },
-
   {
     path: "/register",
-    element: <Register />,
+    element: (
+      <Layout>
+        <Register />
+      </Layout>
+    ),
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <Layout>
+        <Login />
+      </Layout>
+    ),
   },
   {
     path: "/forgot-password",
-    element: <ForgotPassword />,
+    element: (
+      <Layout>
+        <ForgotPassword />
+      </Layout>
+    ),
   },
   {
     path: "/verify-otp",
-    element: <VerifyOtp />,
+    element: (
+      <Layout>
+        <VerifyOtp />
+      </Layout>
+    ),
   },
   {
     path: "/reset-password",
-    element: <ResetPassword />,
+    element: (
+      <Layout>
+        <ResetPassword />
+      </Layout>
+    ),
   },
   {
     path: "*",
-    element: <StatusPage />,
+    element: (
+      <Layout>
+        <StatusPage />
+      </Layout>
+    ),
   },
 ]);

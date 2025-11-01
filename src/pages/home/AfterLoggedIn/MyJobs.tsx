@@ -30,6 +30,9 @@ export default function MyJobs() {
     isError: isPrevUsedCompanyError,
   } = useGetPreviousCompanyAndStartedJobsQuery(undefined, { skip: !token });
 
+
+
+
   // Handle loading state
   if (isUserProfileLoading || isPrevUsedCompanyLoading) {
     return (

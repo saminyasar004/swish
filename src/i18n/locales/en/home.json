@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "title": "Get the job done!",
+    "subtitle": "Describe the job and",
+    "subtitle-bold": "receive offers from skilled professionals.",
+    "subtitle-end": "Free and non-binding.",
+    "all-categories": "All categories"
+  },
+
+  "search-business": {
+    "title": "Search for a business",
+    "description": "If you want to quickly find some relevant companies near you, you can search directly here."
+  },
+
+  "process": {
+    "title": "How it works",
+    "step1": {
+      "title": "Describe your job",
+      "description": "Tell us what you need done"
+    },
+    "step2": {
+      "title": "Get offers",
+      "description": "Receive quotes from professionals"
+    },
+    "step3": {
+      "title": "Choose the best",
+      "description": "Compare and select your preferred option"
+    }
+  },
+
+  "services": {
+    "title": "Our Services",
+    "description": "We connect you with skilled professionals for all your needs"
+  },
+
+  "features": {
+    "title": "Why Choose Us",
+    "feature1": {
+      "title": "Free Service",
+      "description": "No hidden fees or charges"
+    },
+    "feature2": {
+      "title": "Verified Professionals",
+      "description": "All service providers are verified"
+    },
+    "feature3": {
+      "title": "Quick Response",
+      "description": "Get quotes within hours"
+    }
+  },
+
+  "business-signup": {
+    "title": "Are you a service provider?",
+    "description": "Join our platform and start getting customers",
+    "button": "Register your business"
+  }
+}

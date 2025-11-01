@@ -1,0 +1,34 @@
+{
+  "my-jobs": "My jobs",
+  "active-tab": "Active",
+  "completed-tab": "Completed",
+  "loading": "Loading...",
+  "error": "Error loading jobs.",
+  "no-jobs": "No jobs available in this category.",
+  "companies-contacted": "{{count}} companies have contacted",
+  "posted": "Posted {{date}}",
+
+  "post-job": {
+    "title": "Post a new job",
+    "subtitle": "Describe your job requirements",
+    "job-title": "Job title",
+    "description": "Job description",
+    "category": "Category",
+    "location": "Location",
+    "budget": "Budget",
+    "timeline": "Timeline",
+    "submit": "Post job",
+    "success": "Job posted successfully"
+  },
+
+  "job-details": {
+    "posted-by": "Posted by",
+    "posted-on": "Posted on",
+    "budget": "Budget",
+    "timeline": "Timeline",
+    "description": "Description",
+    "requirements": "Requirements",
+    "contact": "Contact",
+    "apply": "Apply now"
+  }
+}

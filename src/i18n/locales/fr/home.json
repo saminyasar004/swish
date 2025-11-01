@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "title": "Faites le travail !",
+    "subtitle": "Décrivez le travail et",
+    "subtitle-bold": "recevez des offres de professionnels qualifiés.",
+    "subtitle-end": "Gratuit et sans engagement.",
+    "all-categories": "Toutes les catégories"
+  },
+
+  "search-business": {
+    "title": "Rechercher une entreprise",
+    "description": "Si vous voulez trouver rapidement des entreprises pertinentes près de chez vous, vous pouvez rechercher directement ici."
+  },
+
+  "process": {
+    "title": "Comment ça marche",
+    "step1": {
+      "title": "Décrivez votre travail",
+      "description": "Dites-nous ce dont vous avez besoin"
+    },
+    "step2": {
+      "title": "Obtenez des offres",
+      "description": "Recevez des devis de professionnels"
+    },
+    "step3": {
+      "title": "Choisissez le meilleur",
+      "description": "Comparez et sélectionnez votre option préférée"
+    }
+  },
+
+  "services": {
+    "title": "Nos Services",
+    "description": "Nous vous connectons avec des professionnels qualifiés pour tous vos besoins"
+  },
+
+  "features": {
+    "title": "Pourquoi nous choisir",
+    "feature1": {
+      "title": "Service gratuit",
+      "description": "Aucun frais caché ou charge"
+    },
+    "feature2": {
+      "title": "Professionnels vérifiés",
+      "description": "Tous les prestataires de services sont vérifiés"
+    },
+    "feature3": {
+      "title": "Réponse rapide",
+      "description": "Obtenez des devis en quelques heures"
+    }
+  },
+
+  "business-signup": {
+    "title": "Êtes-vous un prestataire de services ?",
+    "description": "Rejoignez notre plateforme et commencez à obtenir des clients",
+    "button": "Enregistrez votre entreprise"
+  }
+}

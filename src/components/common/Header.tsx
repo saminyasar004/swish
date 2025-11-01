@@ -52,6 +52,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { TUserProfile } from "@/types/user.type";
+import { useTranslation } from "react-i18next";
 // import { useGetUserProfileQuery } from "@/redux/features/users/user.category.api";
 
 export interface SubCategoryProps {
@@ -663,8 +664,18 @@ export const categories = [
 ];
 
 export default function Header() {
+  const { t, i18n } = useTranslation("navigation");
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+
   const location = useLocation();
-  const languages = ["English", "Français", "العربية"];
+  const languages = [
+    { code: "en", name: "English" },
+    { code: "fr", name: "Français" },
+    { code: "ar", name: "العربية" },
+  ];
   const [currentLanguage, setCurrentLanguage] = useState(languages[0]);
   const [isSheetOpen, setIsSheetOpen] = useState(false); // Add state for Sheet
   const dispatch = useDispatch();
@@ -709,8 +720,8 @@ export default function Header() {
         <div className="nav-items flex items-center justify-around gap-4">
           <div className="hidden lg:flex items-center gap-4">
             <Select
-              value={currentLanguage}
-              onValueChange={(e) => setCurrentLanguage(e)}
+              value={i18n.language}
+              onValueChange={(e) => changeLanguage(e)}
             >
               <SelectTrigger className="w-[120px]">
                 <SelectValue />
@@ -718,8 +729,8 @@ export default function Header() {
               <SelectContent>
                 <SelectGroup>
                   {languages.map((language) => (
-                    <SelectItem value={language} key={language}>
-                      {language}
+                    <SelectItem value={language.code} key={language.code}>
+                      {language.name}
                     </SelectItem>
                   ))}
                 </SelectGroup>
@@ -730,11 +741,11 @@ export default function Header() {
               to="/register-company"
               className="hover:underline transition-all duration-300"
             >
-              Register company
+              {t("register-company")}
             </Link>
 
             <Link to="/post-job">
-              <Button>Post a job</Button>
+              <Button>{t("post-job")}</Button>
             </Link>
           </div>
 
@@ -789,8 +800,19 @@ function NavigationMenuSheetContent({
     null
   );
 
+  const { t, i18n } = useTranslation(["common", "navigation"]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+
+  const languages = [
+    { code: "en", name: "English" },
+    { code: "fr", name: "Français" },
+    { code: "ar", name: "العربية" },
+  ];
 
   const handleLogOut = () => {
     dispatch(logout());
@@ -893,12 +915,38 @@ function NavigationMenuSheetContent({
               <div className="flex gap-3 items-center transition-all duration-300 cursor-pointer hover:bg-slate-100 mb-2 py-4 px-2 rounded-md">
                 <img src={UserIcon} alt="User" className="max-w-full" />
                 <SheetTitle className="font-medium text-base">
-                  Log in
+                  {t("login")}
                 </SheetTitle>
               </div>
             </Link>
           </SheetHeader>
         )}
+
+        {/* <Separator className="bg-slate-200" /> */}
+
+        {/* Language Switcher for Mobile */}
+        {/* <div className="flex flex-col gap-2 py-2">
+          <span className="text-sm font-medium text-gray-600">
+            {t("navigation.language")}
+          </span>
+          <Select
+            value={i18n.language}
+            onValueChange={(e) => changeLanguage(e)}
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {languages.map((language) => (
+                  <SelectItem value={language.code} key={language.code}>
+                    {language.name}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div> */}
 
         <Separator className="bg-slate-200" />
 
@@ -908,21 +956,21 @@ function NavigationMenuSheetContent({
               to="/"
               className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
             >
-              Home
+              {t("home")}
             </Link>
             <Link
               to="/post-job"
               className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
               onClick={() => setIsSheetOpen(false)}
             >
-              Post a job
+              {t("post-job")}
             </Link>
             <Link
               to="/profile"
               className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
               onClick={() => setIsSheetOpen(false)}
             >
-              Profile
+              {t("profile")}
             </Link>
 
             <Link
@@ -930,7 +978,7 @@ function NavigationMenuSheetContent({
               className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
               onClick={() => setIsSheetOpen(false)}
             >
-              My Jobs
+              {t("my-jobs")}
             </Link>
           </div>
         ) : (
@@ -940,7 +988,7 @@ function NavigationMenuSheetContent({
               className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
               onClick={() => setIsSheetOpen(false)}
             >
-              Post a job
+              {t("post-job")}
             </Link>
 
             <Link
@@ -948,7 +996,7 @@ function NavigationMenuSheetContent({
               className="w-full text-primary font-semibold transition-all duration-300 cursor-pointer hover:bg-slate-100 py-2 px-2 rounded-md"
               onClick={() => setIsSheetOpen(false)}
             >
-              Register your business
+              {t("register-company")}
             </Link>
           </div>
         )}

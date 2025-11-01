@@ -1,0 +1,34 @@
+{
+  "my-jobs": "وظائفي",
+  "active-tab": "نشط",
+  "completed-tab": "مكتمل",
+  "loading": "جاري التحميل...",
+  "error": "خطأ أثناء تحميل الوظائف.",
+  "no-jobs": "لا توجد وظائف متاحة في هذه الفئة.",
+  "companies-contacted": "لقد اتصلت {{count}} شركات",
+  "posted": "نشر في {{date}}",
+
+  "post-job": {
+    "title": "نشر وظيفة جديدة",
+    "subtitle": "اوصف متطلبات وظيفتك",
+    "job-title": "عنوان الوظيفة",
+    "description": "وصف الوظيفة",
+    "category": "الفئة",
+    "location": "الموقع",
+    "budget": "الميزانية",
+    "timeline": "الجدول الزمني",
+    "submit": "نشر الوظيفة",
+    "success": "تم نشر الوظيفة بنجاح"
+  },
+
+  "job-details": {
+    "posted-by": "نشر بواسطة",
+    "posted-on": "نشر في",
+    "budget": "الميزانية",
+    "timeline": "الجدول الزمني",
+    "description": "الوصف",
+    "requirements": "المتطلبات",
+    "contact": "اتصل",
+    "apply": "تقدم الآن"
+  }
+}

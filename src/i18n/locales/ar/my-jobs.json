@@ -1,0 +1,8 @@
+{
+  "job-status": {
+    "Open": "مفتوح",
+    "In Progress": "قيد التنفيذ",
+    "Completed": "مكتمل",
+    "Paused": "موقوف"
+  }
+}

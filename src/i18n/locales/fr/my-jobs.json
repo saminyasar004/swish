@@ -1,0 +1,8 @@
+{
+  "job-status": {
+    "Open": "Ouvert",
+    "In Progress": "En cours",
+    "Completed": "Terminé",
+    "Paused": "En pause"
+  }
+}

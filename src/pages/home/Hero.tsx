@@ -8,89 +8,46 @@ import { categories } from "@/components/common/Header";
 import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { baseUrl } from "@/redux/api/baseApi";
 import WhatNeedSearch from "@/components/common/WhatNeedSearch";
 
 export default function Hero() {
-  //  const navigate = useNavigate();
-  //  // Flatten all subcategories into one array
-  // const allSubcategories = React.useMemo(() => {
-  //   return categories.flatMap((category) =>
-  //     category.subcategories.map((sub) => ({
-  //       name: sub.name,
-  //       url: sub.url,
-  //     }))
-  //   );
-  // }, []);
+  const { t } = useTranslation([
+    "home",
+    "common",
+    "navigation",
+    "auth",
+    "jobs",
+  ]);
 
-  // const [search, setSearch] = useState("");
-  // const [selected, setSelected] = useState("");
-  // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  // const [highlightedIndex, setHighlightedIndex] = useState(0);
+  console.log(t("home"));
 
-  // const filteredJobs = search
-  //   ? allSubcategories.filter((job) =>
-  //       job.name.toLowerCase().includes(search.toLowerCase())
-  //     )
-  //   : [];
+  console.log(t("register.title"));
 
-  // const handleKeyDown = (e: React.KeyboardEvent) => {
-  //   console.log(e.key);
-  //   if (e.key === "ArrowDown") {
-  //     setHighlightedIndex((prevIndex) =>
-  //       Math.min(prevIndex + 1, filteredJobs.length - 1)
-  //     );
-  //   } else if (e.key === "ArrowUp") {
-  //     setHighlightedIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-  //   } else if (e.key === "Enter") {
-  //     setSearch(filteredJobs[highlightedIndex]);
-  //     setSelected(filteredJobs[highlightedIndex]);
-  //     setIsDropdownOpen(false);
-  //   } else if (e.key === "Escape") {
-  //     setIsDropdownOpen(false); // Close dropdown on Escape
-  //   }
-  // };
-  // const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  //   if (e.key === "ArrowDown") {
-  //     setHighlightedIndex((prev) =>
-  //       Math.min(prev + 1, filteredJobs.length - 1)
-  //     );
-  //   } else if (e.key === "ArrowUp") {
-  //     setHighlightedIndex((prev) => Math.max(prev - 1, 0));
-  //   } else if (e.key === "Enter" && filteredJobs.length > 0) {
-  //     navigate(filteredJobs[highlightedIndex].url);
-  //     setIsDropdownOpen(false);
-  //   } else if (e.key === "Escape") {
-  //     setIsDropdownOpen(false);
-  //   }
-  // };
-
-  // if (categoryListLoading) {
-  //   return (
-  //     <div className="flex justify-center items-center min-h-[200px]">
-  //       <span className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></span>
-  //       <span className="ml-3 text-gray-600">Loading categories...</span>
-  //     </div>
-  //   );
-  // }
+  // Debug: Check if translations are working
+  console.log("Hero translations:", {
+    "hero.title": t("hero.title"),
+    "hero.subtitle": t("hero.subtitle"),
+    "hero.subtitle-bold": t("hero.subtitle-bold"),
+    "hero.subtitle-end": t("hero.subtitle-end"),
+    "hero.all-categories": t("hero.all-categories"),
+  });
 
   return (
     <section className=" py-12 md:py-24 lg:py-32 bg-liquidGreen">
       <div className="container grid lg:grid-cols-2 gap-4 item-center justify-center">
         <div className="max-w-xl flex flex-col gap-4 justify-center items-center text-center md:justify-start md:items-start md:text-left">
           <h1 className="text-5xl text-primaryDark font-semibold">
-            Get the job done!
+            {t("hero.title")}
           </h1>
           <p className="font-normal text-base max-w-lg text-[#404C67]">
-            Describe the job and{" "}
-            <span className="font-semibold">
-              receive offers from skilled professionals.{" "}
-            </span>
-            Free and non-biding.
+            {t("hero.subtitle")}{" "}
+            <span className="font-semibold">{t("hero.subtitle-bold")} </span>
+            {t("hero.subtitle-end")}
           </p>
 
-          
           <WhatNeedSearch />
 
           <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 py-6 items-start">
@@ -114,14 +71,12 @@ export default function Hero() {
               <div className="w-full flex flex-col  gap-4 items-center justify-center py-4 hover:text-primary hover:underline">
                 <img
                   src={allCategori}
-                  alt={"All categories"}
+                  alt={t("hero.all-categories")}
                   className="w-10 h-10"
                 />
 
                 <p className="font-medium text-sm text-center">
-                  All
-                  <br />
-                  categories
+                  {t("hero.all-categories")}
                 </p>
               </div>
             </Link>

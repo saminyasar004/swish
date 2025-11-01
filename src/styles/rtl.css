@@ -1,0 +1,144 @@
+/* RTL-Specific Styles for Arabic Language */
+
+/* Apply RTL direction automatically */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Arabic Font Optimization */
+[dir="rtl"] body,
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] button {
+  font-family: 
+    'Noto Sans Arabic', 
+    'Cairo', 
+    'Tajawal',
+    'IBM Plex Sans Arabic',
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    sans-serif;
+}
+
+/* Fix Flexbox Direction */
+[dir="rtl"] .flex {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .flex-row-reverse {
+  flex-direction: row;
+}
+
+/* Padding and Margin Adjustments */
+[dir="rtl"] .pl-4 { padding-right: 1rem; padding-left: 0; }
+[dir="rtl"] .pr-4 { padding-left: 1rem; padding-right: 0; }
+[dir="rtl"] .ml-4 { margin-right: 1rem; margin-left: 0; }
+[dir="rtl"] .mr-4 { margin-left: 1rem; margin-right: 0; }
+
+/* Text Alignment */
+[dir="rtl"] .text-left { text-align: right; }
+[dir="rtl"] .text-right { text-align: left; }
+
+/* Border Radius */
+[dir="rtl"] .rounded-l { border-radius: 0 0.375rem 0.375rem 0; }
+[dir="rtl"] .rounded-r { border-radius: 0.375rem 0 0 0.375rem; }
+
+/* Position Adjustments */
+[dir="rtl"] .left-0 { left: auto; right: 0; }
+[dir="rtl"] .right-0 { right: auto; left: 0; }
+
+/* Transform for Icons */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Dropdown Menus */
+[dir="rtl"] .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+/* Forms */
+[dir="rtl"] input[type="checkbox"],
+[dir="rtl"] input[type="radio"] {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* Scroll Shadows */
+[dir="rtl"] .scroll-shadow-left {
+  box-shadow: inset -10px 0 10px -10px rgba(0, 0, 0, 0.1);
+}
+
+[dir="rtl"] .scroll-shadow-right {
+  box-shadow: inset 10px 0 10px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation */
+[dir="rtl"] .breadcrumb-separator::before {
+  content: "\\";
+}
+
+/* Arabic-Specific Typography */
+[dir="rtl"] h1, 
+[dir="rtl"] h2, 
+[dir="rtl"] h3, 
+[dir="rtl"] h4, 
+[dir="rtl"] h5, 
+[dir="rtl"] h6 {
+  font-weight: 700;
+  line-height: 1.8; /* Better readability for Arabic */
+}
+
+[dir="rtl"] p {
+  line-height: 2; /* Increased line height for Arabic text */
+}
+
+/* Number Direction (force LTR for numbers if needed) */
+.ltr-numbers {
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+/* Bidirectional Text Support */
+.bidi-text {
+  unicode-bidi: plaintext;
+}
+
+/* Animation Adjustments */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+[dir="rtl"] .slide-in-left {
+  animation: slideInRight 0.3s ease-out;
+}
+
+[dir="rtl"] .slide-in-right {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+/* Smooth Transition for Direction Changes */
+* {
+  transition: direction 0.3s ease;
+}

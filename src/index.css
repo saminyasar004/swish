@@ -25,3 +25,13 @@
 		@apply bg-primary rounded-md;
 	}
 }
+
+
+/* src/index.css */
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="ltr"] {
+  direction: ltr;
+}

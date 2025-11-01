@@ -4,14 +4,20 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
-	server: {
-		// host: "::",
-		port: 7890,
-	},
-	plugins: [react()],
-	resolve: {
-		alias: {
-			"@": path.resolve(__dirname, "./src"),
-		},
-	},
+  plugins: [react()],
+  server: {
+    fs: {
+      allow: [
+        path.resolve(__dirname, ""), // Project root (e.g., C:/Users/workm/Desktop/SWISH/swish/)
+        path.resolve(__dirname, "src/i18n/locales"), // Locales directory for i18n
+      ],
+    },
+    // host: "::",
+    port: 7890,
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
 }));

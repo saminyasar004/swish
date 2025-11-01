@@ -73,16 +73,12 @@ export default function Footer() {
 
   const forBusinessLinks = [
     {
-      name: "09:00 - 16:00 on weekdays.\nClosed on weekends",
-      url: "#",
+      name: "Contact Email: salam@swish.ma",
+      url: "mailto:salam@swish.ma",
     },
     {
-      name: "Send e-post: info@swish.ma.no",
-      url: "#",
-    },
-    {
-      name: "Ring oss: 22 00 09 30",
-      url: "#",
+      name: "WhatsApp: +212(0)708171517",
+      url: "https://wa.me/+212708171517",
     },
   ];
   // const forBusinessLinks = [
@@ -164,14 +160,15 @@ export default function Footer() {
 
             <div className="flex flex-col">
               {forBusinessLinks.map((quickLink, index) => (
-                <Link
-                  // target="_blank"
+                <a
                   key={index}
-                  to={quickLink.url}
+                  href={quickLink.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="transition-all duration-300 hover:underline text-sm whitespace-pre-line mt-2 font-light"
                 >
                   {quickLink.name}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
